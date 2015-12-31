@@ -201,5 +201,8 @@
                 this.verticesData[this.vertexAttLength * i + 2] = pos.z; 
             }
         }
+
+        public dispose() {
+        }
     }
 } 

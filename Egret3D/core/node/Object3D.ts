@@ -1,5 +1,5 @@
 ﻿module egret3d {
-            
+    export enum PickType { BoundPick , PositionPick , UVPick };
     /**
     * @class egret3d.Object3D
     * @classdesc
@@ -26,6 +26,8 @@
         protected _qut: Quaternion = new Quaternion();
         protected _active: boolean = false;
         protected _mat: Matrix4_4 = new Matrix4_4();
+
+       
 
         /**
         * @language zh_CN
@@ -132,6 +134,18 @@
 
         private _worldBox: CubeBoxBound = new CubeBoxBound();
         
+        /**
+        * @language zh_CN
+        * 鼠标拣选类型
+        */
+        public pickType: PickType = PickType.BoundPick;
+
+        /**
+        * @language zh_CN
+        * 鼠标 事件开关
+        */
+        public mousePickEnable: boolean = false;
+
         /**
         * @language zh_CN
         * constructor
@@ -898,6 +912,25 @@
             this._mat.copyFrom(camera.viewProjectionMatrix);
             this._mat.append(this.modelMatrix);
             return this._mat.transformVector(this.globalPosition);
+        }
+
+        public dispose() {
+            if (this.parent)
+                this.parent.removeChild(this);
+
+            if (this.geometry) {
+                this.geometry.dispose();
+                this.geometry = null;
+            }
+
+            if (this.material) {
+                this.material.dispose();
+                this.material = null;
+            }
+
+            for (var i: number = 0; i < this.childs.length; i++) {
+                this.childs[i].dispose();
+            }
         }
     }
 } 

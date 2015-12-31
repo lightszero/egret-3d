@@ -12,6 +12,7 @@
         * 可渲染对象列表
         */
         public renderList: Array<Object3D>;
+        public mousePickList: Array<Object3D>;
         protected _nodes: Array<Object3D>;
 
         protected _num: number = 0;
@@ -27,6 +28,7 @@
         */
         constructor(root:Object3D){
             this.renderList = new Array<Object3D>();
+            this.mousePickList = new Array<Object3D>();
             this._nodes = new Array<Object3D>();
             this._rootNode = root;
         }

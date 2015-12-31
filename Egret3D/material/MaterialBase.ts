@@ -610,6 +610,9 @@
             //    this.activateDepthPass(context3D, camera3D, modelMatrix, geometry, animation);
             //}
         }
+
+        public dispose() {
+        }
       
     }
 } 

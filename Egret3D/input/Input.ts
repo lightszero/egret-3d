@@ -172,6 +172,8 @@
 
         private _listenerSwipe: Array<Function> = new Array<Function>();
 
+        private _mouseOverFunc: Array<Function> = new Array<Function>();
+        private _mouseOutFunc: Array<Function> = new Array<Function>();
         private _mouseMoveFunc: Array<Function> = new Array<Function>();
         private _mouseWheelFunc: Array<Function> = new Array<Function>();
 
@@ -241,6 +243,9 @@
             window.onmousemove = (e: MouseEvent) => this.mouseMove(e);
             window.onkeydown = (e: KeyboardEvent) => this.keyDown(e);
             window.onkeyup = (e: KeyboardEvent) => this.keyUp(e);
+
+            window.onmouseover = (e: MouseEvent) => this.mouseOver(e);
+            window.onmouseout = (e: MouseEvent) => this.mouseOut(e);
 
             if (this.canGame()) {
                 window.addEventListener("gamepadconnected", (e: GamepadEvent) => this.ongamepadconnected(e));
@@ -376,7 +381,7 @@
         }
 
         private detectShake(evt: DeviceMotionEvent) {
-            var status = document.getElementById("console");
+
             var accl = evt.acceleration; //acceleration 排除重力影响的加速度  accelerationIncludingGravity(含重力的加速度)
             //x、y 和 z 轴方向加速
             if (accl.x > 1.5 || accl.y > 1.5 || accl.z > 1.5) {
@@ -390,7 +395,7 @@
                 var x: number = Math.ceil(accl.x * 1000) / 1000;
                 var y: number = Math.ceil(accl.y * 1000) / 1000;
                 var z: number = Math.ceil(accl.z * 1000) / 1000;
-                status.innerHTML = "x :" + x + "y :" + y + "z :" + z;
+
                 this._ondevicemotion[0](x, y, z);
             }
         }
@@ -411,8 +416,7 @@
             //在围绕 x 轴旋转时（即前后旋转时），z 轴的度数差 -180到180度。  
             //gamma The gamma angle is associated with the y-axis between -90 and 90 degrees 
             //在围绕 y 轴旋转时（即扭转设备时），z 轴的度数差 -90到90度。  
-            var directions = document.getElementById("console");
-            directions.style.color = 'red';
+
 
             if (this._ondeviceorientation && this._ondeviceorientation.length > 0) {
 
@@ -439,9 +443,6 @@
                 this._initAngle.z += this._delayZ;
 
                 this._ondeviceorientation[0](this._initAngle);
-
-                directions.innerHTML = e.absolute + "<br>" + this._delayX + "<br>" + this._delayY + " <br>" + this._delayZ;
-                directions.innerHTML += "<br>" + this._initAngle["x"] + "<br>" + this._initAngle["y"] + "<br>" + this._initAngle["z"];
             }
         }
 
@@ -610,6 +611,23 @@
                     }
                 }
             }
+        }
+        /**
+        * @language zh_CN
+        * 添加MouseOver事件的侦听器函数
+        * @param func {Function} 处理鼠标移事件的侦听器函数
+        */
+        public addListenerMouseOver(func: Function) {
+            this._mouseOverFunc.push(func);
+        }
+
+        /**
+        * @language zh_CN
+        * 添加MouseOut事件的侦听器函数
+        * @param func {Function} 处理鼠标移事件的侦听器函数
+        */
+        public addListenerMouseOut(func: Function) {
+            this._mouseOutFunc.push(func);
         }
 
         /**
@@ -787,6 +805,17 @@
             }
         }
 
+        private mouseOver(e: MouseEvent) {
+            for (var i: number = 0; i < this._mouseOverFunc.length; ++i) {
+                this._mouseOverFunc[i](e);
+            }
+        }
+        private mouseOut(e: MouseEvent) {
+            for (var i: number = 0; i < this._mouseOutFunc.length; ++i) {
+                this._mouseOutFunc[i](e);
+            }
+        }
+
         private mouseMove(e: MouseEvent) {
             this.mouseLastX = this.mouseX;
             this.mouseLastY = this.mouseY;
@@ -798,7 +827,7 @@
             this.mouseOffsetY = this.mouseY - this.mouseLastY;
 
             for (var i: number = 0; i < this._mouseMoveFunc.length; ++i) {
-                this._mouseMoveFunc[i]();
+                this._mouseMoveFunc[i](e);
             }
         }
 

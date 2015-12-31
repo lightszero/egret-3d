@@ -159,7 +159,10 @@
         static MOUSE_OUT = "onMouseOut";
         static MOUSE_MOVE = "onMouseMove";
 
-  
+        static TOUCH_MOVE = "onTouchMove";
+        static TOUCH_START = "onTouchStart";
+        static TOUCH_END   = "onTouchEnd";
+
         static COMPLETE: string = "complete";
         static CHANGE_PROPERTY: string = "changeProperty";
 

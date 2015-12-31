@@ -247,6 +247,33 @@
                 this._eyesLength = 1;
             }
         }
+        
+        /**
+        * @language zh_CN
+        * 设置相机x轴旋转
+        * @param x 
+        */
+        public set rotationX(x: number) {
+            this._rotaAngle.x = x;
+        }
+        
+        /**
+        * @language zh_CN
+        * 设置相机y轴旋转
+        * @param y 
+        */
+        public set rotationY(y: number) {
+            this._rotaAngle.y = y;
+        }
+        
+        /**
+        * @language zh_CN
+        * 设置相机z轴旋转
+        * @param z
+        */
+        public set rotationZ(z: number) {
+            this._rotaAngle.z = z;
+        }
 
         /**
         * @language zh_CN
@@ -305,38 +332,6 @@
                     this._lookAtObject.position = this._tempVec;
                 }
 
-                if (this._rotaAngle.x >= 0 && this._rotaAngle.x <= 90) {
-                    this._xAngle = 0;
-                }
-
-                if (this._rotaAngle.x >= 180 && this._rotaAngle.x <= 270) {
-                    this._xAngle = 180;
-                }
-
-                if (this._rotaAngle.x > 90 && this._rotaAngle.x < 180) {
-                    this._xAngle = 180;
-                }
-
-                if (this._rotaAngle.x > 270 && this._rotaAngle.x < 360) {
-                    this._xAngle = 0;
-                }
-
-                if (this._rotaAngle.x <= 0 && this._rotaAngle.x >= -90) {
-                    this._xAngle = 0;
-                }
-
-                if (this._rotaAngle.x <= -180 && this._rotaAngle.x >= -270) {
-                    this._xAngle = 180;
-                }
-
-                if (this._rotaAngle.x < -90 && this._rotaAngle.x > -180) {
-                    this._xAngle = 180;
-                }
-
-                if (this._rotaAngle.x < -270 && this._rotaAngle.x > -360) {
-                    this._xAngle = 0;
-                }
-
                 this._quaRot.fromEulerAngles(this._rotaAngle.x, this._rotaAngle.y, 0);
                 this._rotaEyesLine.copyFrom(this._quaRot.rotatePoint(this._eyesLine));
 
@@ -352,7 +347,7 @@
 
                 this._rotaEyesLine.normalize();
 
-                this._quaRot.fromEulerAngles(this._xAngle, 0, this._rotaAngle.z);
+                this._quaRot.fromEulerAngles(this._rotaAngle.x, this._rotaAngle.y, this._rotaAngle.z);
                 this._tempVec.copyFrom(this._up);
                 this._tempVec.copyFrom(this._quaRot.rotatePoint(this._tempVec));
                 this._tempVec.normalize();

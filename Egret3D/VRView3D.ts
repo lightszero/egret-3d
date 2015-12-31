@@ -97,6 +97,9 @@
         public renden(time: number, delay: number) {
 
             super.updateViewSizeData();
+
+            this._scene.collect.update(this._camera);
+
             this._context3D.gl.enable(Egret3DDrive.BLEND);
             this._context3D.gl.enable(Egret3DDrive.CULL_FACE)
             this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
@@ -105,8 +108,6 @@
             //this._root.rotationZ = 180;
             //this._root.rotationX = -90 ;
             //this._camera.tap(CameraType.perspective);
-
-            this._collect.update(this._camera);
 
             // if (this.tab) {
             this.leftEye(time, delay);
@@ -144,7 +145,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._collect, this._camera);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
             this._context3D.setRenderToBackBuffer();
         }
 
@@ -159,7 +160,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._collect, this._camera);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
             this._context3D.setRenderToBackBuffer();
 
         }

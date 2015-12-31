@@ -128,6 +128,7 @@
  
 ///import Egret3D/core/traverse/CollectBase.js
 ///import Egret3D/core/traverse/EntityCollect.js
+///import Egret3D/Scene3D.js
 ///import Egret3D/core/rtt/RttManager.js
 
 ///import Egret3D/geometry/GeometryData.js

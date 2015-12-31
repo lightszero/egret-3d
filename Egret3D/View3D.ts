@@ -7,43 +7,35 @@
      */   
     export class View3D {
 
-        protected _root: Object3D = new Object3D();
         protected _context3D: Context3D;
         protected _camera: Camera3D;
-        protected _collect: EntityCollect;
-
+        protected _scene: Scene3D; 
         protected _render: RenderBase;
         protected _shadowRender: ShadowRender;
-
         protected _width: number = 0;
         protected _height: number = 0;
         protected _x: number = 0;
         protected _y: number = 0;
-
         protected _localPos: Point = new Point();
         protected _globalPos: Point = new Point();
         protected _globalPosDirty: Boolean;
-
         protected _aspectRatio: number = 1;
         protected _scissorRect: Rectangle;
         protected _viewPort: Rectangle;
         protected _scissorRectDirty: Boolean = true;
         protected _viewportDirty: Boolean = true;
-
         protected _viewPortMatrix: Matrix4_4 = new Matrix4_4();
-
         protected _useShadow: boolean = false ;
         protected _backImg: HUD;
         protected _postCanvas: PostCanvas;
         protected _sky: Sky;
         protected _sphereSky: SphereSky;
-
         protected _postList: Array<PostEffectBase>;
-
         protected _isDeferred: boolean = false;
         protected _sourceFrameBuffer: FrameBuffer;
-
         protected _resizeFuncs: Array<Function> = new Array<Function>();
+        protected _wireframeList: Array<WireframeBase> = new Array<WireframeBase>();
+        protected _hudList: Array<HUD> = new Array<HUD>();
 
         private _mouseEventManager: Mouse3DManager;
 
@@ -54,11 +46,27 @@
         * @returns 根节点
         */
         public get root(): Object3D {
-            return this._root;
+            return this._scene;
         }
 
-        protected _wireframeList: Array<WireframeBase> = new Array<WireframeBase>();
-        protected _hudList: Array<HUD> = new Array<HUD>();
+        /**
+        * @language zh_CN
+        * @param Scene3D
+        */
+        public set scene(scene: Scene3D) {
+            this._scene = scene; 
+        }
+
+        /**
+        * @language zh_CN
+        * @param viewPort
+        * @readOnly
+        * @returns Scene3D
+        */
+        public get scene(): Scene3D {
+            return this._scene;
+        }
+
         
         /**
         * @language zh_CN
@@ -74,7 +82,7 @@
             this._scissorRect = new Rectangle();
             this._viewPort = viewPort;
 
-            this._collect = new EntityCollect(this._root);
+            this._scene = new Scene3D();
 
             this._render = RenderManager.getRender(RenderType.defaultRender);
             this._isDeferred = deferredShading;
@@ -88,7 +96,7 @@
 
             window.addEventListener("resize", () => this.resize());
 
-            this._mouseEventManager = new Mouse3DManager(this._camera, this._collect);
+            this._mouseEventManager = new Mouse3DManager( this._camera );
 
         }
 
@@ -265,20 +273,9 @@
         /**
         * @language zh_CN
         * xxxxxxxx
-        * @returns xxx
-        */
-        public get collect(): CollectBase {
-
-            return this._collect;
-        }
-
-        /**
-        * @language zh_CN
-        * xxxxxxxx
-        * @returns xxx
+        * @returns Camera3D
         */
         public get camera3D(): Camera3D {
-
             return this._camera;
         }
 
@@ -399,8 +396,7 @@
         * @param child3D xxx
         */
         public addChild3D(child3D: Object3D) {
-
-            this._root.addChild(child3D);
+            this._scene.addChild(child3D);
         }
 
         /**
@@ -411,9 +407,14 @@
         */
         public renden(time: number, delay: number) {
 
-
             this.updateViewSizeData();
+
+            this._scene.collect.update(this._camera);
+
+            this._mouseEventManager.update( this._scene.collect );
+
             this._context3D.gl.enable(Egret3DDrive.BLEND);
+
             this._context3D.gl.enable(Egret3DDrive.CULL_FACE)
 
             this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
@@ -427,15 +428,13 @@
 
             this._context3D.clearStencil(0);
 
-            this._collect.update(this._camera);
-
             //----------即时渲染部分-------------------
             if (!this._isDeferred) {
                 
                 if (this._postList) {
 
                     if (this._useShadow) {
-                        RttManager.drawToTexture(time, delay, ShadowRender.frameBuffer.texture.texture, this._context3D, this._shadowRender, this.collect, this._camera, this.viewPort);
+                        RttManager.drawToTexture(time, delay, ShadowRender.frameBuffer.texture.texture, this._context3D, this._shadowRender, this._scene.collect, this._camera, this.viewPort);
                     }
 
                     if (this._sky) {
@@ -445,7 +444,7 @@
                         this._sphereSky.draw(this._context3D, this.camera3D);
                     }
 
-                    RttManager.drawToTexture(time, delay, this._sourceFrameBuffer.texture.texture, this._context3D, this._render , this.collect, this._camera, this.viewPort);
+                    RttManager.drawToTexture(time, delay, this._sourceFrameBuffer.texture.texture, this._context3D, this._render, this._scene.collect, this._camera, this.viewPort);
                     
                     this._context3D.clearDepth(1);
 
@@ -470,12 +469,12 @@
                     }
 
                     if (this._useShadow) {
-                       RttManager.drawToTexture(time, delay, ShadowRender.frameBuffer.texture.texture, this._context3D, this._shadowRender , this.collect, this._camera, this.viewPort);
+                        RttManager.drawToTexture(time, delay, ShadowRender.frameBuffer.texture.texture, this._context3D, this._shadowRender, this._scene.collect, this._camera, this.viewPort);
                     }
 
                     this._context3D.clearDepth(1);
                     this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
-                    this._render.draw(time, delay, this._context3D, this.collect, this._camera);
+                    this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
                 }
             }
             //----------延迟渲染部分-------------------
@@ -515,8 +514,7 @@
         * @param index 下标
         */
         public setTags(name: string, index: number) {
-
-            this._collect.setTags(name, index);
+            this._scene.collect.setTags(name, index);
         }
 
         /**
@@ -526,8 +524,7 @@
         * @param index 下标
         */
         public setTagsItem(layer: string, index: number) {
-
-            this._collect.setTagsItem(layer, index);
+            this._scene.collect.setTagsItem(layer, index);
         }
                                 
         /**
@@ -538,8 +535,7 @@
         * @returns 返回layer的值
         */
         public getTagLayer(name: string = "default", layer: string = "layer_0"): number {
-
-            return this._collect.getTagLayer(name, layer);
+            return this._scene.collect.getTagLayer(name, layer);
         }
                                         
         /**
@@ -549,7 +545,7 @@
         * @returns tag
         */
         public getTag(name: string = "default"): Tag {
-            return this._collect.getTag(name);
+            return this._scene.collect.getTag(name);
         }
     }
 }
