@@ -92,7 +92,7 @@
             this.normalMatrix.copyFrom(modeltransform);
             this.normalMatrix.invert();
             this.normalMatrix.transpose();
-            this.normalMatrix.appendScale(1,1,1);
+            //this.normalMatrix.appendScale(1,1,1);
 
             context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, modeltransform.rawData);
             context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera3D.viewProjectionMatrix.rawData);

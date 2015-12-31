@@ -7,7 +7,7 @@
      * 方向光数据处理
      */
     export class DirectLight extends LightBase {
-        public static stride: number = 7;
+        public static stride: number = 10;
 
         /**
         * @language en_US
@@ -25,6 +25,14 @@
             this._rot.x = dir.x;
             this._rot.y = dir.y;
             this._rot.z = dir.z;
+        }
+
+        public set halfColor(color: number) {
+            this._halfColor.w = (color >> 24 & 0xff) / 255;
+            this._halfColor.x = (color >> 16 & 0xff) / 255;
+            this._halfColor.y = (color >> 8 & 0xff) / 255;
+            this._halfColor.z = (color & 0xff) / 255;
+            this._change = false;
         }
 
         /**
@@ -58,8 +66,12 @@
             lightData[index * DirectLight.stride + 3] = this._diffuse.x;
             lightData[index * DirectLight.stride + 4] = this._diffuse.y;
             lightData[index * DirectLight.stride + 5] = this._diffuse.z;
-            
-            lightData[index * DirectLight.stride + 6] = this._intensity;
+
+            lightData[index * DirectLight.stride + 6] = this._halfColor.x;
+            lightData[index * DirectLight.stride + 7] = this._halfColor.y;
+            lightData[index * DirectLight.stride + 8] = this._halfColor.z;
+
+            lightData[index * DirectLight.stride + 9] = this._intensity;
         }
     }
 } 

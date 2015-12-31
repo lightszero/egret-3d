@@ -31,6 +31,12 @@
          * 漫反射  
          */
         protected _diffuse: Vector3D = new Vector3D(1.0, 1.0, 1.0);
+
+         /**
+         * @language zh_CN  
+         * 背光颜色
+         */
+        protected _halfColor: Vector3D = new Vector3D(1.0, 1.0, 1.0);
         /**
          * @language en_US
          */
@@ -113,14 +119,14 @@
         /**
          * @language zh_CN  
          */
-        private len: number = 25;
+        protected len: number = 25;
         /**
          * @language en_US 
          */
         /**
          * @language zh_CN  
          */
-        private _change: boolean = true;
+        protected _change: boolean = true;
         constructor() {
             super();
         }
