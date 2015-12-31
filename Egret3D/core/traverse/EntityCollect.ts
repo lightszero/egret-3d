@@ -280,6 +280,10 @@
                 }
             }
 
+            if (object3d.mousePickEnable) {
+                this.mousePickList.push(object3d);
+            }
+
             var layer: Layer = this.findLayer(object3d);
             var tag: Tag = this.findTag(object3d);
 
@@ -298,11 +302,11 @@
         */
         public update(camera: Camera3D) {
             super.update(camera);
+            this.renderList.length = 0;
+            this.mousePickList.length = 0;
 
             this.clearLayerList();
             this.applyRender(this._rootNode, camera);
-
-            this.renderList.length = 0;
 
             for (var i: number = 0; i < this._tags.length; ++i) {
                 this._tags[i].clearDepth = true;

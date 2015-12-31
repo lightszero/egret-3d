@@ -104,12 +104,6 @@
 
         /**
         * @language zh_CN
-        * 是否开启盒子检测
-        */
-        public isCheckBox = true;
-
-        /**
-        * @language zh_CN
         * 鼠标检测数据
         */
         public pickerData: PickResult = new PickResult();

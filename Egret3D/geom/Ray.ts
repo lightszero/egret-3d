@@ -98,8 +98,8 @@
         * @param inPos 相交点
         * @returns 相交返回true
         */
-        public IntersectMeshEx(mesh: Mesh, inPos: Vector3D): boolean {
-            return this.IntersectMesh(mesh.geometry.verticesData, mesh.geometry.indexData, mesh.geometry.vertexAttLength, mesh.geometry.indexData.length / 3, inPos, mesh.modelMatrix);
+        public IntersectMeshEx(mesh: Mesh, uv_offset: number, result:PickResult): boolean {
+            return this.IntersectMesh(mesh.geometry.verticesData, mesh.geometry.indexData, mesh.geometry.vertexAttLength, mesh.geometry.indexData.length / 3, uv_offset, mesh.modelMatrix, result);
         }
                         
         /**
@@ -113,7 +113,17 @@
         * @param mMat 顶点的世界变换矩阵
         * @returns 相交返回true
         */
-        public IntersectMesh(verticesData: Array<number>, indexData: Array<number>, offset: number, faces: number, inPos:Vector3D, mMat: Matrix4_4): boolean {
+        public IntersectMesh(verticesData: Array<number>, indexData: Array<number>, offset: number, faces: number, uv_offset: number, mMat: Matrix4_4, result: PickResult): boolean {
+
+            var modletriangle: Array<Vector3D> = new Array<Vector3D>();
+            modletriangle.push(new Vector3D());
+            modletriangle.push(new Vector3D());
+            modletriangle.push(new Vector3D());
+
+            var uvarray: Array<Vector3D> = new Array<Vector3D>();
+            uvarray.push(new Vector3D());
+            uvarray.push(new Vector3D());
+            uvarray.push(new Vector3D());
 
             var triangle: Array<Vector3D> = new Array<Vector3D>();
             var v0: Vector3D = new Vector3D();
@@ -123,6 +133,14 @@
             triangle.push(v1);
             triangle.push(v2);
 
+            var pos = new Vector3D();
+            var uv = new Point();
+
+            var ret: Array<number> = new Array<number>();
+            ret.push(0.0);
+            ret.push(0.0);
+            ret.push(0.0);
+
             var face: number = -1;
             var t: number = Number.MAX_VALUE;
             var u: number = 0;
@@ -130,18 +148,14 @@
             for (var i: number = 0; i < faces; ++i) {
                 for (var j: number = 0; j < 3; ++j) {
                     var index: number = indexData[3 * i + j];
-                    var pos: Vector3D = new Vector3D(verticesData[offset * index + 0], verticesData[offset * index + 1], verticesData[offset * index + 2]);
-                    pos = mMat.transformVector(pos);
+                    pos.setTo(verticesData[offset * index + 0], verticesData[offset * index + 1], verticesData[offset * index + 2]);
+                    pos.copyFrom(mMat.transformVector(pos));
 
                     triangle[j].x = pos.x;
                     triangle[j].y = pos.y;
                     triangle[j].z = pos.z;
                 }
 
-                var ret: Array<number> = new Array<number>();
-                ret.push(0.0);
-                ret.push(0.0);
-                ret.push(0.0);
                 if (this.IntersectTriangle(v0, v1, v2, ret)) {
                     if (ret[0] < t) {
                         face = i;
@@ -155,8 +169,17 @@
             if (face < faces && face >= 0) {
                 for (var i: number = 0; i < 3; ++i) {
                     var index: number = indexData[3 * face + i];
-                    var pos: Vector3D = new Vector3D(verticesData[offset * index + 0], verticesData[offset * index + 1], verticesData[offset * index + 2]);
-                    pos = mMat.transformVector(pos);
+                    pos.setTo(verticesData[offset * index + 0], verticesData[offset * index + 1], verticesData[offset * index + 2]);
+                    modletriangle[i].copyFrom(pos);
+
+                    if (uv_offset > 0) {
+                        uv.x = verticesData[offset * index + 0 + uv_offset];
+                        uv.y = verticesData[offset * index + 1 + uv_offset];
+                        uvarray[i].x = uv.x;
+                        uvarray[i].y = uv.y;
+                    }
+
+                    pos.copyFrom(mMat.transformVector(pos));
 
                     triangle[i].x = pos.x;
                     triangle[i].y = pos.y;
@@ -164,11 +187,24 @@
                 }
                 var tmp0: Vector3D = v1.subtract(v0);
                 tmp0.scaleBy(u);
-
                 var tmp1: Vector3D = v2.subtract(v0);
                 tmp1.scaleBy(v);
+                result.globalPosition.copyFrom(v0.add(tmp0.add(tmp1)));
 
-                inPos.copyFrom(v0.add(tmp0.add(tmp1)));
+                tmp0 = modletriangle[1].subtract(modletriangle[0]);
+                tmp0.scaleBy(u);
+                tmp1 = modletriangle[2].subtract(modletriangle[0]);
+                tmp1.scaleBy(v);
+                result.localPosition.copyFrom(modletriangle[0].add(tmp0.add(tmp1)));
+
+                if (uv_offset > 0) {
+                    tmp0 = uvarray[1].subtract(uvarray[0]);
+                    tmp0.scaleBy(u);
+                    tmp1 = uvarray[2].subtract(uvarray[0]);
+                    tmp1.scaleBy(v);
+                    result.uv.copyFrom(uvarray[0].add(tmp0.add(tmp1)));
+                }
+
                 return true;
             }
             return false; 
