@@ -249,7 +249,7 @@
                 context3D.setTexture2DAt(sampler2D.activeTextureIndex, sampler2D.uniformIndex, sampler2D.index, sampler2D.texture.texture);
                 if (this.materialData.materialDataNeedChange) {
                     var min_filter: number = this.materialData.smooth ? context3D.gl.LINEAR_MIPMAP_LINEAR : context3D.gl.LINEAR ;
-                    var mag_filter: number = this.materialData.smooth ? context3D.gl.LINEAR_MIPMAP_LINEAR : context3D.gl.LINEAR;
+                    var mag_filter: number = this.materialData.smooth ? context3D.gl.LINEAR : context3D.gl.LINEAR;
                     
                     var wrap_u_filter: number = this.materialData.repeat ? context3D.gl.REPEAT : context3D.gl.CLAMP_TO_EDGE  ;
                     var wrap_v_filter: number = this.materialData.repeat ? context3D.gl.REPEAT : context3D.gl.CLAMP_TO_EDGE　;
