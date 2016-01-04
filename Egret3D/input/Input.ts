@@ -172,8 +172,6 @@
 
         private _listenerSwipe: Array<Function> = new Array<Function>();
 
-        private _mouseOverFunc: Array<Function> = new Array<Function>();
-        private _mouseOutFunc: Array<Function> = new Array<Function>();
         private _mouseMoveFunc: Array<Function> = new Array<Function>();
         private _mouseWheelFunc: Array<Function> = new Array<Function>();
 
@@ -244,8 +242,6 @@
             window.onkeydown = (e: KeyboardEvent) => this.keyDown(e);
             window.onkeyup = (e: KeyboardEvent) => this.keyUp(e);
 
-            window.onmouseover = (e: MouseEvent) => this.mouseOver(e);
-            window.onmouseout = (e: MouseEvent) => this.mouseOut(e);
 
             if (this.canGame()) {
                 window.addEventListener("gamepadconnected", (e: GamepadEvent) => this.ongamepadconnected(e));
@@ -612,23 +608,6 @@
                 }
             }
         }
-        /**
-        * @language zh_CN
-        * 添加MouseOver事件的侦听器函数
-        * @param func {Function} 处理鼠标移事件的侦听器函数
-        */
-        public addListenerMouseOver(func: Function) {
-            this._mouseOverFunc.push(func);
-        }
-
-        /**
-        * @language zh_CN
-        * 添加MouseOut事件的侦听器函数
-        * @param func {Function} 处理鼠标移事件的侦听器函数
-        */
-        public addListenerMouseOut(func: Function) {
-            this._mouseOutFunc.push(func);
-        }
 
         /**
         * @language zh_CN
@@ -802,17 +781,6 @@
                 for (var i: number = 0; i < this._listenerKeyDown.length; ++i) {
                     this._listenerKeyDown[i](k);
                 }
-            }
-        }
-
-        private mouseOver(e: MouseEvent) {
-            for (var i: number = 0; i < this._mouseOverFunc.length; ++i) {
-                this._mouseOverFunc[i](e);
-            }
-        }
-        private mouseOut(e: MouseEvent) {
-            for (var i: number = 0; i < this._mouseOutFunc.length; ++i) {
-                this._mouseOutFunc[i](e);
             }
         }
 

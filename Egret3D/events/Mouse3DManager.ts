@@ -44,9 +44,6 @@
             Input.instance.addListenerKeyDown((code: number) => this.onMouseDown(code));
             Input.instance.addListenerKeyUp((code: number) => this.onMouseUp(code));
             Input.instance.addListenerMouseMove((e: MouseEvent) => this.onMouseMove(e));
-            Input.instance.addListenerMouseOver((e: MouseEvent) => this.onMouseOver(e));
-            Input.instance.addListenerMouseOut((e: MouseEvent) => this.onMouseOut(e));
-
 
             Input.instance.addTouchStartCallback((e: TouchEvent) => this.onTouchMove(e));
             Input.instance.addTouchEndCallback((e: TouchEvent) => this.onTouchEnd(e));
@@ -55,123 +52,82 @@
 
 
         private onTouchMove(e: TouchEvent) {
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.TOUCH_MOVE);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.TOUCH_MOVE);
+                event.currentTarget = ret[i];
+                event.data = e;
+                ret[i].dispatchEvent(event);
             }
         }
         private onTouchEnd(e: TouchEvent) {
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.TOUCH_END);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.TOUCH_END);
+                event.currentTarget = ret[i];
+                event.data = e;
+                ret[i].dispatchEvent(event);
             }
         }
         private onTouchStart(e: TouchEvent) {
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.TOUCH_START);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.TOUCH_START);
+                event.currentTarget = ret[i];
+                event.data = e;
+                ret[i].dispatchEvent(event);
             }
         }
         private onMouseClick(code: number) {
 
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_CLICK);
-                    event.data = code;
-                    event.currentTarget = ret[i];
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.MOUSE_CLICK);
+                event.data = code;
+                event.currentTarget = ret[i];
+                ret[i].dispatchEvent(event);
             }
         }
 
         private onMouseDown(code: number) {
 
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
 
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_DOWN);
-                    event.currentTarget = ret[i]; 
-                    event.data = code;
-                    ret[i].dispatchEvent(event);
-                }
-
+                event = new Event3D(Event3D.MOUSE_DOWN);
+                event.currentTarget = ret[i];
+                event.data = code;
+                ret[i].dispatchEvent(event);
             }
         }
 
         private onMouseUp(code: number) {
 
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_UP);
-                    event.currentTarget = ret[i];
-                    event.data = code;
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.MOUSE_UP);
+                event.currentTarget = ret[i];
+                event.data = code;
+                ret[i].dispatchEvent(event);
             }
         }
 
-        private onMouseOver(e: MouseEvent) {
-
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
-            var event: Event3D;
-            for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_OVER);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
-            }
-        }
-        private onMouseOut(e: MouseEvent) {
-
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
-            var event: Event3D;
-            for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_OUT);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
-            }
-        }
 
         private onMouseMove(e: MouseEvent) {
 
-            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.renderList);
+            var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
-                if (ret[i].mouseEnable) {
-                    event = new Event3D(Event3D.MOUSE_MOVE);
-                    event.currentTarget = ret[i];
-                    event.data = e;
-                    ret[i].dispatchEvent(event);
-                }
+                event = new Event3D(Event3D.MOUSE_MOVE);
+                event.currentTarget = ret[i];
+                event.data = e;
+                ret[i].dispatchEvent(event);
             }
         }
 
