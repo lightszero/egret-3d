@@ -3,7 +3,9 @@
     /**
     * @class egret3d.CameraAnimationController
     * @classdesc
-    * 摄像机动画控制器
+    * 摄像机动画控制器。
+    * 每个摄像机动画绑定一个摄像机，控制摄像机的行为
+    * 可以更换绑定的摄像机
     */
     export class CameraAnimationController{
 

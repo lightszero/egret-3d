@@ -4,7 +4,9 @@
     /**
     * @class egret3d.Camera3D
     * @classdesc
-    * 相机数据处理，生成3D摄相机
+    * 相机数据处理，生成3D摄相机。
+    * 渲染场景从摄像机视点到缓冲区
+    * 相机分为透视摄像机、正交摄像机、VR摄像机
     */
     export class Camera3D extends Entity{
 
@@ -22,7 +24,7 @@
          */
         /**
          * @language zh_CN
-         * 眼睛矩阵(左，右眼)
+         * 眼睛矩阵(左，右眼) 实现VR时会用到
          */
         public eyeMatrix: EyesMatrix;
 
@@ -40,7 +42,7 @@
          */
         /**
          * @language zh_CN
-         * @相机的视椎体
+         * 相机的视椎体，用来检测是否在当前相机可视范围内
          */
         public frustum: Frustum = new Frustum();
 

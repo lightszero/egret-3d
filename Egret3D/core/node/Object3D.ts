@@ -3,7 +3,10 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 3d空间中的实体对象
+    * 3d空间中的实体对象。
+    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
+    * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
+    * 的变换信息要结合父对象的变换信息
     */
     export class Object3D extends EventDispatcher {
         public static renderListChange: boolean = true;
@@ -44,6 +47,7 @@
         /**
         * @language zh_CN
         * 渲染层级
+        * 渲染时分组进行依次渲染
         */
         public layer: number = 0x00000000;
 
@@ -63,7 +67,7 @@
         * @language zh_CN
         * 是否需要视锥体裁剪
         */
-        public isCut: boolean = true;
+        public enableCut: boolean = true;
         
         /**
         * @language zh_CN
@@ -79,26 +83,25 @@
 
         /**
         * @language zh_CN
-        * 动作对象
+        * 动作对象，控制骨骼动画
         */
         public animation: IAnimation = null;
 
-        
         /**
         * @language zh_CN
-        * 几何对象
+        * 网络信息
         */
         public geometry: GeometryBase = null;
 
         /**
         * @language zh_CN
-        * 材质
+        * 材质信息
         */
         public material: MaterialBase = null;
 
         /**
         * @language zh_CN
-        * 碰撞盒子
+        * 对象模型包围盒
         */
         public box: CubeBoxBound = new CubeBoxBound();
 
@@ -110,7 +113,7 @@
 
         /**
         * @language zh_CN
-        * 是否控制
+        * 是否控制，当摄像机被绑定摄像机动画时，这个值为false.
         */
         public isController: boolean = true;
 
@@ -889,10 +892,11 @@
         /**
         * @language zh_CN
         * 当前对象数据更新
+        * @param camera 当前渲染的摄相机
         * @param time 当前时间
         * @param delay 每帧时间间隔
         */
-        public update(time: number, delay: number) {
+        public update(camera: Camera3D, time: number, delay: number) {
 
         }
 

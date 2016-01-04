@@ -3,7 +3,7 @@
     /**
      * @class egret3d.WriframeMesh
      * @classdesc
-     * 模型线框网格 以线框形式渲染模型
+     * 模型线框网格,以线框形式渲染模型
      */   
     export class WireframeMesh extends WireframeBase {
                                 
@@ -15,7 +15,12 @@
             super("wireframe_vertex", "wireframe_fragment");
         }
 
-        public creatByMesh(mesh: Mesh) {
+        /**
+        * @language zh_CN
+        * 根据mesh创建一个线框
+        * @param mesh 
+        */
+        public createByMesh(mesh: Mesh) {
             this.createFromGeometry(mesh.geometry);
             mesh.bindWireframe( this );
         }

@@ -3,7 +3,11 @@
     /**
     * @class egret3d.LookAtController
     * @classdesc
-    * look at 相机控制器
+    * look at 摄像机控制器 。
+    * 指定摄像机看向的目标对象
+    * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转.
+    * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动.
+    * 3.滑动鼠标滚轮可以控制摄像机的视距.
     */
     export class LookAtController extends ControllerBase{
 
@@ -112,6 +116,7 @@
             this._tempVec.copyFrom(this._lookAtObject.position.subtract(this._tempVec));
             this._lookAtObject.position = this._tempVec;
         }
+
         private onSwipeLeft() {
             this._tempVec.copyFrom(this._rotaEyesLine);
             this._matTemp.identity();
@@ -123,6 +128,7 @@
             this._tempVec.copyFrom(this._lookAtObject.position.add(this._tempVec));
             this._lookAtObject.position = this._tempVec;
         }
+
         private onSwipeRight() {
 
             this._tempVec.copyFrom(this._rotaEyesLine);
@@ -339,8 +345,6 @@
                 this._tempVec.scaleBy(this._eyesLength);
                 this._eyesPos.copyFrom(this._lookAtPosition.subtract(this._tempVec));
 
-                ///this._lookAtObject.position = this._eyesPos.add(this._tempVec);
-
                 if (this._lookAtObject) {
                     this._lookAtPosition.copyFrom(this._lookAtObject.position.add(this.lookAtOffset));
                 }
@@ -406,22 +410,6 @@
                     this._mouseRightDown = false;
                     break;
             }
-        }
-
-        private onButtonUp(b: boolean) {
-            this._keyArray[0] = b;
-        }
-
-        private onButtonDown(b: boolean) {
-            this._keyArray[2] = b;
-        }
-
-        private onButtonLeft(b: boolean) {
-            this._keyArray[1] = b;
-        }
-
-        private onButtonRight(b: boolean) {
-            this._keyArray[3] = b;
         }
     }
 } 

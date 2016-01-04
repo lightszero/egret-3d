@@ -49,7 +49,8 @@
     /**
     * @class egret3d.EntityCollect
     * @classdesc
-    * Object3D 渲染对象收集器
+    * Object3D 渲染对象收集器,把渲染对象进行可视筛选，
+    * 并且划分渲染层级，依次排序到加入列表.
     */
     export class EntityCollect extends CollectBase {
 
@@ -274,7 +275,7 @@
         private addRenderList(object3d: Object3D, camera: Camera3D) {
             if (!object3d.material) return;
 
-            if (object3d.isCut) {
+            if (object3d.enableCut) {
                 if (!camera.isVisibleToCamera(object3d)) {
                     return;
                 }

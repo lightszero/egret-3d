@@ -31,7 +31,7 @@
             this._numEntity = this._renderList.length;
 
             for (this._renderIndex = 0; this._renderIndex < this._numEntity ; this._renderIndex++){
-                this._renderList[this._renderIndex].update(time, delay);
+                this._renderList[this._renderIndex].update(camera, time, delay);
                 if (!this._renderList[this._renderIndex].isVisible) {
                     continue;
                 }
