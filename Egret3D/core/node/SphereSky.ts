@@ -7,17 +7,15 @@
     */
     export class SphereSky {
 
-        private viewMatIndex: WebGLUniformLocation;
-        private skyTexture: ImageTexture;
+        public skyTexture: TextureBase;
 
+        private viewMatIndex: WebGLUniformLocation;
         private vsShaderSource: string;
         private fsShaderSource: string;
-
         private usage: MethodUsageData;
         private vsShader: GLSL.ShaderBase;
         private fsShader: GLSL.ShaderBase;
         private sphereGeometry: SphereGeometry;
-
         private skyMatrix: Matrix4_4;
         private normalMatrix: Matrix4_4 = new Matrix4_4();
                         
@@ -26,8 +24,8 @@
         * constructor
         * @param tex1 天空球贴图
         */
-        constructor(tex1: HTMLImageElement ) {
-            this.skyTexture = new ImageTexture(tex1);
+        constructor(tex1: TextureBase ) {
+            this.skyTexture = tex1 ;
             this.usage = new MethodUsageData();
             this.vsShader = new GLSL.ShaderBase(null, this.usage);
             this.fsShader = new GLSL.ShaderBase(null, this.usage);
@@ -50,8 +48,8 @@
         }
 
         private rebuild(context3D: Context3D) {
-            var vertexShader: Shader = context3D.creatVertexShader(this.vsShaderSource);
-            var fragmentShader: Shader = context3D.creatFragmentShader(this.fsShaderSource);
+            var vertexShader: IShader = context3D.creatVertexShader(this.vsShaderSource);
+            var fragmentShader: IShader = context3D.creatFragmentShader(this.fsShaderSource);
 
             this.usage.program3D = context3D.creatProgram(vertexShader, fragmentShader);
 
@@ -79,7 +77,13 @@
             this.usage.uniform_ModelMatrix.uniformIndex = context3D.getUniformLocation(this.usage.program3D, "uniform_ModelMatrix");
             this.usage.uniform_normalMatrix.uniformIndex = context3D.getUniformLocation(this.usage.program3D, "uniform_normalMatrix");
             ///--------texture----------------
-            ///this.usage.sky_texture.uniformIndex = context3D.getUniformLocation(this.usage.program3D, "sky_texture");
+            var sampler2D: GLSL.Sampler2D;
+            for (var index in this.usage.sampler2DList) {
+                sampler2D = this.usage.sampler2DList[index];
+                if (sampler2D.varName == "sky_texture")
+                    sampler2D.texture = this.skyTexture;
+                sampler2D.uniformIndex = context3D.getUniformLocation(this.usage.program3D, sampler2D.varName);
+            }
         }
 
         private px: number = 0;
@@ -123,14 +127,13 @@
             context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.skyMatrix.rawData );
             context3D.uniformMatrix4fv(this.usage.uniform_normalMatrix.uniformIndex, false, this.normalMatrix.rawData);
 
-            this.skyTexture.upload(context3D);
             ///--------texture----------------
-            ///context3D.setTexture2DAt(context3D.gl.TEXTURE0, 0, this.usage.sky_texture.uniformIndex, this.skyTexture.texture);
-
-            ///context3D.gl.activeTexture(context3D.gl.TEXTURE0);
-            ///context3D.gl.bindTexture(context3D.gl.TEXTURE_2D, this.skyTexture.texture.gpu_texture);
-            ///context3D.gl.uniform1i(this.usage.sky_texture.index, 0);
-
+            var sampler2D: GLSL.Sampler2D;
+            for (var index in this.usage.sampler2DList) {
+                sampler2D = this.usage.sampler2DList[index];
+                sampler2D.texture.upload(context3D);
+                context3D.setTexture2DAt(sampler2D.activeTextureIndex, sampler2D.uniformIndex, sampler2D.index, sampler2D.texture.texture);
+            }
             context3D.drawElement(DrawMode.TRIANGLES, this.sphereGeometry.sharedIndexBuffer, 0, this.sphereGeometry.numItems );
         }
 

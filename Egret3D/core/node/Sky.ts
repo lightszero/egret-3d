@@ -51,8 +51,8 @@
         }
 
         private rebuild(context3D: Context3D) {
-            var vertexShader: Shader = context3D.creatVertexShader(this.vsShaderSource);
-            var fragmentShader: Shader = context3D.creatFragmentShader(this.fsShaderSource);
+            var vertexShader: IShader = context3D.creatVertexShader(this.vsShaderSource);
+            var fragmentShader: IShader = context3D.creatFragmentShader(this.fsShaderSource);
 
             this.usage.program3D = context3D.creatProgram(vertexShader, fragmentShader);
 
@@ -78,11 +78,6 @@
             this.usage.uniform_ModelMatrix.uniformIndex = context3D.getUniformLocation(this.usage.program3D, "uniform_ModelMatrix");
 
             ///--------texture----------------
-            ///var sampler2D: GLSL.Sampler2D;
-            ///for (var index in this.usage.sampler2DList) {
-            ///    sampler2D = this.usage.sampler2DList[index];
-            ///    sampler2D.uniformIndex = context3D.getUniformLocation(this.usage.program3D, sampler2D.varName);
-            ///}
             var sampler3D: GLSL.Sampler3D;
             for (var index in this.usage.sampler3DList) {
                 sampler3D = this.usage.sampler3DList[index];
@@ -91,9 +86,6 @@
                     sampler3D.texture = this.skyTexture;
                 }
             }
-            ///this.test = CheckerboardTexture.texture; 
-            ///this.skyUni = context3D.getUniformLocation(this.usage.program3D, "sky_texture");
-            ///this.texUni = context3D.getUniformLocation(this.usage.program3D, "diffuseTex" );
         }
 
         private skyUni: any;
@@ -131,23 +123,12 @@
             context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.skyMatrix.rawData);
           
             ///--------texture----------------
-            ///var sampler2D: GLSL.Sampler2D;
-            ///for (var index in this.usage.sampler2DList) {
-            ///    sampler2D = this.usage.sampler2DList[index];
-                ///sampler2D.texture.upload(context3D);
-                ///context3D.setTexture2DAt(sampler2D.activeTextureIndex, sampler2D.uniformIndex, sampler2D.index, sampler2D.texture.texture);
-            ///}
-            
-            ///context3D.setTexture2DAt(context3D.gl.TEXTURE1, this.texUni, 1, this.test.texture.gpu_texture );
             var sampler3D: GLSL.Sampler3D;
             for (var index in this.usage.sampler3DList) {
               sampler3D = this.usage.sampler3DList[index];
               sampler3D.texture.upload(context3D);
               context3D.setCubeTextureAt(sampler3D.activeTextureIndex , sampler3D.uniformIndex, sampler3D.index , sampler3D.texture.cubeTexture );
             }
-
-             ///this.skyTexture.upload(context3D);
-            /// context3D.setCubeTextureAt(context3D.gl.TEXTURE0, this.skyUni, 0, this.skyTexture.cubeTexture.gpu_texture );
             context3D.drawElement(DrawMode.TRIANGLES, this.cubeGeometry.sharedIndexBuffer, 0, this.cubeGeometry.numItems);
         }
 

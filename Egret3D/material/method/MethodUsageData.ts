@@ -261,11 +261,11 @@
         /**
          * @language zh_CN
          */
-        public vs_shader: Shader;
+        public vs_shader: IShader;
         /**
          * @language zh_CN
          */
-        public fs_shader: Shader;
+        public fs_shader: IShader;
         //----------------------------------------------
       
         /**

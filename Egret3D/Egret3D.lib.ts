@@ -3,10 +3,10 @@
 ///import Egret3D/context/base/IProgram3D.js
 ///import Egret3D/context/base/IndexBuffer3D.js
 ///import Egret3D/context/openGLES2/MipmapData.js
-///import Egret3D/context/base/Texture2D.js
+///import Egret3D/context/base/ITexture2D.js
 ///import Egret3D/context/base/ICubeTexture.js
-///import Egret3D/context/base/VertexBuffer3D.js
-///import Egret3D/context/base/Shader.js
+///import Egret3D/context/base/IVertexBuffer3D.js
+///import Egret3D/context/base/IShader.js
 
 ///import Egret3D/context/openGLES2/IndexBuffer3D.js
 ///import Egret3D/context/openGLES2/Program3D.js
@@ -14,6 +14,8 @@
 ///import Egret3D/context/openGLES2/Texture2D.js
 ///import Egret3D/context/openGLES2/CubeTexture.js
 ///import Egret3D/context/openGLES2/VertexBuffer3D.js
+
+///import Egret3D/context/FrameBuffer.js
 ///import Egret3D/context/Context3D.js
 ///import Egret3D/context/contextType/ContextSamplerType.js
 

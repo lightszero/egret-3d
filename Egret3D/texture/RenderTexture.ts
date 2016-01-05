@@ -9,7 +9,7 @@
          * @language zh_CN
          * @param texture 
          */
-        constructor( texture:Texture2D ) {
+        constructor( texture:ITexture2D ) {
             super();
             this.useMipmap = false;
             this.texture = texture; 

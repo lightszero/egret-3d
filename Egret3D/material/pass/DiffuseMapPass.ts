@@ -117,8 +117,8 @@
             var vs: string = this.vertexShader.getShaderSource();
             var fs: string = this.pixelShader.getShaderSource() ;
 
-            var vs_shader: Shader = context3D.creatVertexShader(vs);
-            var fs_shader: Shader = context3D.creatFragmentShader(fs);
+            var vs_shader: IShader = context3D.creatVertexShader(vs);
+            var fs_shader: IShader = context3D.creatFragmentShader(fs);
 
             this.materialData.diffusePassUsageData.program3D = context3D.creatProgram(vs_shader, fs_shader);
             this.context3DChange = true;

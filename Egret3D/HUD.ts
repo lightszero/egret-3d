@@ -95,7 +95,7 @@
 
         private shaderProgram: IProgram3D;
         private indexBuffer3D: IndexBuffer3D;
-        private vertexBuffer3D: VertexBuffer3D;
+        private vertexBuffer3D: IVertexBuffer3D;
         private posAtt: any;
         private uvAtt: any;
         private textureIndex: any;
@@ -204,8 +204,8 @@
         }
 
         private rebuild( context3D:Context3D ) {
-            var vertexShader: Shader = context3D.creatVertexShader(this.quadShader.vertexShaderSource);
-            var fragmentShader: Shader = context3D.creatFragmentShader(this.quadShader.fragmentShaderSource);
+            var vertexShader: IShader = context3D.creatVertexShader(this.quadShader.vertexShaderSource);
+            var fragmentShader: IShader = context3D.creatFragmentShader(this.quadShader.fragmentShaderSource);
 
             this.shaderProgram = context3D.creatProgram(vertexShader, fragmentShader);
 

@@ -3,18 +3,6 @@
     export enum FrameBufferFormat { FLOAT_RGB, FLOAT_RGBA, UNSIGNED_BYTE_RGB, UNSIGNED_BYTE_RGBA }
                                     
     /**
-    * @class egret3d.FrameBuffer
-    * @classdesc
-    * 渲染buffer
-    */
-    export class FrameBuffer {
-        frameBufferName: number;
-        width: number;
-        height: number;
-        texture: RenderTexture;
-    }
-    
-    /**
     * @class egret3d.RttManager
     * @classdesc
     * 离屏渲染管理
@@ -85,7 +73,7 @@
         * @param camera
         * @param rec
         */
-        public static drawToTexture(time: number, delay: number, renderTragetTexture: Texture2D, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
+        public static drawToTexture(time: number, delay: number, renderTragetTexture: ITexture2D, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
             context3D.viewPort(rec.x, rec.y, rec.width, rec.height);
             context3D.setRenderToTexture(renderTragetTexture, true, 0);
             render.draw(time, delay, context3D, collect, camera);
@@ -99,7 +87,7 @@
         * @param context3D
         * @param rec
         */
-        public static drawToTextureStart(renderTragetTexture: Texture2D, context3D: Context3D , rec: Rectangle) {
+        public static drawToTextureStart(renderTragetTexture: ITexture2D, context3D: Context3D , rec: Rectangle) {
             context3D.viewPort(rec.x, rec.y, rec.width, rec.height);
             context3D.setRenderToTexture(renderTragetTexture, true, 0);
         }
