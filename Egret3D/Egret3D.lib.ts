@@ -108,6 +108,7 @@
  
 ///import Egret3D/core/traverse/Frustum.js
 ///import Egret3D/core/node/Object3D.js
+///import Egret3D/core/node/Billborad.js
 ///import Egret3D/core/node/SphereSky.js
 ///import Egret3D/core/node/Sky.js
 ///import Egret3D/core/node/Entity.js
@@ -176,10 +177,6 @@
 ///import Egret3D/controller/ctl/LookAtController.js
 ///import Egret3D/controller/ctl/CameraAnimationController.js
 ///import Egret3D/controller/ctl/CameraAnimationManager.js
- 
-///import Egret3D/controller/CameraControllerBase.js
- 
-///import Egret3D/controller/ctl/FreeCameraControl.js
  
 ///import Egret3D/Util/DeviceUtil.js
 ///import Egret3D/Util/ByteArray.js

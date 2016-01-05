@@ -1,9 +1,10 @@
 ﻿module egret3d {
                     
     /**
+    * @private
     * @class egret3d.Frustum
     * @classdesc
-    * 摄相机视椎体
+    * 摄像机视椎体,计算出摄像机的可视范围.
     */
     export class Frustum {
         

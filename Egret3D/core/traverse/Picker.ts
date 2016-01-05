@@ -3,7 +3,7 @@
     /**
     * @class egret3d.Picker
     * @classdesc
-    * 鼠标拾取
+    * 射线对场景中的实体对像进行检测
     */
     export class Picker {
         protected static ray: Ray = new Ray();

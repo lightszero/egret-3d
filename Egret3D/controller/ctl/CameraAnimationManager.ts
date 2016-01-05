@@ -3,6 +3,7 @@
     * @class egret3d.CameraAnimationManager
     * @classdesc
     * 摄像机动画控制器管理
+    * 管理所有摄像机动画
     */
     export class CameraAnimationManager {
 
@@ -18,6 +19,7 @@
         /**
         * @language zh_CN
         * 播放某个动画
+        * 根据动画名字来播放，指定摄像机，并且控制动画是否循环播放
         * @param name 动画名
         * @param camera 相机
         * @param isLoop 是否循环
