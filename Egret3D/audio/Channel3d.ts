@@ -3,7 +3,8 @@
      * @language zh_CN
      * @class egret3d.Channel3d
      * @classdesc
-     * 控制音频的 播放，暂停，三维空间中的位置
+     * Channel3d 类控制应用程序中 在三维空间中播放的声音。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
+     * @includeExample audio/Channel3d.ts
      */
     export class Channel3d extends Channel {
 
@@ -13,7 +14,7 @@
         private _listener: Vector3D;
         /**
         * @language zh_CN
-        * 监听者位置
+        * 返回监听者位置
         * @returns {Vector3D}
         */
         public get listener() {
@@ -21,7 +22,7 @@
         }
         /**
         * @language zh_CN
-        * 监听者位置
+        * 设置监听者位置
         * @param value {Vector3D}
         */
         public set listener(value: Vector3D) {
@@ -30,10 +31,10 @@
         /**
         * @language zh_CN
         * constructor
-        * @param sound {Sound}
+        * @param sound {Sound} Sound 对象 音频的数据源。
         * @param {Object} options
-        * @param {Number} [options.volume] 回放音量, 0 到 1.
-        * @param {Boolean} [options.loop] 是否循环播放.
+        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
+        * @param {Boolean} [options.loop] 是否循环播放。
         */
         constructor(sound: Sound, options: any) {
 

@@ -3,14 +3,15 @@
      * @language zh_CN
      * @class egret3d.Sound
      * @classdesc
-     * 音频数据
+     * Sound 类允许您在应用程序中使用声音。使用 Sound 类可以创建 Sound 对象、将外部 MP3 文件加载到该对象并播放该文件、关闭声音流，以及访问有关声音的数据，如有关流中字节数和 ID3 元数据的信息。可通过以下项对声音执行更精细的控制：声音源（声音的 Channel 和 Channel3d）用于控制向计算机扬声器输出声音的属性。
+     * @includeExample audio/Sound.ts
      */
     export class Sound {
 
         private isLoaded: boolean;
         /**
         * @language zh_CN
-        * HTML音频数据
+        * HTML音频 数据源。
         */
         public audio: HTMLAudioElement = null;
 
@@ -19,7 +20,7 @@
 
         /**
         * @language zh_CN
-        * Web音频数据
+        * Web音频 数据源。
         * @returns {AudioBuffer}   
         */
         public get buffer(): any {
@@ -32,12 +33,12 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param {String}   音频文件路径
-        * @param {Function} 音频文件加载成功的事件处理函数
-        * @param {Function} 音频文件加载失败的事件处理函数
+        * 创建一个新的 Sound 对象。一旦某个 Sound 对象加载完成声音文件，就不能再将另一个声音文件加载到该 Sound 对象中。要加载另一个声音文件，请创建新的 Sound 对象。
+        * @param {String}   指向外部音频文件的 URL。
+        * @param {Function} 一个可选的音频文件加载成功的事件处理函数。
+        * @param {Function} 一个可选的音频文件加载失败的事件处理函数。
         */
-        constructor(url: string, success: Function, error: Function) {
+        constructor(url: string, success: Function=null, error: Function=null) {
 
             this._success = success;
             this._error = error;
