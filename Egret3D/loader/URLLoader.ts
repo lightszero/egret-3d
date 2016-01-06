@@ -7,7 +7,7 @@
      * 用于加载和解析各类3d资源.
      * DDS, TGA, jpg, png等格式的贴图文件. 
      * ESM, EAM, ECA等egret3d独有的模型文件,动作文件,相机动画文件
-     * @example loader/URLLoader.ts
+     * @includeExample loader/URLLoader.ts
      */
     export class URLLoader {
         /**
