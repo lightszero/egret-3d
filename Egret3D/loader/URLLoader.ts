@@ -4,6 +4,10 @@
      * @class egret3d.URLLoader
      * @classdesc
      * URLLoader类
+     * 用于加载和解析各类3d资源.
+     * DDS, TGA, jpg, png等格式的贴图文件. 
+     * ESM, EAM, ECA等egret3d独有的模型文件,动作文件,相机动画文件
+     * 
      */
     export class URLLoader {
         /**
@@ -147,6 +151,7 @@
 
       */
         /**
+         * @private 
         * @language zh_CN
         * 以pvr格式接收加载的数据
         */
@@ -156,6 +161,7 @@
       */
         /**
         * @language zh_CN
+         * 构造函数
         * @param url 加载数据的地址.如果参数不为空的话.将直接开始加载
          * @param dataformat 以什么方式进行加载.如果为空的话.将通过目标文件的后缀名判断,
          * 如果为空且文件后缀不为内置支持的集中文件类型的话.将以文本格式进行加载解析
