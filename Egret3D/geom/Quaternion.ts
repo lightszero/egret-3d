@@ -103,15 +103,43 @@
         * @param    angle    The angle in radians of the rotation.
         */
         public fromAxisAngle(axis: Vector3D, angle: number) {
-            var sin_a: number = Math.sin(angle / 2);
-            var cos_a: number = Math.cos(angle / 2);
+            angle *= Math.PI / 180.0;
+            var halfAngle: number = angle * 0.5;
+            var sin_a: number = Math.sin(halfAngle);
 
+            this.w = Math.cos(halfAngle);
             this.x = axis.x * sin_a;
             this.y = axis.y * sin_a;
             this.z = axis.z * sin_a;
-            this.w = cos_a;
 
             this.normalize();
+        }
+
+        /**
+        * @language zh_CN
+        * 返回四元数绕轴心和角度
+        *
+        * @param axis 轴心
+        * @returns 角度
+        */
+        public toAxisAngle(axis: Vector3D): number {
+            var sqrLength: number = this.x * this.x + this.y * this.y + this.z * this.z;
+            var angle: number = 0;
+            if (sqrLength > 0.0) {
+                angle = 2.0 * Math.acos(this.w);
+                sqrLength = 1.0 / Math.sqrt(sqrLength);
+                axis.x = this.x * sqrLength;
+                axis.y = this.y * sqrLength;
+                axis.z = this.z * sqrLength;
+            }
+            else {
+                angle = 0;
+                axis.x = 1.0;
+                axis.y = 0;
+                axis.z = 0;
+            }
+            angle /= Math.PI / 180.0;
+            return angle;
         }
 
         /**
@@ -200,11 +228,11 @@
         * @param    az        The angle in radians of the rotation around the az axis.
         */
         public fromEulerAngles(ax: number, ay: number, az: number):Quaternion {
-            ax *= Math.PI / 180.0;
-            ay *= Math.PI / 180.0;
-            az *= Math.PI / 180.0;
+            ax *= Matrix3DUtils.DEGREES_TO_RADIANS;
+            ay *= Matrix3DUtils.DEGREES_TO_RADIANS;
+            az *= Matrix3DUtils.DEGREES_TO_RADIANS;
 
-            var halfX: number = ax * .5, halfY: number = ay * .5, halfZ: number = az * .5;
+            var halfX: number = ax * 0.5, halfY: number = ay * 0.5, halfZ: number = az * 0.5;
             var cosX: number = Math.cos(halfX), sinX: number = Math.sin(halfX);
             var cosY: number = Math.cos(halfY), sinY: number = Math.sin(halfY);
             var cosZ: number = Math.cos(halfZ), sinZ: number = Math.sin(halfZ);
@@ -236,9 +264,9 @@
             target.y = Math.asin(2 * (this.w * this.y - this.z * this.x));
             target.z = Math.atan2(2 * (this.w * this.z + this.x * this.y), 1 - 2 * (this.y * this.y + this.z * this.z));
 
-            target.x /= Math.PI / 180.0;
-            target.y /= Math.PI / 180.0;
-            target.z /= Math.PI / 180.0;
+            target.x /= Matrix3DUtils.DEGREES_TO_RADIANS;
+            target.y /= Matrix3DUtils.DEGREES_TO_RADIANS;
+            target.z /= Matrix3DUtils.DEGREES_TO_RADIANS;
             return target;
         }
 
@@ -377,14 +405,13 @@
 
             // p*q'
             w1 = -this.x * x2 - this.y * y2 - this.z * z2;
-            x1 = this.w * x2 + this.y * z2 - this.z * y2;
-            y1 = this.w * y2 - this.x * z2 + this.z * x2;
-            z1 = this.w * z2 + this.x * y2 - this.y * x2;
+            x1 =  this.w * x2 + this.y * z2 - this.z * y2;
+            y1 =  this.w * y2 - this.x * z2 + this.z * x2;
+            z1 =  this.w * z2 + this.x * y2 - this.y * x2;
 
             target.x = -w1 * this.x + x1 * this.w - y1 * this.z + z1 * this.y;
             target.y = -w1 * this.y + x1 * this.z + y1 * this.w - z1 * this.x;
             target.z = -w1 * this.z - x1 * this.y + y1 * this.x + z1 * this.w;
-
             return target;
         }
 

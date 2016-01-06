@@ -4,6 +4,8 @@
     /**
     * @class egret3d.Camera3D
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 相机数据处理，生成3D摄相机。
     * 渲染场景从摄像机视点到缓冲区
     * 相机分为透视摄像机、正交摄像机、VR摄像机

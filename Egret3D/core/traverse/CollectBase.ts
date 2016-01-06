@@ -1,6 +1,7 @@
 ﻿module egret3d {
         
     /**
+    * @private
     * @class egret3d.CollectBase
     * @classdesc
     * Object3D 渲染对象收集器基类

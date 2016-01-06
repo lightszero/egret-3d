@@ -3,7 +3,9 @@
     /**
     * @class egret3d.Sky
     * @classdesc
-    * 天空盒子
+    * @version Egret 3.0
+    * @platform Web,Native
+    * 场景中天空盒子，是6面体cube，以6张无缝结合的贴图构成.
     */
     export class Sky {
 

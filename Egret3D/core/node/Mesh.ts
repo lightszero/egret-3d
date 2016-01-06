@@ -3,6 +3,8 @@
     /**
     * @class egret3d.Mesh
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 3d模型网格 生成渲染模型
     */
     export class Mesh extends Object3D {

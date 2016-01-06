@@ -3,6 +3,8 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 3d空间中的实体对象。
     * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
@@ -10,7 +12,7 @@
     */
     export class Object3D extends EventDispatcher {
         public static renderListChange: boolean = true;
-        static s_id: number = 0;
+        protected static s_id: number = 0;
 
         protected _modeMatrix3D: Matrix4_4 = new Matrix4_4();
 
@@ -20,6 +22,8 @@
         protected _rot: Vector3D = new Vector3D();
         protected _sca: Vector3D = new Vector3D(1, 1, 1);
         protected _orientation = new Quaternion();
+        protected _axis: Vector3D = new Vector3D();
+        protected _angle: number = 0;
 
         protected _globalPos: Vector3D = new Vector3D();
         protected _globalRot: Vector3D = new Vector3D();
@@ -29,8 +33,6 @@
         protected _qut: Quaternion = new Quaternion();
         protected _active: boolean = false;
         protected _mat: Matrix4_4 = new Matrix4_4();
-
-       
 
         /**
         * @language zh_CN
@@ -195,7 +197,7 @@
             this._rot.z = value.z;
 
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
-
+            this._angle = this._orientation.toAxisAngle(this._axis);
             this.updateTransformChange(true);
         }
         
@@ -279,6 +281,7 @@
 
             this._rot.x = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                         
         /**
@@ -295,7 +298,7 @@
 
             this._rot.y = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
-
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                         
         /**
@@ -312,7 +315,7 @@
 
             this._rot.z = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
-
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                                 
         /**
@@ -343,8 +346,6 @@
                 return;
 
             this._sca.y = value;
-            this._transformChange = true; 
-
         }
                                         
         /**
@@ -360,8 +361,21 @@
                 return;
 
             this._sca.z = value;
-            this._transformChange = true; 
-
+        }
+                                                
+        /**
+        * @language zh_CN
+        * 以axis轴为中心进行旋转
+        * @param axis 中心轴
+        * @param angle 旋转的角度
+        */
+        public setRotationFromAxisAngle(axis: Vector3D, angle: number) {
+            axis.normalize();
+            this.updateTransformChange(true);
+            this._orientation.fromAxisAngle(axis, angle);
+            this._orientation.toEulerAngles(this._rot);
+            this._axis.copyFrom(axis);
+            this._angle = angle;
         }
 
         /**

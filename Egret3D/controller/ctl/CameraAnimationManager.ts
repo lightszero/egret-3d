@@ -2,6 +2,8 @@
     /**
     * @class egret3d.CameraAnimationManager
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 摄像机动画控制器管理
     * 管理所有摄像机动画
     */
