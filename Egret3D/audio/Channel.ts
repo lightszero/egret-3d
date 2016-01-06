@@ -3,28 +3,25 @@
      * @language zh_CN
      * @class egret3d.Channel
      * @classdesc
-     * 控制音频的 播放，暂停等
+     * Channel 类控制应用程序中的声音，对声音执行更精细的控制。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
+     * @includeExample audio/Channel.ts
      */
     export class Channel {
         /**
         * @language zh_CN
-        * 设置音量 从0到1
+        * 音量，范围从 0（静音）至 1（最大幅度）。
         */
         public volume: number = 1.0;
         /**
         * @language zh_CN
-        * 开始/关闭 循环属性 使声音播放结束时重新开始播放
+        * 是否循环播放 使声音播放结束时重新开始播放。
         */
         public loop: boolean = false;
-        /**
-        * @language zh_CN
-        * 开始/关闭 循环属性 使声音播放结束时重新开始播放
-        */
 
         
         /**
         * @language zh_CN
-        * 设置音频 playbackRate
+        * 当前播放速度。1.0 正常速度。0.5 半速（更慢）。2.0 倍速（更快）。-1.0 向后。正常速度。-0.5 向后，半速。
         */
         public pitch: number = 1.0;
 
@@ -38,11 +35,11 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param sound {Sound}
+        * 创建一个新的 Channel 对象
+        * @param sound {Sound} Sound 对象 音频的数据源。
         * @param {Object} options
-        * @param {Number} [options.volume] 回放音量, 0 到 1.
-        * @param {Boolean} [options.loop] 是否循环播放.
+        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
+        * @param {Boolean} [options.loop] 是否循环播放。
         */
         constructor(sound: Sound, options: any) {
 
@@ -78,7 +75,7 @@
 
         /**
         * @language zh_CN
-        * 开始播放声音
+        * 开始在该声道中播放声音。
         */
         public play() {
 
@@ -107,7 +104,7 @@
 
         /**
         * @language zh_CN
-        * 暂停播放声音 
+        * 暂时停止在该声道中播放声音。
         */
         public pause() {
             if (AudioManager.instance.hasAudioContext()) {
@@ -129,7 +126,7 @@
 
         /**
         * @language zh_CN
-        * 继续播放声音  从暂停的位置继续播放声音
+        * 从暂停的位置继续在该声道中播放声音。
         */
         public unpause() {
 
@@ -165,7 +162,7 @@
 
         /**
         * @language zh_CN
-        * 停止播放声音  执行 play() 从初始位置开始播放声音
+        * 停止在该声道中播放声音。
         */
         public stop() {
 
@@ -188,16 +185,13 @@
         }
 
 
-        public setLoop(value:boolean) {
-            this.loop = value;
+        private setLoop(value:boolean) {
             if (this.source) {
                 this.source.loop = value;
             }
         }
 
-        public setVolume(value:number) {
-            this.volume = value;
-
+        private setVolume(value:number) {
             if (this.gain) {
                 this.gain.gain.value = value * AudioManager.instance.volume;
             }
@@ -207,10 +201,7 @@
 
         }
 
-        public setPitch(value:number) {
-            this.pitch = value;
-
-
+        private setPitch(value:number) {
             if (AudioManager.instance.hasAudioContext()) {
                 if (this.source) {
                     this.source.playbackRate.value = value;
@@ -226,7 +217,7 @@
 
         /**
         * @language zh_CN
-        * 音频是否正在播放
+        * 是否正在播放。
         * @returns {boolean}   
         */
         public isPlaying():boolean {
@@ -243,7 +234,7 @@
 
         /**
         * @language zh_CN
-        * 音频持续时间
+        * 音频持续时间。
         * @returns {number}   
         */
         public getDuration():number {

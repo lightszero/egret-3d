@@ -3,24 +3,26 @@
     * @language zh_CN
     * @class egret3d.AudioManager
     * @classdesc
-    * Audio管理类 支持HTML5 Audio 和 Web Audio
+    * AudioManager 类允许您在应用程序中 播放 HTML5 Audio 和 Web Audio。
+    * @includeExample audio/AudioManager.ts
     */
     export class AudioManager{
 
         /**
          * @language zh_CN
+         * AudioContext 上下文。
          */
         public context: any;
 
         /**
         * @language zh_CN
-        * 音量 
+        * 音量，范围从 0（静音）至 1（最大幅度）。
         */
         public volume: number = 1;
 
         /**
         * @language zh_CN
-        * constructor
+        * 创建一个新的 AudioManager 对象。
         */
         constructor() {
             if (this.hasAudioContext()) {
@@ -32,7 +34,7 @@
         }
         /**
         * @language zh_CN
-        * 是否支持 HTML5 Audio tag API
+        * 是否支持 HTML5 Audio tag API。
         * @returns {boolean}   
         */
         public hasAudio():boolean {
@@ -41,7 +43,7 @@
 
         /**
         * @language zh_CN
-        * 是否支持 Web Audio API
+        * 是否支持 Web Audio API。
         * @returns {boolean}   
         */
         public hasAudioContext():boolean {
@@ -53,8 +55,8 @@
 
         /**
         * @language zh_CN
-        * 浏览器是否可以播放这种音频类型
-        * @param url 音频路径
+        * 浏览器是否可以播放这种音频类型。
+        * @param url 指向外部音频文件的 URL。
         * @param audio {HTMLAudioElement}  
         * @returns {boolean}   
         */
@@ -92,13 +94,13 @@
 
         /**
         * @language zh_CN
-        * 创建一个新的Sound对象
-        * @param {String}   音频文件路径
-        * @param {Function} 音频文件加载成功的事件处理函数
-        * @param {Function} 音频文件加载失败的事件处理函数
+        * 生成一个新的 Sound 对象 ，将声音数据加载到 Sound 对象中。
+        * @param url {String}   指向外部音频文件的 URL。
+        * @param success {Function} 一个可选的音频文件加载成功的事件处理函数。
+        * @param error {Function} 一个可选的音频文件加载失败的事件处理函数。
         * @returns {Sound}   
         */
-        public createSound (url, success, error):Sound {
+        public createSound (url, success=null, error=null):Sound {
             return new Sound(url, success, error);
         }
 
@@ -106,11 +108,11 @@
 
         /**
         * @language zh_CN
-        * 创建一个新的 Channel 对象 播放声音
-        * @param {sound} 要播放的Sound对象.
-        * @param {Object} options 
-        * @param {Number} [options.volume] 回放音量, 0 到 1.
-        * @param {Boolean} [options.loop]  是否循环播放.
+        * 生成一个新的 Channel 对象来播放该声音。此方法返回 Channel 对象，访问该对象可停止声音并监控音量。
+        * @param sound{sound} 要播放的声音数据。
+        * @param options{Object}  
+        * @param {Number} [options.volume] 回放音量, 0 到 1。
+        * @param {Boolean} [options.loop]  是否循环播放。
         * @returns {Channel}   
         */
         public playSound (sound, options) {
@@ -123,12 +125,12 @@
 
         /**
         * @language zh_CN
-        * 创建一个新的 Channel3d 对象 在指定的位置播放声音
-        * @param {Sound} 要播放的 Sound 对象
-        * @param {position} 声音在三维空间中的位置
+        * 生成一个新的 Channel3d 对象来播放该声音。此方法返回 Channel3d 对象，访问该对象可停止声音并监控音量。
+        * @param sound {Sound}  要播放的声音数据。
+        * @param position {Vector3D} 在三维空间中播放的位置。
         * @param {Object} options
-        * @param {Number} [options.volume] 回放音量, 0 到 1.
-        * @param {Boolean} [options.loop] 是否循环播放.
+        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
+        * @param {Boolean} [options.loop] 是否循环播放。
         * @returns {Channel}   
         */
         public playSound3d(sound: Sound, position: Vector3D, options: any):Channel3d {
@@ -137,10 +139,10 @@
             channel.position = position;
 
             if (options.volume) {
-                channel.setVolume(options.volume);
+                channel.volume = options.volume;
             }
             if (options.loop) {
-                channel.setLoop(options.loop);
+                channel.loop = options.loop;
             }
             if (options.maxDistance) {
                 channel.maxDistance = options.maxDistance;
@@ -158,6 +160,10 @@
 
         private static _instance: AudioManager;
 
+        /**
+        * @language zh_CN
+        * AudioManager类的单例模式，返回一个 AudioManager 对象。
+        */
         public static get instance(): AudioManager {
             if (this._instance == null) {
                 this._instance = new AudioManager();
