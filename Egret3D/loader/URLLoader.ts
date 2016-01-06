@@ -73,7 +73,6 @@
         */
         /**
         * @language zh_CN
-         * @static 
         * 以二进制方式接收加载的数据
         */
         public static DATAFORMAT_BINARY: string = "binary";
@@ -82,7 +81,6 @@
         */
         /**
         * @language zh_CN
-         * @static 
         * 以文本的方式接收加载的数据
          * 默认方式
         */
@@ -92,7 +90,6 @@
         */
         /**
         * @language zh_CN
-         * @static 
          * 以音频的方式接收加载的数据
         */
         public static DATAFORMAT_SOUND: string = "sound";
@@ -102,7 +99,6 @@
       */
         /**
         * @language zh_CN
-         * @static 
         * 以图像的方式接收加载的数据
          * 支持jpg.png.等格式
         */
@@ -112,7 +108,6 @@
       */
         /**
         * @language zh_CN
-         * @static 
         * 以DDS的方式接收加载的数据
         */
         public static DATAFORMAT_DDS: string = "dds";
@@ -121,7 +116,6 @@
       */
         /**
         * @language zh_CN
-         * @static 
         * 以TGA的方式接收加载的数据
         */
         public static DATAFORMAT_TGA: string = "tga";
@@ -131,7 +125,6 @@
         /**
         * @language zh_CN
         * 以ESM格式接收加载的数据
-         * @static 
          * Egret3D独有的格式 模型+蒙皮
         */
         public static DATAFORMAT_ESM: string = "esm";
@@ -140,7 +133,6 @@
       */
         /**
         * @language zh_CN
-         * @static 
         * 以EAM格式接收加载的数据
          * Egret3D独有的格式 动作文件
         */
@@ -150,7 +142,6 @@
       */
         /**
         * @language zh_CN
-         * @static 
         * 以ECA格式接收加载的数据
          * Egret3D独有的格式 相机动画文件
         */
@@ -161,7 +152,6 @@
       */
         /**
          * @private 
-         * @static 
         * @language zh_CN
         * 以pvr格式接收加载的数据
         */
@@ -240,7 +230,9 @@
 
         /**
          * @language zh_CN
-         * @default 'text'
+         * 控制以哪种方式接收加载的数据.
+         * 如果未赋值则通过加载文件的后缀名来判断加载的类型以解析.
+         * 如果未赋值且加载的类型并非为内置支持的文件类型.将以文本格式进行加载
          * @returns string
          */
         public get dataformat(): string {
@@ -249,6 +241,9 @@
 
         /**
          * @language zh_CN
+         * 控制以哪种方式接收加载的数据.
+         * 如果未赋值则通过加载文件的后缀名来判断加载的类型以解析.
+         * 如果未赋值且加载的类型并非为内置支持的文件类型.将以文本格式进行加载
          * @param value 
          */
         public set dataformat(value: string) {
