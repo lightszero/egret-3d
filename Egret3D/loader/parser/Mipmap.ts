@@ -1,4 +1,7 @@
 ﻿module Egret3D {
+    /**
+     * @private 
+     */
     export class Mipmap {
         public data: Uint8Array;
         public width: number;

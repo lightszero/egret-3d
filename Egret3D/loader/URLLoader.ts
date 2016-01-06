@@ -10,6 +10,7 @@
       * @language en_US
       */
         /**
+         * @private 
         * @language zh_CN
         * 加载的地址
         */
@@ -19,6 +20,7 @@
       * @language en_US
       */
         /**
+         * @private 
         * @language zh_CN
         * 加载的数据.
         */

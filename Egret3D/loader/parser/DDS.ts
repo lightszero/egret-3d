@@ -1,4 +1,7 @@
 ﻿module Egret3D {
+    /**
+     * @private 
+     */
     export class DDS {
         public mipmaps: Array<Egret3D.Mipmap>;
         public width: number;

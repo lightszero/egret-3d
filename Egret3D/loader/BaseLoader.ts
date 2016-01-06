@@ -54,7 +54,6 @@
 
         /**
          * @language zh_CN
-         * @returns {} 
          */
         protected onLoad(): void {
         }
