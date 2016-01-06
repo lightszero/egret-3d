@@ -3,10 +3,16 @@
      * @language zh_CN
      * @class egret3d.AssetsManager
      * @classdesc
-     * AssetsManager 资源管理类
+     * AssetsManager 资源管理类.
+     * 用于加载各类3d美术资源.
+     * 模型.场景.贴图等.
      */
     export class AssetsManager extends EventDispatcher{
 
+        /**
+         * @language zh_CN
+         * @private 
+         */
         static _instance: AssetsManager = new AssetsManager();
 
         private loadList: Array<BaseLoader> = [];
@@ -19,12 +25,14 @@
 
         /**
          * @language zh_CN
+         * 获取单例实例
          * @returns AssetsManager
          */
         public static getInstance(): AssetsManager {
             return AssetsManager._instance;
         }
         /**
+         * @private 
         * @language zh_CN
         * constructor 
         */
@@ -45,7 +53,7 @@
          * @language zh_CN
          * 查找资源
          * @param url 
-         * @returns any
+         * @returns 返回对应url的资源
          */
         public findAssets(url: string): any {
             return this.assets[this.rootURL + url];
@@ -53,6 +61,7 @@
 
         /**
          * @language zh_CN
+         * 查找已下载的模型.
          * @param url 
          * @returns mesh
          */
@@ -62,6 +71,7 @@
 
         /**
          * @language zh_CN
+         * 查找已下载的动作模型文件
          * @param url 
          * @returns Mesh
          */
@@ -151,6 +161,11 @@
             this.loadList.push(textureLoader);
         }
 
+
+        /**
+         * @private
+         * @param e 
+         */
         private checkComplete(e:Event3D) {
 
             var loader: BaseLoader = <BaseLoader>e.data; 

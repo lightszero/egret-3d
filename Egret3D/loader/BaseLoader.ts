@@ -10,6 +10,7 @@
      * @class egret3d.BaseLoader
      * @classdesc
      * BaseLoader类
+     * @private 
      */
     export class BaseLoader extends EventDispatcher{
 
@@ -54,7 +55,6 @@
 
         /**
          * @language zh_CN
-         * @returns {} 
          */
         protected onLoad(): void {
         }

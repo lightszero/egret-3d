@@ -19,9 +19,7 @@
             super(LoaderType.LOADER_SCENE_TYPE, sceneURL);
         }
 
-        /**
-		 * 场景对象列表;
-		 */
+        
         /**
          * @language zh_CN
          * 场景对象列表;
