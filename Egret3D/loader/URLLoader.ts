@@ -241,6 +241,7 @@
 
         /**
          * @language zh_CN
+         * 加载的数据.
          * @returns any
          */
         public get data(): any {
@@ -249,6 +250,8 @@
 
         /**
          * @language zh_CN
+         * 加载的地址
+         * @readonly 
          * @returns string 
          */
         public get url(): string {
