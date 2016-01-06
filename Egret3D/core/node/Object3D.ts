@@ -200,7 +200,31 @@
             this._angle = this._orientation.toAxisAngle(this._axis);
             this.updateTransformChange(true);
         }
+
+        /**
+        * @language zh_CN
+        * 设置旋转
+        * @writeOnly
+        * @param value 旋转
+        */
+        public set orientation(value: Quaternion) {
+            this._orientation.copyFrom(value);
+            this._orientation.toEulerAngles(this._rot);
+            this._angle = this._orientation.toAxisAngle(this._axis);
+
+            this.updateTransformChange(true);
+        }
         
+        /**
+        * @language zh_CN
+        * 返回旋转
+        * @readOnly
+        * @returns 旋转
+        */
+        public get orientation(): Quaternion {
+            return this._orientation;
+        }
+
         /**
         * @language zh_CN
         * 返回缩放

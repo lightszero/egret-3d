@@ -252,16 +252,16 @@
         * @returns The Vector3D containing the Euler angles.
         */
         public toEulerAngles(target: Vector3D = null): Vector3D {
-
-            //target ||= new Vector3D();
             if (target === null) {
-
                 target = new Vector3D();
-
             }
 
             target.x = Math.atan2(2 * (this.w * this.x + this.y * this.z), 1 - 2 * (this.x * this.x + this.y * this.y));
-            target.y = Math.asin(2 * (this.w * this.y - this.z * this.x));
+
+            var temp: number = 2 * (this.w * this.y - this.z * this.x);
+            //target.y = Math.asin(2 * (this.w * this.y - this.z * this.x));
+            temp = Matrix3DUtils.clampf(temp, -1.0, 1.0);
+            target.y = Math.asin(temp);
             target.z = Math.atan2(2 * (this.w * this.z + this.x * this.y), 1 - 2 * (this.y * this.y + this.z * this.z));
 
             target.x /= Matrix3DUtils.DEGREES_TO_RADIANS;
@@ -396,11 +396,8 @@
             var x1: number, y1: number, z1: number, w1: number;
             var x2: number = vector.x, y2: number = vector.y, z2: number = vector.z;
 
-            //target ||= new Vector3D();
             if (target === null) {
-
                 target = new Vector3D();
-
             }
 
             // p*q'
