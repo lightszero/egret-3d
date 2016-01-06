@@ -471,6 +471,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界渲染矩阵
+        * 如果有父亲节点对象的话，要乘以父对象的变换.
         * @readOnly
         * @returns object 世界渲染矩阵
         */
