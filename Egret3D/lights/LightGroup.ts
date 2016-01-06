@@ -4,10 +4,11 @@
     * @class egret3d.DirectLight
     * @classdesc
     * @public 
-    * 灯光组管理器
-    * 可以定义场景内所有的灯光，根据灯光组来设定材质受多少光照影响，方便材质光照管理
-    * 不同的
-
+    * 点光源
+    * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
+    * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
+    * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好
+    * 点光源是游戏中常常用到的动态光源，实时渲染中，灯光的数量会直接影响渲染性能
     * @see egret3d.Object3D
     * @see egret3d.LightGroup
     * @see egret3d.LightBase

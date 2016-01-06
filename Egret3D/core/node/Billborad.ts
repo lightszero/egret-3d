@@ -30,9 +30,9 @@
         * @param delay 间隔时间
         */
         public update(camera: Camera3D, time: number, delay: number) {
-            this.rotationX = camera.rotationX - 90;
-            this.rotationY = camera.rotationY;
-            this.rotationZ = camera.rotationZ;
+            this._qut.fromEulerAngles(-90, 0, 0);
+            this._qut.multiply(camera.orientation, this._qut);
+            this.orientation = this._qut;
         }
     }
 }
