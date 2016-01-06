@@ -3,7 +3,13 @@
      * @language zh_CN
      * @class egret3d.FaceData
      * @classdesc
-     * FaceData类 表示索引数据
+     * FaceData类 表示三角面索引数据
+     * 
+     * FaceData用于储存三角面所需的各类索引数据，如顶点索引、UV纹理索引、法线索引、定点颜色索引等。
+     *
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/FaceData.ts
      */
     export class FaceData {
 

@@ -5,6 +5,10 @@
      * @class egret3d.AnimaNodeCollection
      * @classdesc
      * 动画节点容器
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/AnimaNodeCollection.ts
      */
     export class AnimaNodeCollection {
 

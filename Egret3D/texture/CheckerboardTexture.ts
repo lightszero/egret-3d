@@ -1,15 +1,25 @@
 ﻿module egret3d {
 
      /**
-      * @language zh_CN
+     * @language zh_CN
      * @class egret3d.CheckerboardTexture
      * @classdesc
-     * 棋盘格纹理
+     * CheckerboardTexture 类为 棋盘格纹理类
+     * 
+     * 棋盘格纹理为黑白间隔色块组成的一张纹理，主要用于判别模型UV的正确性，若某模型UV值不正确，其纹理表现必定乱序不规整。
+     * 使用示例;
+     * var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(egret3d.CheckerboardTexture.texture );
+     * var mesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(), material);
+     *
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/CheckerboardTexture.ts
      */
     export class CheckerboardTexture extends TextureBase {
 
         /**
          * @language zh_CN
+         * 公用棋盘格实例对象
          */
         public static texture: CheckerboardTexture = new CheckerboardTexture();
         private _width: number = 32;

@@ -2,7 +2,35 @@
      /**
      * @class egret3d.SkyTexture
      * @classdesc
-     * 天空贴图
+     * SkyTexture 类为天空贴图
+     *
+     * 天空贴图用于Sky类使用，其内部是将6张HTMLImageElement（网页图片元素）封装到CubeTexture对象，CubeTexture为引擎内部使用对象。
+     *
+     * 示例：
+     * 假设html中已有 
+     *     <img id="t1" src="image_front.png" />
+     *     <img id="t2" src="image_back.png" />
+     *     <img id="t3" src="image_left.png" />
+     *     <img id="t4" src="image_right.png" />
+     *     <img id="t5" src="image_up.png" />
+     *     <img id="t6" src="image_down.png" />
+     *
+     * 使用示例：
+     * var skyTexture: egret3d.SkyTexture = new egret3d.SkyTexture(
+     *     <HTMLImageElement>document.getElementById("t1"),
+     *     <HTMLImageElement>document.getElementById("t2"),
+     *     <HTMLImageElement>document.getElementById("t3"),
+     *     <HTMLImageElement>document.getElementById("t4"),
+     *     <HTMLImageElement>document.getElementById("t5"),
+     *     <HTMLImageElement>document.getElementById("t6")
+     * );
+     * 
+     * view3D.sky = new egret3d.Sky(skyTexture);
+     * 
+     * @see egret3d.Sky
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/SkyTexture.ts
      */
     export class SkyTexture extends TextureBase  {
 

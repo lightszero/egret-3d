@@ -5,6 +5,10 @@
      * @class egret3d.IAnimation
      * @classdesc
      * 动画接口
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/IAnimation.ts
      */
     export interface IAnimation {
 

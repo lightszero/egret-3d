@@ -8,6 +8,10 @@
      * @class egret3d.GeometryBase
      * @classdesc
      * GeometryBase类 表示几何形状基类
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/GeometryBase.ts
      */
     export class GeometryBase {
 

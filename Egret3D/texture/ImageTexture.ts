@@ -3,19 +3,34 @@
      /**
      * @class egret3d.ImageTexture
      * @classdesc
-     * 图像贴图
+     * ImageTexture 类为 图像贴图
+     * 
+     * 图像贴图用于封装 HTMLImageElement（网页图像元素）到引擎内部可使用的Texture2D对象，HTMLImageElement 可通过内嵌HTML文件中获取。
+     *
+     * 示例：
+     * 假设html中已有 <img id="t1" src="xxx.png" />
+     *
+     * TS代码：
+     * var img: HTMLImageElement = <HTMLImageElement>document.getElementById("t1");
+     *
+     * var imageTexture: egret3d.ImageTexture = new egret3d.ImageTexture(img);
+     *
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/ImageTexture.ts
      */
     export class ImageTexture extends TextureBase  {
 
         /**
          * @language zh_CN
+         * @readOnly
          * 贴图数据
          */
         public imageData: HTMLImageElement;
 
         /**
          * @language zh_CN
-         * @param img 
+         * @param img HTMLImageElement（网页图像元素）
          */
         constructor(img: HTMLImageElement) {
             super();
@@ -33,27 +48,10 @@
                 this.texture = context3D.creatTexture2D();
                 this.texture.gpu_internalformat = InternalFormat.ImageData;
                 this.texture.gpu_colorformat = Egret3DDrive.ColorFormat_RGBA8888;
-            
                 this.texture.image = this.imageData;
                 this.useMipmap = false ;
-               
-
-           //   if (this.imageData.width > 0 && (this.imageData.width & (this.imageData.width - 1)) != 0 )
                 context3D.upLoadTextureData(0, this.texture);
-             // else
-             //     alert( "纹理不是2的N次" );
-             // context3D.setTexture2DSamplerState(egret3d.NEAREST, egret3d.NEAREST, egret3d.CLAMP_TO_EDGE, egret3d.CLAMP_TO_EDGE);
             }
-
-            //if (!this.texture) {
-            //    this.cubeTexture = context3D.creatCubeTexture();
-            //    this.cubeTexture.image = this.imageData;
-            //   // this.texture.gpu_internalformat = InternalFormat.ImageData;
-            //    //this.texture.gpu_colorformat = egret3d.ColorFormat_RGBA8888;
-
-            //    context3D.uploadCubetexture(this.cubeTexture);
-            //    //context3D.setTexture2DSamplerState(egret3d.NEAREST, egret3d.NEAREST, egret3d.CLAMP_TO_EDGE, egret3d.CLAMP_TO_EDGE);
-            //}
         }
     }
 }
