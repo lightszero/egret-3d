@@ -8,7 +8,6 @@
     * 如果要产生阴影 需要设置 egret3d.ShadowRender.castShadowLight = directLight; 及其他相关模型的设置
     * 
     * @see egret3d.LightGroup
-    * @see egret3d.LightGroup
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
@@ -40,8 +39,10 @@
 
         /**
         * @language zh_CN
-        * @private
-        * @param dir 光线的方向
+        * @public
+        * 背光颜色
+        * 模拟间接光照而开发的背光，而不用去同时打两盏不同方向的组合灯光，可以优化显示效果
+        * @param color 背光颜色色值
         */
         public set halfColor(color: number) {
             this._halfColor.w = (color >> 24 & 0xff) / 255;
@@ -51,18 +52,17 @@
             this._change = false;
         }
 
-        /**
-         * @language en_US
-         * @param value 
-         */
-         /**
-         * @language zh_CN
-         * @param value 是否投影
-         */
-        public set castShadow(value: boolean) {
+       /**
+        * @language zh_CN
+        * @public
+        * 是否产生阴影
+        * 模拟间接光照而开发的背光，而不用去同时打两盏不同方向的组合灯光，可以优化显示效果
+        * @param color 背光颜色色值
+        */
+        //public set castShadow(value: boolean) {
             //if (value )
             //    RttManager.getInstance().shadowMapRender.castShadowLight = this; 
-        }
+        //}
         /**
          * @language en_US 
          * @param index 
@@ -70,6 +70,7 @@
          */
         /**
          * @language zh_CN
+         * @private
          * 更新灯光数据
          * @param index 灯光ID
          * @param lightData 灯光数据
