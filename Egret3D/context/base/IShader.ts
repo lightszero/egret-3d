@@ -1,5 +1,5 @@
 ﻿module egret3d {
-    export interface Shader {
+    export interface IShader {
         
         /**
         * @readOnly

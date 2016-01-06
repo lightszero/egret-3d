@@ -207,6 +207,7 @@
             } else
                 context3D.gl.enable(context3D.gl.CULL_FACE);
 
+            context3D.gl.enable(context3D.gl.BLEND);
             context3D.setBlendFactors(this.materialData.blend_src, this.materialData.blend_dest);
 
             if (this.materialData.alphaBlending)

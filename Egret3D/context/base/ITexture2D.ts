@@ -4,7 +4,7 @@
 
     export enum InternalFormat { PixelArray, CompressData, ImageData };
 
-    export interface Texture2D {
+    export interface ITexture2D {
         
         /**
         * @readOnly
@@ -50,15 +50,16 @@
         * @readOnly
         */
         mipmapDatas: Array<MipmapData>;
-        
+
         /**
         * @readOnly
         */
-        frameBuffer: WebGLFramebuffer;
-        
+        frameBuffer :WebGLFramebuffer;
+
         /**
         * @readOnly
         */
-        renderbuffer: WebGLRenderbuffer;
+        renderbuffer : WebGLRenderbuffer;
+        
     }
 }

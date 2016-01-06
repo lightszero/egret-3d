@@ -5,6 +5,7 @@
     * @class egret3d.Mouse3DManager
     * @classdesc
     * 鼠标事件管理
+    * @includeExample events/Mouse3DManager.ts
     */
     export class Mouse3DManager {
         public static left_mouse_over: string = "left_mouse_over" ;

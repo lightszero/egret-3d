@@ -117,6 +117,7 @@
      * @class egret3d.Input
      * @classdesc
      * 处理输入设备,鼠标.键盘.触摸
+     * @includeExample input/Input.ts
      */
     export class Input {
 

@@ -1,5 +1,5 @@
 ﻿module egret3d {
-    export interface VertexBuffer3D {
+    export interface IVertexBuffer3D {
         
         /**
         * @readOnly

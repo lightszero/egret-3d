@@ -43,7 +43,7 @@
          * @language zh_CN
          * 贴图 gup 数据
          */
-        public texture: Texture2D;
+        public texture: ITexture2D;
         /**
          * @language zh_CN
          * 立方形贴图

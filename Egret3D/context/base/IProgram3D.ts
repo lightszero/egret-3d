@@ -9,21 +9,6 @@
         /**
         * @readOnly
         */
-        vertextAttrib: any;
-        
-        /**
-        * @readOnly
-        */
-        vertextAttribActive: boolean;
-        
-        /**
-        * @readOnly
-        */
-        pMatrixUniform: any;
-        
-        /**
-        * @readOnly
-        */
-        mMatrixUniform: any;
+        vertextAttribActive: boolean ;
     }
 }

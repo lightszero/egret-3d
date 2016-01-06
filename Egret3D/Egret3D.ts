@@ -3,7 +3,11 @@
     /**
      * @class egret3d.DrawMode
      * @classdesc
-     * 渲染类型
+     * 渲染模式
+     * LINES 线框显示模式
+     * POINTS 点显示模式
+     * TRIANGLES 三角形显示模式
+     * LINE_STRIP 连接线显示模式
      */ 
     export class DrawMode {
         static LINES: number;
@@ -41,6 +45,7 @@
         static FRONT: number;
         static BACK: number;
 
+        static DEPTH_TEST: number;
 
         static DEPTH_BUFFER_BIT: number;
         static ELEMENT_ARRAY_BUFFER: number;
@@ -105,7 +110,6 @@
                         Egret3DDrive.FRAGMENT_SHADER = tapContext3D.FRAGMENT_SHADER;
                         Egret3DDrive.canvasRectangle = canvasRec;
 
-                        Egret3DDrive.CULL_FACE = tapContext3D.CULL_FACE;
                         Egret3DDrive.FRONT = tapContext3D.FRONT;
                         Egret3DDrive.BACK = tapContext3D.BACK;
 
@@ -127,6 +131,11 @@
                         Egret3DDrive.ColorFormat_RGBA4444 = tapContext3D.RGBA4;
                         Egret3DDrive.ColorFormat_RGBA8888 = tapContext3D.RGBA;
 
+                        Egret3DDrive.DEPTH_TEST = tapContext3D.DEPTH_TEST;
+                        Egret3DDrive.CULL_FACE = tapContext3D.CULL_FACE;
+                        Egret3DDrive.BLEND = tapContext3D.BLEND;
+
+                        
                         if (ext) {
                             Egret3DDrive.ColorFormat_DXT1_RGB = ext.COMPRESSED_RGB_S3TC_DXT1_EXT;
                             Egret3DDrive.ColorFormat_DXT1_RGBA = ext.COMPRESSED_RGBA_S3TC_DXT1_EXT;

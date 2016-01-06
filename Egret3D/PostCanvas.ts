@@ -40,7 +40,7 @@
         private fsShaderSource: string; 
 
         private indexBuffer3D: IndexBuffer3D;
-        private vertexBuffer3D: VertexBuffer3D;
+        private vertexBuffer3D: IVertexBuffer3D;
 
         private usage: MethodUsageData; 
         private vsShader: GLSL.ShaderBase
@@ -204,8 +204,8 @@
         }
 
         private rebuild( context3D:Context3D ) {
-            var vertexShader: Shader = context3D.creatVertexShader( this.vsShaderSource );
-            var fragmentShader: Shader = context3D.creatFragmentShader(this.fsShaderSource);
+            var vertexShader: IShader = context3D.creatVertexShader( this.vsShaderSource );
+            var fragmentShader: IShader = context3D.creatFragmentShader(this.fsShaderSource);
 
            this.usage.program3D = context3D.creatProgram(vertexShader, fragmentShader);
 
