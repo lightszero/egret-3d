@@ -1,11 +1,21 @@
 ﻿module egret3d {
-                
-    /**  
-     * @language zh_CN 
-     * @class egret3d.LightGroup
-     * @classdesc
-     * 灯光管理类
-     */
+   
+     /**
+    * @class egret3d.DirectLight
+    * @classdesc
+    * @public 
+    * 灯光组管理器
+    * 可以定义场景内所有的灯光，根据灯光组来设定材质受多少光照影响，方便材质光照管理
+    * 不同的
+
+    * @see egret3d.Object3D
+    * @see egret3d.LightGroup
+    * @see egret3d.LightBase
+    * @see egret3d.PointLight
+    * @see egret3d.SportLight
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class LightGroup {
         /**
          * @language en_US 

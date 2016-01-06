@@ -3,7 +3,7 @@
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * @private 
+    * @public 
     * 点光源
     * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
     * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
@@ -21,16 +21,15 @@
 
         /**
          * @language zh_CN
+         * @private
+         * 点光源的数据长度 
          */
         public static stride: number = 7;
    
-        /**
-         * @language en_US
-         * constructor
-         * @param color 
-         */
+
         /**
          * @language zh_CN
+         * @private
          * constructor 
          * @param color {Number}
          */
@@ -41,12 +40,8 @@
         }
 
         /**
-         * @language en_US
-         * @param index 
-         * @param lightData 
-         */
-        /**
          * @language zh_CN
+         * @private
          * 更新灯光数据
          * @param index 灯光ID
          * @param lightData 灯光数据

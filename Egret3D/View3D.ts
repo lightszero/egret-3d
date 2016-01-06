@@ -75,7 +75,7 @@
         * @param camera
         * @param deferredShading
         */
-        constructor(viewPort: Rectangle, camera: Camera3D = null, deferredShading: boolean = false) {
+        constructor(viewPort: Rectangle, camera: Camera3D = null ) {
 
             this._context3D = Egret3DDrive.context3D;
             this._camera = camera || new Camera3D(CameraType.perspective);
@@ -85,7 +85,6 @@
             this._scene = new Scene3D();
 
             this._render = RenderManager.getRender(RenderType.defaultRender);
-            this._isDeferred = deferredShading;
 
             //this.requestFrameBuffer();
 
@@ -115,6 +114,15 @@
 
             for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
                 this._resizeFuncs[i]();
+            }
+        }
+
+        public set render(val: RenderBase) {
+            this._render = val; 
+            if (typeof (val) === "GBufferRender") {
+                this._isDeferred = true;
+            } else {
+                this._isDeferred = false;
             }
         }
 
@@ -430,7 +438,7 @@
 
             //----------即时渲染部分-------------------
             if (!this._isDeferred) {
-                
+
                 if (this._postList) {
 
                     if (this._useShadow) {
@@ -445,20 +453,20 @@
                     }
 
                     RttManager.drawToTexture(time, delay, this._sourceFrameBuffer.texture.texture, this._context3D, this._render, this._scene.collect, this._camera, this.viewPort);
-                    
+
                     this._context3D.clearDepth(1);
 
-                    var next: FrameBuffer = this._sourceFrameBuffer; 
+                    var next: FrameBuffer = this._sourceFrameBuffer;
 
                     for (var i: number = 0; i < this._postList.length; i++) {
-                        this._postList[i].drawToTarget(this._sourceFrameBuffer, next, this._context3D,this._viewPort);
+                        this._postList[i].drawToTarget(this._sourceFrameBuffer, next, this._context3D, this._viewPort);
                         next = this._postList[i].nextFrameBuffer;
                     }
 
                     this._postCanvas.width = this._viewPort.width;
                     this._postCanvas.height = this._viewPort.height;
                     this._postCanvas.texture = next.texture;
-                    this._postCanvas.draw(this._context3D , this._viewPort);
+                    this._postCanvas.draw(this._context3D, this._viewPort);
                 }
                 else {
                     if (this._sky) {
@@ -477,7 +485,12 @@
                     this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
                 }
             }
-            //----------延迟渲染部分-------------------
+            else {
+                //----------延迟渲染部分-------------------
+                this._context3D.clearDepth(1);
+                this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
+                this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
+            }
       
             for (var i: number = 0; i < this._wireframeList.length; i++) {
                 this._wireframeList[i].draw(this._context3D,this.camera3D);
