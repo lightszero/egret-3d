@@ -3,7 +3,11 @@
     /**
      * @class egret3d.DrawMode
      * @classdesc
-     * 渲染类型
+     * 渲染模式
+     * LINES 线框显示模式
+     * POINTS 点显示模式
+     * TRIANGLES 三角形显示模式
+     * LINE_STRIP 连接线显示模式
      */ 
     export class DrawMode {
         static LINES: number;

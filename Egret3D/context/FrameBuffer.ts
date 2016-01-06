@@ -14,8 +14,6 @@
     * @see egret3d.base.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
-    * 示例:
-    * @includeExample
     */
     export class FrameBuffer {
 
