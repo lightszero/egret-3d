@@ -1,130 +1,120 @@
 ﻿module egret3d {
             
     /**
-     * @language zh_CN 
-     * @class egret3d.LightBase
-     * @classdesc
-     * 灯光基类
-     */
+    * @class egret3d.DirectLight
+    * @classdesc
+    * @private 
+    * 灯光的基础类型
+    * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
+    * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
+    * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好
+    * @see egret3d.Object3D
+    * @see egret3d.LightGroup
+    * @see egret3d.LightBase
+    * @see egret3d.PointLight
+    * @see egret3d.SportLight
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class LightBase extends Object3D {
-        /**
-         * @language en_US
-         */
+     
         /**
          *@language zh_CN 
+         *@private
          * 类型
          */
         protected _lightType: number = -1 ;
         /**
-         * @language en_US 
-         */
-        /**
          * @language zh_CN  
+         *@private
          * 环境颜色
          */
         protected _ambient: Vector3D = new Vector3D(1.0,1.0,1.0 );
-        /**
-         * @language en_US 
-         */
+ 
         /**
          * @language zh_CN  
+         *@private
          * 漫反射  
          */
         protected _diffuse: Vector3D = new Vector3D(1.0, 1.0, 1.0);
 
          /**
          * @language zh_CN  
+         *@private
          * 背光颜色
          */
         protected _halfColor: Vector3D = new Vector3D(1.0, 1.0, 1.0);
         /**
-         * @language en_US
-         */
-        /**
          * @language zh_CN
+         *@private
          * 镜面反射  
          */
         protected _specular: Vector3D = new Vector3D(1.0, 1.0, 1.0);
         /**
-         * @language en_US 
-         */
-        /**
          * @language zh_CN  
+         *@private
          */
         protected _halfVector: Vector3D = new Vector3D(1.0, 1.0, 1.0 );
 
-        /**
-        * @language en_US 
-        * @param value 
-        */
+
         /**
          * @language zh_CN
+         *@private
          * @param value 强度
          */
         protected _intensity: number = 1;
-        /**
-         * @language en_US 
-         */
+ 
         /**
          * @language zh_CN  
+         *@private
          */
         protected _spotExponent: number = 1.1;
-        /**
-         * @language en_US 
-         */
+
         /**
          * @language zh_CN  
+         *@private
          */
         protected _spotCutoff: number = 0.7;
-        /**
-         * @language en_US 
-         */
+ 
         /**
          * @language zh_CN  
+         *@private
          */
         protected _spotCosCutoff: number = 0.1;
-        /**
-         * @language en_US 
-         */
+
         /**
          * @language zh_CN  
+         *@private
          */
         protected _constantAttenuation: number = 0.1;
-        /**
-         * @language en_US 
-         */
+
         /**
          * @language zh_CN  
+         *@private
          */
         protected _linearAttenuation: number = 0.1;
-        /**
-         * @language en_US 
-         */
+
         /**
          * @language zh_CN  
+         *@private
          */
         protected _quadraticAttenuation: number = 0.1;
 
         /**
-         * @language en_US 
-         */
-        /**
          * @language zh_CN  
+         *@private
          */
         public _lightIndex: number = -1;
 
         /**
-         * @language en_US 
-         */
-        /**
          * @language zh_CN  
+         *@private
          */
         protected len: number = 25;
-        /**
-         * @language en_US 
-         */
+     
         /**
          * @language zh_CN  
+         *@private
          */
         protected _change: boolean = true;
         constructor() {
@@ -133,8 +123,10 @@
 
         /**
          * @language zh_CN  
+         * @public
          * @writeOnly
          * 设置灯光强度
+         * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
          */
         public set intensity(value: number) {
             if (this._intensity != value){
@@ -145,8 +137,10 @@
         
         /**
          * @language zh_CN  
+         * @public
          * @readOnly
          * 得到灯光强度
+         * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
          */
         public get intensity(): number {
             return this._intensity;
@@ -154,8 +148,10 @@
                 
         /**
          * @language zh_CN  
+         * @public
          * @writeOnly
-         * 设置灯光环境色
+         * 设置灯光环境颜色
+         * 物体在未受到光的直接照射的地方 模拟间接环境光颜色，会影响背光面的颜色
          */
         public set ambient(color: number) {
             this._ambient.w = (color >> 24 & 0xff) / 255;
@@ -167,8 +163,11 @@
         
         /**
          * @language zh_CN  
+         * @public
          * @readOnly
-         * return ambient
+         * 获取 灯光环境颜色
+         * 物体在未受到光的直接照射的地方 模拟间接环境光颜色，会影响背光面的颜色
+         * return ambient  灯光环境颜色
          */
         public get ambient(): number {
             return 0;
@@ -176,8 +175,11 @@
                         
         /**
          * @language zh_CN  
+         * @public
          * @writeOnly
          * 设置灯光漫反射颜色
+         * 直接影响最终灯光的颜色色值 16进制的颜色 例如 red：0xffff0000
+         * 也可以通过 diffusePower 来改变这个值的总体强弱
          */
         public set diffuse(color: number) {
             this._diffuse.w = (color >> 24 & 0xff) / 255;
@@ -189,7 +191,11 @@
                 
         /**
          * @language zh_CN  
+         * @public
          * @readOnly
+         * 设置灯光漫反射颜色
+         * 直接影响最终灯光的颜色色值 16进制的颜色 例如 red：0xffff0000
+         * 也可以通过 diffusePower 来改变这个值的总体强弱
          * return diffuse
          */
         public get diffuse(): number {
@@ -198,8 +204,12 @@
                                 
         /**
          * @language zh_CN  
+         * @public
          * @writeOnly
-         * 设置灯光镜面反射颜色
+         * 设置灯光镜面高光反射颜色
+         * 在灯光方向与物体和相机成一个反光角度的时候，就会产生反光，高光，而不同的物体会有不同的颜色色值，尤其是金属
+         * 16进制的颜色 例如 red：0xffff0000
+         * 也可以通过 specularPower 来改变这个值的总体强弱
          */
         public set specular(color: number) {
             this._specular.w = (color >> 24 & 0xff) / 255;
@@ -211,8 +221,12 @@
                         
         /**
          * @language zh_CN  
+         * @public
          * @readOnly
-         * return specular
+         * 在灯光方向与物体和相机成一个反光角度的时候，就会产生反光，高光，而不同的物体会有不同的颜色色值，尤其是金属
+         * 16进制的颜色 例如 red：0xffff0000
+         * 也可以通过 specularPower 来改变这个值的总体强弱
+         * return  灯光镜面高光反射颜色
          */
         public get specular(): number {
             return 0;
@@ -223,12 +237,8 @@
         }
 
         /**
-         * @language en_US
-         * @param index 
-         * @param lightData 
-         */
-        /**
          * @language zh_CN
+         * @private
          * 更新灯光数据
          * @param index 灯光ID
          * @param lightData 灯光数据

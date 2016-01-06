@@ -1,27 +1,35 @@
 ﻿module egret3d {
                     
     /**
-     * @language zh_CN
-     * @class egret3d.PointLight
-     * @classdesc
-     * 点光源数据处理
-     */
+    * @class egret3d.DirectLight
+    * @classdesc
+    * @public 
+    * 点光源
+    * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
+    * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
+    * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好
+    * 点光源是游戏中常常用到的动态光源，实时渲染中，灯光的数量会直接影响渲染性能
+    * @see egret3d.Object3D
+    * @see egret3d.LightGroup
+    * @see egret3d.LightBase
+    * @see egret3d.PointLight
+    * @see egret3d.SportLight
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class PointLight extends LightBase {
-        /**
-         * @language en_US
-         */
+
         /**
          * @language zh_CN
+         * @private
+         * 点光源的数据长度 
          */
         public static stride: number = 7;
    
-        /**
-         * @language en_US
-         * constructor
-         * @param color 
-         */
+
         /**
          * @language zh_CN
+         * @private
          * constructor 
          * @param color {Number}
          */
@@ -32,12 +40,8 @@
         }
 
         /**
-         * @language en_US
-         * @param index 
-         * @param lightData 
-         */
-        /**
          * @language zh_CN
+         * @private
          * 更新灯光数据
          * @param index 灯光ID
          * @param lightData 灯光数据
