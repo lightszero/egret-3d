@@ -4,7 +4,11 @@
     /**
     * @class egret3d.Camera3D
     * @classdesc
-    * 相机数据处理，生成3D摄相机
+    * @version Egret 3.0
+    * @platform Web,Native
+    * 相机数据处理，生成3D摄相机。
+    * 渲染场景从摄像机视点到缓冲区
+    * 相机分为透视摄像机、正交摄像机、VR摄像机
     */
     export class Camera3D extends Entity{
 
@@ -22,7 +26,7 @@
          */
         /**
          * @language zh_CN
-         * 眼睛矩阵(左，右眼)
+         * 眼睛矩阵(左，右眼) 实现VR时会用到
          */
         public eyeMatrix: EyesMatrix;
 
@@ -40,7 +44,7 @@
          */
         /**
          * @language zh_CN
-         * @相机的视椎体
+         * 相机的视椎体，用来检测是否在当前相机可视范围内
          */
         public frustum: Frustum = new Frustum();
 
@@ -377,15 +381,17 @@
          */
         public lookAt(pos: Vector3D, target: Vector3D, up: Vector3D = Vector3D.Y_AXIS) {
             this.position = pos;
-
             this._lookAtPosition.copyFrom(target);
             this._up.copyFrom(up);
             this._viewMatrix.lookAt(this._pos, this._lookAtPosition, this._up);
             this._viewMatrix.invert();
 
-            this._tempQuat.fromMatrix(this._viewMatrix);
-            var r:Vector3D = this._tempQuat.toEulerAngles();
-            this.rotation = r;
+            var prs: Vector3D[] = this._viewMatrix.decompose(Orientation3D.QUATERNION);
+            this._tempQuat.x = prs[1].x;
+            this._tempQuat.y = prs[1].y;
+            this._tempQuat.z = prs[1].z;
+            this._tempQuat.w = prs[1].w;
+            this.orientation = this._tempQuat;
         }
 
         protected onUpdateTransform() {

@@ -198,5 +198,22 @@
             transform.copyRowTo(3, result);
             return result;
         }
+        
+        /**
+        * @language zh_CN
+        * 把一个值固定在一个范围之内
+        * @param value 当前判定的值
+        * @param min_inclusive 最小取值
+        * @param max_inclusive 最大取值
+        * @returns 计算后的结果
+        */
+        public static clampf(value: number, min_inclusive: number, max_inclusive: number) {
+            if (min_inclusive > max_inclusive) {
+                var temp: number = min_inclusive;
+                min_inclusive = max_inclusive;
+                max_inclusive = temp;
+            }
+            return value < min_inclusive ? min_inclusive : value < max_inclusive ? value : max_inclusive;
+        }
     }
 } 

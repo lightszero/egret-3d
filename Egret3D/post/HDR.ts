@@ -63,9 +63,9 @@
 
             this.gaussianBlurVerticalPost.drawToTarget(source, next, context3D, viewPort);
             next = this.gaussianBlurVerticalPost.nextFrameBuffer;
-
-            this.composition.drawToTarget(source, next, context3D, viewPort);
-            this.nextFrameBuffer = this.composition.nextFrameBuffer;
+            this.nextFrameBuffer = next;
+            //this.composition.drawToTarget(source, next, context3D, viewPort);
+            //this.nextFrameBuffer = this.composition.nextFrameBuffer;
           
             context3D.setRenderToBackBuffer();
         }

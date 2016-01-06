@@ -3,10 +3,10 @@
 ///import Egret3D/context/base/IProgram3D.js
 ///import Egret3D/context/base/IndexBuffer3D.js
 ///import Egret3D/context/openGLES2/MipmapData.js
-///import Egret3D/context/base/Texture2D.js
+///import Egret3D/context/base/ITexture2D.js
 ///import Egret3D/context/base/ICubeTexture.js
-///import Egret3D/context/base/VertexBuffer3D.js
-///import Egret3D/context/base/Shader.js
+///import Egret3D/context/base/IVertexBuffer3D.js
+///import Egret3D/context/base/IShader.js
 
 ///import Egret3D/context/openGLES2/IndexBuffer3D.js
 ///import Egret3D/context/openGLES2/Program3D.js
@@ -14,6 +14,8 @@
 ///import Egret3D/context/openGLES2/Texture2D.js
 ///import Egret3D/context/openGLES2/CubeTexture.js
 ///import Egret3D/context/openGLES2/VertexBuffer3D.js
+
+///import Egret3D/context/FrameBuffer.js
 ///import Egret3D/context/Context3D.js
 ///import Egret3D/context/contextType/ContextSamplerType.js
 
@@ -106,6 +108,7 @@
  
 ///import Egret3D/core/traverse/Frustum.js
 ///import Egret3D/core/node/Object3D.js
+///import Egret3D/core/node/Billborad.js
 ///import Egret3D/core/node/SphereSky.js
 ///import Egret3D/core/node/Sky.js
 ///import Egret3D/core/node/Entity.js
@@ -118,7 +121,9 @@
 ///import Egret3D/lights/LightGroup.js
  
 ///import Egret3D/core/render/RenderBase.js
+
 ///import Egret3D/core/render/DefaultRender.js
+///import Egret3D/core/render/GBufferRender.js
 ///import Egret3D/core/render/PositionRender.js
 ///import Egret3D/core/render/NormalRender.js
 ///import Egret3D/core/render/DepthRender.js
@@ -174,10 +179,6 @@
 ///import Egret3D/controller/ctl/LookAtController.js
 ///import Egret3D/controller/ctl/CameraAnimationController.js
 ///import Egret3D/controller/ctl/CameraAnimationManager.js
- 
-///import Egret3D/controller/CameraControllerBase.js
- 
-///import Egret3D/controller/ctl/FreeCameraControl.js
  
 ///import Egret3D/Util/DeviceUtil.js
 ///import Egret3D/Util/ByteArray.js

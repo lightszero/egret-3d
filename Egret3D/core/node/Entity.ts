@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
     /**
+    * @private
     * @class egret3d.Entity
     * @classdesc
     * 3d空间中的实体对象 extends Object3D

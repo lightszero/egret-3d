@@ -117,8 +117,8 @@
             var vs: string = this.vertexShader.getShaderSource();
             var fs: string = this.pixelShader.getShaderSource() ;
 
-            var vs_shader: Shader = context3D.creatVertexShader(vs);
-            var fs_shader: Shader = context3D.creatFragmentShader(fs);
+            var vs_shader: IShader = context3D.creatVertexShader(vs);
+            var fs_shader: IShader = context3D.creatFragmentShader(fs);
 
             this.materialData.diffusePassUsageData.program3D = context3D.creatProgram(vs_shader, fs_shader);
             this.context3DChange = true;
@@ -246,6 +246,7 @@
             var sampler2D: GLSL.Sampler2D;
             for (var index in this.materialData.diffusePassUsageData.sampler2DList) {
                 sampler2D = this.materialData.diffusePassUsageData.sampler2DList[index];
+                sampler2D.texture.upload(context3D);
                 context3D.setTexture2DAt(sampler2D.activeTextureIndex, sampler2D.uniformIndex, sampler2D.index, sampler2D.texture.texture);
                 if (this.materialData.materialDataNeedChange) {
                     var min_filter: number = this.materialData.smooth ? context3D.gl.LINEAR_MIPMAP_LINEAR : context3D.gl.LINEAR ;
@@ -261,6 +262,7 @@
             var sampler3D: GLSL.Sampler3D;
             for (var index in this.materialData.diffusePassUsageData.sampler3DList) {
                 sampler3D = this.materialData.diffusePassUsageData.sampler3DList[index];
+                sampler3D.texture.upload(context3D);
                 context3D.setCubeTextureAt(sampler3D.activeTextureIndex, sampler3D.uniformIndex, sampler3D.index, sampler3D.texture.cubeTexture);
             }
 

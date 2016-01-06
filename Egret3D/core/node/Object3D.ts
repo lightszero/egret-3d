@@ -3,11 +3,16 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 3d空间中的实体对象
+    * @version Egret 3.0
+    * @platform Web,Native
+    * 3d空间中的实体对象。
+    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
+    * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
+    * 的变换信息要结合父对象的变换信息
     */
     export class Object3D extends EventDispatcher {
         public static renderListChange: boolean = true;
-        static s_id: number = 0;
+        protected static s_id: number = 0;
 
         protected _modeMatrix3D: Matrix4_4 = new Matrix4_4();
 
@@ -17,6 +22,8 @@
         protected _rot: Vector3D = new Vector3D();
         protected _sca: Vector3D = new Vector3D(1, 1, 1);
         protected _orientation = new Quaternion();
+        protected _axis: Vector3D = new Vector3D();
+        protected _angle: number = 0;
 
         protected _globalPos: Vector3D = new Vector3D();
         protected _globalRot: Vector3D = new Vector3D();
@@ -26,8 +33,6 @@
         protected _qut: Quaternion = new Quaternion();
         protected _active: boolean = false;
         protected _mat: Matrix4_4 = new Matrix4_4();
-
-       
 
         /**
         * @language zh_CN
@@ -44,6 +49,7 @@
         /**
         * @language zh_CN
         * 渲染层级
+        * 渲染时分组进行依次渲染
         */
         public layer: number = 0x00000000;
 
@@ -63,7 +69,7 @@
         * @language zh_CN
         * 是否需要视锥体裁剪
         */
-        public isCut: boolean = true;
+        public enableCut: boolean = true;
         
         /**
         * @language zh_CN
@@ -79,26 +85,25 @@
 
         /**
         * @language zh_CN
-        * 动作对象
+        * 动作对象，控制骨骼动画
         */
         public animation: IAnimation = null;
 
-        
         /**
         * @language zh_CN
-        * 几何对象
+        * 网络信息
         */
         public geometry: GeometryBase = null;
 
         /**
         * @language zh_CN
-        * 材质
+        * 材质信息
         */
         public material: MaterialBase = null;
 
         /**
         * @language zh_CN
-        * 碰撞盒子
+        * 对象模型包围盒
         */
         public box: CubeBoxBound = new CubeBoxBound();
 
@@ -110,7 +115,7 @@
 
         /**
         * @language zh_CN
-        * 是否控制
+        * 是否控制，当摄像机被绑定摄像机动画时，这个值为false.
         */
         public isController: boolean = true;
 
@@ -192,10 +197,34 @@
             this._rot.z = value.z;
 
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
+            this._angle = this._orientation.toAxisAngle(this._axis);
+            this.updateTransformChange(true);
+        }
+
+        /**
+        * @language zh_CN
+        * 设置旋转
+        * @writeOnly
+        * @param value 旋转
+        */
+        public set orientation(value: Quaternion) {
+            this._orientation.copyFrom(value);
+            this._orientation.toEulerAngles(this._rot);
+            this._angle = this._orientation.toAxisAngle(this._axis);
 
             this.updateTransformChange(true);
         }
         
+        /**
+        * @language zh_CN
+        * 返回旋转
+        * @readOnly
+        * @returns 旋转
+        */
+        public get orientation(): Quaternion {
+            return this._orientation;
+        }
+
         /**
         * @language zh_CN
         * 返回缩放
@@ -276,6 +305,7 @@
 
             this._rot.x = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                         
         /**
@@ -292,7 +322,7 @@
 
             this._rot.y = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
-
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                         
         /**
@@ -309,7 +339,7 @@
 
             this._rot.z = value;
             this._orientation.fromEulerAngles(this._rot.x, this._rot.y, this._rot.z);
-
+            this._angle = this._orientation.toAxisAngle(this._axis);
         }
                                 
         /**
@@ -340,8 +370,6 @@
                 return;
 
             this._sca.y = value;
-            this._transformChange = true; 
-
         }
                                         
         /**
@@ -357,8 +385,21 @@
                 return;
 
             this._sca.z = value;
-            this._transformChange = true; 
-
+        }
+                                                
+        /**
+        * @language zh_CN
+        * 以axis轴为中心进行旋转
+        * @param axis 中心轴
+        * @param angle 旋转的角度
+        */
+        public setRotationFromAxisAngle(axis: Vector3D, angle: number) {
+            axis.normalize();
+            this.updateTransformChange(true);
+            this._orientation.fromAxisAngle(axis, angle);
+            this._orientation.toEulerAngles(this._rot);
+            this._axis.copyFrom(axis);
+            this._angle = angle;
         }
 
         /**
@@ -454,6 +495,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界渲染矩阵
+        * 如果有父亲节点对象的话，要乘以父对象的变换.
         * @readOnly
         * @returns object 世界渲染矩阵
         */
@@ -889,10 +931,11 @@
         /**
         * @language zh_CN
         * 当前对象数据更新
+        * @param camera 当前渲染的摄相机
         * @param time 当前时间
         * @param delay 每帧时间间隔
         */
-        public update(time: number, delay: number) {
+        public update(camera: Camera3D, time: number, delay: number) {
 
         }
 

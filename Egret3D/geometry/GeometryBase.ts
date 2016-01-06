@@ -90,7 +90,7 @@
         * @language zh_CN
         * shader buffer
         */
-        public sharedVertexBuffer: VertexBuffer3D;
+        public sharedVertexBuffer: IVertexBuffer3D;
         /**
         * @language zh_CN
         * shader index
