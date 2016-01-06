@@ -1,5 +1,8 @@
 ﻿module egret3d {
 
+    /**
+     * @private 
+     */
     // data format describe;
     export enum ESMDataFormat {
         DATA_FORMAT_STATIC_MODEL = 0x00000001,
@@ -15,6 +18,7 @@
         DATA_FORMAT_EXIST_WEIGHTS_DATA = 0x00000400
     }
     /**
+     * @private 
      * @language zh_CN
      * @class egret3d.ESMParser
      * @classdesc
