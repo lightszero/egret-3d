@@ -3,6 +3,8 @@
     /**
     * @class egret3d.CameraAnimationController
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 摄像机动画控制器。
     * 每个摄像机动画绑定一个摄像机，控制摄像机的行为
     * 可以更换绑定的摄像机

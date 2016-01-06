@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.Billborad
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      * 公告板渲染对象 始终面朝摄像机的面板
      */
     export class Billborad extends Object3D{
@@ -19,7 +21,7 @@
             this.material = material;
             this.geometry = new PlaneGeometry(width, height);
         }
-                                
+
         /**
         * @language zh_CN
         * 数据更新

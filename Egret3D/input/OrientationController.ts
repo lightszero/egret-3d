@@ -195,11 +195,11 @@
 
             var zee: Vector3D = new Vector3D(0, 0, 1);
             var q0: Quaternion = new Quaternion();
-            q0.fromAxisAngle(zee, orient );
+            q0.fromAxisAngle(zee, orient / Matrix3DUtils.DEGREES_TO_RADIANS);
             this.q.multiply(this.q, q0);                                      // camera looks out the back of the device, not the top
 
             zee.setTo(-1, 0, 0);
-            q0.fromAxisAngle(zee, 90 * this.degtorad  );
+            q0.fromAxisAngle(zee, 90 * this.degtorad / Matrix3DUtils.DEGREES_TO_RADIANS);
             this.q.multiply(this.q, q0);   
             return this.q ;
         }

@@ -3,10 +3,18 @@
      * @language zh_CN
      * @class egret3d.Matrix4_4
      * @classdesc
-     * Matrix4_4 矩阵类
+     * Matrix4_4 类表示一个转换矩阵，该矩阵确定三维 (3D) 显示对象的位置和方向。
+     * 该矩阵可以执行转换功能，包括平移（沿 x、y 和 z 轴重新定位）、旋转和缩放（调整大小）.
+     * Matrix4_4 类还可以执行透视投影，这会将 3D 坐标空间中的点映射到二维 (2D) 视图.
+     * 单一矩阵可以将多个转换组合在一起，并一次性对 3D 显示对象应用这些转换.
+     * 例如，可以将一个矩阵应用于 3D 坐标，以便依次执行旋转和平移.
      */
     export class Matrix4_4 {
-
+        
+        /**
+        * @language zh_CN
+        * 一个由 16 个数字组成的矢量，其中，每四个元素可以是 4x4 矩阵的一行或一列
+        */
         public rawData: Float32Array;
 
         /**
@@ -195,7 +203,7 @@
         */
         /**
         * @language zh_CN
-        * 矩阵相乘.
+        * 通过将当前 Matrix4_4 对象与另一个 Matrix4_4 对象相乘来前置一个矩阵
         * @param lhs 目标矩阵.
         */
         public append(lhs: Matrix4_4) {
