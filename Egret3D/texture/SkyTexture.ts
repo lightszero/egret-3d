@@ -44,6 +44,7 @@
 
         /**
          * @language zh_CN
+         * 构造函数
          */
          constructor(
             image_front: HTMLImageElement,
