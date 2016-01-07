@@ -5,6 +5,8 @@
     * @class egret3d.Frustum
     * @classdesc
     * 摄像机视椎体,计算出摄像机的可视范围.
+    * 
+    * @see egret3d.camera.Camera3D
     */
     export class Frustum {
         

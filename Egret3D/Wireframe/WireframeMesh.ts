@@ -3,6 +3,9 @@
     /**
      * @class egret3d.WriframeMesh
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
+     *
      * 模型线框网格,以线框形式渲染模型
      */   
     export class WireframeMesh extends WireframeBase {
