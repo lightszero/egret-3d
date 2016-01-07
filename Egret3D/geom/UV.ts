@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.UV
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      * UV 类 
      */
     export class UV {

@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.Rectangle
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      * Rectangle 类 表示矩形
      */
     export class Rectangle {

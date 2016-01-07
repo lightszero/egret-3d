@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.PlaneClassification
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      * 定义 PlaneClassification 常量
      */
     export class PlaneClassification {

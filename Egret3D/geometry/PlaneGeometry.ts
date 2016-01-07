@@ -3,7 +3,15 @@
      * @language zh_CN
      * @class egret3d.PlaneGeometry
      * @classdesc
-     * PlaneGeometry类 
+     * PlaneGeometry类 表示面板几何体
+     *
+     * 示例：
+     * //用 PlaneGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
+     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.PlaneGeometry(), new egret3d.TextureMaterial() );
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/PlaneGeometry.ts
      */
     export class PlaneGeometry extends SubGeometry {
 

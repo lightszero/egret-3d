@@ -6,6 +6,11 @@
     * @version Egret 3.0
     * @platform Web,Native
     * 场景中天空盒子，是6面体cube，以6张无缝结合的贴图构成.
+    *
+    * @see egret3d.texture.Skytexture
+    *
+    * 示例:
+    * @includeExample egret3d/core/node/Sky.ts
     */
     export class Sky {
 
@@ -25,6 +30,8 @@
                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * constructor
         * @param skyTexture 天空盒子贴图
         */
@@ -40,6 +47,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置渲染用的shader文件名字
         * @param vsName vs文件名
         * @param fsName fs文件名
@@ -101,6 +110,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 渲染
         * @param context3D 设备上下文
         * @param camera 渲染时的相机

@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
     /**
+     * @private
      * @class egret3d.StringUtil
      * @classdesc
      * 字符串处理工具类

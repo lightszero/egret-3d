@@ -5,6 +5,10 @@
      * @class egret3d.SkeletonAnimationClip
      * @classdesc
      * 骨骼动画
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimationClip.ts
      */
     export class SkeletonAnimationClip{
         

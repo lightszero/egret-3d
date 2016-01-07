@@ -4,7 +4,14 @@
      * @language zh_CN
      * @class egret3d.SkeletonAnimation
      * @classdesc
-     * 骨骼动画控制器
+     * SkeletonAnimation 类表示骨骼动画控制类
+     * 
+     * 骨骼动画控制类中管理若干个 SkeletonAnimationClip（骨骼动画） 对象，每个SkeletonAnimationClip对象，都是对*.eam 文件的实例。
+     * 
+     * @see egret3d.SkeletonAnimationClip
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimation.ts
      */
     export class SkeletonAnimation extends EventDispatcher implements IAnimation {
 
@@ -89,8 +96,8 @@
         /**
         * @language zh_CN
         * 初始化Shader
-        * @param vertexShader vertexShader
-        * @param pixelShader pixelShader
+        * @param vertexShader 顶点Shader
+        * @param pixelShader 片元Shader
         * @return xxx
         */
         public initShader(vertexShader: VertexShader, pixelShader: PixelShader) {

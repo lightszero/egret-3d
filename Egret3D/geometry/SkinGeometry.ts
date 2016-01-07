@@ -3,7 +3,11 @@
      * @language zh_CN
      * @class egret3d.SkinGeometry
      * @classdesc
-     * SkinGeometry类 
+     * SkinGeometry类 表示带有蒙皮信息的几何图形。
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/SkinGeometry.ts
      */
     export class SkinGeometry extends GeometryBase {
 

@@ -1,4 +1,14 @@
 ﻿module egret3d {
+    /**
+     * @class egret3d.TextureUtil
+     * @private
+     * @classdesc
+     * TextureUtil
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/TextureUtil.ts
+     */
     export class TextureUtil {
         private static context2D: CanvasRenderingContext2D; 
         private static canvas2D: HTMLCanvasElement; 

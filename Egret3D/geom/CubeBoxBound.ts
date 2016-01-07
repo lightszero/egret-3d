@@ -3,7 +3,10 @@
      * @language zh_CN
      * @class egret3d.CubeBoxBound
      * @classdesc
-     * 可使用 CubeBoxBound 类 取得包围盒的数据
+     * @version Egret 3.0
+     * @platform Web,Native
+     * 可使用 CubeBoxBound 类 取得包围盒的数据。
+     * 包含包围盒的各顶点信息，当包围盒要进行世界变换时，应当变换各顶点信息.
      */
     export class CubeBoxBound {
         
@@ -44,7 +47,6 @@
         */
         public heigth: number = 0;
 
-                                
         /**
         * @language zh_CN
         * 盒子长
@@ -68,6 +70,8 @@
         * 盒子包围球半径
         */
         public radius: number = 0;
+
+        private matTransform: Matrix4_4 = new Matrix4_4();
 
         /**
         * @language zh_CN
@@ -163,14 +167,20 @@
                                 
         /**
         * @language zh_CN
-        * 包围盒矩阵变换
+        * 设置变换矩阵
         * @param mat 变换矩阵 
-        * @returns 返回变换后的矩阵
         */
-        public Transform(mat: Matrix4_4): CubeBoxBound {
-            var box: CubeBoxBound = new CubeBoxBound();
-            box.fillBox(mat.transformVector(this.min), mat.transformVector(this.max));
-            return box;
+        public set Transform(mat: Matrix4_4) {
+            this.matTransform.copyFrom(mat);
+        }
+                                        
+        /**
+        * @language zh_CN
+        * 得到变换矩阵
+        * @returns 变换矩阵 
+        */
+        public get Transform(): Matrix4_4 {
+            return this.matTransform;
         }
                                         
         /**
