@@ -1,20 +1,26 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.TerrainMaterial
      * @classdesc
-     * 地形材质
+     * 地形材质。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class TerrainMaterial extends MaterialBase {
         /**
          * @language zh_CN
-         * @param colormap 
-         * @param controlTex 
-         * @param splat_0 
-         * @param splat_1 
-         * @param splat_2 
-         * @param splat_3 
-         * @param lightMap 
+         * 创建一个新的 TerrainMaterial 对象。
+         * @version Egret 3.0
+         * @platform Web,Native
+         * @param colormap {TextureBase}
+         * @param controlTex {TextureBase}
+         * @param splat_0 {TextureBase}
+         * @param splat_1 {TextureBase}
+         * @param splat_2 {TextureBase}
+         * @param splat_3 {TextureBase}
+         * @param lightMap {TextureBase}
          */
         constructor(colormap: TextureBase, controlTex: TextureBase, splat_0: TextureBase, splat_1: TextureBase, splat_2: TextureBase, splat_3: TextureBase,lightMap:TextureBase=null) {
 
@@ -37,9 +43,12 @@
 
         /**
          * @language zh_CN
-         * @param index 
-         * @param x 
-         * @param y 
+         * 设置 UVTitling。
+         * @version Egret 3.0
+         * @platform Web,Native
+         * @param index {Number}
+         * @param x {Number}
+         * @param y {Number}
          */
         public setUVTitling(index: number, x: number, y: number) {
             (<TerrainMethod>this.diffusePass.diffuseMethod).setUVTitling(index, x, y);
