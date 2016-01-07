@@ -49,18 +49,24 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 目标点偏移
         */
         public lookAtOffset: Vector3D = new Vector3D(0, 0, 0);
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否第一人称相机
         */
         public firstCamera: boolean = false;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 控制的目标相机，目标对象
         */
         constructor(targetObject: Object3D = null, lookAtObject: Object3D = null)
@@ -190,6 +196,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回目标的位置
         * @readOnly
         * @returns 目标的位置
@@ -201,6 +209,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置目标坐标
         * @writeOnly
         * @param val 
@@ -217,6 +227,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * @readOnly
         * 返回目标对象
         * @returns 目标对象
@@ -228,6 +240,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * @writeOnly
         * 设置目标对象
         * @param val 目标
@@ -245,6 +259,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置目标和相机的距离
         * @param length 距离
         */
@@ -258,6 +274,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置相机x轴旋转
         * @param x 
         */
@@ -267,6 +285,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置相机y轴旋转
         * @param y 
         */
@@ -276,6 +296,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置相机z轴旋转
         * @param z
         */
@@ -285,6 +307,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 数据更新
         */
         public update() {

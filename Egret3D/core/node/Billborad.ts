@@ -14,6 +14,8 @@
 
         /**
          * @language zh_CN
+         * @version Egret 3.0
+         * @platform Web,Native
          * constructor
          * @param material 渲染材质
          * @param width 
@@ -28,6 +30,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 数据更新
         * @param camera 当前渲染的摄相机
         * @param time 当前时间

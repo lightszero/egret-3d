@@ -21,6 +21,8 @@
                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * constructor
         * @param geometry 模型数据
         * @param material 模型材质
@@ -37,6 +39,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 克隆一个模型
         * @returns 克隆后的模型
         */
@@ -46,6 +50,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 当前对象数据更新
         * @param camera 当前渲染的摄相机
         * @param time 当前时间
