@@ -4,6 +4,8 @@
      * @class egret3d.Channel3d
      * @classdesc
      * Channel3d 类控制应用程序中 在三维空间中播放的声音。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
+     * @version Egret 3.0
+     * @platform Web,Native
      * @includeExample audio/Channel3d.ts
      */
     export class Channel3d extends Channel {
@@ -14,7 +16,9 @@
         private _listener: Vector3D;
         /**
         * @language zh_CN
-        * 返回监听者位置
+        * 返回监听者位置。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Vector3D}
         */
         public get listener() {
@@ -22,7 +26,9 @@
         }
         /**
         * @language zh_CN
-        * 设置监听者位置
+        * 设置监听者位置。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param value {Vector3D}
         */
         public set listener(value: Vector3D) {
@@ -30,7 +36,9 @@
         }
         /**
         * @language zh_CN
-        * constructor
+        * 创建一个新的 Channel3d 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param sound {Sound} Sound 对象 音频的数据源。
         * @param {Object} options
         * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
@@ -58,7 +66,9 @@
 
         /**
         * @language zh_CN
-        * 三维空间中的位置
+        * 三维空间中的位置。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Vector3D}   
         */
         public get position() {
@@ -66,7 +76,9 @@
         }
         /**
         * @language zh_CN
-        * 三维空间中的位置
+        * 三维空间中的位置。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param opsition {Vector3D}   
         */
         public set position(position:Vector3D) {
@@ -87,7 +99,9 @@
 
         /**
         * @language zh_CN
-        * 传播方向
+        * 传播方向。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Vector3D}   
         */ 
 
@@ -96,7 +110,9 @@
         }
         /**
         * @language zh_CN
-        * 传播方向
+        * 传播方向。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param velocity {Vector3D}   
         */
         public set velocity(velocity:Vector3D) {
@@ -110,7 +126,9 @@
         private _maxDistance: number;
         /**
         * @language zh_CN
-        * 最大距离
+        * 最大距离。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Vector3D}   
         */
         public get maxDistance(){
@@ -118,7 +136,9 @@
         }
         /**
         * @language zh_CN
-        * 最大距离
+        * 最大距离。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param max{Number}   
         */
         public set maxDistance(max: number) {
@@ -132,7 +152,9 @@
 
         /**
         * @language zh_CN
-        * 最小距离
+        * 最小距离。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Vector3D}   
         */
         public get minDistance() {
@@ -140,7 +162,9 @@
         }
         /**
         * @language zh_CN
-        * 最小距离
+        * 最小距离。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param min{Number}   
         */
         public set minDistance(min: number) {
@@ -154,7 +178,9 @@
         private _rollOffFactor: number;
         /**
         * @language zh_CN
-        * rollOff 系数
+        * rollOff 系数。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {Number}   
         */
         public get rollOffFactor() {
@@ -162,7 +188,9 @@
         }
         /**
         * @language zh_CN
-        * rollOff 系数
+        * rollOff 系数。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param factor {Number}   
         */
         public set rollOffFactor(factor: number) {

@@ -4,6 +4,8 @@
     * @class egret3d.AudioManager
     * @classdesc
     * AudioManager 类允许您在应用程序中 播放 HTML5 Audio 和 Web Audio。
+    * @version Egret 3.0
+    * @platform Web,Native
     * @includeExample audio/AudioManager.ts
     */
     export class AudioManager{
@@ -11,18 +13,24 @@
         /**
          * @language zh_CN
          * AudioContext 上下文。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public context: any;
 
         /**
         * @language zh_CN
         * 音量，范围从 0（静音）至 1（最大幅度）。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public volume: number = 1;
 
         /**
         * @language zh_CN
         * 创建一个新的 AudioManager 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor() {
             if (this.hasAudioContext()) {
@@ -35,6 +43,8 @@
         /**
         * @language zh_CN
         * 是否支持 HTML5 Audio tag API。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {boolean}   
         */
         public hasAudio():boolean {
@@ -44,6 +54,8 @@
         /**
         * @language zh_CN
         * 是否支持 Web Audio API。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @returns {boolean}   
         */
         public hasAudioContext():boolean {
@@ -56,6 +68,8 @@
         /**
         * @language zh_CN
         * 浏览器是否可以播放这种音频类型。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param url 指向外部音频文件的 URL。
         * @param audio {HTMLAudioElement}  
         * @returns {boolean}   
@@ -95,6 +109,8 @@
         /**
         * @language zh_CN
         * 生成一个新的 Sound 对象 ，将声音数据加载到 Sound 对象中。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param url {String}   指向外部音频文件的 URL。
         * @param success {Function} 一个可选的音频文件加载成功的事件处理函数。
         * @param error {Function} 一个可选的音频文件加载失败的事件处理函数。
@@ -109,6 +125,8 @@
         /**
         * @language zh_CN
         * 生成一个新的 Channel 对象来播放该声音。此方法返回 Channel 对象，访问该对象可停止声音并监控音量。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param sound{sound} 要播放的声音数据。
         * @param options{Object}  
         * @param {Number} [options.volume] 回放音量, 0 到 1。
@@ -126,6 +144,8 @@
         /**
         * @language zh_CN
         * 生成一个新的 Channel3d 对象来播放该声音。此方法返回 Channel3d 对象，访问该对象可停止声音并监控音量。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param sound {Sound}  要播放的声音数据。
         * @param position {Vector3D} 在三维空间中播放的位置。
         * @param {Object} options
@@ -163,6 +183,8 @@
         /**
         * @language zh_CN
         * AudioManager类的单例模式，返回一个 AudioManager 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public static get instance(): AudioManager {
             if (this._instance == null) {

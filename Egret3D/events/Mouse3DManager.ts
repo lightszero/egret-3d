@@ -5,7 +5,9 @@
     * @language zh_CN
     * @class egret3d.Mouse3DManager
     * @classdesc
-    * 鼠标事件管理
+    * 鼠标事件管理。
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Mouse3DManager {
         public static left_mouse_over: string = "left_mouse_over" ;
@@ -33,7 +35,9 @@
 
         /**
         * @language zh_CN
-        * constructor
+        * 创建一个新的 Mouse3DManager 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
         * @param camera {Camera3D}
         * @param collect {CollectBase}
         */
