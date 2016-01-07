@@ -4,6 +4,10 @@
      * @class egret3d.GeometryData
      * @classdesc
      * GeometryData类 表示几何形状数据
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/GeometryData.ts
      */
     export class GeometryData {
 

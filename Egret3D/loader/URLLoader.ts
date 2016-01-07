@@ -230,6 +230,9 @@
 
         /**
          * @language zh_CN
+         * 控制以哪种方式接收加载的数据.
+         * 如果未赋值则通过加载文件的后缀名来判断加载的类型以解析.
+         * 如果未赋值且加载的类型并非为内置支持的文件类型.将以文本格式进行加载
          * @returns string
          */
         public get dataformat(): string {
@@ -238,6 +241,9 @@
 
         /**
          * @language zh_CN
+         * 控制以哪种方式接收加载的数据.
+         * 如果未赋值则通过加载文件的后缀名来判断加载的类型以解析.
+         * 如果未赋值且加载的类型并非为内置支持的文件类型.将以文本格式进行加载
          * @param value 
          */
         public set dataformat(value: string) {

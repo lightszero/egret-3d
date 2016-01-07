@@ -2,8 +2,13 @@
 
      /**
      * @class egret3d.TextureBase
+     * @private
      * @classdesc
-     * 贴图基类
+     * TextureBase 类为 贴图基类。
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/TextureBase.ts
      */
     export class TextureBase {
 

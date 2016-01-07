@@ -1,10 +1,15 @@
 ﻿module egret3d {
 
     /**
+     * @private
      * @language zh_CN
      * @class egret3d.Skeleton
      * @classdesc
-     * 骨架
+     * Skeleton 类表示骨架类，其中包含若干个 Joint（骨骼关节） 对象，Skeleton（骨架类）是组成骨骼动画的单帧单位。
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/skeletonAnimation/Skeleton.ts
      */
     export class Skeleton {
 
