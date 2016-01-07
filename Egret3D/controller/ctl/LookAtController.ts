@@ -10,6 +10,9 @@
     * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转.
     * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动.
     * 3.滑动鼠标滚轮可以控制摄像机的视距.
+    *
+    * 示例:
+    * @includeExample egret3d/controller/ctl/LookAtController.ts
     */
     export class LookAtController extends ControllerBase{
 

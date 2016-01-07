@@ -6,6 +6,11 @@
     * @version Egret 3.0
     * @platform Web,Native
     * 场景中天空盒子，是6面体cube，以6张无缝结合的贴图构成.
+    *
+    * @see egret3d.texture.Skytexture
+    *
+    * 示例:
+    * @includeExample egret3d/core/node/Sky.ts
     */
     export class Sky {
 

@@ -9,10 +9,12 @@
     * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
     * 的变换信息要结合父对象的变换信息
+    * 每个Object3D对象在生成时会创建一个包围盒
     * 
     * @see egret3d.geom.Vector3D
     * @see egret3d.geom.Matrix4_4
     * @see egret3d.geom.Quaternion
+    * @see egret3d.geom.CubeBoxBound
     */
     export class Object3D extends EventDispatcher {
         public static renderListChange: boolean = true;

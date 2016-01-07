@@ -13,6 +13,8 @@
     * @see egret3d.core.node.Entity
     * @see egret3d.core.traverse.Frustum
     * @see egret3d.geom.Matrix4_4
+    * 
+    * @includeExample egret3d/camera/Camera3D.ts
     */
     export class Camera3D extends Entity{
 

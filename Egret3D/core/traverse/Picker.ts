@@ -3,7 +3,14 @@
     /**
     * @class egret3d.Picker
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 射线对场景中的实体对像进行检测
+    *
+    * @see egret3d.geom.Ray
+    *
+    * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
+    * @includeExample egret3d/core/traverse/Picker.ts
     */
     export class Picker {
         protected static ray: Ray = new Ray();

@@ -3,6 +3,8 @@
     /**
     * @class egret3d.SphereSky
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 天空球
     */
     export class SphereSky {

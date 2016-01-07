@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.Orientation3D
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      *  定义 Orientation3D 常量
      */
     export class Orientation3D {

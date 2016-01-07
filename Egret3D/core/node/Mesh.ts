@@ -6,6 +6,16 @@
     * @version Egret 3.0
     * @platform Web,Native
     * 3d模型网格 生成渲染模型
+    * 创建一个Mesh网格数据和材质数据是必需的，如果是动态模型就加上动画数据
+    * 继承Object3D对象，场景中实体渲染对象
+    *
+    * @see egret3d.core.node.Object3D
+    * @see egret3d.geometry.GeometryBase
+    * @see egret3d.material.MaterialBase
+    * @see egret3d.animation.IAnimation
+    *
+    * 示例:
+    * @includeExample egret3d/core/node/Mesh.ts
     */
     export class Mesh extends Object3D {
                 

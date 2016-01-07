@@ -3,6 +3,8 @@
      * @language zh_CN
      * @class egret3d.Ray
      * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
      * Ray 类 用于检测射线
      */
     export class Ray {

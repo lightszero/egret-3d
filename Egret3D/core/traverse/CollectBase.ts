@@ -4,6 +4,8 @@
     * @private
     * @class egret3d.CollectBase
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * Object3D 渲染对象收集器基类
     */
     export class CollectBase {
