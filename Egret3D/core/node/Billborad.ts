@@ -20,6 +20,7 @@
             super();
             this.material = material;
             this.geometry = new PlaneGeometry(width, height);
+            this.box.fillBox(this.geometry.minPos, this.geometry.maxPos);
         }
 
         /**

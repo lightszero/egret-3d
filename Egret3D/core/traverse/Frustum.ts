@@ -217,6 +217,7 @@
                 var incount: number = box.vexData.length / 3;
                 for (var j: number = 0; j < box.vexData.length; j += 3) {
                     temp.setTo(box.vexData[j], box.vexData[j + 1], box.vexData[j + 2]);
+                    temp.copyFrom(box.Transform.transformVector(temp));
                     dis = this._plane[i].distance(temp);
                     if (dis > 0) {
                         incount--;

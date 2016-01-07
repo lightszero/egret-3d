@@ -9,6 +9,10 @@
     * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
     * 的变换信息要结合父对象的变换信息
+    * 
+    * @see egret3d.geom.Vector3D
+    * @see egret3d.geom.Matrix4_4
+    * @see egret3d.geom.Quaternion
     */
     export class Object3D extends EventDispatcher {
         public static renderListChange: boolean = true;
@@ -131,8 +135,6 @@
         */
         public isDisable: boolean = false;
 
-        private _worldBox: CubeBoxBound = new CubeBoxBound();
-        
         /**
         * @language zh_CN
         * 鼠标拣选类型
@@ -530,6 +532,7 @@
             }
             //this._modeMatrix3D.recompose([this._globalPos, this._globalRot, this._globalSca]);
             this._modeMatrix3D.makeTransform(this._globalPos, this._globalSca, this._globalOrientation);
+            this.box.Transform = this._modeMatrix3D;
             this.onUpdateTransform();
         }
 
@@ -588,32 +591,6 @@
             return this._globalOrientation;
         }
         
-        /**
-        * @language zh_CN
-        * 返回 object 世界变换后的碰撞盒子
-        * @readOnly
-        * @returns object 世界变换后的碰撞盒子
-        */
-        public get worldBox(): CubeBoxBound {
-
-            if (this._transformChange) {
-
-                var mat: Matrix4_4 = new Matrix4_4();
-                mat.identity();
-                mat.rawData[12] = this.modelMatrix.rawData[12];
-                mat.rawData[13] = this.modelMatrix.rawData[13];
-                mat.rawData[14] = this.modelMatrix.rawData[14];
-
-                mat.rawData[0] = this._globalSca.x;
-                mat.rawData[5] = this._globalSca.y;
-                mat.rawData[10] = this._globalSca.z;
-
-                this._worldBox.copyFrom(this.box.Transform(mat));
-            }
-
-            return this._worldBox;
-        }
-
         /**
         * Moves the 3d object forwards along it's local z axis
         *

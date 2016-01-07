@@ -9,6 +9,10 @@
     * 相机数据处理，生成3D摄相机。
     * 渲染场景从摄像机视点到缓冲区
     * 相机分为透视摄像机、正交摄像机、VR摄像机
+    *
+    * @see egret3d.core.node.Entity
+    * @see egret3d.core.traverse.Frustum
+    * @see egret3d.geom.Matrix4_4
     */
     export class Camera3D extends Entity{
 
@@ -488,8 +492,7 @@
          * @returns 成功返回true
          */
         public isVisibleToCamera(object: Object3D): boolean {
-            var box: CubeBoxBound = object.worldBox;
-            if (this.frustum.inSphere(box.center, box.radius)) {
+            if (this.frustum.inBox(object.box)) {
                 return true;
             }
             return false;
