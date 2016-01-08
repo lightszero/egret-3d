@@ -23,8 +23,8 @@
 
         /**
          * @language zh_CN
-         * @readOnly
          * 贴图数据
+         * @readOnly
          */
         public imageData: HTMLImageElement;
 

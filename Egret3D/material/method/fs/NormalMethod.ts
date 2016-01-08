@@ -40,6 +40,8 @@
         /**
          * @language zh_CN
          * 更新 NormalMethod。
+         * @version Egret 3.0
+         * @platform Web,Native
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

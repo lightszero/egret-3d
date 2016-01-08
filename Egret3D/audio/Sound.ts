@@ -4,7 +4,6 @@
      * @class egret3d.Sound
      * @classdesc
      * Sound 类允许您在应用程序中使用声音。使用 Sound 类可以创建 Sound 对象、将外部 MP3 文件加载到该对象并播放该文件、关闭声音流，以及访问有关声音的数据，如有关流中字节数和 ID3 元数据的信息。可通过以下项对声音执行更精细的控制：声音源（声音的 Channel 和 Channel3d）用于控制向计算机扬声器输出声音的属性。  
-     * @includeExample audio/Sound.ts
      * @version Egret 3.0
      * @platform Web,Native  
      */

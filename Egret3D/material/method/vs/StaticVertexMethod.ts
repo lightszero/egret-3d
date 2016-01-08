@@ -25,7 +25,7 @@
 
         /**
          * @language zh_CN
-         * 激活 StaticVertexMethod。
+         * 激活 静态顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -78,7 +78,7 @@
         private normalMatrix: Matrix4_4 = new Matrix4_4();
         /**
          * @language zh_CN
-         * 更新 StaticVertexMethod。
+         * 更新 静态顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

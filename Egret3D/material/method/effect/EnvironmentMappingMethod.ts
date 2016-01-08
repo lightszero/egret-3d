@@ -52,8 +52,8 @@
          * 设置材质信息。
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
-         * @version Egret 3.0
-         * @platform Web,Native
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData) {
             this.usage = usage;

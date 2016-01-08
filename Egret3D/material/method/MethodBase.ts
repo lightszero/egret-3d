@@ -84,15 +84,15 @@
 
         /**
          * @language zh_CN
-         * 激活 方法。
+         * 激活。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
-         * @version Egret 3.0
-         * @platform Web,Native
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D ,geometry:GeometryBase , animation:IAnimation ) {
             //change constData
@@ -101,22 +101,22 @@
 
         /**
          * @language zh_CN
-         * 更新 方法。
+         * 更新。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
-         * @version Egret 3.0
-         * @platform Web,Native
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase , animation: IAnimation ) {
 
         }
         /**
          * @language zh_CN
-         * 销毁方法。
+         * 销毁。
          * @version Egret 3.0
          * @platform Web,Native
          */

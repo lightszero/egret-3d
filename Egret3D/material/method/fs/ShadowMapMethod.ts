@@ -23,7 +23,7 @@
 
         /**
          * @language zh_CN
-         * 激活 ShadowMapMethod。
+         * 激活 阴影采样。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -39,7 +39,7 @@
 
         /**
          * @language zh_CN
-         * 更新 ShadowMapMethod。
+         * 更新 阴影采样。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

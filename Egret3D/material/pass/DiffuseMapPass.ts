@@ -4,7 +4,7 @@
      * @language zh_CN
      * @class egret3d.DiffuseMapPass
      * @classdesc
-     * 漫反射贴图通道渲染器。TerrainMapPass 的基类
+     * 漫反射贴图通道渲染器，TerrainMapPass 的基类
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -100,8 +100,8 @@
          * @param context3D {Context3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
-         * @version Egret 3.0
-         * @platform Web,Native
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public initShader(context3D: Context3D, geometry: GeometryBase, animation: IAnimation) {
             super.initShader(context3D, geometry, animation);
@@ -110,6 +110,7 @@
             this.pixelShader = new PixelShader(this.materialData, this.materialData.diffusePassUsageData);
 
             this.materialData.context3D = context3D;
+            
           
             this.vertexShader.setVertexShader(geometry);
             this.initUseMethod();
@@ -122,7 +123,7 @@
             this.pixelShader.build();
 
             var vs: string = this.vertexShader.getShaderSource();
-            var fs: string = this.pixelShader.getShaderSource( ) ;
+            var fs: string = this.pixelShader.getShaderSource() ;
 
             var vs_shader: IShader = context3D.creatVertexShader(vs);
             var fs_shader: IShader = context3D.creatFragmentShader(fs);
@@ -158,7 +159,7 @@
         }   
         /**
          * @language zh_CNa
-         * 激活DiffuseMapPass。
+         * 激活 漫反射贴图通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
@@ -219,13 +220,13 @@
         /**
          * @language zh_CNa
          * 绘制。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public draw(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
 
