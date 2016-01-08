@@ -5,6 +5,8 @@
     * @class egret3d.PickResult
     * @classdesc
     * 鼠标拾取返回数据。
+    * 鼠标拾取模型上的交点 (本地坐标、世界坐标)
+    * 鼠标拾取模型的uv
     * @version Egret 3.0
     * @platform Web,Native
     */
