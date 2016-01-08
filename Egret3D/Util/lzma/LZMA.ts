@@ -4,6 +4,7 @@ module nid
     "use strict"
     /**
      * LZMA Decoder
+     * @private 
      * @author Nidin Vinayakan | nidinthb@gmail.com
      */
 

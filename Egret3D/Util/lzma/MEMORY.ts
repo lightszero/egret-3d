@@ -1,5 +1,8 @@
 module nid
 {
+    /**
+     * @private 
+     */
     export class MEMORY
     {
         static u8Index:number=0;

@@ -3,6 +3,7 @@ module nid
 {
     /**
      * LZMA Decoder
+     * @private 
      * @author Nidin Vinayakan | nidinthb@gmail.com
      */
     export class BitTreeDecoder

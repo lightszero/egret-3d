@@ -2,6 +2,9 @@
 module nid{
     "use strict"
 
+    /**
+     * @private 
+     */
     export class LZMAWorker
     {
         static ENCODE:number = 1;

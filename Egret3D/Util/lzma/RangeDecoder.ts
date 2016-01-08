@@ -8,6 +8,7 @@ module nid
      */
     //import MEMORY = nid.MEMORY;
 
+
     export class RangeDecoder
     {
         static kTopValue:number = (1 << 24);
