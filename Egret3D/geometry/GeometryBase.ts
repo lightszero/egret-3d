@@ -1,6 +1,66 @@
 ﻿module egret3d {
+    /**
+     * @language zh_CN
+     * @class egret3d.GeometryBase
+     * @classdesc
+     * 网络类型
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     export enum GeometryType {
-        Static, Skin, Particle, Billbord, VertexAnim, Grass, Ribbon, wrieFrame ,
+        
+        /**
+        * @language zh_CN
+        * 静态模型类型
+        */
+        Static,
+        
+        /**
+        * @language zh_CN
+        * 骨骼动画模型类型
+        */
+        Skin,
+        
+        /**
+        * @language zh_CN
+        * 粒子类型
+        */
+        Particle,
+        
+        /**
+        * @language zh_CN
+        * 公告板类型
+        */
+        Billbord,
+        
+        /**
+        * @language zh_CN
+        * 顶点动画类型
+        */
+        VertexAnim,
+
+        /**
+        * @language zh_CN
+        * 草地类型
+        */
+        Grass,
+
+        /**
+        * @language zh_CN
+        * 带形状类型
+        */
+        Ribbon,
+        
+        /**
+        * @language zh_CN
+        * 线框类型
+        */
+        wrieFrame,
+        
+        /**
+        * @language zh_CN
+        * 影引类型
+        */
         Shadow
     }
     /**
