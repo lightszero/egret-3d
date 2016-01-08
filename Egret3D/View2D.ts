@@ -1,6 +1,7 @@
 ﻿module egret3d {
     /**
      * @class egret3d.View2D
+     * @private
      * @classdesc
      */   
     export class View2D extends Object3D{

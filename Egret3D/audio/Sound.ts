@@ -28,7 +28,7 @@
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public get buffer(): AudioBuffer {
+        public get buffer(): any {
             return this._buffer;
         }
 

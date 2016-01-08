@@ -14,7 +14,7 @@
 
         /**
         * @language zh_CN
-        * constructor
+        * 构造函数
         * @param targetObject 控制的目标
         */
         constructor(targetObject: Object3D = null) {
