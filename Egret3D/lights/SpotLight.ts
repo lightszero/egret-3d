@@ -3,7 +3,7 @@
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * @public 
+    *   
     * spot 的灯光 也就是筒灯
     * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
     * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
@@ -38,7 +38,7 @@
                                 
         /**
          * @language en_US
-         * @public 
+         *   
          * spot 的 裁切范围
          * spot light 照射范围的大小指数
          * @writeOnly
@@ -51,7 +51,7 @@
         /**
          * @language en_US
          * @readOnly        
-         * @public 
+         *   
          * spot 的 裁切范围
          * spot light 照射范围的大小指数
          * @returns Cutoff -spot 的 裁切范围
@@ -62,7 +62,7 @@
                         
         /**
          * @language en_US
-         * @public 
+         *   
          * spot 的 灯光强弱
          * spot light 灯光圆形范围内随半径大小改变发生的灯光强弱指数
          * @writeOnly
@@ -74,7 +74,7 @@
                 
         /**
          * @language en_US
-         * @public 
+         *   
          * @readOnly  
          * spot 的 灯光强弱
          * spot light 灯光圆形范围内随半径大小改变发生的灯光强弱指数
@@ -86,7 +86,7 @@
                                 
         /**
          * @language en_US
-         * @public 
+         *   
          * @writeOnly  
          * spot 的 灯光衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光衰减常数指数
@@ -98,7 +98,7 @@
                 
         /**
          * @language en_US
-         * @public 
+         *   
          * @readOnly        
          * spot 的 灯光衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光衰减常数指数
@@ -110,7 +110,7 @@
 
         /**
          * @language en_US
-         * @public 
+         *   
          * @writeOnly
          * spot 的 灯光线性衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光线性衰减

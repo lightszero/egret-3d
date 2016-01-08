@@ -88,14 +88,14 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 二维纹理中的 像素宽度
         */
         public width: number = 0;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 二维纹理中的 像素高度
         */
         public height: number = 0;

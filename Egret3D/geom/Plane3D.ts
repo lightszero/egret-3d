@@ -47,11 +47,26 @@
 	     * 平面中的d分量
 	     */
         public d: number;
-
+        
         // indicates the alignment of the plane
+        /**
+         * @private
+	     */
         public static ALIGN_ANY: number = 0;
+
+        /**
+         * @private
+	     */
         public static ALIGN_XY_AXIS: number = 1;
+        
+        /**
+         * @private
+	     */
         public static ALIGN_YZ_AXIS: number = 2;
+        
+        /**
+         * @private
+	     */
         public static ALIGN_XZ_AXIS: number = 3;
 
         /**

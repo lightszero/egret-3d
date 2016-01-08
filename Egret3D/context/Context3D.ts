@@ -43,7 +43,6 @@
 
         /**
         * @language zh_CN
-        * @public
         * 设置渲染缓冲区的视口尺寸和其他属性
         *
         * 缓冲区的最大大小受到设备能力的限制，也可以由用户通过 viewPort 进行设置。配置缓冲区是一个缓慢的操作。在正常渲染操作期间，请避免更改缓冲区大小或属性。
@@ -56,7 +55,6 @@
 
         /**
         * @language zh_CN
-        * @public
         * 创建 Program3D 对象。
         *
         * 每一个渲染对象都需要这样一个显卡着色程序
@@ -67,7 +65,6 @@
 
         /**
         * @language zh_CN
-        * @public
         * 创建 顶点索引流
         *
         * 使用 IndexBuffer3D 对象将一组三角形索引上载到渲染上下文，并在渲染时引用这组索引。索引缓冲区中的每个索引引用顶点缓冲区中一个相对应的顶点。由 3 个索引组成的每一组索引标识一个三角形。将 IndexBuffer3D 对象传递给 drawTriangles() 方法以渲染索引缓冲区中定义的一个或多个三角形。
@@ -77,7 +74,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建 VertexBuffer3D 对象。
         *
         * 每一个顶点的数据结构也会不同，可以使用   context3D.vertexAttribPointer（） 的方式来指定顶点的数据结构
@@ -88,7 +85,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建 GPU级别的显示贴图
         *
         * 创建 GPU级别的显示贴图辅助对象，不能直接使用 new Texture2D() 的方式来创建贴图显示对象
@@ -97,7 +94,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 上传贴图信息给GPU到 显存
         *
         * 在显卡渲染中，不同的深度会进行优化显示，显示不同的贴图LOD级别，可以通过 upLoadTextureData（） 上传需要显示的层级关系
@@ -108,7 +105,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 上传压缩格式贴图信息给GPU 显存
         * 
         * 贴图格式分压缩后，和未压缩，压缩后的贴图体积更小，加载快，但是上传GPU时，需要解压过程，耗费一定的时间，这个时间是根据贴图像素大小而定
@@ -119,7 +116,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 设置贴图采样的状态
         *
         * 在上传贴图的时候就可以设计贴图采样方式，也可后修改贴图采样
@@ -133,7 +130,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建 Cube贴图
         *
         * 主要用于天空材质贴图，环境贴图
@@ -142,7 +139,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 上传cube贴图
         * 
         * 此处需要提醒开发者，cube贴图的大小会直接影响显示性能
@@ -152,7 +149,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建 离屏渲染缓冲 framebuffer 
         *
         * 此处需要提醒开发者，faramebufer 的大小，及是否使用深度检测会直接影响显卡能力，像素越多，填充的速度就会越小
@@ -165,7 +162,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 渲染到纹理
         * 
         * 将当前屏幕内容渲染到指定的纹理，通常这个功能用于离屏渲染，延迟渲染，等使用
@@ -177,7 +174,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 从离屏渲染状态恢复到即时渲染状态
         *
         * 在使用 setRenderToTexture（） 之后，主渲染缓冲会停止渲染，会切换到setRenderToTexture所使用的渲染缓冲进行渲染
@@ -187,7 +184,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建图形渲染 顶点着色器程序
         *
         * 顶点着色器程序用来处理渲染目标的显示矩阵，和顶点流数据变换，并与提供片段着色器需要的数据
@@ -197,7 +194,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 创建片段着色器
         * 
         * 片段着色器程序用来处理渲染目标的渲染显示效果，texture color transform 等等
@@ -207,7 +204,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 清除渲染区域的颜色
         *
         * context 渲染上下文 清除 渲染窗口内的颜色 rgba 四个通道 一般清除会接连调用清除深度clearDepth（）
@@ -220,7 +217,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 清除渲染区域 深度
         * @param depth 深度值 
         */
@@ -228,7 +225,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 清除渲染区域 模板缓冲
         *
         * 如果在渲染场景的时候设置过深度模板缓冲 那么下一次渲染场景在没有任何视图变化的时候可以直接使用模板缓冲
@@ -238,7 +235,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 使用显卡着色器
         *
         * 设置当前渲染目标要使用的编译后的着色程序，是通过 createProgram() 创建的program 再编译 vsshader 和 fsshader 后的程序
@@ -248,7 +245,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 获取一致变量的 显卡内存ID
         *
         * 从编译后的着色器程序获取一致变量引用ID，用来指定 要上传数据的 编译后的着色器程序 的变量名
@@ -259,7 +256,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个float 变量的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -270,7 +267,7 @@
                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个float数组 的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -281,7 +278,7 @@
                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个int 的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -292,7 +289,7 @@
                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个int数组 的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -303,7 +300,7 @@
                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个int数组 的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -315,7 +312,7 @@
                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个point数组 的值
         *
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -326,7 +323,7 @@
                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为 [0,0] 的值
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -338,7 +335,7 @@
                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个 Int32Array 的值 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -349,7 +346,7 @@
                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 三个 float 的值 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -362,7 +359,7 @@
                                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为[0.0,0.0,0.0] float 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -373,7 +370,7 @@
                                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为[0,0,0] int 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -386,7 +383,7 @@
                                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为 Int32Array 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -397,7 +394,7 @@
                                                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 四个 float 数值
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -411,7 +408,7 @@
                                                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为 [0.0,0.0,0.0,0.0] 的float 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -422,7 +419,7 @@
                                                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为 [0.0,0.0,0.0,0.0] 的float 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -436,7 +433,7 @@
                                                                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个结构为 [0.0,0.0,0.0,0.0] 的float 数组 
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -447,7 +444,7 @@
                                                                                                 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个2*2的浮点矩阵
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -459,7 +456,7 @@
                                                                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个3*3的浮点矩阵
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -471,7 +468,7 @@
                                                                                                         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 给编译后的着色器程序传 一个4*4的浮点矩阵
         * 
         * 上传显卡中的常量数据，进行单向数据传输，从 cpu内存 传输到GPU编译后的着色器中
@@ -484,7 +481,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 指定用于使用现有颜色混合绘制操作的输出颜色的系数。
         * 像素着色器程序的输出（源）颜色根据以下公式与该像素的现有（目标）颜色组合：
         * result color = (source color * sourceFactor) + (destination color * destinationFactor)
@@ -498,7 +495,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 设置三角形剔除模式。
         * 可基于其相对于视图平面的方向，提前在呈现管道流程中从场景中排除三角形。如模型外部所示，一致地指定顶点顺序（顺时针或逆时针）以正确剔除。
         * @param mode 剔除模式。使用 Egret3DDrive 类中定义的常量之一。 默认 Egret3DDrive.BACK 。
@@ -507,7 +504,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 开启当前着色器的能力
         * 一般需要开启深度测试，混合模式，剔除模式
         * Egret3DDrive.DEPTH_TEST 
@@ -519,7 +516,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 关闭 绘制模式
         * 一般需要开启深度测试，混合模式，剔除模式
         *
@@ -532,7 +529,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 设置用于深度测试的比较类型。
         *
         * 像素着色器程序的源像素输出的深度将与深度缓冲区中的当前值进行比较。如果比较计算结果为 false，则丢弃源像素。如果为 true，则呈现管道中的下一步“印模测试”将处理源像素。此外，只要 depthMask 参数设置为 true，就会使用源像素的深度更新深度缓冲区。
@@ -545,7 +542,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 获取顶点着色器变量 索引
         * @param programe 编译后的着色器程序
         * @param attribName 要指定的顶点结构在shader中的名字
@@ -554,7 +551,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 指定与单个着色器程序输入相对应的顶点数据组件。
         * 使用 setVertexBufferAt 方法来标识 VertexBuffer3D 缓冲区中每个顶点定义的哪些数据组件属于顶点程序的哪些输入。顶点程序的开发人员会确定每个顶点需要的数据量。该数据从 1 个或多个 VertexBuffer3D 流映射到顶点着色器程序的属性寄存器中。
         * 顶点着色器所使用数据的最小单位为 32 位数据。距顶点流的偏移量以 32 位的倍数指定。
@@ -579,7 +576,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 实时传入显卡顶点着色器变量数组数据
         * 设置 个可通过顶点或片段程序访问的常量数据。
         *
@@ -592,7 +589,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 实时传入显卡片段着色器变量数组数据
         * @param floats arrayBuffer 型数据
         * @param offest 偏移量
@@ -602,7 +599,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 指定要为片段程序的纹理输入寄存器使用的纹理。
         * 一个片段程序最多可以从 8 个纹理对象读取信息。使用此函数将 Texture 或 CubeTexture 对象分配给片段程序使用的取样器寄存器之一。
         * 注意：如果将活动的片段程序（使用 setProgram）更改为使用较少纹理的着色器，请将未使用的寄存器设置为 null：
@@ -619,7 +616,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 指定要为片段程序的纹理输入寄存器使用的纹理。
         * 一个片段程序最多可以从 8 个纹理对象读取信息。使用此函数将 Texture 或 CubeTexture 对象分配给片段程序使用的取样器寄存器之一。
         * 注意：如果将活动的片段程序（使用 setProgram）更改为使用较少纹理的着色器，请将未使用的寄存器设置为 null：
@@ -664,7 +661,7 @@
         
         /**
         * @language zh_CN
-        * @public
+        *  
         * 绑定顶点buffer
         * 
         * 在当前的着色器下使用一个 geomtery 模型顶点数据buffer
@@ -685,7 +682,7 @@
 
         /**
         * @language zh_CN
-        * @public 
+        *   
         * 绘制模型元素
         * 绘制前，一定要设置好 indexBuffer 和 vertexBuffer，并且单个顶点的数目不能超过 65535 的限制，超出模型渲染就出现拉丝的情况
         * @param type-图元类型
@@ -697,7 +694,7 @@
 
         /**
         * @language zh_CN
-        * @public 
+        *   
         * 绘制提交
         * 所有的draw完成之后会将后台缓冲的画面渲染到主屏幕上
         * 调用 flush() 方法会让从上一次 flush() 调用起的所有渲染操作结果可见，并开始新的渲染周期。调用 flush 之后，必须在调用另一个 drawElement() 之前调用 clear()。否则，此函数会将渲染缓冲区清除为黄色和绿色 。
@@ -707,7 +704,7 @@
     }
 
     /**
-    * @inheritDoc
+    *  
     * @class egret3d.Context3DChild_OpenGLES_2_0
     * @classdesc
     * Context3DChild_OpenGLES_2_0  implements egret3d.Context3D
@@ -719,7 +716,7 @@
         public gl: WebGLRenderingContext;
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * constructor
         * @param context3D
@@ -746,7 +743,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 版本号
         * @readOnly
@@ -762,7 +759,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 版本号
         * 视口设置定义
@@ -776,7 +773,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 显卡程序
         * @param vsShader
@@ -797,7 +794,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 顶点索引流
         * @param indexData
@@ -813,7 +810,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 顶点数据流
         * @param vertexData
@@ -844,7 +841,7 @@
         /// }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置2D纹理状态
         * @param min_filter
@@ -860,7 +857,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 提交2D纹理
         * @param mipLevel
@@ -891,7 +888,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 提交2D压缩纹理
         * @param mipLevel
@@ -903,7 +900,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 2维贴图
         */
@@ -913,7 +910,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 Cube贴图
         */
@@ -922,7 +919,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param tex
@@ -956,7 +953,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param width
@@ -1017,7 +1014,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param texture
@@ -1044,7 +1041,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         */
@@ -1057,7 +1054,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param source
@@ -1073,7 +1070,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param source
@@ -1089,7 +1086,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的颜色 深度
         * @param r
@@ -1104,7 +1101,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的 深度
         * @param depth
@@ -1116,7 +1113,7 @@
 
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的 模板
         * @param stencil
@@ -1126,7 +1123,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 使用显卡着色器
         * @param program
@@ -1136,7 +1133,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 获取矩阵变量ID
         * @param program
@@ -1148,7 +1145,7 @@
 
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1159,7 +1156,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1170,7 +1167,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1181,7 +1178,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1192,7 +1189,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1204,7 +1201,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1215,7 +1212,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1227,7 +1224,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1238,7 +1235,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1251,7 +1248,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1262,7 +1259,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1275,7 +1272,7 @@
         }
                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1286,7 +1283,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1300,7 +1297,7 @@
         }
                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1311,7 +1308,7 @@
         }
                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1325,7 +1322,7 @@
         }
                                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1336,7 +1333,7 @@
         }
                                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1348,7 +1345,7 @@
         }
                                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1360,7 +1357,7 @@
         }
                                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1372,7 +1369,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置 绘制混合模式
         * @param src 
@@ -1383,7 +1380,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置 绘制剔除模式
         * @param mode 
@@ -1393,7 +1390,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 开启 绘制模式
         * @param cap 
@@ -1403,7 +1400,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 关闭 绘制模式
         * @param cap 
@@ -1413,7 +1410,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 开启 深度模式 及 深度测试比较模式
         * @param flag 
@@ -1425,7 +1422,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 获取顶点着色器变量 索引
         * @param programe 
@@ -1437,7 +1434,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 指定顶点着色器变量索引 及机构
         * @param programe3D 
@@ -1454,7 +1451,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 实时传入显卡顶点着色器变量数组数据
         * @param floats 
@@ -1466,7 +1463,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 实时传入显卡片段着色器变量数组数据
         * @param floats 
@@ -1477,7 +1474,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置贴图采样 第一个参数并不是类型
         * @param samplerIndex 
@@ -1492,7 +1489,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置贴图采样 第一个参数并不是类型
         * @param samplerIndex 
@@ -1507,7 +1504,7 @@
         } 
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置矩形裁切区域
         * @param rectangle 
@@ -1516,7 +1513,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置模板测试
         */
@@ -1524,7 +1521,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置模板测试
         */
@@ -1532,7 +1529,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绑定顶点Buffer
         * @param vertexBuffer 
@@ -1542,7 +1539,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制模型元素
         * @param type 图元类型
@@ -1554,7 +1551,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制模型元素
         * @param type 图元类型
@@ -1568,7 +1565,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制提交
         */

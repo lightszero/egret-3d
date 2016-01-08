@@ -3,7 +3,8 @@
     /**
      * @class egret3d.WireframeBase
      * @classdesc
-     * 线框渲染基类 
+     * 线框渲染基类，可以控制顶点的颜色，顶点的大小
+     * 可控制线的颜色，可选择是否渲染点或者渲染线
      * @version Egret 3.0
      * @platform Web,Native
      */   

@@ -15,9 +15,10 @@
                 
         /**
         * @language zh_CN
-        * constructor
-        * @param name
-        * @param valueType
+        * 构造
+        * @param name 常量名
+        * @param valueType 常量类型
+        * @param value 常量的值
         */
         constructor(name: string, valueType: string, value: string) {
             super();

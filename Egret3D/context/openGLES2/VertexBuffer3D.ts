@@ -15,7 +15,7 @@
     export class VertexBuffer3D implements egret3d.IVertexBuffer3D {
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * @private  
         * WebGLBuffer的引用
