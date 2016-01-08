@@ -15,8 +15,8 @@
 
         /**
          * @language zh_CN
-         * @private
          * 获取纹理数据
+         * @private
          * @param image 
          * @returns HTMLCanvasElement 
          */
