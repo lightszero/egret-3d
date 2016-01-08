@@ -1,8 +1,8 @@
 ﻿module egret3d {
 
-    //dds / st3c compressed texture formats
     /**
      * @private 
+     * dds / st3c compressed texture formats
      */
     export enum DDSFormat { RGB_S3TC_DXT1_FORMAT = 2001, RGBA_S3TC_DXT1_FORMAT = 2002, RGBA_S3TC_DXT3_FORMAT = 2003, RGBA_S3TC_DXT5_FORMAT = 2003};
     /**
