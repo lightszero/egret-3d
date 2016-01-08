@@ -92,6 +92,7 @@
 ///import Egret3D/material/method/effect/AOMapMethod.js
 ///import Egret3D/material/method/effect/LightMapMethod.js
 ///import Egret3D/material/method/effect/EnvironmentMappingMethod.js
+///import Egret3D/material/method/effect/SpecularEnvironmentMappingMethod.js
 ///import Egret3D/material/method/effect/DistanceFog.js
 
 ///import Egret3D/material/pass/MaterialPassBase.js
