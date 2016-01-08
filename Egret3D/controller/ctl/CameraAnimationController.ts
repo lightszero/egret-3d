@@ -131,6 +131,7 @@
     }
     
     /**
+    * @private
     * @class egret3d.CameraAnimationFrame
     * @classdesc
     * 摄像机动画每帧数据

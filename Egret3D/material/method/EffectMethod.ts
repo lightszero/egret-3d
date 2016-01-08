@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+    * @private
      * @language zh_CN
      * @class egret3d.EffectMethod
      * @classdesc

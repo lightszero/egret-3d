@@ -1,7 +1,7 @@
 ﻿module egret3d {
 
      /**
-     * @language zh_CN
+    * @private
      * @class egret3d.NormalMethod
      * @classdesc
      * 法线方法。

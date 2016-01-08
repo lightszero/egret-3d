@@ -29,6 +29,7 @@
         /**
         * @language zh_CN
         * 设置反射值。
+        * @private
         * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -40,6 +41,7 @@
         /**
         * @language zh_CN
         * 获取反射值。
+        * @private
         * @returns {Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -51,6 +53,7 @@
         /**
          * @language zh_CN
          * 设置材质信息。
+        * @private
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
         * @version Egret 3.0
@@ -68,7 +71,8 @@
 
         /**
          * @language zh_CN
-         * 设置灯光贴图。
+         * 设置贴图。
+         *  设置环境光照的贴图，必须为cube纹理贴图
          * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -123,6 +127,7 @@
          * @private
          * @language zh_CN
          * 销毁
+         * 进行相关的 贴图纹理资源回收
          * @version Egret 3.0
          * @platform Web,Native
          */

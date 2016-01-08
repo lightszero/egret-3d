@@ -5,6 +5,7 @@
      * @class egret3d.ShadowMapMethod
      * @classdesc
      * 阴影采样。
+     * 材质球接受阴影的着色片段，即使在模型中写入acceptShdow 也需要在材质球中加入这个阴影映射方法
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -24,6 +25,7 @@
         /**
          * @language zh_CN
          * 激活 阴影采样。
+         * @private
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -40,6 +42,7 @@
         /**
          * @language zh_CN
          * 更新 阴影采样。
+         * @private
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

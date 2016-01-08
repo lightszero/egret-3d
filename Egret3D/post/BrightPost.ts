@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.BrightPost
      * @classdesc
      * 后期亮度调整

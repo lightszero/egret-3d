@@ -5,6 +5,8 @@
      * @class egret3d.DistanceFog
      * @classdesc
      * DistanceFog 类 表示远景雾。 
+     * 创建顶点着色的雾，可设置雾的形成远近范围，雾的浓度
+     * 为场景添加景深效果
      * @version Egret 3.0
      * @platform Web,Native
      * 
@@ -39,6 +41,7 @@
         /**
         * @language zh_CN
         * 设置雾颜色。
+        * 设置16进制的雾颜色
         * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -52,6 +55,7 @@
         /**
         * @language zh_CN
         * 获取雾颜色。
+        * 返回16进制的雾颜色
         * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
@@ -63,6 +67,7 @@
         /**
         * @language zh_CN
         * 设置雾的全局密度。
+        * 设置全局雾的密度，值的区间在 0~1之间
         * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -75,6 +80,7 @@
         /**
         * @language zh_CN
         * 获取雾的全局密度。
+        * 获取全局雾的密度，值的区间在 0~1之间
         * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
@@ -86,6 +92,7 @@
         /**
         * @language zh_CN
         * 设置雾的开始距离。
+        * 设置全局雾的显示最近的距离
         * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -98,6 +105,7 @@
         /**
         * @language zh_CN
         * 获取雾的开始距离。
+        * 获取全局雾的显示最近的距离
         * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
@@ -109,6 +117,7 @@
         /**
         * @language zh_CN
         * 设置雾的缩放距离。
+        * 设置全局雾的显示浓雾缩放比例
         * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -120,6 +129,7 @@
         /**
         * @language zh_CN
         * 获取雾的缩放距离。
+        * 获取全局雾的显示浓雾缩放比例
         * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
