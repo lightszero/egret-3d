@@ -4,8 +4,10 @@
      * @language zh_CN
      * @class egret3d.SkeletonAnimationClip
      * @classdesc
-     * 骨骼动画
-     * 
+     * SkeletonAnimationClip 类为骨骼动画
+     *
+     * SkeletonAnimationClip类为骨骼动画，其中保存管理若干个Skeleton（骨架对象），每个骨架对象都为该动画某时刻的骨骼帧信息。
+     *
      * @version Egret 3.0
      * @platform Web,Native
      * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimationClip.ts
