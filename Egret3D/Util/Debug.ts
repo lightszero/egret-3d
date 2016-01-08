@@ -13,6 +13,7 @@
 
         /**
          * @language zh_CN
+         * 构造
          */
         constructor() {
             this._console = document.getElementById('console');
@@ -38,14 +39,18 @@
 
         /**
          * @language zh_CN
-         * 重置
+         * 重置显示数据
          */
         public reset(): void {
             this._console.innerHTML = "";
         }
 
         private static _instance: Debug = null;
-
+        
+        /**
+         * @language zh_CN
+         * 取到当前Debug单例对象
+         */
         public static get instance(): Debug {
             if (this._instance == null) {
                 this._instance = new Debug();
