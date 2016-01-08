@@ -1,13 +1,19 @@
 ﻿module egret3d {
+
      /**
      * @class egret3d.BrightPost
      * @classdesc
      * 后期亮度调整
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class BrightPost extends PostEffectBase{
 
         /**
          * @language zh_CN
+         * 构造
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         constructor() {
             super();
@@ -16,10 +22,13 @@
 
         /**
          * @language zh_CN
+         * 渲染到目标帧缓冲上
          * @param source 数据来源buffer
          * @param target 渲染的目标buffer
          * @param context3D  gpu设备
          * @param viewPort 视口
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public drawToTarget(source: FrameBuffer, target: FrameBuffer,context3D: Context3D, viewPort:Rectangle) {
             context3D.setRenderToTexture(this.nextFrameBuffer.texture.texture, true, 0);

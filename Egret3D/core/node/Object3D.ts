@@ -1,5 +1,29 @@
 ﻿module egret3d {
-    export enum PickType { BoundPick , PositionPick , UVPick };
+
+    /**
+    * @class egret3d.Object3D
+    * @classdesc
+    * 拣选类型
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum PickType {
+        
+        /**
+        * 包围盒拣选
+        */
+        BoundPick,
+                
+        /**
+        * 模型拣选返回模型拣选到的位置
+        */
+        PositionPick,
+                        
+        /**
+        * 模型拣选返回模型拣选到的UV坐标
+        */
+        UVPick
+    };
     /**
     * @class egret3d.Object3D
     * @classdesc
@@ -199,7 +223,7 @@
         /**
         * @language zh_CN
         * 返回位移
-        * @readOnly
+        *  
         * @returns 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -211,7 +235,7 @@
         /**
         * @language zh_CN
         * 设置位移
-        * @writeOnly
+        *  
         * @param vec 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -224,7 +248,7 @@
         /**
         * @language zh_CN
         * 返回旋转
-        * @readOnly
+        *  
         * @returns 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -236,7 +260,7 @@
         /**
         * @language zh_CN
         * 设置旋转
-        * @writeOnly
+        *  
         * @param vec 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -254,7 +278,7 @@
         /**
         * @language zh_CN
         * 设置旋转
-        * @writeOnly
+        *  
         * @param value 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -270,7 +294,7 @@
         /**
         * @language zh_CN
         * 返回旋转
-        * @readOnly
+        *  
         * @returns 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -282,7 +306,7 @@
         /**
         * @language zh_CN
         * 返回缩放
-        * @readOnly
+        *  
         * @returns 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -294,7 +318,7 @@
         /**
         * @language zh_CN
         * 设置缩放
-        * @writeOnly
+        *  
         * @param vec 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -307,7 +331,7 @@
         /**
         * @language zh_CN
         * 设置x坐标
-        * @writeOnly
+        *  
         * @param value x坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -324,7 +348,7 @@
         /**
         * @language zh_CN
         * 设置y坐标
-        * @writeOnly
+        *  
         * @param value y坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -341,7 +365,7 @@
         /**
         * @language zh_CN
         * 设置z坐标
-        * @writeOnly
+        *  
         * @param value z坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -358,7 +382,7 @@
         /**
         * @language zh_CN
         * 设置x轴旋转
-        * @writeOnly
+        *  
         * @param value x轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -377,7 +401,7 @@
         /**
         * @language zh_CN
         * 设置y轴旋转
-        * @writeOnly
+        *  
         * @param value y轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -396,7 +420,7 @@
         /**
         * @language zh_CN
         * 设置z轴旋转
-        * @writeOnly
+        *  
         * @param value z轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -415,7 +439,7 @@
         /**
         * @language zh_CN
         * 设置x轴缩放
-        * @writeOnly
+        *  
         * @param value x轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -432,7 +456,7 @@
         /**
         * @language zh_CN
         * 设置y轴缩放
-        * @writeOnly
+        *  
         * @param value y轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -449,7 +473,7 @@
         /**
         * @language zh_CN
         * 设置z轴缩放
-        * @writeOnly
+        *  
         * @param value z轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -483,7 +507,7 @@
         /**
         * @language zh_CN
         * 返回x坐标
-        * @readOnly
+        *  
         * @returns x坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -495,7 +519,7 @@
         /**
         * @language zh_CN
         * 返回y坐标
-        * @readOnly
+        *  
         * @returns y坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -507,7 +531,7 @@
         /**
         * @language zh_CN
         * 返回z坐标
-        * @readOnly
+        *  
         * @returns z坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -519,7 +543,7 @@
         /**
         * @language zh_CN
         * 返回x旋转
-        * @readOnly
+        *  
         * @returns x旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -531,7 +555,7 @@
         /**
         * @language zh_CN
         * 返回y旋转
-        * @readOnly
+        *  
         * @returns y旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -543,7 +567,7 @@
         /**
         * @language zh_CN
         * 返回z旋转
-        * @readOnly
+        *  
         * @returns z旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -555,7 +579,7 @@
         /**
         * @language zh_CN
         * 返回x缩放
-        * @readOnly
+        *  
         * @returns x缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -567,7 +591,7 @@
         /**
         * @language zh_CN
         * 返回y缩放
-        * @readOnly
+        *  
         * @returns y缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -579,7 +603,7 @@
         /**
         * @language zh_CN
         * 返回z缩放
-        * @readOnly
+        *  
         * @returns z缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -592,7 +616,7 @@
         * @language zh_CN
         * 返回 object 世界渲染矩阵
         * 如果有父亲节点对象的话，要乘以父对象的变换.
-        * @readOnly
+        *  
         * @returns object 世界渲染矩阵
         * @version Egret 3.0
         * @platform Web,Native
@@ -638,7 +662,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界位置
-        * @readOnly
+        *  
         * @returns object 世界位置
         * @version Egret 3.0
         * @platform Web,Native
@@ -653,7 +677,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界旋转
-        * @readOnly
+        *  
         * @returns object 世界旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -668,7 +692,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界缩放
-        * @readOnly
+        *  
         * @returns object 世界缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -683,7 +707,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界旋转
-        * @readOnly
+        *  
         * @returns object 世界旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -946,7 +970,7 @@
         /**
         * @language zh_CN
         * 返回目标的位置
-        * @readOnly
+        *  
         * @returns 目标的位置
         * @version Egret 3.0
         * @platform Web,Native

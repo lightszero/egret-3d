@@ -192,7 +192,7 @@
         /**
         * @language zh_CN        
         * 设置相机横纵比
-        * @writeOnly
+        *  
         * @param value 横纵比
         * @version Egret 3.0
         * @platform Web,Native
@@ -207,7 +207,7 @@
         /**
         * @language zh_CN        
         * 返回相机横纵比
-        * @readOnly
+        *  
         * @returns 横纵比
         * @version Egret 3.0
         * @platform Web,Native
@@ -219,7 +219,7 @@
         /**
         * @language zh_CN
         * 设置相机fovY
-        * @writeOnly
+        *  
         * @param value fovY
         * @version Egret 3.0
         * @platform Web,Native
@@ -234,7 +234,7 @@
         /**
         * @language zh_CN
         * 返回相机fovY
-        * @readOnly
+        *  
         * @returns fovY
         * @version Egret 3.0
         * @platform Web,Native
@@ -246,7 +246,7 @@
         /**
         * @language zh_CN
         * 设置相机近截面
-        * @writeOnly
+        *  
         * @param value 近截面
         * @version Egret 3.0
         * @platform Web,Native
@@ -261,7 +261,7 @@
         /**
         * @language zh_CN
         * 返回相机近截面
-        * @readOnly
+        *  
         * @returns 近截面
         * @version Egret 3.0
         * @platform Web,Native
@@ -273,7 +273,7 @@
         /**
         * @language zh_CN
         * 设置相机远截面
-        * @writeOnly
+        *  
         * @param value 远截面
         * @version Egret 3.0
         * @platform Web,Native
@@ -288,7 +288,7 @@
         /**
         * @language zh_CN
         * 返回相机远截面
-        * @readOnly
+        *  
         * @returns 远截面
         * @version Egret 3.0
         * @platform Web,Native
@@ -300,7 +300,7 @@
         /**
         * @language zh_CN
         * 返回相机视图投影矩阵
-        * @readOnly
+        *  
         * @returns 视图投影矩阵
         * @version Egret 3.0
         * @platform Web,Native
@@ -378,7 +378,7 @@
 
         /**
          * @language zh_CN
-         * @readOnly
+         *  
          * 相机视图矩阵
          * @version Egret 3.0
          * @platform Web,Native
@@ -389,7 +389,7 @@
         
         /**
          * @language zh_CN
-         * @readOnly
+         *  
          * 相机目标点
          * @version Egret 3.0
          * @platform Web,Native

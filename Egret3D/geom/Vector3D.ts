@@ -84,7 +84,7 @@
 
         /**
         * @language en_US
-        * @writeOnly
+        *  设置w分量
         */
         public set a(value: number) {
             this.w = value;
@@ -92,7 +92,7 @@
 
         /**
         * @language en_US
-        * @writeOnly
+        *  设置x分量
         */
         public set r(value: number) {
             this.x = value;
@@ -100,7 +100,7 @@
 
         /**
         * @language en_US
-        * @writeOnly
+        *  设置y分量
         */
         public set g(value: number) {
             this.y = value;
@@ -108,7 +108,7 @@
 
         /**
         * @language en_US
-        * @writeOnly
+        *  设置z分量
         */
         public set b(value: number) {
             this.z = value;
@@ -116,7 +116,7 @@
 
         /**
         * @language en_US
-        * @readOnly
+        *  得到w分量
         */
         public get a(): number {
             return this.w;
@@ -124,7 +124,7 @@
 
         /**
         * @language en_US
-        * @readOnly
+        *  得到x分量
         */
         public get r(): number {
             return this.x;
@@ -132,7 +132,7 @@
 
         /**
         * @language en_US
-        * @readOnly
+        *  得到y分量
         */
         public get g(): number {
             return this.y;
@@ -140,7 +140,7 @@
 
         /**
         * @language en_US
-        * @readOnly
+        *  得到z分量
         */
         public get b(): number {
             return this.z;

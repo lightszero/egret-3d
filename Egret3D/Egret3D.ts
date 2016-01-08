@@ -10,9 +10,29 @@
      * LINE_STRIP 连接线显示模式
      */ 
     export class DrawMode {
+                    
+        /**
+         * @language zh_CN
+         * 线框显示模式
+         */
         static LINES: number;
+                            
+        /**
+         * @language zh_CN
+         * 点显示模式
+         */
         static POINTS: number;
+                                    
+        /**
+         * @language zh_CN
+         * 三角形显示模式
+         */
         static TRIANGLES: number;
+                                    
+        /**
+         * @language zh_CN
+         * 连接线显示模式
+         */
         static LINE_STRIP: number;
 
     }
@@ -23,54 +43,195 @@
      * 3d 驱动 
      */ 
     export class Egret3DDrive {
+                    
+        /**
+        * @private
+        */ 
         static Direct3D_Opengl_Auto: string = "Direct3D_Opengl_Auto";
+                            
+        /**
+        * @private
+        */ 
         static Direct3D_9_0: string = "Direct3D_9_0";
+                            
+        /**
+        * @private
+        */ 
         static Direct3D_10_0: string = "Direct3D_10_0";
+                            
+        /**
+        * @private
+        */ 
         static Direct3D_11_0: string = "Direct3D_11_0";
-
+                            
+        /**
+        * @private
+        */ 
         static OpenGLES_2_0: string = "OpenGLES_2_0";
+                            
+        /**
+        * @private
+        */ 
         static OpenGLES_3_0: string = "OpenGLES_3_0";
+                            
+        /**
+        * @private
+        */ 
         static OpenGL: string = "OpenGL";
-
+                            
+        /**
+        * @private
+        */ 
         static context3D: Context3D;
+                            
+        /**
+        * @private
+        */ 
         static canvas: HTMLCanvasElement;
-
+                            
+        /**
+        * @private
+        */ 
         static VERTEX_SHADER: number;
+                            
+        /**
+        * @private
+        */ 
         static FRAGMENT_SHADER: number;
-
+                            
+        /**
+        * @private
+        */ 
         static BLEND: number;
+                            
+        /**
+        * @private
+        */ 
         static FLOAT: number;
-
+                            
+        /**
+        * @private
+        */ 
         static CULL_FACE: number;
+                            
+        /**
+        * @private
+        */ 
         static FRONT: number;
+                            
+        /**
+        * @private
+        */ 
         static BACK: number;
-
+                            
+        /**
+        * 深度测试
+        */ 
         static DEPTH_TEST: number;
-
+                            
+        /**
+        * 深度缓冲值
+        */ 
         static DEPTH_BUFFER_BIT: number;
+                                    
+        /**
+        * @private
+        */ 
         static ELEMENT_ARRAY_BUFFER: number;
+                                            
+        /**
+        * @private
+        */ 
         static UNSIGNED_SHORT: number;
-
+                                            
+        /**
+        * @private
+        */ 
         static NEAREST: number;
+                                            
+        /**
+        * @private
+        */ 
         static REPEAT: number;
+                                            
+        /**
+        * @private
+        */ 
         static ONE: number;
+                                            
+        /**
+        * @private
+        */ 
         static ZERO: number;
+                                            
+        /**
+        * @private
+        */ 
         static SRC_ALPHA: number;
+                                            
+        /**
+        * @private
+        */ 
         static ONE_MINUS_SRC_ALPHA: number;
+                                            
+        /**
+        * @private
+        */ 
         static SRC_COLOR: number;
+                                            
+        /**
+        * @private
+        */ 
         static ONE_MINUS_SRC_COLOR: number;
-
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_RGB565: number;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_RGBA5551: number;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_RGBA4444: number;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_RGBA8888: number;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_DXT1_RGB: number = 0;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_DXT1_RGBA: number = 0;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_DXT3_RGBA: number = 0;
+                                            
+        /**
+        * @private
+        */ 
         static ColorFormat_DXT5_RGBA: number = 0;
 
-
+        /**
+        * canvas窗口矩形
+        */ 
         static canvasRectangle: Rectangle;
+                                            
+        /**
+        * 用户窗口矩形
+        */ 
         static clientRect: ClientRect;
 
         /**

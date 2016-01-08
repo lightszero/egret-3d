@@ -82,7 +82,6 @@
         }
 
         /**
-        /**
         * @language zh_CN
         * 构建 VertexShader。
         * @version Egret 3.0

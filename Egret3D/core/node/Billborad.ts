@@ -15,7 +15,7 @@
 
         /**
          * @language zh_CN
-         * constructor
+         * 指定材质，和公告板宽、高，构建一个公告板
          * @param material 渲染材质
          * @param width 公告板宽
          * @param height 公告板高
@@ -31,7 +31,7 @@
 
         /**
         * @language zh_CN
-        * 数据更新
+        * 数据更新，不前对象的旋转和摄像机的旋转一致
         * @param camera 当前渲染的摄相机
         * @param time 当前时间
         * @param delay 间隔时间

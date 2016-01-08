@@ -1,5 +1,11 @@
 ﻿module egret3d {
 
+    /**
+    * @language zh_CN
+    * 渲染混合模式
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export enum BlendMode {
         /**
          * @language zh_CN
@@ -71,14 +77,58 @@
      */
     export class ContextSamplerType {
 
+        /**
+        * @language zh_CN
+        * 纹理0数据
+        */
         public static TEXTURE_0: any;
+
+        /**
+        * @language zh_CN
+        * 纹理1数据
+        */
         public static TEXTURE_1: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理2数据
+        */
         public static TEXTURE_2: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理3数据
+        */
         public static TEXTURE_3: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理4数据
+        */
         public static TEXTURE_4: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理5数据
+        */
         public static TEXTURE_5: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理6数据
+        */
         public static TEXTURE_6: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理7数据
+        */
         public static TEXTURE_7: any;
+        
+        /**
+        * @language zh_CN
+        * 纹理8数据
+        */
         public static TEXTURE_8: any;
 
         /**

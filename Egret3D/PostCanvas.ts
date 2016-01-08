@@ -1,6 +1,7 @@
 ﻿module egret3d {
                     
     /**
+     * @private
      * @class egret3d.PostCanvas
      * @classdesc
      * post canvas  
@@ -59,7 +60,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param value x
         */
         public set x(value: number) {
@@ -72,7 +73,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param value y
         */
         public set y(value: number) {
@@ -85,7 +86,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns x
         */
         public get x(): number {
@@ -95,7 +96,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns y
         */
         public get y(): number {
@@ -105,7 +106,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param value width
         */
         public set width(value: number) {
@@ -117,7 +118,7 @@
         }
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param value height
         */
         public set height(value: number) {
@@ -129,7 +130,7 @@
         }
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns width
         */
         public get width(): number {
@@ -138,7 +139,7 @@
         }
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns height
         */
         public get height(): number {
@@ -256,9 +257,9 @@
        /**
        * @language zh_CN
        * xxxxxxxx
-       * @param context3D xxx
-       * @param viewPort xxx
-       * @returns xxx
+       * @param context3D 
+       * @param viewPort 
+       * @returns 
        */
        public draw(context3D: Context3D, viewPort:Rectangle) {
 

@@ -3,9 +3,9 @@
     /**
     * @class egret3d.Layer
     * @classdesc
+    * Object3D 渲染Layer
     * @version Egret 3.0
     * @platform Web,Native
-    * Object3D 渲染Layer
     */
     export class Layer {
         
@@ -25,9 +25,9 @@
     /**
     * @class egret3d.Tag
     * @classdesc
+    * Object3D 渲染tag
     * @version Egret 3.0
     * @platform Web,Native
-    * Object3D 渲染tag
     */
     export class Tag {
         
@@ -53,13 +53,13 @@
     /**
     * @class egret3d.EntityCollect
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * Object3D 渲染对象收集器,把渲染对象进行可视筛选，
     * 并且划分渲染层级，依次排序到加入列表.
     *
     * @see egret3d.Scene3D
     * @see egret3d.View3D
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class EntityCollect extends CollectBase {
 
@@ -98,7 +98,7 @@
         /**
         * @language zh_CN
         * 返回tags 列表
-        * @readOnly
+        *  
         * @returns tags 列表
         * @version Egret 3.0
         * @platform Web,Native

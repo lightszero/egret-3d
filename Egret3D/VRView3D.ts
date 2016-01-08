@@ -1,10 +1,14 @@
 ﻿module egret3d {
                             
     /**
-     * @class egret3d.VRView3D
+     * @private
+     * @language zh_CN
+     * @class egret3d.Channel
      * @classdesc
-     * VR渲染视图
-     */   
+     * VR 渲染视图。
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     export class VRView3D extends View3D {
 
         private eyeMatrix: EyesMatrix;
@@ -17,12 +21,14 @@
 
         private _leftCanvas: PostCanvas;
         private _rightCanvas: PostCanvas;
-                                
+   
         /**
         * @language zh_CN
-        * constructor
-        * @param viewPort
-        */
+        * 创建一个新的 VRView3D 对象。
+        * @param viewPort {Rectangle} 显示区域
+        * @version Egret 3.0
+        * @platform Web,Native
+        */                                     
         constructor(viewPort: Rectangle) {
             super(viewPort, new Camera3D(CameraType.VR));
             this.eyeMatrix = new EyesMatrix();
@@ -72,7 +78,9 @@
         /**
         * @language zh_CN
         * 设置眼睛空间
-        * @param value Eyes Space
+        * @param value {Number} Eyes Space。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setEyesSpace(value: number) {
 
@@ -91,8 +99,10 @@
         /**
         * @language zh_CN
         * 渲染
-        * @param time 当前时间
-        * @param delay 间隔时间
+        * @param time {Number} 当前时间
+        * @param delay {Number} 间隔时间
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public renden(time: number, delay: number) {
 
@@ -145,7 +155,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this.leftViewPort);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this._viewPort);
             this._context3D.setRenderToBackBuffer();
         }
 
@@ -160,7 +170,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this.rightViewPort);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this._viewPort);
             this._context3D.setRenderToBackBuffer();
 
         }

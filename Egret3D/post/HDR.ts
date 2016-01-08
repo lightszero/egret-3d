@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.HDR
      * @classdesc
      * 后期HDR合成

@@ -27,7 +27,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 获取已经有的shader 的ID
         */
         public id: number;
@@ -39,6 +39,11 @@
         * WebGLShader 的引用
         */
         private _shader: WebGLShader;
+                        
+        /**
+        * @language zh_CN
+        * 构造
+        */
         constructor(shader: WebGLShader) {
             this._shader = shader;
         }

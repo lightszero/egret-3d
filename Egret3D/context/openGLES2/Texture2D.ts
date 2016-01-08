@@ -88,18 +88,25 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 二维纹理中的 像素宽度
         */
         public width: number = 0;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 二维纹理中的 像素高度
         */
         public height: number = 0;
 
+                        
+        /**
+        * @language zh_CN
+        * 构造
+        * @param texture2D webgl贴图数据
+        * @param context3D 上下文数据
+        */
         constructor(texture2D: WebGLTexture , context3D: any ) {
             this.gpu_texture = texture2D;
             this.context3D = context3D

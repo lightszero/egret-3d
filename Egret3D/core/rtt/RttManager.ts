@@ -1,5 +1,12 @@
 ﻿module egret3d {
+    /**
+    * @private
+    */
     export enum FrameBufferType { shadowFrameBufrfer, defaultFrameBuffer, positionFrameBuffer, normalFrameBuffer, specularFrameBuffer, leftEyeFrameBuffer, rightEyeFrameBuffer, nextFrameBuffer }
+    
+    /**
+    * @private
+    */
     export enum FrameBufferFormat { FLOAT_RGB, FLOAT_RGBA, UNSIGNED_BYTE_RGB, UNSIGNED_BYTE_RGBA }
                                     
     /**

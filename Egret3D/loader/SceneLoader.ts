@@ -1,9 +1,13 @@
 ﻿module egret3d {
+    
     /**
+     * @private
      * @language zh_CN
      * @class egret3d.SceneLoader
      * @classdesc
      * SceneLoader类 用于Scene文件加载
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class SceneLoader extends BaseLoader {
 

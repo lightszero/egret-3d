@@ -2,8 +2,8 @@
 
     /**
      * @private 
+     * data format describe;
      */
-    // data format describe;
     export enum ESMDataFormat {
         DATA_FORMAT_STATIC_MODEL = 0x00000001,
         DATA_FORMAT_SKELETAL_ANIM_MODEL = 0x00000002,
@@ -28,6 +28,7 @@
 
         /**
           * @language zh_CN
+          * 从二进制流中解析出模型Geometry信息
           * @param datas 加载的二进制流
           * @returns GeometryBase
           */

@@ -144,11 +144,12 @@
     * @platform Web,Native
     */
     class EventListener {
+
         /**
         * @language zh_CN
-        * @param type {string} 事件的类型。
-        * @param handler {Function} 处理事件的侦听器函数
-        * @param  priority {number} 事件侦听器的优先级。优先级由一个带符号的 32 位整数指定。数字越大，优先级越高。优先级为 n 的所有侦听器会在
+        * @param type 事件的类型。
+        * @param handler 处理事件的侦听器函数
+        * @param  priority 事件侦听器的优先级。优先级由一个带符号的 32 位整数指定。数字越大，优先级越高。优先级为 n 的所有侦听器会在
         * 优先级为 n -1 的侦听器之前得到处理。如果两个或更多个侦听器共享相同的优先级，则按照它们的添加顺序进行处理。默认优先级为 0。
         * @version Egret 3.0
         * @platform Web,Native

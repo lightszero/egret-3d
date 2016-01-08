@@ -36,7 +36,11 @@
         * WebGLProgram 的引用
         */
         public program: WebGLProgram;
-
+                
+        /**
+        * @language zh_CN
+        * 构造
+        */
         constructor( pg3D:WebGLProgram ) {
             this.program = pg3D; 
         }

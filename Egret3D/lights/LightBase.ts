@@ -3,7 +3,6 @@
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * @private 
     * 灯光的基础类型
     * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
     * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
@@ -130,8 +129,6 @@
 
         /**
          * @language zh_CN  
-         * @public
-         * @writeOnly
          * 设置灯光强度
          * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
          */
@@ -144,8 +141,6 @@
         
         /**
          * @language zh_CN  
-         * @public
-         * @readOnly
          * 得到灯光强度
          * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
          */
@@ -155,8 +150,6 @@
 
         /**
         * @language zh_CN  
-        * @public
-        * @writeOnly
         * 设置灯光强度
         * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
         */
@@ -169,8 +162,6 @@
         
         /**
          * @language zh_CN  
-         * @public
-         * @readOnly
          * 得到灯光强度
          * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
          */
@@ -180,8 +171,6 @@
                 
         /**
          * @language zh_CN  
-         * @public
-         * @writeOnly
          * 设置灯光环境颜色
          * 物体在未受到光的直接照射的地方 模拟间接环境光颜色，会影响背光面的颜色
          */
@@ -195,8 +184,6 @@
         
         /**
          * @language zh_CN  
-         * @public
-         * @readOnly
          * 获取 灯光环境颜色
          * 物体在未受到光的直接照射的地方 模拟间接环境光颜色，会影响背光面的颜色
          * return ambient  灯光环境颜色
@@ -207,8 +194,6 @@
                         
         /**
          * @language zh_CN  
-         * @public
-         * @writeOnly
          * 设置灯光漫反射颜色
          * 直接影响最终灯光的颜色色值 16进制的颜色 例如 red：0xffff0000
          * 也可以通过 diffusePower 来改变这个值的总体强弱
@@ -223,8 +208,6 @@
                 
         /**
          * @language zh_CN  
-         * @public
-         * @readOnly
          * 设置灯光漫反射颜色
          * 直接影响最终灯光的颜色色值 16进制的颜色 例如 red：0xffff0000
          * 也可以通过 diffusePower 来改变这个值的总体强弱
@@ -236,8 +219,6 @@
                                 
         /**
          * @language zh_CN  
-         * @public
-         * @writeOnly
          * 设置灯光镜面高光反射颜色
          * 在灯光方向与物体和相机成一个反光角度的时候，就会产生反光，高光，而不同的物体会有不同的颜色色值，尤其是金属
          * 16进制的颜色 例如 red：0xffff0000
@@ -253,8 +234,6 @@
                         
         /**
          * @language zh_CN  
-         * @public
-         * @readOnly
          * 在灯光方向与物体和相机成一个反光角度的时候，就会产生反光，高光，而不同的物体会有不同的颜色色值，尤其是金属
          * 16进制的颜色 例如 red：0xffff0000
          * 也可以通过 specularPower 来改变这个值的总体强弱

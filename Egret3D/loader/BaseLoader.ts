@@ -1,5 +1,8 @@
 ﻿module egret3d {
 
+    /**
+     * @private 
+     */
     export enum LoaderType {
         LOADER_MODEL_TYPE,
         LOADER_SCENE_TYPE,

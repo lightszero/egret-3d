@@ -4,6 +4,8 @@
      * @class egret3d.View3D
      * @classdesc
      * 渲染视图
+     * @version Egret 3.0
+     * @platform Web,Native
      */   
     export class View3D {
 
@@ -41,9 +43,10 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * 返回渲染根节点
-        * @returns 根节点
+        * @returns Object3D
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get root(): Object3D {
             return this._scene;
@@ -51,7 +54,10 @@
 
         /**
         * @language zh_CN
-        * @param Scene3D
+        * 设置场景
+        * @param scene {Scene3D}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set scene(scene: Scene3D) {
             this._scene = scene; 
@@ -59,22 +65,25 @@
 
         /**
         * @language zh_CN
-        * @param viewPort
-        * @readOnly
-        * @returns Scene3D
+        * 返回 Scene3D 对象
+        * @returns {Scene3D}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get scene(): Scene3D {
             return this._scene;
         }
 
         
+
         /**
         * @language zh_CN
-        * constructor
-        * @param viewPort
-        * @param camera
-        * @param deferredShading
-        */
+        * 创建一个新的 View3D 对象。
+        * @param viewPort {Rectangle} 显示区域
+        * @param camera {Camera3D} 摄像机
+        * @version Egret 3.0
+        * @platform Web,Native
+        */   
         constructor(viewPort: Rectangle, camera: Camera3D = null ) {
 
             this._context3D = Egret3DDrive.context3D;
@@ -116,7 +125,13 @@
                 this._resizeFuncs[i]();
             }
         }
-
+        /**
+        * @language zh_CN
+        * 设置渲染对象
+        * @param val {RenderBase}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set render(val: RenderBase) {
             this._render = val; 
             if (typeof (val) === "GBufferRender") {
@@ -126,15 +141,12 @@
             }
         }
 
-        public get render(): RenderBase {
-            return this._render; 
-        }
-
         /**
         * @language zh_CN
-        * @writeOnly
         * 是否使用影子
-        * @param flag
+        * @param flag {boolean}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set useShadow(flag: boolean) {
 
@@ -146,7 +158,10 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        * 是否使用影子
+        * @returns {boolean}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get useShadow(): boolean {
             return this._useShadow; 
@@ -164,7 +179,9 @@
         /**
         * @language zh_CN
         * 监听设备重置回调
-        * @event func  
+        * @event func  {Function}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addListenerResize(func: Function) {
             this._resizeFuncs.push(func);
@@ -172,8 +189,10 @@
 
         /**
         * @language zh_CN
-        * 得到视口
-        * @returns Rectangle
+        * 返回视口
+        * @returns {Rectangle}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get viewPort(): Rectangle {
             return this._viewPort;
@@ -182,17 +201,20 @@
         /**
         * @language zh_CN
         * 设置天空盒子
-        * @writeOnly
+        * @param value {Sky} 天空盒子
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set sky(value: Sky) {
-
             this._sky = value;
         }
 
         /**
         * @language zh_CN
         * 设置天空球
-        * @writeOnly
+        * @param value {SphereSky} 天空球
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set sphereSky(value: SphereSky) {
             this._sphereSky = value;
@@ -200,8 +222,10 @@
 
         /**
         * @language zh_CN
-        * 得到天空盒子
-        * @readOnly
+        * 返回天空盒子
+        * @returns {Sky}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get sky(): Sky {
             return this._sky;
@@ -209,8 +233,10 @@
 
         /**
         * @language zh_CN
-        * 增加HUD进渲染列表
-        * @param hud 
+        * 添加 HUD 到渲染列表中
+        * @param hud {HUD}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addHUD(hud: HUD) {
             this._hudList.push(hud);
@@ -219,7 +245,9 @@
         /**
         * @language zh_CN
         * 在渲染列表中删除一个HUD
-        * @param hud 
+        * @param hud {HUD}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public delHUN(hud: HUD) {
 
@@ -231,6 +259,8 @@
         * @language zh_CN
         * 增加wireframe进渲染列表
         * @param wireframe 
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addWireframe(wireframe: WireframeBase) {
             this._wireframeList.push(wireframe);
@@ -238,8 +268,10 @@
 
         /**
         * @language zh_CN
-        * 在渲染列表中删除一个HUD
+        * 在渲染列表中删除一个wireframe
         * @param hud 
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public delWireframe(wireframe: WireframeBase) {
             var index: number = this._wireframeList.indexOf(wireframe);
@@ -250,6 +282,8 @@
         * @language zh_CN
         * 设置背景渲染贴图
         * @param texture 贴图
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set backImageTexture(texture: TextureBase) {
 
@@ -266,9 +300,10 @@
 
         /**
         * @language zh_CN
-        * xxxxxxxx
-        * @param postEffects xxx
-        * @returns xxx
+        * 设置 postEffect
+        * @param postEffects {Array<PostEffectBase>}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set postEffect( postEffects: Array<PostEffectBase> ) {
 
@@ -284,8 +319,10 @@
 
         /**
         * @language zh_CN
-        * xxxxxxxx
+        * 返回 摄像机
         * @returns Camera3D
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get camera3D(): Camera3D {
             return this._camera;
@@ -293,8 +330,10 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        * 返回 Context3D
         * @returns Context3D
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get context3D(): Context3D {
 
@@ -303,9 +342,10 @@
 
         /**
         * @language zh_CN
-        * The width of the viewport. When software rendering is used, this is limited by the
-        * platform to 2048 pixels.
-        * @returns width
+        * 视口的宽度。当使用软件渲染，平台限制2048像素
+        * @returns number
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get width(): number {
 
@@ -314,8 +354,10 @@
 
         /**
         * @language zh_CN
-        * 
-        * @param value width
+        * 设置视口的宽度。
+        * @param width {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set width(value: number) {
 
@@ -328,9 +370,10 @@
 		
         /**
         * @language zh_CN
-        * The height of the viewport. When software rendering is used, this is limited by the
-        * platform to 2048 pixels.
-        * @returns height
+        * 视口的高度。当使用软件渲染，平台限制2048像素
+        * @returns {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get height(): number {
 
@@ -339,8 +382,10 @@
 
         /**
         * @language zh_CN
-        * 
-        * @param value height
+        * 设置视口的宽度。
+        * @param height {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set height(value: number) {
 
@@ -353,8 +398,10 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
-        * @param value x
+        * 设置 x 坐标值。
+        * @param  x {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set x(value: number) {
 
@@ -369,8 +416,10 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
-        * @param value y
+        * 设置 y 坐标值。
+        * @param  x {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set y(value: number) {
 
@@ -384,8 +433,10 @@
         }
         /**
         * @language zh_CN
-        * 
-        * @returns x
+        * 返回 x 坐标值
+        * @returns {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get x(): number {
 
@@ -394,8 +445,10 @@
 
         /**
         * @language zh_CN
-        * 
-        * @returns y
+        * 返回 y 坐标值
+        * @returns {number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get y(): number {
 
@@ -404,8 +457,10 @@
 
         /**
         * @language zh_CN
-        * 
-        * @param child3D xxx
+        * 将一个 Object3D 实例添加到 Scene3D 实例中。
+        * @param  child3D {Object3D}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addChild3D(child3D: Object3D) {
             this._scene.addChild(child3D);
@@ -416,6 +471,8 @@
         * 渲染
         * @param time 当前时间
         * @param delay 时间间隔
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public renden(time: number, delay: number) {
 
@@ -529,6 +586,8 @@
         * 设置tag名和name的下标为index 没有的话会新加tag
         * @param name tag名
         * @param index 下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setTags(name: string, index: number) {
             this._scene.collect.setTags(name, index);
@@ -539,6 +598,8 @@
         * 设置layer名和name的下标为index
         * @param layer layer名
         * @param index 下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setTagsItem(layer: string, index: number) {
             this._scene.collect.setTagsItem(layer, index);
@@ -546,10 +607,12 @@
                                 
         /**
         * @language zh_CN
-        * 得到layer的值
+        * 返回layer的值
         * @param name tag名
         * @param layer layer名
-        * @returns 返回layer的值
+        * @returns {Number}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public getTagLayer(name: string = "default", layer: string = "layer_0"): number {
             return this._scene.collect.getTagLayer(name, layer);
@@ -559,7 +622,9 @@
         * @language zh_CN
         * 得到tag
         * @param name tag名
-        * @returns tag
+        * @returns {Tag}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public getTag(name: string = "default"): Tag {
             return this._scene.collect.getTag(name);
