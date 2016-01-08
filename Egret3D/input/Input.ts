@@ -884,13 +884,13 @@
         /**
         * @language zh_CN
         * 根据起点和终点返回方向
-        * @param  startX 起点X坐标
-        * @param  startY 起点Y坐标
-        * @param  endX   终点X坐标
-        * @param  endY   终点Y坐标
+        * @param  startX {Number} 起点X坐标
+        * @param  startY {Number} 起点Y坐标
+        * @param  endX   {Number} 终点X坐标
+        * @param  endY   {Number} 终点Y坐标
         * @returns result {number} 1：向上，2：向下，3：向左，4：向右,0：未滑动
         */
-        public GetSlideDirection(startX, startY, endX, endY): number {
+        public GetSlideDirection(startX: number, startY: number, endX: number, endY: number): number {
             var dy = startY - endY;
             var dx = endX - startX;
             var result = 0;
