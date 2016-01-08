@@ -9,6 +9,7 @@
 
         /**
          * @language zh_CN
+         * 构造
          */
         constructor() {
             super();
@@ -17,6 +18,7 @@
 
         /**
          * @language zh_CN
+         * 渲染到目标帧缓冲上
          * @param source 数据来源buffer
          * @param target 渲染的目标buffer
          * @param context3D  gpu设备

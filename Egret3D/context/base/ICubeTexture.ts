@@ -1,7 +1,10 @@
 ﻿module egret3d {
 
+    /**
+    * @private
+    */
     export interface ICubeTexture {
-
+        
         /**
         * @readOnly
         */

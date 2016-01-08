@@ -18,19 +18,21 @@
 
         /**
         * @language zh_CN
-        * rectangle
+        * @private
         */
         public rectangle: Rectangle = new Rectangle(0, 0, 0, 0);
 
 
         /**
         * @language zh_CN
+        * @private
         * anchor
         */
         public anchor: Vector3D = new Vector3D(0.5, 0.5);
 
         /**
         * @language zh_CN
+        * @private
         * rotation
         */
         public rotation: Vector3D = new Vector3D() ;
@@ -39,30 +41,35 @@
 
         /**
         * @language zh_CN
+        * @private
         * r
         */
         public r: number = 1;
 
         /**
         * @language zh_CN
+        * @private
         * g
         */
         public g: number = 1;
 
         /**
         * @language zh_CN
+        * @private
         * b
         */
         public b: number = 1;
 
         /**
         * @language zh_CN
+        * @private
         * a
         */
         public a: number = 1;
 
         /**
         * @language zh_CN
+        * @private
         * uvRectangle
         */
         public uvRectangle: Rectangle = new Rectangle(0, 0, 1, 1);
@@ -70,24 +77,28 @@
 
         /**
         * @language zh_CN
+        * @private
         * texture
         */
         public texture: TextureBase;
 
         /**
         * @language zh_CN
+        * @private
         * viewMatIndex
         */
         public viewMatIndex: WebGLUniformLocation;
 
         /**
         * @language zh_CN
+        * @private
         * uiDataIndex
         */
         public uiDataIndex: WebGLUniformLocation;
 
         /**
         * @language zh_CN
+        * @private
         * materialDataIndex
         */
         public materialDataIndex: WebGLUniformLocation;
@@ -105,6 +116,11 @@
         private quadShader: QuadShader;
 
         private list: Vector3D;
+        
+        /**
+        * @language zh_CN
+        * 构造
+        */
         constructor( ) {
             this.rectangle.x = 0;
             this.rectangle.y = 0;
@@ -126,7 +142,7 @@
         /**
         * @language zh_CN
         * @writeOnly
-        * @param value x
+        * @param value x坐标
         */
         public set x(value: number) {
 
@@ -136,7 +152,7 @@
         /**
         * @language zh_CN
         * @writeOnly
-        * @param value y
+        * @param value y坐标
         */
         public set y(value: number) {
 
@@ -146,7 +162,7 @@
         /**
         * @language zh_CN
         * @readOnly
-        * @returns x
+        * @returns x坐标
         */
         public get x(): number {
 
@@ -156,7 +172,7 @@
         /**
         * @language zh_CN
         * @readOnly
-        * @returns y
+        * @returns y坐标
         */
         public get y(): number {
 
@@ -166,7 +182,7 @@
        /**
        * @language zh_CN
        * @writeOnly
-       * @param value width
+       * @param value HUD宽
        */
        public set width(value: number) {
 
@@ -176,7 +192,7 @@
        /**
        * @language zh_CN
        * @writeOnly
-       * @param value height
+       * @param value HUD高
        */
        public set height(value: number) {
 
@@ -186,7 +202,7 @@
         /**
         * @language zh_CN
         * @readOnly
-        * @returns width
+        * @returns HUD宽
         */
         public get width(): number {
 
@@ -196,7 +212,7 @@
         /**
         * @language zh_CN
         * @readOnly
-        * @returns height
+        * @returns HUD高
         */
         public get height(): number {
 
@@ -231,7 +247,7 @@
 
         /**
         * @language zh_CN
-        * 渲染
+        * 提交数据给GPU渲染
         * @param context3D Context3D
         */
         public draw(context3D: Context3D) {
