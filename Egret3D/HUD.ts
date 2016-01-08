@@ -141,6 +141,7 @@
 
         /**
         * @language zh_CN
+        * 设置x坐标
         * @param value x坐标
         */
         public set x(value: number) {
@@ -150,6 +151,7 @@
 
         /**
         * @language zh_CN
+        * 设置y坐标
         * @param value y坐标
         */
         public set y(value: number) {
@@ -159,6 +161,7 @@
 
         /**
         * @language zh_CN
+        * 得到x坐标
         * @returns x坐标
         */
         public get x(): number {
@@ -168,6 +171,7 @@
 
         /**
         * @language zh_CN
+        * 得到y坐标
         * @returns y坐标
         */
         public get y(): number {
@@ -177,6 +181,7 @@
 
        /**
        * @language zh_CN
+       * 设置HUD宽
        * @param value HUD宽
        */
        public set width(value: number) {
@@ -186,6 +191,7 @@
 
        /**
        * @language zh_CN
+       * 设置HUD高
        * @param value HUD高
        */
        public set height(value: number) {
@@ -195,6 +201,7 @@
 
         /**
         * @language zh_CN
+        * 得到HUD宽
         * @returns HUD宽
         */
         public get width(): number {
@@ -204,6 +211,7 @@
 
         /**
         * @language zh_CN
+        * 得到HUD高
         * @returns HUD高
         */
         public get height(): number {
