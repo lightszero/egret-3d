@@ -4,6 +4,8 @@
      * @class egret3d.Matrix3DUtils
      * @classdesc
      * 可使用 Matrix3DUtils 类 进行3d矩阵的计算
+     * @version Egret 3.0
+     * @platform Web,Native
      */   
     export class Matrix3DUtils {
                                                                        

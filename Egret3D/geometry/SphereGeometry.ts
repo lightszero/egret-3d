@@ -4,6 +4,14 @@
      * @class egret3d.SphereGeometry
      * @classdesc
      * SphereGeometry类 表示球体
+     *
+     * 示例：
+     * //用 SphereGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
+     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.SphereGeometry(), new egret3d.TextureMaterial() );
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/SphereGeometry.ts
      */
     export class SphereGeometry extends SubGeometry {
 
@@ -13,10 +21,10 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param r {Number}
-        * @param segmentsW {Number}
-        * @param segmentsH {Number}
+        * 构造函数
+        * @param r 半径
+        * @param segmentsW 宽度分段数
+        * @param segmentsH 高度分段数
         */
         constructor(r: number = 100.0, segmentsW: number = 15, segmentsH: number = 15 ){
             super();

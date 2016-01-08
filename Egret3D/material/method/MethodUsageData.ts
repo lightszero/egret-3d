@@ -1,9 +1,12 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.MethodUsageData
      * @classdesc
-     * 方法中需要用到的数据
+     * 方法中需要用到的数据。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class MethodUsageData {
 

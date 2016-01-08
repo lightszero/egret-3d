@@ -4,11 +4,15 @@
      * @class egret3d.SubGeometry
      * @classdesc
      * SubGeometry类 
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/SubGeometry.ts
      */
     export class SubGeometry extends GeometryBase {
         /**
         * @language zh_CN
-        * constructor
+        * 构造函数
         */
         constructor() {
             super();

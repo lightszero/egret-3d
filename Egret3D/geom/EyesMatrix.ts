@@ -4,6 +4,9 @@
      * @class egret3d.EyesMatrix
      * @classdesc
      * 可使用 EyesMatrix 类 对左，右眼睛矩阵的操作
+     * 它会在摄像机的位置做一个左 右偏移 模拟出眼睛的矩阵
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class EyesMatrix {
                                                

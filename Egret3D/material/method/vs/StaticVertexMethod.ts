@@ -1,38 +1,45 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.StaticVertexMethod
      * @classdesc
-     * 静态顶点方法
+     * 静态顶点方法。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class StaticVertexMethod extends MethodBase {
 
  
         /**
-         * @language zh_CN
-         * StaticVertexMethod
-         */     
+        * @language zh_CN
+        * 创建一个新的 StaticVertexMethod 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */  
         constructor() {
             super();
             this.vsMethodName = "default_vertex";
         }
 
-        /**
-        -pos 3 12 0
-        -normal 3 12 12
-        -tangent 3 12 24
-        -color 4 16 36
-        -uv0 2  8 52
-        -uv1 8 60
-        */
+
         /**
          * @language zh_CN
-         * 激活
-         * @param context3D 
-         * @param program3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
+         * 激活 StaticVertexMethod。
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * -pos     3 12 0
+         * -normal  3 12 12
+         * -tangent 3 12 24
+         * -color   4 16 36
+         * -uv0     2 8 52
+         * -uv      1 8 60
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase  ) {
             // 绑定同时包含顶点位置和颜色信息的缓冲
@@ -71,12 +78,15 @@
         private normalMatrix: Matrix4_4 = new Matrix4_4();
         /**
          * @language zh_CN
-         * 更新
-         * @param context3D 
-         * @param program3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
+         * 更新 StaticVertexMethod。
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase ) {
             // 绑定同时包含顶点位置和颜色信息的缓冲

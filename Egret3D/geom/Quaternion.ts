@@ -3,12 +3,23 @@
      * @language zh_CN
      * @class egret3d.Quaternion
      * @classdesc
-     * Quaternion 类用于表示旋转
+     * Quaternion类
+     * 
+     * 定义了一个四元数表示物体在空间的旋转。
+     * 四元数通常用作替代欧拉角和旋转矩阵的方式来实现平滑插值和避免万向节锁
+     * 注意，这四元数类不自动保持四元数标准化。因此，在必要的时候，必须采取单位化的四元数，通过调用单位化方法
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Quaternion {
+
         /**
         * @language en_US
         * The x value of the quaternion.
+        */
+        /**
+        * @language zh_CN
+        * 四元数的x值.
         */
         public x: number = 0;
 
@@ -16,17 +27,29 @@
         * @language en_US
         * The y value of the quaternion.
         */
+        /**
+        * @language zh_CN
+        * 四元数的y值.
+        */
         public y: number = 0;
 
         /**
         * @language en_US
         * The z value of the quaternion.
         */
+        /**
+        * @language zh_CN
+        * 四元数的z值.
+        */
         public z: number = 0;
 
         /**
         * @language en_US
         * The w value of the quaternion.
+        */
+        /**
+        * @language zh_CN
+        * 四元数的w值.
         */
         public w: number = 1;
 
@@ -38,6 +61,14 @@
         * @param z The z value of the quaternion.
         * @param w The w value of the quaternion.
         */
+        /**
+        * @language zh_CN
+        * 创建一个四元数.
+        * @param x
+        * @param y
+        * @param z
+        * @param w
+        */
         constructor(x: number = 0, y: number = 0, z: number = 0, w: number = 1) {
             this.x = x;
             this.y = y;
@@ -47,8 +78,15 @@
 
         /**
         * @language en_US
-        * @@readOnly
-        * Returns the magnitude of the quaternion object.
+        * @readOnly
+        * @returns the magnitude of the quaternion object.
+        */
+        /**
+        * @language zh_CN
+        * @readOnly
+        * 返回四元数的大小.
+        * @param w
+        * @returns 四元数的大小.
         */
         public get magnitude(): number {
             return Math.sqrt(this.w * this.w + this.x * this.x + this.y * this.y + this.z * this.z);
@@ -61,6 +99,12 @@
         * @param    qa    The first quaternion in the multiplication.
         * @param    qb    The second quaternion in the multiplication.
         */
+        /**
+        * @language zh_CN
+        * 两个四元数相乘,然后结果给当调用者.
+        * @param qa 第一个四元数
+        * @param qb 第二个四元数
+        */
         public multiply(qa: Quaternion, qb: Quaternion) {
             var w1: number = qa.w, x1: number = qa.x, y1: number = qa.y, z1: number = qa.z;
             var w2: number = qb.w, x2: number = qb.x, y2: number = qb.y, z2: number = qb.z;
@@ -72,11 +116,11 @@
         }
 
         /**
-        * @language en_US
-        *
-        *
-        * @param
-        * @param
+        * @language zh_CN
+        * 四元数乘以一个3维向量，结果返回一个四元数
+        * @param vector 相乘的向量
+        * @param target 返回的结果，如果为null就会实例化一个四元数对象返回
+        * @returns 返回相乘后的结果
         */
         public multiplyVector(vector: Vector3D, target: Quaternion = null): Quaternion {
             if (target === null) {
@@ -101,6 +145,13 @@
         *
         * @param    axis    The axis around which to rotate
         * @param    angle    The angle in radians of the rotation.
+        */
+        /**
+        * @language zh_CN
+        * 创建一个以axis轴为中心旋转angle角度的四元数
+        *
+        * @param axis   旋转轴
+        * @param angle  旋转角度
         */
         public fromAxisAngle(axis: Vector3D, angle: number) {
             angle *= Math.PI / 180.0;
@@ -149,6 +200,14 @@
         * @param qb The second quaternion to interpolate.
         * @param t The interpolation weight, a value between 0 and 1.
         */
+        /**
+        * @language zh_CN
+        * 两个四元数之间球形插值，插值之间提供旋转恒定角变化率。
+        *
+        * @param qa 四元数1
+        * @param qb 四元数2
+        * @param t 差值时刻
+        */
         public slerp(qa: Quaternion, qb: Quaternion, t: number) {
             var w1: number = qa.w, x1: number = qa.x, y1: number = qa.y, z1: number = qa.z;
             var w2: number = qb.w, x2: number = qb.x, y2: number = qb.y, z2: number = qb.z;
@@ -194,6 +253,14 @@
         * @param qb The second quaternion to interpolate.
         * @param t The interpolation weight, a value between 0 and 1.
         */
+        /**
+        * @language zh_CN
+        * 两个四元数之间的线性插值
+        *
+        * @param qa 四元数1
+        * @param qb 四元数2
+        * @param t 差值时刻
+        */
         public lerp(qa: Quaternion, qb: Quaternion, t: number) {
             var w1: number = qa.w, x1: number = qa.x, y1: number = qa.y, z1: number = qa.z;
             var w2: number = qb.w, x2: number = qb.x, y2: number = qb.y, z2: number = qb.z;
@@ -227,6 +294,14 @@
         * @param    ay        The angle in radians of the rotation around the ay axis.
         * @param    az        The angle in radians of the rotation around the az axis.
         */
+        /**
+        * @language zh_CN
+        * 用数值表示给定的欧拉旋转填充四元数对象。
+        *
+        * @param ax x轴旋转角度
+        * @param ay y轴旋转角度
+        * @param az z轴旋转角度
+        */
         public fromEulerAngles(ax: number, ay: number, az: number):Quaternion {
             ax *= Matrix3DUtils.DEGREES_TO_RADIANS;
             ay *= Matrix3DUtils.DEGREES_TO_RADIANS;
@@ -251,18 +326,24 @@
         * @param target An optional Vector3D object to contain the Euler angles. If not provided, a new object is created.
         * @returns The Vector3D containing the Euler angles.
         */
+        /**
+        * @language zh_CN
+        * 把四元数转成欧拉角返回
+        *
+        * @param target 转成的欧拉返回值，如果为null就新建一个对象返回
+        * @retruns 转成的欧拉返回值
+        */
         public toEulerAngles(target: Vector3D = null): Vector3D {
             if (target === null) {
                 target = new Vector3D();
             }
 
-            target.x = Math.atan2(2 * (this.w * this.x + this.y * this.z), 1 - 2 * (this.x * this.x + this.y * this.y));
+            target.x = Math.atan2(2.0 * (this.w * this.x + this.y * this.z), 1.0 - 2.0 * (this.x * this.x + this.y * this.y));
 
-            var temp: number = 2 * (this.w * this.y - this.z * this.x);
-            //target.y = Math.asin(2 * (this.w * this.y - this.z * this.x));
+            var temp: number = 2.0 * (this.w * this.y - this.z * this.x);
             temp = Matrix3DUtils.clampf(temp, -1.0, 1.0);
             target.y = Math.asin(temp);
-            target.z = Math.atan2(2 * (this.w * this.z + this.x * this.y), 1 - 2 * (this.y * this.y + this.z * this.z));
+            target.z = Math.atan2(2.0 * (this.w * this.z + this.x * this.y), 1.0 - 2.0 * (this.y * this.y + this.z * this.z));
 
             target.x /= Matrix3DUtils.DEGREES_TO_RADIANS;
             target.y /= Matrix3DUtils.DEGREES_TO_RADIANS;
@@ -273,6 +354,10 @@
         /**
         * @language en_US
         * Normalises the quaternion object.
+        */
+        /**
+        * @language zh_CN
+        * 单位化四元数
         */
         public normalize(val: number = 1) {
             var mag: number = val / Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
@@ -291,7 +376,7 @@
         */
         /**
         * @language zh_CN
-        * 
+        * 以字符串形式返回四元数的值
         * @returns 
         */
         public toString(): string {
@@ -303,6 +388,13 @@
         * Converts the quaternion to a Matrix3D object representing an equivalent rotation.
         * @param target An optional Matrix3D container to store the transformation in. If not provided, a new object is created.
         * @returns A Matrix3D object representing an equivalent rotation.
+        */
+        /**
+        * @language zh_CN
+        * 把一个四元数转换成矩阵
+        * @param target 返回转换后的矩阵，如果为null就新建一个对象返回
+        * @see egret3d.geom.Matrix4_4
+        * @returns 返回转换后的矩阵
         */
         public toMatrix3D(target: Matrix4_4 = null): Matrix4_4 {
             var rawData: Float32Array = Matrix3DUtils.RAW_DATA_CONTAINER;
@@ -340,6 +432,11 @@
         * Extracts a quaternion rotation matrix out of a given Matrix3D object.
         * @param matrix The Matrix3D out of which the rotation will be extracted.
         */
+        /**
+        * @language zh_CN
+        * 用一个旋转矩阵生成四元数
+        * @param matrix 旋转矩阵
+        */
         public fromMatrix(matrix: Matrix4_4) {
             var v: Vector3D = matrix.decompose(Orientation3D.QUATERNION)[1];
             this.x = v.x;
@@ -350,36 +447,13 @@
 
         /**
         * @language en_US
-        * Converts the quaternion to a Vector.&lt;Number&gt; matrix representation of a rotation equivalent to this quaternion.
-        * @param target The Vector.&lt;Number&gt; to contain the raw matrix data.
-        * @param exclude4thRow If true, the last row will be omitted, and a 4x3 matrix will be generated instead of a 4x4.
-        */
-        public toRawData(target: number[], exclude4thRow: boolean = false) {
-            var xy2: number = 2.0 * this.x * this.y, xz2: number = 2.0 * this.x * this.z, xw2: number = 2.0 * this.x * this.w;
-            var yz2: number = 2.0 * this.y * this.z, yw2: number = 2.0 * this.y * this.w, zw2: number = 2.0 * this.z * this.w;
-            var xx: number = this.x * this.x, yy: number = this.y * this.y, zz: number = this.z * this.z, ww: number = this.w * this.w;
-
-            target[0] = xx - yy - zz + ww;
-            target[1] = xy2 - zw2;
-            target[2] = xz2 + yw2;
-            target[4] = xy2 + zw2;
-            target[5] = -xx + yy - zz + ww;
-            target[6] = yz2 - xw2;
-            target[8] = xz2 - yw2;
-            target[9] = yz2 + xw2;
-            target[10] = -xx - yy + zz + ww;
-            target[3] = target[7] = target[11] = 0;
-
-            if (!exclude4thRow) {
-                target[12] = target[13] = target[14] = 0;
-                target[15] = 1;
-            }
-        }
-
-        /**
-        * @language en_US
         * Clones the quaternion.
         * @returns An exact duplicate of the current Quaternion.
+        */
+        /**
+        * @language zh_CN
+        * 克隆一个四元数
+        * @returns 当前四元数复制后返回.
         */
         public clone(): Quaternion {
             return new Quaternion(this.x, this.y, this.z, this.w);
@@ -391,6 +465,13 @@
         * @param vector The Vector3D object to be rotated.
         * @param target An optional Vector3D object that will contain the rotated coordinates. If not provided, a new object will be created.
         * @returns A Vector3D object containing the rotated point.
+        */
+        /**
+        * @language zh_CN
+        * 旋转一个3量坐标点
+        * @param vector 被旋转的对象
+        * @param target 旋转后的坐标对象。如果为null，将创建一个新的对象
+        * @returns 返回旋转后的坐标对象
         */
         public rotatePoint(vector: Vector3D, target: Vector3D = null): Vector3D {
             var x1: number, y1: number, z1: number, w1: number;
@@ -416,6 +497,11 @@
         * @language en_US
         * Copies the data from a quaternion into this instance.
         * @param q The quaternion to copy from.
+        */
+        /**
+        * @language zh_CN
+        * 将数据从四元数复制到该实例
+        * @param q 被复制的四元数对象
         */
         public copyFrom(q: Quaternion) {
             this.x = q.x;

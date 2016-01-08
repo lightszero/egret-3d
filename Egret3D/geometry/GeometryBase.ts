@@ -8,6 +8,10 @@
      * @class egret3d.GeometryBase
      * @classdesc
      * GeometryBase类 表示几何形状基类
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/GeometryBase.ts
      */
     export class GeometryBase {
 
@@ -36,7 +40,7 @@
 
         /**
         * @language zh_CN
-        * 
+        * 顶点偏移数
         */
         public numberOfVertices: number;
         /**
@@ -46,7 +50,7 @@
         public vertexSizeInBytes: number;
         /**
         * @language zh_CN
-        * 
+        * geometry数
         */
         public geometryNum: number;
 
@@ -82,7 +86,7 @@
         public uv2Size: number = 2;
         /**
         * @language zh_CN
-        * 
+        * Item数
         */
         public numItems: number = 0;
 
@@ -125,7 +129,7 @@
         public textureBump: string = "";
         /**
         * @language zh_CN
-        * constructor
+        * 构造函数
         */
         constructor() {
 

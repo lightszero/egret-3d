@@ -5,6 +5,8 @@
     * @class egret3d.Frustum
     * @classdesc
     * 摄像机视椎体,计算出摄像机的可视范围.
+    * 
+    * @see egret3d.camera.Camera3D
     */
     export class Frustum {
         
@@ -217,6 +219,7 @@
                 var incount: number = box.vexData.length / 3;
                 for (var j: number = 0; j < box.vexData.length; j += 3) {
                     temp.setTo(box.vexData[j], box.vexData[j + 1], box.vexData[j + 2]);
+                    temp.copyFrom(box.Transform.transformVector(temp));
                     dis = this._plane[i].distance(temp);
                     if (dis > 0) {
                         incount--;

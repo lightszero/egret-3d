@@ -1,4 +1,7 @@
 ﻿module Egret3D {
+    /**
+     * @private 
+     */
     export class TGA {
         public width: number;
         public height: number;

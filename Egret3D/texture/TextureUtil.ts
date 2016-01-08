@@ -1,10 +1,22 @@
 ﻿module egret3d {
+    /**
+     * @class egret3d.TextureUtil
+     * @private
+     * @classdesc
+     * TextureUtil
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/texture/TextureUtil.ts
+     */
     export class TextureUtil {
         private static context2D: CanvasRenderingContext2D; 
         private static canvas2D: HTMLCanvasElement; 
 
         /**
          * @language zh_CN
+         * @private
+         * 获取纹理数据
          * @param image 
          * @returns HTMLCanvasElement 
          */
@@ -26,6 +38,7 @@
 
         /**
          * @language zh_CN
+         * @private
          */
         public static regist() {
             if (!TextureUtil.canvas2D){
@@ -40,6 +53,11 @@
             }
         }
 
+        /**
+         * @language zh_CN
+         * 生成MipMap
+         * @param source  未生成MipMap的MipmapData对象
+         */
         public static generateMipMaps(source: MipmapData) {
             var minW = 1;
             var minH = 1;

@@ -3,14 +3,21 @@
     /**
     * @class egret3d.Picker
     * @classdesc
+    * @version Egret 3.0
+    * @platform Web,Native
     * 射线对场景中的实体对像进行检测
+    *
+    * @see egret3d.geom.Ray
+    *
+    * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
+    * @includeExample egret3d/core/traverse/Picker.ts
     */
     export class Picker {
         protected static ray: Ray = new Ray();
                                                         
         /**
         * @language zh_CN
-        * 返回鼠标拾取对象包围盒子得到的所有对象
+        * 返回鼠标拾取对象得到的所有对象,调用之前到设置被拣选对象的pickType.
         * @param camera 当前相机
         * @param objects 检测的对象列表
         * @returns 拾取的object列表

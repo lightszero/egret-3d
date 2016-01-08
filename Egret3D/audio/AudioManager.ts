@@ -5,24 +5,32 @@
     * @classdesc
     * AudioManager 类允许您在应用程序中 播放 HTML5 Audio 和 Web Audio。
     * @includeExample audio/AudioManager.ts
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class AudioManager{
 
         /**
          * @language zh_CN
          * AudioContext 上下文。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public context: any;
 
         /**
         * @language zh_CN
         * 音量，范围从 0（静音）至 1（最大幅度）。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public volume: number = 1;
 
         /**
         * @language zh_CN
         * 创建一个新的 AudioManager 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor() {
             if (this.hasAudioContext()) {
@@ -36,6 +44,8 @@
         * @language zh_CN
         * 是否支持 HTML5 Audio tag API。
         * @returns {boolean}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public hasAudio():boolean {
             return (typeof Audio !== 'undefined');
@@ -45,6 +55,8 @@
         * @language zh_CN
         * 是否支持 Web Audio API。
         * @returns {boolean}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public hasAudioContext():boolean {
             return !!(typeof AudioContext !== 'undefined');
@@ -59,6 +71,8 @@
         * @param url 指向外部音频文件的 URL。
         * @param audio {HTMLAudioElement}  
         * @returns {boolean}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public isSupported(url: string, audio:HTMLAudioElement): boolean {
 
@@ -99,8 +113,10 @@
         * @param success {Function} 一个可选的音频文件加载成功的事件处理函数。
         * @param error {Function} 一个可选的音频文件加载失败的事件处理函数。
         * @returns {Sound}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
-        public createSound (url, success=null, error=null):Sound {
+        public createSound (url:string, success:Function=null, error:Function=null):Sound {
             return new Sound(url, success, error);
         }
 
@@ -109,13 +125,13 @@
         /**
         * @language zh_CN
         * 生成一个新的 Channel 对象来播放该声音。此方法返回 Channel 对象，访问该对象可停止声音并监控音量。
-        * @param sound{sound} 要播放的声音数据。
-        * @param options{Object}  
-        * @param {Number} [options.volume] 回放音量, 0 到 1。
-        * @param {Boolean} [options.loop]  是否循环播放。
+        * @param sound{Sound} 要播放的声音数据。
+        * @param options{any}   {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         * @returns {Channel}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
-        public playSound (sound, options) {
+        public playSound(sound: Sound, options: any) {
             options = options || {};
             var channel: Channel = new Channel(sound, options);
             channel.play();
@@ -128,10 +144,10 @@
         * 生成一个新的 Channel3d 对象来播放该声音。此方法返回 Channel3d 对象，访问该对象可停止声音并监控音量。
         * @param sound {Sound}  要播放的声音数据。
         * @param position {Vector3D} 在三维空间中播放的位置。
-        * @param {Object} options
-        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
-        * @param {Boolean} [options.loop] 是否循环播放。
+        * @param {Object} options {Object} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         * @returns {Channel}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public playSound3d(sound: Sound, position: Vector3D, options: any):Channel3d {
             options = options || {};
@@ -163,6 +179,9 @@
         /**
         * @language zh_CN
         * AudioManager类的单例模式，返回一个 AudioManager 对象。
+        * @returns {AudioManager}  
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public static get instance(): AudioManager {
             if (this._instance == null) {

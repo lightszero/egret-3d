@@ -4,11 +4,17 @@
      * @class egret3d.Point
      * @classdesc
      * Point 对象表示二维坐标系统中的某个位置，其中 x 表示水平轴，y 表示垂直轴。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Point {
         /**
          * @language en_US
 	     * The horizontal coordinate of the point. The default value is 0.
+	     */
+        /**
+         * @language zh_CN
+	     * x坐标
 	     */
         public x: number;
 
@@ -16,11 +22,21 @@
          * @language en_US
          * The vertical coordinate of the point. The default value is 0.
          */
+        /**
+         * @language zh_CN
+	     * y坐标
+	     */
         public y: number;
 
         /**
          * @language en_US
          * The length of the line segment from(0,0) to this point.
+         * @returns length
+         */
+        /**
+         * @language zh_CN
+         * 返回从(0, 0)到(x, y)的距离
+         * @returns 当前2维向量的长度
          */
         public get length(): number {
             return Math.sqrt(this.x * this.x + this.y * this.y);
@@ -33,6 +49,12 @@
          *
          * @param x The horizontal coordinate.
          * @param y The vertical coordinate.
+         */
+        /**
+         * @language zh_CN
+         * 创建一个Point实例
+         * @param x
+         * @param y
          */
         constructor(x: number = 0, y: number = 0) {
             this.x = x;
@@ -47,6 +69,11 @@
          * @param v The point to be added.
          * @returns The new point.
          */
+        /**
+         * @language zh_CN
+         * 当前Point加上v Point，结果返回新的实例
+         * @param v
+         */
         public add(v: Point): Point {
             return new Point(this.x + v.x, this.y + v.y);
         }
@@ -57,12 +84,23 @@
          *
          * @returns The new Point object.
          */
+        /**
+         * @language zh_CN
+         * 克隆Point
+         * @param 返回克隆后的Point
+         */
         public clone(): Point {
             return new Point(this.x, this.y);
         }
 
+        /**
+         * @language zh_CN
+         * 复制源Point的值
+         * @param sourcePoint
+         */
         public copyFrom(sourcePoint: Point) {
-
+            this.x = sourcePoint.x;
+            this.y = sourcePoint.y;
         }
 
         /**
@@ -73,6 +111,11 @@
          * @param toCompare The point to be compared.
          * @returns A value of <code>true</code> if the object is equal to this Point
          *         object; <code>false</code> if it is not equal.
+         */
+        /**
+         * @language zh_CN
+         * 比较两个Point是否全等
+         * @param toCompare 被比较的Point
          */
         public equals(toCompare: Point): boolean {
             return (this.x == toCompare.x && this.y == toCompare.y);
@@ -86,6 +129,11 @@
          * @param thickness The scaling value. For example, if the current point is
          *                 (0,5), and you normalize it to 1, the point returned is
          *                  at(0,1).
+         */
+        /**
+         * @language zh_CN
+         * 当前Point标准化
+         * @param thickness 使当前Point的长度为thickness 原点(0, 0)到(x, y)的距离
          */
         public normalize(thickness: number = 1) {
             if (this.length != 0) {
@@ -108,6 +156,12 @@
          *           <i>x</i>.
          * @param dy The amount by which to offset the vertical coordinate, <i>y</i>.
          */
+        /**
+         * @language zh_CN
+         * 当前Point偏移位置
+         * @param dx 偏移的x坐标
+         * @param dx 偏移的y坐标
+         */
         public offset(dx: number, dy: number) {
             this.x += dx;
             this.y += dy;
@@ -120,6 +174,12 @@
          *
          * @param v The point to be subtracted.
          * @returns The new point.
+         */
+        /**
+         * @language zh_CN
+         * 当前Point减去v Point,结果返回一个新实例
+         * @param v 
+         * @returns 结果返回
          */
         public subtract(v: Point): Point {
             return new Point(this.x - v.x, this.y - v.y);
@@ -134,6 +194,11 @@
          *
          * @returns The string representation of the coordinates.
          */
+        /**
+        * @language zh_CN
+        * 当前Point以字符串形式返回
+        * @returns string
+        */
         public toString(): string {
             return "[Point] (x=" + this.x + ", y=" + this.y + ")";
         }
@@ -146,47 +211,16 @@
          * @param pt2 The second point.
          * @returns The distance between the first and second points.
          */
+        /**
+        * @language zh_CN
+        * 计算两个Point之间的距离
+        * @returns 返回两个Point之间的距离
+        */
         public static distance(pt1: Point, pt2: Point): number {
             var dx: number = pt2.x - pt1.x;
             var dy: number = pt2.y - pt1.y;
 
             return Math.sqrt(dx * dx + dy * dy);
-        }
-
-        /**
-         * @language en_US
-         * Determines a point between two specified points. The parameter
-         * <code>f</code> determines where the new interpolated point is located
-         * relative to the two end points specified by parameters <code>pt1</code>
-         * and <code>pt2</code>. The closer the value of the parameter <code>f</code>
-         * is to <code>1.0</code>, the closer the interpolated point is to the first
-         * point(parameter <code>pt1</code>). The closer the value of the parameter
-         * <code>f</code> is to 0, the closer the interpolated point is to the second
-         * point(parameter <code>pt2</code>).
-         *
-         * @param pt1 The first point.
-         * @param pt2 The second point.
-         * @param f   The level of interpolation between the two points. Indicates
-         *            where the new point will be, along the line between
-         *            <code>pt1</code> and <code>pt2</code>. If <code>f</code>=1,
-         *            <code>pt1</code> is returned; if <code>f</code>=0,
-         *            <code>pt2</code> is returned.
-         * @returns The new, interpolated point.
-         */
-        public static interpolate(pt1: Point, pt2: Point, f: number): Point {
-            return new Point(pt2.x + (pt1.x - pt2.x) * f, pt2.y + (pt1.y - pt2.y) * f);
-        }
-
-        /**
-         * @language en_US
-         * Converts a pair of polar coordinates to a Cartesian point coordinate.
-         *
-         * @param len   The length coordinate of the polar pair.
-         * @param angle The angle, in radians, of the polar pair.
-         * @returns The Cartesian point.
-         */
-        public static polar(len: number, angle: number): Point {
-            return new Point(len * Math.cos(angle), len * Math.sin(angle));
         }
     }
 

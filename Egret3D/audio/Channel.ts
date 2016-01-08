@@ -5,16 +5,22 @@
      * @classdesc
      * Channel 类控制应用程序中的声音，对声音执行更精细的控制。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
      * @includeExample audio/Channel.ts
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Channel {
         /**
         * @language zh_CN
         * 音量，范围从 0（静音）至 1（最大幅度）。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public volume: number = 1.0;
         /**
         * @language zh_CN
         * 是否循环播放 使声音播放结束时重新开始播放。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public loop: boolean = false;
 
@@ -22,6 +28,8 @@
         /**
         * @language zh_CN
         * 当前播放速度。1.0 正常速度。0.5 半速（更慢）。2.0 倍速（更快）。-1.0 向后。正常速度。-0.5 向后，半速。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public pitch: number = 1.0;
 
@@ -35,11 +43,11 @@
 
         /**
         * @language zh_CN
-        * 创建一个新的 Channel 对象
+        * 创建一个新的 Channel 对象。
         * @param sound {Sound} Sound 对象 音频的数据源。
-        * @param {Object} options
-        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
-        * @param {Boolean} [options.loop] 是否循环播放。
+        * @param {Object} options {any} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(sound: Sound, options: any) {
 
@@ -76,6 +84,8 @@
         /**
         * @language zh_CN
         * 开始在该声道中播放声音。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public play() {
 
@@ -105,6 +115,8 @@
         /**
         * @language zh_CN
         * 暂时停止在该声道中播放声音。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public pause() {
             if (AudioManager.instance.hasAudioContext()) {
@@ -127,6 +139,8 @@
         /**
         * @language zh_CN
         * 从暂停的位置继续在该声道中播放声音。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public unpause() {
 
@@ -163,6 +177,8 @@
         /**
         * @language zh_CN
         * 停止在该声道中播放声音。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public stop() {
 
@@ -218,7 +234,9 @@
         /**
         * @language zh_CN
         * 是否正在播放。
-        * @returns {boolean}   
+        * @returns {boolean}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public isPlaying():boolean {
             if (AudioManager.instance.hasAudioContext()) {
@@ -235,7 +253,9 @@
         /**
         * @language zh_CN
         * 音频持续时间。
-        * @returns {number}   
+        * @returns {number}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public getDuration():number {
 

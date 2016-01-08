@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
     /**
+    * @private
     * @class egret3d.ShadowRender
     * @classdesc
     * 阴影渲染器

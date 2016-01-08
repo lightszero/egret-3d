@@ -4,6 +4,8 @@
      * @class egret3d.WireframeBase
      * @classdesc
      * 线框渲染基类 
+     * @version Egret 3.0
+     * @platform Web,Native
      */   
     export class WireframeBase {
         
@@ -20,30 +22,40 @@
         /**
         * @language zh_CN
         * 是否以线渲染
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public isDrawLine: boolean = true;
         
         /**
         * @language zh_CN
         * 是否以点渲染
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public isDrawPoint: boolean = true;
                 
         /**
         * @language zh_CN
         * 渲染顶点的大小
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public pointSize: number = 1.0;
                         
         /**
         * @language zh_CN
         * 渲染顶点的颜色
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public pointColor: Vector3D = new Vector3D(1, 1, 1, 1);
                         
         /**
         * @language zh_CN
         * 渲染线的颜色
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public lineColor: Vector3D = new Vector3D(1, 1, 1, 1);
 
@@ -66,10 +78,13 @@
         private uniform_pointSize;
                         
         /**
+        * @private
         * @language zh_CN
         * constructor
         * @param vs vs文件名
         * @param fs fs文件名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
             this.usage = new MethodUsageData();
@@ -83,6 +98,8 @@
         * @language zh_CN
         * 根据geometry创建一个线框
         * @param geometry 模型数据
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public createFromGeometry(geometry: GeometryBase) {
 
@@ -93,6 +110,8 @@
         * 根据两个顶点创建一条线段
         * @param first 线段的起始点
         * @param second 线段的结束点
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public createFromData(first: Vector3D, second: Vector3D) {
 
@@ -103,6 +122,8 @@
         * 以下标来设置某个顶点的坐标
         * @param index 顶点下标
         * @param pos 设置顶点的坐标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setVertexPos(index: number, pos: Vector3D) {
             var i: number = index * this.vertexLength;
@@ -120,6 +141,8 @@
         * 设置渲染用的shader文件名字
         * @param vsName vs文件名
         * @param fsName fs文件名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setShader(vsName: string, fsName: string) {
             this.vsShader.addShader(vsName);
@@ -131,9 +154,11 @@
                                         
         /**
         * @language zh_CN
-        * 渲染
+        * 提交数据到GPU渲染
         * @param context3D 设备上下文
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public draw(context3D: Context3D, camera: Camera3D) {
 

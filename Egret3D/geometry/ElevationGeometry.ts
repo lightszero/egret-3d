@@ -3,7 +3,13 @@
      * @language zh_CN
      * @class egret3d.ElevationGeometry
      * @classdesc
-     * ElevationGeometry类 表示圆柱体
+     * ElevationGeometry类 表示高度图几何图形
+     *
+     * 高度图几何图形常用于做场景地形，其由一张色彩图片记录高度信息，在程序中解析该色彩图生成相应大小高度的模型网格，以达到逼真动态地形。
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/ElevationGeometry.ts
      */
     export class ElevationGeometry extends GeometryBase {
 
@@ -24,15 +30,15 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param heightmap {ImageTexture}
-        * @param width {Number}
-        * @param height {Number}
-        * @param depth {Number}
-        * @param segmentsW {Number}
-        * @param segmentsH {Number}
-        * @param maxElevation {Number}
-        * @param minElevation {Number}
+        * 构造函数
+        * @param heightmap 附带高度信息的高度图纹理
+        * @param width 宽度
+        * @param height 高度
+        * @param depth 深度
+        * @param segmentsW 宽度片段数
+        * @param segmentsH 高度片段数
+        * @param maxElevation 最大高度
+        * @param minElevation 最小高度
         */
         constructor(heightmap: ImageTexture, width: number = 1000, height: number = 100, depth: number = 1000, segmentsW: number = 30, segmentsH: number = 30, maxElevation: number = 255, minElevation: number = 0) {
             super();
@@ -56,16 +62,24 @@
             this.buildElevationGeometry();
         }
 
-        public buildTerrain(widthSegment: number, heightSegment: number) {
-
-        }
-
+        /**
+        * @language zh_CN
+        * 获取像素
+        * @param x 纹理X位置
+        * @param z 纹理Y位置
+        */
         public getPixel(x: number, z: number): number {
             var index: number = z * (this.heightmap.imageData.width * 4) + x * 4;
             var color: number = this.imageData.data[index + 3] << 24 | this.imageData.data[index + 0] << 16 | this.imageData.data[index + 1] << 8 | this.imageData.data[index + 2];
             return color;
         }
 
+        /**
+        * @language zh_CN
+        * 获取高度值
+        * @param x X位置
+        * @param z Y位置
+        */
         public getHeightBypos(x: number, z: number): number {
             var color: number = this.getPixel(x, z);
 

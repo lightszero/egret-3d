@@ -3,9 +3,14 @@
     /**
     * @class egret3d.Sky
     * @classdesc
+    * 场景中天空盒子，是6面体cube，以6张无缝结合的贴图构成.
+    *
+    * @see egret3d.texture.Skytexture
+    *
+    * 示例:
     * @version Egret 3.0
     * @platform Web,Native
-    * 场景中天空盒子，是6面体cube，以6张无缝结合的贴图构成.
+    * @includeExample egret3d/core/node/Sky.ts
     */
     export class Sky {
 
@@ -25,8 +30,10 @@
                 
         /**
         * @language zh_CN
-        * constructor
+        * 构建一个天空盒子对象
         * @param skyTexture 天空盒子贴图
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(skyTexture:SkyTexture ) {
             this.skyTexture = skyTexture;
@@ -43,6 +50,8 @@
         * 设置渲染用的shader文件名字
         * @param vsName vs文件名
         * @param fsName fs文件名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setShader(vsName: string, fsName: string) {
             this.vsShader.addShader(vsName);
@@ -101,9 +110,11 @@
                                 
         /**
         * @language zh_CN
-        * 渲染
+        * 提交数据给GPU渲染当前天空盒子
         * @param context3D 设备上下文
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public draw(context3D: Context3D, camera:Camera3D ) {
 

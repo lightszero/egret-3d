@@ -1,16 +1,23 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.ColorMapPass
      * @classdesc
-     * 颜色贴图通道渲染器
+     * 颜色贴图通道渲染器。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class ColorMapPass extends MaterialPassBase {
 
+
         /**
-         * @language zh_CN
-         * @param data 
-         */
+        * @language zh_CN
+        * 创建一个新的 ColorMapPass 对象。
+        * @param data {MaterialData} 材质数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor(data: MaterialData) {
             super(data);
            
@@ -19,7 +26,9 @@
            
         /**
          * @language zh_CN
-         * 初始化
+         * 初始化 UseMethod。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initUseMethod() {
             this.materialData.diffusePassUsageData.directLightData = new Float32Array(this.materialData.directLightList.length * DirectLight.stride);
@@ -35,10 +44,12 @@
        
         /**
          * @language zh_CN
-         * 初始化 shader 的地方
-         * @param context3D 
-         * @param geometry 
-         * @param animation 
+         * 初始化 shader 。
+         * @param context3D {Context3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initShader(context3D: Context3D, geometry: GeometryBase, animation: IAnimation) {
 
@@ -69,12 +80,14 @@
 
         /**
          * @language zh_CNa
-         * 激活
-         * @param context3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 激活 ColorMapPass。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase, animation: IAnimation ) {
           
@@ -88,17 +101,22 @@
 
         /**
          * @language zh_CN
-         * 序号
+         * 索引
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public index: number = 0;
+
         /**
-         * @language zh_CN
-         * 更新
-         * @param context3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * @language zh_CNa
+         * 更新 ColorMapPass。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updata(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase , animation: IAnimation ) {
             super.draw(context3D, modeltransform, camera3D, geometry, animation);

@@ -4,12 +4,20 @@
      * @class egret3d.CylinderGeometry
      * @classdesc
      * CylinderGeometry类 表示圆柱体
+     *
+     * 示例：
+     * //用 CylinderGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
+     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CylinderGeometry(), new egret3d.TextureMaterial() );
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/CylinderGeometry.ts
      */
     export class CylinderGeometry extends SubGeometry {
-                
+
         /**
         * @language zh_CN
-        * constructor
+        * 构造函数
         */
         constructor() {
             super();

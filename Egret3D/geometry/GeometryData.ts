@@ -4,6 +4,10 @@
      * @class egret3d.GeometryData
      * @classdesc
      * GeometryData类 表示几何形状数据
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/GeometryData.ts
      */
     export class GeometryData {
 
@@ -15,15 +19,15 @@
 
         /**
         * @language zh_CN
-        * 
+        * 数据长度
         */
         public length: number;
+
         /**
         * @language zh_CN
-        * 
+        * 顶点长度
         */
         public vertLen: number;
-        
 
         /**
         * @language zh_CN
@@ -81,72 +85,72 @@
 
         /**
         * @language zh_CN
-        * 
+        * 顶点索引
         */
         public vertexIndex: number = 0;
         /**
         * @language zh_CN
-        * 
+        * 索引数据数组
         */
         public indices: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 顶点数据数组(x、y、z)三个number为一个顶点数据
         */
         public vertices: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 法线数据数组(x、y、z)三个number为一个法线数据
         */
         public normals: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 切线数据数组(x、y、z)三个number为一个切线数据
         */
         public tangts: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 顶点颜色数据数组
         */
         public verticesColor: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 第一套UV数据数组
         */
         public uvs: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 第二套UV数据数组
         */
         public uv2s: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 蒙皮数据数组
         */
         public skinMesh: Array<number> = new Array<number>();
 
         /**
         * @language zh_CN
-        * 
+        * 面法线数据数组
         */
         public faceNormals: Array<number> = new Array<number>();
         /**
         * @language zh_CN
-        * 
+        * 面权重数据数组
         */
         public faceWeights: Array<number> = new Array<number>();
 
         /**
         * @language zh_CN
-        * 
+        * 顶点数据数组
         */
         public vertexDatas: Array<number>;
 
         /**
         * @language zh_CN
-        * 
-        * @param source 
-        * @returns 
+        * 构建顶点数据数组
+        * @param source 未组合顶点数据的GeometryData对象
+        * @returns 经过组合并生成顶点数据数组的新GeometryData对象
         */
         public static build(source: GeometryData): GeometryData {
 

@@ -1,16 +1,22 @@
 ﻿module egret3d {
     
      /**
+     * @language zh_CN
      * @class egret3d.TerrainMapPass
      * @classdesc
-     * 地形贴图通道渲染器
+     * 地形贴图通道渲染器。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class TerrainMapPass extends DiffuseMapPass {
 
         /**
-         * @language zh_CN
-         * @param data 
-         */
+        * @language zh_CN
+        * 创建一个新的 TerrainMapPass 对象。
+        * @param data {MaterialData} 材质数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor(data: MaterialData) {
             super(data);
 
@@ -19,7 +25,9 @@
 
         /**
          * @language zh_CN
-         * 初始化
+         * 初始化 UseMethod。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initUseMethod() {
             var i: number = 0;

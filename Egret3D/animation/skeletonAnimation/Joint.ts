@@ -1,9 +1,14 @@
 ﻿module egret3d {
     /**
+     * @private
      * @language zh_CN
      * @class egret3d.Joint
      * @classdesc
-     * 骨骼
+     * Joint 类表示骨骼关节，属于骨架类的组成部分， Joint类属于骨架实现的内部类，无需直接实例化。
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/animation/skeletonAnimation/Joint.ts
      */
     export class Joint {
         
@@ -79,6 +84,11 @@
         */
         public localMatrix: Matrix4_4 = null;
 
+        /**
+        * @language zh_CN
+        * 构造函数
+        * @param name 骨骼名称
+        */
         constructor(name: string) {
             this.name = name;
         }

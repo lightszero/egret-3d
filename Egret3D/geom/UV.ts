@@ -3,7 +3,12 @@
      * @language zh_CN
      * @class egret3d.UV
      * @classdesc
-     * UV 类 
+     * UV类，用来存储模型顶点uv数据
+     * 
+     * @see egret3d.geometry.GeometryData
+     *
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class UV {
         

@@ -3,12 +3,18 @@
      * @language zh_CN
      * @class egret3d.Plane3D
      * @classdesc
-     * Plane3D 类
+     * Plane3D 类 3D空间中的平面表示数据
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Plane3D {
         /**
          * @language en_US
 	     * The A coefficient of this plane. (Also the x dimension of the plane normal)
+	     */
+        /**
+         * @language zh_CN
+	     * 平面中的a分量
 	     */
         public a: number;
 
@@ -16,18 +22,30 @@
          * @language en_US
          * The B coefficient of this plane. (Also the y dimension of the plane normal)
          */
+        /**
+         * @language zh_CN
+	     * 平面中的b分量
+	     */
         public b: number;
 
         /**
          * @language en_US
          * The C coefficient of this plane. (Also the z dimension of the plane normal)
          */
+        /**
+         * @language zh_CN
+	     * 平面中的c分量
+	     */
         public c: number;
 
         /**
          * @language en_US
          * The D coefficient of this plane. (Also the inverse dot product between normal and point)
          */
+        /**
+         * @language zh_CN
+	     * 平面中的d分量
+	     */
         public d: number;
 
         // indicates the alignment of the plane
@@ -40,6 +58,14 @@
          * @language en_US
          * Create a Plane3D with ABCD coefficients
          */
+        /**
+         * @language zh_CN
+	     * 创建一个平面实例
+         * @param a
+         * @param b
+         * @param c
+         * @param d
+	     */
         constructor(a: number = 0, b: number = 0, c: number = 0, d: number = 0) {
             this.a = a;
             this.b = b;
@@ -48,8 +74,13 @@
         }
 
         /**
-         * @language en_US
-         */
+         * @language zh_CN
+	     * 填充平面的各分量的值
+         * @param a
+         * @param b
+         * @param c
+         * @param d
+	     */
         public setTo(a: number = 0, b: number = 0, c: number = 0, d: number = 0) {
             this.a = a;
             this.b = b;
@@ -64,6 +95,14 @@
          * @param p1 Vector3D
          * @param p2 Vector3D
          */
+        
+        /**
+         * @language zh_CN
+	     * 由3个坐标来创建一个3d平面
+         * @param p0 Vector3D
+         * @param p1 Vector3D
+         * @param p2 Vector3D
+	     */
         public fromPoints(p0: Vector3D, p1: Vector3D, p2: Vector3D) {
             var d1x: number = p1.x - p0.x;
             var d1y: number = p1.y - p0.y;
@@ -85,6 +124,12 @@
          * @param normal Vector3D
          * @param point  Vector3D
          */
+        /**
+         * @language zh_CN
+         * 由一条normal向量和一个坐标创建一个3d平面
+         * @param normal Vector3D
+         * @param point  Vector3D
+         */
         public fromNormalAndPoint(normal: Vector3D, point: Vector3D) {
             this.a = normal.x;
             this.b = normal.y;
@@ -96,6 +141,11 @@
          * @language en_US
          * Normalize this Plane3D
          * @returns Plane3D This Plane3D.
+         */
+        /**
+         * @language zh_CN
+         * 单位化3d平面
+         * @returns 返回平面长度
          */
         public normalize(): number {
             var len: number = Math.sqrt(this.a * this.a + this.b * this.b + this.c * this.c);
@@ -116,6 +166,12 @@
          * @param p Vector3D
          * @returns Number
          */
+        /**
+         * @language zh_CN
+         * 计算3d平面到点p的距离
+         * @param p Vector3D
+         * @returns 返回计算后的距离
+         */
         public distance(p: Vector3D): number {
             return this.a * p.x + this.b * p.y + this.c * p.z + this.d;
         }
@@ -124,6 +180,16 @@
          * @language en_US
          * Classify a point against this Plane3D. (in front, back or intersecting)
          * @param p Vector3D
+         * @param epsilon
+         * @returns PlaneClassification.FRONT在平面正面 
+         * PlaneClassification.BACK在平面背面面 
+         * PlaneClassification.INTERSECT在平面上
+         */
+        /**
+         * @language zh_CN
+         * 计算3d平面和点p的空间关系
+         * @param p Vector3D
+         * @param epsilon 相对偏移值
          * @returns int Plane3.FRONT or Plane3D.BACK or Plane3D.INTERSECT
          */
         public classifyPoint(p: Vector3D, epsilon: number = 0.01): number {
@@ -141,7 +207,8 @@
         }
         
         /**
-         * @language en_US
+         * @language zh_CN
+         * 当前Plane3D以字符串形式返回
          * @returns string
          */
         public toString(): string {

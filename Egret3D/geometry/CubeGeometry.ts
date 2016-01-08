@@ -4,33 +4,44 @@
      * @class egret3d.CubeGeometry
      * @classdesc
      * CubeGeometry类 表示立方体
+     *
+     * 示例：
+     * //用 CubeGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
+     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CubeGeometry(), new egret3d.TextureMaterial() );
+     * 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample egret3d/geometry/CubeGeometry.ts
      */
     export class CubeGeometry extends SubGeometry {
-                
+
         /**
         * @language zh_CN
-        * width
+        * @readOnly
+        * Cube宽度
         */
         public width: number = 80;
-                        
+
         /**
         * @language zh_CN
-        * height
+        * @readOnly
+        * Cube高度
         */
         public height: number = 80;
-                        
+
         /**
         * @language zh_CN
-        * depth
+        * @readOnly
+        * Cube深度
         */
         public depth: number = 80;
-                                
+
         /**
         * @language zh_CN
-        * constructor
-        * @param width {Number}
-        * @param height {Number}
-        * @param depth {Number}
+        * 构造函数
+        * @param width 宽度
+        * @param height 高度
+        * @param depth 深度
         */
         constructor(width: number = 80, height: number = 80, depth: number = 80 ) {
             super();
@@ -39,7 +50,7 @@
             this.depth = depth;
             this.buildGeomtry();
         }
-                                        
+
         /**
         * @language zh_CN
         * 生成网格

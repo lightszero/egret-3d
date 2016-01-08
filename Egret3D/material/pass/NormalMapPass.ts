@@ -1,24 +1,33 @@
-﻿module egret3d {
+﻿/// <reference path="../method/fs/normalmethod.ts" />
+module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.NormalMapPass
      * @classdesc
-     * 发现贴图通道渲染器
+     * 发现贴图通道渲染器。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class NormalMapPass extends MaterialPassBase {
 
         private normalMethod: NormalMethod;
         /**
-         * @language zh_CN
-         * @param data 
-         */
+        * @language zh_CN
+        * 创建一个新的 NormalMapPass 对象。
+        * @param data {MaterialData} 材质数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor(data: MaterialData) {
             super(data);
         }
            
         /**
          * @language zh_CN
-         * 初始化
+         * 初始化 UseMethod。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initUseMethod() {
             var i: number = 0;
@@ -43,15 +52,15 @@
             //}
         }
 
-        /**
-        * 初始化 shader 的地方
-        */
+
         /**
          * @language zh_CN
-         * 初始化 shader 的地方
-         * @param context3D 
-         * @param geometry 
-         * @param animation 
+         * 初始化 shader 。
+         * @param context3D {Context3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initShader(context3D: Context3D, geometry: GeometryBase, animation: IAnimation ) {
 
@@ -82,13 +91,15 @@
         }
 
         /**
-         * @language zh_CN
-         * 激活
-         * @param context3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * @language zh_CNa
+         * 激活NormalMapPass。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation ) {
             for (this.index = 0; this.index < this.materialData.normalPassUsageData.vsMethodList.length; this.index++) {
@@ -101,17 +112,22 @@
 
         /**
          * @language zh_CN
+         * 索引。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public index: number = 0;
 
         /**
-         * @language zh_CN
-         * 绘制
-         * @param context3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * @language zh_CNa
+         * 绘制。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public draw(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase,  animation: IAnimation ) {
             context3D.gl.useProgram(this.materialData.normalPassUsageData.program3D.program);

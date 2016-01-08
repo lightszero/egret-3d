@@ -2,6 +2,7 @@ module egret3d {
     export enum PVRFormat {RGB_PVRTC_4BPPV1_Format = 2100, RGB_PVRTC_2BPPV1_Format = 2101, RGBA_PVRTC_4BPPV1_Format = 2102, RGBA_PVRTC_2BPPV1_Format = 2103};
 
     /**
+     * @private 
      * @language zh_CN
      * @class egret3d.PVRParser
      * @classdesc

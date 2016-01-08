@@ -1,9 +1,12 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.EffectMethod
      * @classdesc
-     * 效果方法
+     * AOMapMethod，DistanceFog，EnvironmentMappingMethod，LightMapMethod 的基类。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class EffectMethod {
 
@@ -17,20 +20,21 @@
 
         protected context3D: Context3D;
         /**
-         * @language zh_CN
-         * constructor
-         */
-
-        /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 创建一个新的 EffectMethod 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor() {
         }
 
         /**
          * @language zh_CN
-         * @param materialData 
-         * @param usage 
+         * 设置材质信息。
+         * @param materialData {MaterialData}
+         * @param usage {MethodUsageData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData) {
             this.usage = usage;
@@ -38,52 +42,69 @@
         }
 
         /**
-         * @language zh_CN
-         * @returns string
-         */
+        * @language zh_CN
+        * 返回顶点方法名。
+        * @returns {String}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get vertexMethodName(): string {
             return this.vsMethodName; 
         }
 
         /**
-         * @language zh_CN
-         * @returns string
-         */
+        * @language zh_CN
+        * 返回frag方法名。
+        * @returns {String}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get fragMethodName(): string {
             return this.fsMethodName;
         }
 
         /**
+         * @private
          * @language zh_CN
-         * @param context3D 
-         * @param usage 
-         * @param materialData 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 激活特效。
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activateEffect(context3D: Context3D,usage:MethodUsageData,materialData:MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D ,geometry:GeometryBase , animation:IAnimation ) {
             //change constData
             this.context3D = context3D;
         }
-
         /**
+         * @private
          * @language zh_CN
-         * @param context3D 
-         * @param usage 
-         * @param materialData 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 更新特效。
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updataEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase , animation: IAnimation ) {
 
         }
 
         /**
+         * @private
          * @language zh_CN
+         * 销毁。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public dispose() {
         }

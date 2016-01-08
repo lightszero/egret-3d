@@ -1,9 +1,13 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.DistanceFog
      * @classdesc
-     * 远景雾
+     * DistanceFog 类 表示远景雾。 
+     * @version Egret 3.0
+     * @platform Web,Native
+     * 
      */
     export class DistanceFog extends EffectMethod {
 
@@ -18,8 +22,11 @@
         private _data: Float32Array;
 
         /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 创建一个新的 DistanceFog 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor() {
             super();
             this.fsMethodName = "distanceFog_fragment";
@@ -30,83 +37,110 @@
         }
 
         /**
-         * @language zh_CN
-         * @param value 
-         */
+        * @language zh_CN
+        * 设置雾颜色。
+        * @param value{Number}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set fogColor(value: number) {
             this._fogColor = value;
             this._data[0] = (value >> 16 & 0xff) / 255;
             this._data[1] = (value >> 8 & 0xff) / 255;
             this._data[2] = (value & 0xff) / 255;
         }
-
         /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 获取雾颜色。
+        * @returns {Number} 
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get fogColor(): number {
             return this._fogColor; 
         }
 
         /**
-         * @language zh_CN
-         * @param value 
-         */
+        * @language zh_CN
+        * 设置雾的全局密度。
+        * @param value{Number}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set globalDensity(value: number) {
             this._globalDensity = value; 
             this._data[3] = value;
         }
 
         /**
-         * @language zh_CN
-         * @returns number
-         */
+        * @language zh_CN
+        * 获取雾的全局密度。
+        * @returns {Number} 
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get globalDensity(): number {
             return this._globalDensity;
         }
 
         /**
-         * @language zh_CN
-         * @param value 
-         */
+        * @language zh_CN
+        * 设置雾的开始距离。
+        * @param value{Number}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set startDistance(value: number) {
             this._startDistance = value; 
             this._data[4] = value;
         }
 
         /**
-         * @language zh_CN
-         * @returns number
-         */
+        * @language zh_CN
+        * 获取雾的开始距离。
+        * @returns {Number} 
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get startDistance(): number {
             return this._startDistance;
         }
 
         /**
-         * number
-         * @param value 
-         */
+        * @language zh_CN
+        * 设置雾的缩放距离。
+        * @param value{Number}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set distanceScale(value: number) {
             this._distanceScale = value;
             this._data[5] = value;
         }
-
         /**
-         * @language zh_CN
-         * @returns number
-         */
+        * @language zh_CN
+        * 获取雾的缩放距离。
+        * @returns {Number} 
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get distanceScale(): number {
             return this._distanceScale;
         }
 
         /**
+         * @private
          * @language zh_CN
-         * @param context3D 
-         * @param usage 
-         * @param materialData 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 激活特效
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activateEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             this.context3D = context3D;
@@ -114,21 +148,29 @@
         }
 
         /**
+         * @private
          * @language zh_CN
-         * @param context3D 
-         * @param usage 
-         * @param materialData 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 更新特效
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updataEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             context3D.gl.uniform1fv(usage["uniform_globalFog"], this._data);
         }
 
         /**
+         * @private
          * @language zh_CN
+         * 销毁
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public dispose() {
         }

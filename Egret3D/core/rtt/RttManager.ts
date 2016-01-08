@@ -3,9 +3,12 @@
     export enum FrameBufferFormat { FLOAT_RGB, FLOAT_RGBA, UNSIGNED_BYTE_RGB, UNSIGNED_BYTE_RGBA }
                                     
     /**
+    * @private
     * @class egret3d.RttManager
     * @classdesc
-    * 离屏渲染管理
+    * 离屏渲染管理, 把数据渲染在一张纹理上，
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class RttManager {
         static instance: RttManager = new RttManager();
@@ -31,7 +34,7 @@
         /**
         * @language zh_CN
         * 创建帧缓冲
-        * @param framName
+        * @param framName 
         * @param context3D
         * @param width
         * @param height

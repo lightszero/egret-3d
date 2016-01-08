@@ -5,6 +5,8 @@
      * @classdesc
      * Channel3d 类控制应用程序中 在三维空间中播放的声音。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
      * @includeExample audio/Channel3d.ts
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Channel3d extends Channel {
 
@@ -14,27 +16,31 @@
         private _listener: Vector3D;
         /**
         * @language zh_CN
-        * 返回监听者位置
+        * 返回监听者位置。
         * @returns {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get listener() {
             return this._listener;
         }
         /**
         * @language zh_CN
-        * 设置监听者位置
+        * 设置监听者位置。
         * @param value {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set listener(value: Vector3D) {
             this._listener.copyFrom(value);
         }
         /**
         * @language zh_CN
-        * constructor
+        * 创建一个新的 Channel3d 对象。
         * @param sound {Sound} Sound 对象 音频的数据源。
-        * @param {Object} options
-        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
-        * @param {Boolean} [options.loop] 是否循环播放。
+        * @param {Object} options {any} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(sound: Sound, options: any) {
 
@@ -58,16 +64,20 @@
 
         /**
         * @language zh_CN
-        * 三维空间中的位置
-        * @returns {Vector3D}   
+        * 三维空间中的位置。
+        * @returns {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public get position() {
             return this._position;
         }
         /**
         * @language zh_CN
-        * 三维空间中的位置
-        * @param opsition {Vector3D}   
+        * 三维空间中的位置。
+        * @param opsition {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public set position(position:Vector3D) {
             this._position.copyFrom(position);
@@ -87,8 +97,10 @@
 
         /**
         * @language zh_CN
-        * 传播方向
+        * 传播方向。
         * @returns {Vector3D}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */ 
 
         public get velocity() {
@@ -96,8 +108,10 @@
         }
         /**
         * @language zh_CN
-        * 传播方向
+        * 传播方向。
         * @param velocity {Vector3D}   
+        * @version Egret 3.0
+        * @platform Web,Native        
         */
         public set velocity(velocity:Vector3D) {
             this._velocity.copyFrom(velocity);
@@ -110,16 +124,20 @@
         private _maxDistance: number;
         /**
         * @language zh_CN
-        * 最大距离
-        * @returns {Vector3D}   
+        * 最大距离。
+        * @returns {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public get maxDistance(){
             return this._maxDistance;
         }
         /**
         * @language zh_CN
-        * 最大距离
-        * @param max{Number}   
+        * 最大距离。
+        * @param max{Number}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public set maxDistance(max: number) {
             this._maxDistance = max;
@@ -132,16 +150,20 @@
 
         /**
         * @language zh_CN
-        * 最小距离
-        * @returns {Vector3D}   
+        * 最小距离。
+        * @returns {Vector3D}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public get minDistance() {
             return this._minDistance;
         }
         /**
         * @language zh_CN
-        * 最小距离
+        * 最小距离。
         * @param min{Number}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set minDistance(min: number) {
             this._minDistance = min;
@@ -154,16 +176,20 @@
         private _rollOffFactor: number;
         /**
         * @language zh_CN
-        * rollOff 系数
-        * @returns {Number}   
+        * rollOff 系数。
+        * @returns {Number}
+        * @version Egret 3.0
+        * @platform Web,Native           
         */
         public get rollOffFactor() {
             return this._rollOffFactor;
         }
         /**
         * @language zh_CN
-        * rollOff 系数
+        * rollOff 系数。
         * @param factor {Number}   
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set rollOffFactor(factor: number) {
             this._rollOffFactor = factor;
