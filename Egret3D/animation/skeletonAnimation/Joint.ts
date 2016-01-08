@@ -84,6 +84,11 @@
         */
         public localMatrix: Matrix4_4 = null;
 
+        /**
+        * @language zh_CN
+        * 构造函数
+        * @param name 骨骼名称
+        */
         constructor(name: string) {
             this.name = name;
         }

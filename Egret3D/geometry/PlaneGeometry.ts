@@ -25,13 +25,13 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param width {Number}
-        * @param height {Number}
-        * @param segmentsW {Number}
-        * @param segmentsH {Number}
-        * @param uScale {Number}
-        * @param vScale {Number}
+        * 构造函数
+        * @param width 宽度
+        * @param height 高度
+        * @param segmentsW 宽度分段数
+        * @param segmentsH 高度分段数
+        * @param uScale U缩放
+        * @param vScale V缩放
         */
         constructor(width: number = 500, height: number = 500, segmentsW: number = 1, segmentsH: number = 1, uScale: number = 1, vScale: number = 1 ) {
             super();

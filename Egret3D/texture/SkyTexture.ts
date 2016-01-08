@@ -45,6 +45,12 @@
         /**
          * @language zh_CN
          * 构造函数
+         * @param image_front 前部HTMLImageElement图片元素
+         * @param image_back 背部HTMLImageElement图片元素
+         * @param image_left 左部HTMLImageElement图片元素
+         * @param image_right 右部HTMLImageElement图片元素
+         * @param image_up 顶部HTMLImageElement图片元素
+         * @param image_down 底部HTMLImageElement图片元素
          */
          constructor(
             image_front: HTMLImageElement,

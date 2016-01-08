@@ -45,7 +45,7 @@
 
         /**
         * @language zh_CN
-        * 
+        * 索引数据数组
         */
         public indexIds: Array<any> = new Array<any>(); // used for real index lookups
     } 

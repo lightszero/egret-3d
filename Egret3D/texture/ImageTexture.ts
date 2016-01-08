@@ -30,6 +30,7 @@
 
         /**
          * @language zh_CN
+         * 构造函数
          * @param img HTMLImageElement（网页图像元素）
          */
         constructor(img: HTMLImageElement) {

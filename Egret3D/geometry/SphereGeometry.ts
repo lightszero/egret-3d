@@ -21,10 +21,10 @@
 
         /**
         * @language zh_CN
-        * constructor
-        * @param r {Number}
-        * @param segmentsW {Number}
-        * @param segmentsH {Number}
+        * 构造函数
+        * @param r 半径
+        * @param segmentsW 宽度分段数
+        * @param segmentsH 高度分段数
         */
         constructor(r: number = 100.0, segmentsW: number = 15, segmentsH: number = 15 ){
             super();
