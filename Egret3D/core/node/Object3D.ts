@@ -42,115 +42,153 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 当前对象名
         */
         public name: string;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 当前对象id
         */
         public id: number;
 
         /**
         * @language zh_CN
-        * 渲染层级
-        * 渲染时分组进行依次渲染
+        * @version Egret 3.0
+        * @platform Web,Native
+        * 渲染层级 
+        * 渲染时分组进行依次渲染 前16位表示tag,后16位表示layer
         */
         public layer: number = 0x00000000;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 渲染层级分类标签
         */
         public tag: Tag; 
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否开启鼠标事件
         */
         public mouseEnable: boolean = false;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否需要视锥体裁剪
         */
         public enableCut: boolean = true;
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 父亲节点
         */
         public parent: Object3D = null;
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 子对象列表
         */
         public childs: Array<Object3D> = new Array<Object3D>();
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 动作对象，控制骨骼动画
         */
         public animation: IAnimation = null;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 网络信息
         */
         public geometry: GeometryBase = null;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 材质信息
         */
         public material: MaterialBase = null;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 对象模型包围盒
         */
         public box: CubeBoxBound = new CubeBoxBound();
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 鼠标检测数据
         */
         public pickerData: PickResult = new PickResult();
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否控制，当摄像机被绑定摄像机动画时，这个值为false.
         */
         public isController: boolean = true;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否可见
         */
         public isVisible: boolean = true;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 是否关闭
         */
         public isDisable: boolean = false;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 鼠标拣选类型
         */
         public pickType: PickType = PickType.BoundPick;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 鼠标 事件开关
         */
         public mousePickEnable: boolean = false;
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * constructor
         */
         constructor() {
@@ -160,6 +198,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回位移
         * @readOnly
         * @returns 位移
@@ -170,6 +210,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置位移
         * @writeOnly
         * @param vec 位移
@@ -181,6 +223,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回旋转
         * @readOnly
         * @returns 旋转
@@ -191,6 +235,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置旋转
         * @writeOnly
         * @param vec 旋转
@@ -207,6 +253,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置旋转
         * @writeOnly
         * @param value 旋转
@@ -221,6 +269,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回旋转
         * @readOnly
         * @returns 旋转
@@ -231,6 +281,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回缩放
         * @readOnly
         * @returns 缩放
@@ -241,6 +293,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置缩放
         * @writeOnly
         * @param vec 缩放
@@ -252,6 +306,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置x坐标
         * @writeOnly
         * @param value x坐标
@@ -267,6 +323,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置y坐标
         * @writeOnly
         * @param value y坐标
@@ -282,6 +340,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置z坐标
         * @writeOnly
         * @param value z坐标
@@ -297,6 +357,8 @@
                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置x轴旋转
         * @writeOnly
         * @param value x轴旋转
@@ -314,6 +376,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置y轴旋转
         * @writeOnly
         * @param value y轴旋转
@@ -331,6 +395,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置z轴旋转
         * @writeOnly
         * @param value z轴旋转
@@ -348,6 +414,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置x轴缩放
         * @writeOnly
         * @param value x轴缩放
@@ -363,6 +431,8 @@
                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置y轴缩放
         * @writeOnly
         * @param value y轴缩放
@@ -378,6 +448,8 @@
                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置z轴缩放
         * @writeOnly
         * @param value z轴缩放
@@ -393,6 +465,8 @@
                                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 以axis轴为中心进行旋转
         * @param axis 中心轴
         * @param angle 旋转的角度
@@ -408,6 +482,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回x坐标
         * @readOnly
         * @returns x坐标
@@ -418,6 +494,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回y坐标
         * @readOnly
         * @returns y坐标
@@ -428,6 +506,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回z坐标
         * @readOnly
         * @returns z坐标
@@ -438,6 +518,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回x旋转
         * @readOnly
         * @returns x旋转
@@ -448,6 +530,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回y旋转
         * @readOnly
         * @returns y旋转
@@ -458,6 +542,8 @@
                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回z旋转
         * @readOnly
         * @returns z旋转
@@ -468,6 +554,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回x缩放
         * @readOnly
         * @returns x缩放
@@ -478,6 +566,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回y缩放
         * @readOnly
         * @returns y缩放
@@ -488,6 +578,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回z缩放
         * @readOnly
         * @returns z缩放
@@ -498,6 +590,8 @@
                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回 object 世界渲染矩阵
         * 如果有父亲节点对象的话，要乘以父对象的变换.
         * @readOnly
@@ -543,6 +637,8 @@
                                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回 object 世界位置
         * @readOnly
         * @returns object 世界位置
@@ -556,6 +652,8 @@
                                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回 object 世界旋转
         * @readOnly
         * @returns object 世界旋转
@@ -569,6 +667,8 @@
                                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回 object 世界缩放
         * @readOnly
         * @returns object 世界缩放
@@ -582,6 +682,8 @@
                                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回 object 世界旋转
         * @readOnly
         * @returns object 世界旋转
@@ -592,77 +694,11 @@
             }
             return this._globalOrientation;
         }
-        
-        /**
-        * Moves the 3d object forwards along it's local z axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveForward(distance: number) {
-            this.translateLocal(Vector3D.Z_AXIS, distance);
-        }
-		
-        /**
-        * Moves the 3d object backwards along it's local z axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveBackward(distance: number) {
-            this.translateLocal(Vector3D.Z_AXIS, -distance);
-        }
-		
-        /**
-        * Moves the 3d object backwards along it's local x axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveLeft(distance: number) {
-            this.translateLocal(Vector3D.X_AXIS, -distance);
-        }
-		
-        /**
-        * Moves the 3d object forwards along it's local x axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveRight(distance: number) {
-            this.translateLocal(Vector3D.X_AXIS, distance);
-        }
-		
-        /**
-        * Moves the 3d object forwards along it's local y axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveUp(distance: number) {
-            this.translateLocal(Vector3D.Y_AXIS, distance);
-        }
-		
-        /**
-        * Moves the 3d object backwards along it's local y axis
-        *
-        * @param    distance    The length of the movement
-        */
-        public moveDown(distance: number) {
-            this.translateLocal(Vector3D.Y_AXIS, -distance);
-        }
-		
-        /**
-        * Moves the 3d object along a vector by a defined length
-        *
-        * @param    axis        The vector defining the axis of movement
-        * @param    distance    The length of the movement
-        */
-        public translateLocal(axis: Vector3D, distance: number) {
-            var x: number = axis.x, y: number = axis.y, z: number = axis.z;
-            var len: number = distance / Math.sqrt(x * x + y * y + z * z);
-
-            this._modeMatrix3D.appendTranslation(x * len, y * len, z * len);
-            this._modeMatrix3D.copyRowTo(3, this._pos);
-        }
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 增加一个子对象,并返回当前子对象
         * @param child 增加的子对象
         * @returns 子对象
@@ -681,6 +717,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 增加一个子对象,并返回当前子对象
         * @param child 增加的子对象
         * @param index 子对象的下标
@@ -706,6 +744,8 @@
                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回下标为index的子对象
         * @param index 子对象下标
         * @returns 如果有就返回子对象,否则就返回null.
@@ -720,6 +760,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回子对角child的下标
         * @param child 子对象
         * @returns 如果有就返回子对象的下标,否则就返回-1.
@@ -740,6 +782,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 移除child子对象 并返回
         * @param child 子对象
         * @returns 如果成功就返回child,否则返回null
@@ -764,6 +808,8 @@
                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 移除下标为index的子对象 并返回
         * @param index 子对象的下标
         * @returns 如果成功就返回child,否则返回null
@@ -784,6 +830,8 @@
                                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置子对象的下标
         * @param child 子对象
         * @param index 子对象的下标
@@ -820,6 +868,8 @@
                                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 交换子对象的位置
         * @param child1 子对象1
         * @param child2 子对象2
@@ -855,6 +905,8 @@
                                                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 交换子对象的位置
         * @param index1 子对象1下标
         * @param index2 子对象2下标
@@ -880,6 +932,8 @@
                                                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 当前对象对视位置
         * @param pos 对象的位置
         * @param target 目标的位置
@@ -891,6 +945,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回目标的位置
         * @readOnly
         * @returns 目标的位置
@@ -909,6 +965,8 @@
         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 当前对象数据更新
         * @param camera 当前渲染的摄相机
         * @param time 当前时间
@@ -920,6 +978,8 @@
 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 返回对象的屏幕坐标
         * @param camera 对象渲染的摄像机
         * @returns 对象的屏幕坐标 
@@ -929,7 +989,13 @@
             this._mat.append(this.modelMatrix);
             return this._mat.transformVector(this.globalPosition);
         }
-
+        
+        /**
+        * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
+        * 释放数据
+        */
         public dispose() {
             if (this.parent)
                 this.parent.removeChild(this);

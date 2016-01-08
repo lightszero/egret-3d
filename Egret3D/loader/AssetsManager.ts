@@ -5,37 +5,44 @@
      * @classdesc
      * AssetsManager 资源管理类.
      * 用于加载各类3d美术资源.
-     * 模型.场景.贴图等.
+     * 模型.场景.贴图,等.
+     * @version Egret 3.0
+     * @platform Web,Native
      */
-    export class AssetsManager extends EventDispatcher{
+    export class AssetsManager extends EventDispatcher {
 
         /**
          * @language zh_CN
-         * @private 
+         * @private
          */
-        static _instance: AssetsManager = new AssetsManager();
+        static _instance:AssetsManager = new AssetsManager();
 
-        private loadList: Array<BaseLoader> = [];
-        private completeCount: number = 0; 
-        private assets: Object = {}; 
-        private assetsModel: Object = {}; 
-        private assetsScene: Object = {}; 
-        private assetsTexture: Object = {}; 
-        private rootURL: string = "";
+        private loadList:Array<BaseLoader> = [];
+        private completeCount:number = 0;
+        private assets:Object = {};
+        private assetsModel:Object = {};
+        private assetsScene:Object = {};
+        private assetsTexture:Object = {};
+        private rootURL:string = "";
 
         /**
          * @language zh_CN
          * 获取单例实例
          * @returns AssetsManager
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public static getInstance(): AssetsManager {
+        public static getInstance():AssetsManager {
             return AssetsManager._instance;
         }
+
         /**
-         * @private 
-        * @language zh_CN
-        * constructor 
-        */
+         * @private
+         * @language zh_CN
+         * constructor
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
         constructor() {
             super();
         }
@@ -43,68 +50,83 @@
         /**
          * @language zh_CN
          * 设置根路径
-         * @param rootURL 
+         * @param rootURL
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public setRootURL(rootURL:string): void {
+        public setRootURL(rootURL:string):void {
             this.rootURL = rootURL;
         }
 
         /**
          * @language zh_CN
          * 查找资源
-         * @param url 
+         * @param url
          * @returns 返回对应url的资源
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public findAssets(url: string): any {
+        public findAssets(url:string):any {
             return this.assets[this.rootURL + url];
         }
 
         /**
          * @language zh_CN
          * 查找已下载的模型.
-         * @param url 
+         * @param url
          * @returns mesh
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public findModel(url: string): Mesh {
+        public findModel(url:string):Mesh {
             return this.assetsModel[this.rootURL + url];
         }
 
         /**
          * @language zh_CN
          * 查找已下载的动作模型文件
-         * @param url 
+         * @param url
          * @returns Mesh
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public findAnimModel(url: string): Mesh {
+        public findAnimModel(url:string):Mesh {
             return this.assetsModel[this.rootURL + url];
         }
 
         /**
          * @language zh_CN
-         * @param url 
+         * @param url
          * @returns Array<Mesh>
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public findScene(url: string): Array<Mesh> {
+        public findScene(url:string):Array<Mesh> {
             return this.assetsScene[this.rootURL + url];
         }
 
         /**
          * @language zh_CN
-         * @param url 
+         * @param url
          * @returns TexureBase
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public findTexture(url: string):TextureBase {
+        public findTexture(url:string):TextureBase {
             return this.assetsTexture[this.rootURL + url];
         }
 
         /**
          * @language zh_CN
+         * 启动加载, 加载目标为通过add系列方法添加的资源路径
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public startLoad() {
 
-            for (var i: number = 0; i < this.loadList.length; i++){
+            for (var i:number = 0; i < this.loadList.length; i++) {
 
-                var loader: BaseLoader = this.loadList[i]; 
+                var loader:BaseLoader = this.loadList[i];
 
                 loader.addEventListener(Event3D.EVENT_LOAD_COMPLETE, (e:Event3D) => this.checkComplete(e));
 
@@ -114,12 +136,15 @@
 
         /**
          * @language zh_CN
-         * @param url 
-         * @param ESMFile 
+         * 加载模型, 将地址传入加载队列, 调用startLoad之后才会进行加载
+         * @param url 模型路径
+         * @param ESMFile 模型文件名
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public addLoadModel(url: string, ESMFile: string) {
+        public addLoadModel(url:string, ESMFile:string) {
 
-            var modelLoad: ModeLoader = new ModeLoader(this.rootURL + url, ESMFile);
+            var modelLoad:ModeLoader = new ModeLoader(this.rootURL + url, ESMFile);
 
             this.loadList.push(modelLoad);
         }
@@ -127,13 +152,16 @@
 
         /**
          * @language zh_CN
-         * @param url 
-         * @param ESMFile 
-         * @param EAMFiles 
+         * 加载模型动作文件, 将加入加载队列, 在调用startLoad()之后进行加载  加载完成后, 会自动将加载的动作文件和模型一起绑定
+         * @param url 模型路径
+         * @param ESMFile 模型文件名
+         * @param EAMFiles 模型动作名列表
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public addLoadAnimModel(url: string, ESMFile: string, EAMFiles: string[]) {
+        public addLoadAnimModel(url:string, ESMFile:string, EAMFiles:string[]) {
 
-            var modelLoad: ModeLoader = new ModeLoader(this.rootURL + url, ESMFile, EAMFiles);
+            var modelLoad:ModeLoader = new ModeLoader(this.rootURL + url, ESMFile, EAMFiles);
 
             this.loadList.push(modelLoad);
         }
@@ -141,22 +169,28 @@
 
         /**
          * @language zh_CN
-         * @param url 
+         * @param url 场景文件地址
+         * 加载场景, 将加入加载队列, 在调用startLoad()之后进行加载
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public addLoadScene(url: string) {
+        public addLoadScene(url:string) {
 
-            var sceneLoader: SceneLoader = new SceneLoader(this.rootURL + url);
+            var sceneLoader:SceneLoader = new SceneLoader(this.rootURL + url);
 
             this.loadList.push(sceneLoader);
         }
 
         /**
          * @language zh_CN
-         * @param url 
+         * 加载贴图文件, 将加入加载队列, 在调用startLoad()之后进行加载
+         * @param url 要加载的贴图文件地址
+         * @version Egret 3.0
+         * @platform Web,Native
          */
-        public addLoadTexture(url: string) {
+        public addLoadTexture(url:string) {
 
-            var textureLoader: TextureLoader = new TextureLoader(this.rootURL + url);
+            var textureLoader:TextureLoader = new TextureLoader(this.rootURL + url);
 
             this.loadList.push(textureLoader);
         }
@@ -164,15 +198,17 @@
 
         /**
          * @private
-         * @param e 
+         * @param e
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         private checkComplete(e:Event3D) {
 
-            var loader: BaseLoader = <BaseLoader>e.data; 
+            var loader:BaseLoader = <BaseLoader>e.data;
 
             switch (loader.type) {
                 case LoaderType.LOADER_MODEL_TYPE:
-                    var modeLoader: ModeLoader = <ModeLoader>loader;
+                    var modeLoader:ModeLoader = <ModeLoader>loader;
                     this.assets[modeLoader.url + modeLoader.esmFile] = modeLoader.mesh;
                     this.assetsModel[modeLoader.url + modeLoader.esmFile] = modeLoader.mesh;
                     break;
@@ -189,7 +225,7 @@
             this.completeCount++;
 
             if (this.completeCount >= this.loadList.length) {
-                this.dispatchEvent(new Event3D(Event3D.EVENT_LOAD_COMPLETE,this));
+                this.dispatchEvent(new Event3D(Event3D.EVENT_LOAD_COMPLETE, this));
             }
 
         }

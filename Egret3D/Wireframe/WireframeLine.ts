@@ -3,7 +3,11 @@
     /**
      * @class egret3d.WireframeLine
      * @classdesc
-     * 线渲染 
+     * @version Egret 3.0
+     * @platform Web,Native
+     *
+     * 线渲染把两个顶点之间以线渲染的形式渲染出来
+     *
      */   
     export class WireframeLine extends WireframeBase {
                                 

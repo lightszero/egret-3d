@@ -23,6 +23,8 @@
                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * constructor
         * @param tex1 天空球贴图
         */
@@ -37,6 +39,8 @@
                                 
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 设置渲染用的shader文件名字
         * @param vsName vs文件名
         * @param fsName fs文件名
@@ -96,6 +100,8 @@
                                         
         /**
         * @language zh_CN
+        * @version Egret 3.0
+        * @platform Web,Native
         * 渲染
         * @param context3D 设备上下文
         * @param camera 渲染时的相机
