@@ -1,5 +1,6 @@
 ﻿module Egret3D {
     /**
+     * @language zh_CN
      * @private 
      */
     export class DDS {
