@@ -1,5 +1,29 @@
 ﻿module egret3d {
-    export enum PickType { BoundPick , PositionPick , UVPick };
+
+    /**
+    * @class egret3d.Object3D
+    * @classdesc
+    * 拣选类型
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum PickType {
+        
+        /**
+        * 包围盒拣选
+        */
+        BoundPick,
+                
+        /**
+        * 模型拣选返回模型拣选到的位置
+        */
+        PositionPick,
+                        
+        /**
+        * 模型拣选返回模型拣选到的UV坐标
+        */
+        UVPick
+    };
     /**
     * @class egret3d.Object3D
     * @classdesc

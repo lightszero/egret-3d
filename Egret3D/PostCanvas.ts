@@ -1,6 +1,7 @@
 ﻿module egret3d {
                     
     /**
+     * @private
      * @class egret3d.PostCanvas
      * @classdesc
      * post canvas  
@@ -256,9 +257,9 @@
        /**
        * @language zh_CN
        * xxxxxxxx
-       * @param context3D xxx
-       * @param viewPort xxx
-       * @returns xxx
+       * @param context3D 
+       * @param viewPort 
+       * @returns 
        */
        public draw(context3D: Context3D, viewPort:Rectangle) {
 
