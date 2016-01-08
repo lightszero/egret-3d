@@ -130,7 +130,7 @@ module egret3d {
          * @platform Web,Native
          */
         public draw(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase,  animation: IAnimation ) {
-           
+            context3D.setProgram(this.materialData.normalPassUsageData.program3D );
             super.draw(context3D, modeltransform, camera3D, geometry, animation );
             var i: number = 0;
 
