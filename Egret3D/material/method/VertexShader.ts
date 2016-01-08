@@ -1,26 +1,35 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.VertexShader
      * @classdesc
-     * 顶点着色器
+     * 顶点着色器。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class VertexShader extends GLSL.ShaderBase {
 
         /**
-         * @language zh_CN
-         * @param materialData 
-         * @param usage 
-         */
+        * @language zh_CN
+        * 创建一个新的 VertexShader 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @param materialData {MaterialData}
+        * @param usage {MethodUsageData}
+        */
         constructor( materialData: MaterialData, usage: MethodUsageData) {
             super(materialData, usage );
    
         }
 
         /**
-         * @language zh_CN
-         * @param geometry 
-         */
+        * @language zh_CN
+        * 设置顶点着色器。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @param geometry {GeometryBase}
+        */
         public setVertexShader(geometry: GeometryBase) {
             var baseMethod: MethodBase;
            
@@ -54,9 +63,12 @@
         }
 
         /**
-         * @language zh_CN
-         * @returns string
-         */
+        * @language zh_CN
+        * 返回 Shader 源。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @returns {String}
+        */
         public getShaderSource(): string {
             var shaderSource: string = super.getShaderSource();
             var index: number = shaderSource.lastIndexOf("}");
@@ -70,8 +82,12 @@
         }
 
         /**
-         * @language zh_CN
-         */
+        /**
+        * @language zh_CN
+        * 构建 VertexShader。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public build( ) {
                      for (this.index = 0; this.index < this.useage.vsMethodList.length; this.index++){
                 this.useage.vsMethodList[this.index].setMaterialData(this.materialData, this.useage);
@@ -79,9 +95,12 @@
         }
 
         /**
-         * @language zh_CN
-         * @param method 
-         */
+        * @language zh_CN
+        * 添加 Method。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @param method {MethodBase}
+        */
         public addMethod(method: MethodBase) {
             this.stateChange = true;
             this.useage.vsMethodList.push(method);

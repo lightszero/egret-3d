@@ -1,326 +1,433 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.MaterialData
      * @classdesc
-     * 材质数据
+     * 材质数据。
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class MaterialData {
 
         /**
         * @language zh_CN
-        * 材质类型
+        * 材质类型。默认为 MaterialType.DIFFUSE。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public matType: MaterialType = MaterialType.DIFFUSE; 
 
         /**
         * @language zh_CN
-        * diffuse pass usage data
+        * diffuse pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public diffusePassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * 深度 pass usage data
+        * 深度 pass usage data。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public depthPassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * 法线 pass usage data
+        * 法线 pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public normalPassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * position pass usage data
+        * position pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public positionPassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * post pass usage data
+        * post pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public postPassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * 灯光 pass usage data
+        * 灯光 pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public lightPassUsageData: MethodUsageData = new MethodUsageData(); 
 
         /**
         * @language zh_CN
-        * 阴影 pass usage data
+        * 阴影 pass usage 数据。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public shadowPassUsageData: MethodUsageData = new MethodUsageData(); 
 
 
         /**
         * @language zh_CN
-        * 渲染模式
+        * 渲染模式。默认为 DrawMode.TRIANGLES。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public drawMode: number = DrawMode.TRIANGLES ; 
 
 
         /**
         * @language zh_CN
-        * 设备
+        * Context3D 设备。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public context3D: Context3D;
 
   
         /**
         * @language zh_CN
-        * 阴影贴图
+        * 阴影贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public shadowMapTex: TextureBase;
 
         /**
         * @language zh_CN
-        * 漫反射贴图
+        * 漫反射贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public diffuseTex: TextureBase;//= CheckerboardTexture.texture ;
 
         /**
         * @language zh_CN
-        * 法线贴图
+        * 法线贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public normalTex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * 特效贴图
+        * 特效贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public specularTex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * 灯光贴图
+        * 灯光贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public lightMapTex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * ao 贴图
+        * ao 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public aoMapTex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * 环境贴图
+        * 环境贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public environmentMapTex: TextureBase = CheckerboardTexture.texture;
 
 
         /**
         * @language zh_CN
-        * mask 贴图
+        * mask 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public maskTex: TextureBase = CheckerboardTexture.texture ;
 
         /**
         * @language zh_CN
-        * splat_0 贴图
+        * splat_0 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public splat_0Tex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * splat_1 贴图
+        * splat_1 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public splat_1Tex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * splat_2 贴图
+        * splat_2 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public splat_2Tex: TextureBase = CheckerboardTexture.texture;
 
         /**
         * @language zh_CN
-        * splat_3 贴图
+        * splat_3 贴图。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public splat_3Tex: TextureBase = CheckerboardTexture.texture;
 
 
         /**
         * @language zh_CN
-        * 方向光列表
+        * 方向光列表。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public directLightList: Array<DirectLight> = new Array<DirectLight>();
 
         /**
         * @language zh_CN
-        * 聚光灯列表
+        * 聚光灯列表。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public sportLightList: Array<SpotLight> = new Array<SpotLight>();
 
         /**
         * @language zh_CN
-        * 点光源列表
+        * 点光源列表。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public pointLightList: Array<PointLight> = new Array<PointLight>();
 
 
         /**
         * @language zh_CN
-        * 
+        * 层。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public layer: number = 0;
 
         /**
         * @language zh_CN
-        * 
+        * castShadow 默认值为 false。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public castShadow: boolean = false;
 
         /**
         * @language zh_CN
-        * 
+        * acceptShadow 默认值为 true。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public acceptShadow: boolean = true ;
 
         /**
         * @language zh_CN
-        * 
+        * depthTest 默认值为 true。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public depthTest: boolean = true;
 
         /**
         * @language zh_CN
-        * 
+        * smooth 默认值为 true。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public smooth: boolean = true; 
 
         /**
         * @language zh_CN
-        * 
+        * 混合模式 默认值为 BlendMode.NORMAL。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public blendMode: BlendMode = BlendMode.NORMAL ; 
 
         /**
         * @language zh_CN
-        * 
+        * blend_src。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public blend_src: number;
 
         /**
         * @language zh_CN
-        * 
+        * blend_dest。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public blend_dest: number ;
 
         /**
         * @language zh_CN
-        * 
+        * alphaBlending 默认值为 false。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public alphaBlending: boolean = false; 
 
         /**
         * @language zh_CN
-        * 
+        * ambientColor 默认值为 0x0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public ambientColor: number = 0x0;
         //public ambientColor: number = 0x00235c;
 
         /**
         * @language zh_CN
-        * 
+        * diffuseColor 默认值为 0xffffff。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public diffuseColor: number = 0xffffff;
 
         /**
         * @language zh_CN
-        * 
+        * specularColor 默认值为 0xffffff。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public specularColor: number = 0xffffff ;
 
         /**
         * @language zh_CN
-        * 
+        * shininess 默认值为 8.0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public shininess: number = 8.0;
 
         /**
         * @language zh_CN
-        * 
+        * cutAlpha 默认值为 0.7。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public cutAlpha: number = 0.7;
 
         /**
         * @language zh_CN
-        * 
+        * repeat 默认值为 false。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public repeat: boolean = false;
 
+
         /**
         * @language zh_CN
-        * 
+        * bothside 默认值为 false。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public bothside: boolean = false;
 
         /**
         * @language zh_CN
-        * 
+        * alpha 默认值为 1。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
-        public alpha: number = 1;
+        public alpha: number = 1.0;
 
         /**
         * @language zh_CN
-        * 
+        * specularPower 默认值为 1.0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public specularPower: number = 1.0; 
 
         /**
         * @language zh_CN
-        * 
+        * ambientPower 默认值为 1.0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public ambientPower: number = 1.0; 
 
         /**
         * @language zh_CN
-        * 
+        * diffusePower 默认值为 1.0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public diffusePower: number = 1.0; 
 
         /**
         * @language zh_CN
-        * 
+        * normalPower 默认值为 1.0。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public normalPower: number = 1.0; 
 
         /**
         * @language zh_CN
-        * 
+        * materialDataNeedChange 默认值为 true。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public materialDataNeedChange: boolean = true;
 
+
         /**
         * @language zh_CN
-        * 
+        * textureChange 默认值为 false。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public textureChange: boolean = false; 
 
-
         /**
         * @language zh_CN
-        * 
+        * passChange 默认值为 true。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public passChange: boolean = true;
 
 
         /**
         * @language zh_CN
-        * 
+        * cullFrontOrBack 默认值为 Egret3DDrive.BACK。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public cullFrontOrBack: number = Egret3DDrive.BACK;
 
 
+
         /**
         * @language zh_CN
-        * 
-        * @returns MaterialData
+        * 克隆。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @returns {MaterialData}
         */
         public clone(): MaterialData {
 
@@ -383,8 +490,9 @@
 
         /**
         * @language zh_CN
-        * 
-        * @returns
+        * 销毁。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public dispose() {
 

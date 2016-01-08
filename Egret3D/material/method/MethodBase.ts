@@ -1,47 +1,59 @@
 ﻿module egret3d {
 
      /**
+     * @language zh_CN
      * @class egret3d.MethodBase
      * @classdesc
-     * 所有方法的基类
+     * ColorMethod，DepthMethod，DiffuseMethod，NormalMethod，ShadowMapingMethod，ShadowMapMethod，TerrainMethod ，ParticleVertexMethod，ShadowVertexMethod，SkinVertexMethod，StaticVertexMethod 方法的基类。
+     * @version Egret 3.0
+     * @platform Web,Native 
      */
     export class MethodBase {
         /**
-         * @language zh_CN
+         * @private
          */
         protected materialData: MaterialData;
         /**
-         * @language zh_CN
+         * @private
          */
         protected usage: MethodUsageData;
         /**
-         * @language zh_CN
+         * @private
          */
         protected vsMethodName: string = ""; 
         /**
-         * @language zh_CN
+         * @private
          */
         protected fsMethodName: string = ""; 
         /**
-         * @language zh_CN
+         * @private
          */
         protected context3D: Context3D;
 
         /**
          * @language zh_CN
+         * 是否支持Shadow。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public acceptShadow: boolean = false;
 
         /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 创建一个新的 MethodBase 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         constructor() {
         }
 
         /**
          * @language zh_CN
-         * @param materialData 
-         * @param usage 
+         * 设置材质信息。
+         * @version Egret 3.0
+         * @platform Web,Native
+         * @param materialData {MaterialData}
+         * @param usage {MethodUsageData}
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData ) {
             this.usage = usage;
@@ -49,27 +61,38 @@
         }
 
         /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 获取顶点方法名。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @returns {String} 
+        */
         public get vertexMethodName(): string {
             return this.vsMethodName; 
         }
 
         /**
-         * @language zh_CN
-         */
+        * @language zh_CN
+        * 获取frag方法名。
+        * @version Egret 3.0
+        * @platform Web,Native
+        * @returns {String} 
+        */
         public get fragMethodName(): string {
             return this.fsMethodName;
         }
 
         /**
          * @language zh_CN
-         * @param context3D 
-         * @param program3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 激活。
+         * @version Egret 3.0
+         * @platform Web,Native
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D ,geometry:GeometryBase , animation:IAnimation ) {
             //change constData
@@ -78,19 +101,24 @@
 
         /**
          * @language zh_CN
-         * @param context3D 
-         * @param program3D 
-         * @param modeltransform 
-         * @param camera3D 
-         * @param geometry 
-         * @param animation 
+         * 更新。
+         * @version Egret 3.0
+         * @platform Web,Native
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase , animation: IAnimation ) {
 
         }
-
         /**
          * @language zh_CN
+         * 销毁。
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public dispose() {
         }

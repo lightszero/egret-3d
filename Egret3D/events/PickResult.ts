@@ -4,7 +4,9 @@
     * @language zh_CN
     * @class egret3d.PickResult
     * @classdesc
-    * 鼠标拾取返回数据
+    * 鼠标拾取返回数据。
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class PickResult {
         public localPosition: Vector3D = new Vector3D();
