@@ -9,15 +9,29 @@
     * @platform Web,Native
     */
     export class PickResult {
+        /**
+        * @language zh_CN
+        * 鼠标拾取模型上的交点 (本地坐标)。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public localPosition: Vector3D = new Vector3D();
                         
         /**
         * @language zh_CN
-        * 鼠标拾取模型上的交点 (世界坐标)
+        * 鼠标拾取模型上的交点 (世界坐标)。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public globalPosition: Vector3D = new Vector3D();
-        public object3DPosition: Vector3D = new Vector3D();
+
+        /**
+        * @language zh_CN
+        * 鼠标拾取模型的uv。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public uv: Vector3D = new Vector3D();
-        public near: number = 0;
+
     }
 }
