@@ -19,7 +19,7 @@
     export class MipmapData {
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *    
         * array buffer类型的 像素值信息
@@ -27,7 +27,7 @@
         public data: Uint8Array;
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *    
         * 此mipmap的大小宽度
@@ -35,7 +35,7 @@
         public width: number;
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *    
         * 此mipmap的大小高度

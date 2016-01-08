@@ -704,7 +704,7 @@
     }
 
     /**
-    * @inheritDoc
+    *  
     * @class egret3d.Context3DChild_OpenGLES_2_0
     * @classdesc
     * Context3DChild_OpenGLES_2_0  implements egret3d.Context3D
@@ -716,7 +716,7 @@
         public gl: WebGLRenderingContext;
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * constructor
         * @param context3D
@@ -743,7 +743,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 版本号
         * @readOnly
@@ -759,7 +759,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 版本号
         * 视口设置定义
@@ -773,7 +773,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 显卡程序
         * @param vsShader
@@ -794,7 +794,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 顶点索引流
         * @param indexData
@@ -810,7 +810,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 顶点数据流
         * @param vertexData
@@ -841,7 +841,7 @@
         /// }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置2D纹理状态
         * @param min_filter
@@ -857,7 +857,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 提交2D纹理
         * @param mipLevel
@@ -888,7 +888,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 提交2D压缩纹理
         * @param mipLevel
@@ -900,7 +900,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 2维贴图
         */
@@ -910,7 +910,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 创建 Cube贴图
         */
@@ -919,7 +919,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param tex
@@ -953,7 +953,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param width
@@ -1014,7 +1014,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param texture
@@ -1041,7 +1041,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         */
@@ -1054,7 +1054,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param source
@@ -1070,7 +1070,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         *
         * @param source
@@ -1086,7 +1086,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的颜色 深度
         * @param r
@@ -1101,7 +1101,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的 深度
         * @param depth
@@ -1113,7 +1113,7 @@
 
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 清除渲染区域的 模板
         * @param stencil
@@ -1123,7 +1123,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 使用显卡着色器
         * @param program
@@ -1133,7 +1133,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 获取矩阵变量ID
         * @param program
@@ -1145,7 +1145,7 @@
 
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1156,7 +1156,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1167,7 +1167,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1178,7 +1178,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1189,7 +1189,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1201,7 +1201,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1212,7 +1212,7 @@
         }
                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1224,7 +1224,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1235,7 +1235,7 @@
         }
                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1248,7 +1248,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1259,7 +1259,7 @@
         }
                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1272,7 +1272,7 @@
         }
                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1283,7 +1283,7 @@
         }
                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1297,7 +1297,7 @@
         }
                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1308,7 +1308,7 @@
         }
                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1322,7 +1322,7 @@
         }
                                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1333,7 +1333,7 @@
         }
                                                                 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1345,7 +1345,7 @@
         }
                                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1357,7 +1357,7 @@
         }
                                                                         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 传值给shader
         * @param location
@@ -1369,7 +1369,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置 绘制混合模式
         * @param src 
@@ -1380,7 +1380,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置 绘制剔除模式
         * @param mode 
@@ -1390,7 +1390,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 开启 绘制模式
         * @param cap 
@@ -1400,7 +1400,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 关闭 绘制模式
         * @param cap 
@@ -1410,7 +1410,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 开启 深度模式 及 深度测试比较模式
         * @param flag 
@@ -1422,7 +1422,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 获取顶点着色器变量 索引
         * @param programe 
@@ -1434,7 +1434,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 指定顶点着色器变量索引 及机构
         * @param programe3D 
@@ -1451,7 +1451,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 实时传入显卡顶点着色器变量数组数据
         * @param floats 
@@ -1463,7 +1463,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 实时传入显卡片段着色器变量数组数据
         * @param floats 
@@ -1474,7 +1474,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置贴图采样 第一个参数并不是类型
         * @param samplerIndex 
@@ -1489,7 +1489,7 @@
         }
         
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置贴图采样 第一个参数并不是类型
         * @param samplerIndex 
@@ -1504,7 +1504,7 @@
         } 
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置矩形裁切区域
         * @param rectangle 
@@ -1513,7 +1513,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置模板测试
         */
@@ -1521,7 +1521,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 设置模板测试
         */
@@ -1529,7 +1529,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绑定顶点Buffer
         * @param vertexBuffer 
@@ -1539,7 +1539,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制模型元素
         * @param type 图元类型
@@ -1551,7 +1551,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制模型元素
         * @param type 图元类型
@@ -1565,7 +1565,7 @@
         }
 
         /**
-        * @inheritDoc
+        *  
         * @language zh_CN
         * 绘制提交
         */
