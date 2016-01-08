@@ -1,9 +1,12 @@
 ﻿module egret3d {
                                 
     /**
+    * @private
     * @class egret3d.NormalRender
     * @classdesc
     * 法线渲染器,渲染有法线的实现对象
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class NormalRender extends RenderBase {
                         
@@ -23,6 +26,8 @@
         * @param context3D 设备上下文
         * @param collect 渲染对象收集器
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public draw(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D) {
 

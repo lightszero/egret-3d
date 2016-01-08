@@ -1,6 +1,7 @@
 ﻿module egret3d {
                             
     /**
+    * @private
     * @class egret3d.RenderBase
     * @classdesc
     * 渲染器基类

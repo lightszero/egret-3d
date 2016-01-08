@@ -3,13 +3,13 @@
      * @language zh_CN
      * @class egret3d.Quaternion
      * @classdesc
-     * @version Egret 3.0
-     * @platform Web,Native
      * Quaternion类
      * 
      * 定义了一个四元数表示物体在空间的旋转。
      * 四元数通常用作替代欧拉角和旋转矩阵的方式来实现平滑插值和避免万向节锁
      * 注意，这四元数类不自动保持四元数标准化。因此，在必要的时候，必须采取单位化的四元数，通过调用单位化方法
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Quaternion {
 
@@ -393,6 +393,7 @@
         * @language zh_CN
         * 把一个四元数转换成矩阵
         * @param target 返回转换后的矩阵，如果为null就新建一个对象返回
+        * @see egret3d.geom.Matrix4_4
         * @returns 返回转换后的矩阵
         */
         public toMatrix3D(target: Matrix4_4 = null): Matrix4_4 {

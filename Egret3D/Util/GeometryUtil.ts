@@ -1,12 +1,13 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.GeometryUtil
      * @classdesc
      * 网格工具类
      */
     export class GeometryUtil {
-
+        
         /**
         * @language zh_CN
         * 打包模型数据

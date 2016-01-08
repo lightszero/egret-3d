@@ -1,9 +1,12 @@
 ﻿module egret3d {
                                 
     /**
+    * @private
     * @class egret3d.PositionRender
     * @classdesc
     * position render
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class PositionRender extends RenderBase {
                         
@@ -16,6 +19,7 @@
         }
                                                 
         /**
+        * @private
         * @language zh_CN
         * 渲染
         * @param time 当前时间
@@ -23,6 +27,8 @@
         * @param context3D 设备上下文
         * @param collect 渲染对象收集器
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public renden(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D) {
 

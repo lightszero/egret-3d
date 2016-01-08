@@ -1,9 +1,13 @@
 ﻿module egret3d {
                             
     /**
+    * @private
     * @class egret3d.SphereSky
     * @classdesc
     * default render
+    * 把所有需要渲染的对象，依次进行渲染
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class DefaultRender extends RenderBase {
                 
@@ -17,7 +21,7 @@
                                         
         /**
         * @language zh_CN
-        * 渲染
+        * 把所有需要渲染的对象，依次进行渲染
         * @param time 当前时间
         * @param delay 每帧间隔时间
         * @param context3D 设备上下文
