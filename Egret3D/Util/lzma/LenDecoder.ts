@@ -1,5 +1,6 @@
 ///<reference path="LZMA.d.ts" />
 module nid {
+
     /**
      * LZMA Decoder
      * @private

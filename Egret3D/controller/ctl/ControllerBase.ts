@@ -4,9 +4,9 @@
     * @private
     * @class egret3d.ControllerBase
     * @classdesc
+    * 控制器 基类, 抽象控制器的一些数据
     * @version Egret 3.0
     * @platform Web,Native
-    * 控制器 基类, 抽象控制器的一些数据
     */
     export class ControllerBase {
         protected _autoUpdate:boolean = true;

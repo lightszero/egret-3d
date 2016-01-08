@@ -7,6 +7,8 @@
     * 摄像机视椎体,计算出摄像机的可视范围.
     * 
     * @see egret3d.camera.Camera3D
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Frustum {
         
@@ -22,6 +24,8 @@
         /**
         * @language zh_CN
         * 视椎体中心点
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public center: Vector3D;
 
@@ -29,7 +33,9 @@
         
         /**
         * @language zh_CN
-        * constructor
+        * 构造
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor() {
             this._vertex = new Array<Vector3D>();
@@ -54,6 +60,8 @@
         * @param aspectRatio 纵横比，在视空间宽度除以高度.
         * @param nearPlane 近裁剪面位置Z值.
         * @param farPlane 远裁剪面位置Z值.
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public makeFrustum(fovY: number, aspectRatio: number, nearPlane: number, farPlane: number) {
             ///var tangent: number = Math.tan(fovY / 2.0 * (Math.PI / 180.0));
@@ -102,6 +110,8 @@
         * @language zh_CN
         * 数据更新.
         * @param camera 视椎的摄像机.
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public update(camera: Camera3D) {
 
@@ -173,7 +183,9 @@
         * @language zh_CN
         * 检测一个坐标点是否在视椎体内
         * @param pos 检测的坐标
-        @ return 在视椎内返回ture
+        * @returns 在视椎内返回ture
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public inPoint(pos: Vector3D): boolean {
             var dis: number = 0;
@@ -191,7 +203,9 @@
         * 检测一个球是否在视椎体内
         * @param center 球的坐标
         * @param radius 球的半径
-        @ return 在视椎内返回ture
+        * @returns 在视椎内返回ture
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public inSphere(center: Vector3D, radius: number): boolean {
             var dis: number = 0;
@@ -208,7 +222,9 @@
         * @language zh_CN
         * 检测一个盒子是否在视椎体内
         * @param box 盒子
-        @ return 在视椎内返回ture
+        * @returns 在视椎内返回ture
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public inBox(box: CubeBoxBound): boolean {
             var v: Array<Vector3D> = new Array<Vector3D>();
