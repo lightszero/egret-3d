@@ -30,6 +30,7 @@
 
         /**
         * @language zh_CN
+        * 构造函数
         * @param camera 需要一个摄像机对象来创建摄像机动画
         * @version Egret 3.0
         * @platform Web,Native
