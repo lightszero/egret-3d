@@ -10,6 +10,10 @@
     * @includeExample events/Event3D.ts
     */
     export class EventDispatcher {
+        /**
+         * @language zh_CN
+         * @private 
+         */
         listeners: any = {};
 
         /**
