@@ -3,7 +3,12 @@
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUD 渲染对象 
+     * HUD直接渲染在屏幕上的一张贴图。
+     * 可直接指定2维坐标，贴图的宽度和高度
+     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息
+     * 其所有的HUD对象的顶点信息数据都是共用的
+     * @version Egret 3.0
+     * @platform Web,Native
      */   
     export class HUD {
         private static singleQuadData: Array<number> = [
@@ -181,7 +186,7 @@
 
        /**
        * @language zh_CN
-       * 设置HUD宽
+       * 设置HUD的宽度
        * @param value HUD宽
        */
        public set width(value: number) {
@@ -191,7 +196,7 @@
 
        /**
        * @language zh_CN
-       * 设置HUD高
+       * 设置HUD的高度
        * @param value HUD高
        */
        public set height(value: number) {
@@ -201,7 +206,7 @@
 
         /**
         * @language zh_CN
-        * 得到HUD宽
+        * 得到HUD的宽度
         * @returns HUD宽
         */
         public get width(): number {
@@ -211,7 +216,7 @@
 
         /**
         * @language zh_CN
-        * 得到HUD高
+        * 得到HUD的高度
         * @returns HUD高
         */
         public get height(): number {

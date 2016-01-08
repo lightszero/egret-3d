@@ -3,7 +3,11 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 拣选类型
+    * 拣选类型，拣选时可以分为，包围盒拣选、模型拣选返回模型拣选到的位置、模型拣选返回模型拣选到的UV坐标
+    * 这几种拣选方式
+    *
+    * @see egret3d.core.traverse.Picker
+    *
     * @version Egret 3.0
     * @platform Web,Native
     */
