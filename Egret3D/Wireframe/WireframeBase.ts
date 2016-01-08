@@ -69,6 +69,12 @@
         protected vsShader: GLSL.ShaderBase
         protected fsShader: GLSL.ShaderBase
 
+        /**
+        * @language zh_CN
+        * 当前渲染对象的变换矩阵
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public modleMatrix: Matrix4_4 = new Matrix4_4();
 
         //protected position: Vector3D = new Vector3D();
