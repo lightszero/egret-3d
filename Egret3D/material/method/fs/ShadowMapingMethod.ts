@@ -5,9 +5,9 @@ module egret3d {
      * @language zh_CN
      * @class egret3d.ShadowMapingMethod
      * @classdesc
+     * 阴影映射。
      * @version Egret 3.0
      * @platform Web,Native
-     * 阴影映射。
      */
     export class ShadowMapingMethod extends MethodBase {
         /**
@@ -57,10 +57,10 @@ module egret3d {
         /**
          * @language zh_CN
          * 设置材质信息。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData) {
             this.usage = usage;
@@ -70,15 +70,15 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * 激活。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 激活 阴影映射。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase,  animation: IAnimation  ) {
             super.activate(context3D, program3D, modeltransform, camera3D,geometry, animation);
@@ -87,15 +87,15 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * 更新。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 更新 阴影映射。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation ) {
             context3D.uniform4f(program3D["shadowParameterUniformIndex"], this.shdowColorR, this.shdowColorG, this.shdowColorB, this.bias);

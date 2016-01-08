@@ -15,9 +15,9 @@ module egret3d {
         /**
         * @language zh_CN
         * 创建一个新的 NormalMapPass 对象。
-        * @version Egret 3.0
-        * @platform Web,Native
         * @param data {MaterialData} 材质数据
+         * @version Egret 3.0
+         * @platform Web,Native
         */
         constructor(data: MaterialData) {
             super(data);
@@ -55,11 +55,11 @@ module egret3d {
         /**
          * @language zh_CN
          * 初始化 shader 。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initShader(context3D: Context3D, geometry: GeometryBase, animation: IAnimation ) {
 
@@ -91,14 +91,14 @@ module egret3d {
 
         /**
          * @language zh_CNa
-         * 激活。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 激活 发现贴图通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation ) {
           
@@ -121,13 +121,13 @@ module egret3d {
         /**
          * @language zh_CNa
          * 绘制。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public draw(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase,  animation: IAnimation ) {
            

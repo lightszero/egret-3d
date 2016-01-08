@@ -12,10 +12,10 @@
         /**
          * @language zh_CN
          * 创建一个新的 TextureMaterial 对象。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param texture {TextureBase}
          * @param materialData {MaterialData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         constructor(texture: TextureBase = null , materialData:MaterialData = null ) {
             super(materialData);
@@ -31,10 +31,10 @@
 
         /**
          * @language zh_CN
-         * 克隆。
+         * 克隆方法。
+         * @returns {TextureMaterial}
          * @version Egret 3.0
          * @platform Web,Native
-         * @returns {TextureMaterial}
          */
         public clone(): TextureMaterial {
             var mat: TextureMaterial = new TextureMaterial(this.diffuseTexture, this.materialData.clone());
