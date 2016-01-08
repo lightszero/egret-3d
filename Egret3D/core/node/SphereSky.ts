@@ -4,6 +4,7 @@
     * @class egret3d.SphereSky
     * @classdesc
     * 天空球
+    * 球形的天空盒子，需要sphere的360全景照片，可进行全景照片和video的球形显示
     * @version Egret 3.0
     * @platform Web,Native
     */

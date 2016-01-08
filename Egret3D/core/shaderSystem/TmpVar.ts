@@ -1,6 +1,7 @@
 ﻿module egret3d.GLSL {
                                             
     /**
+    * @private
     * @class egret3d.TmpVar
     * @classdesc
     * 

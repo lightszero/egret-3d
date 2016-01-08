@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.Debug
      * @classdesc
      * 调试面板

@@ -1,6 +1,7 @@
 ﻿module egret3d.GLSL {
                                     
     /**
+    * @private
     * @class egret3d.ConstVar
     * @classdesc
     * shader中常量类型变量的所有数据

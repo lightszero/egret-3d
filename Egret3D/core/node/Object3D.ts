@@ -6,8 +6,11 @@
     * 拣选类型，拣选时可以分为，包围盒拣选、模型拣选返回模型拣选到的位置、模型拣选返回模型拣选到的UV坐标
     * 这几种拣选方式
     *
-    * @see egret3d.core.traverse.Picker
     *
+    *
+    * 设置鼠标拣选的类型，鼠标拣选不同的类型有不同的效果作用，还有性能
+    * 需要的拣选精度越高，性能要求就越高，反之亦然
+    * @see egret3d.core.traverse.Picker
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -45,6 +48,14 @@
     * @platform Web,Native
     */
     export class Object3D extends EventDispatcher {
+
+       /**
+        * @private
+        * @language zh_CN
+        * 当前对象名
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public static renderListChange: boolean = true;
         protected static s_id: number = 0;
 
@@ -233,7 +244,8 @@
 
         /**
         * @language zh_CN
-        * constructor
+        * 实例化这个类
+        * 如果直接实例化这个类，就会生成一个空的3D容器，可以往里添加3D显示对象，作为对象的父级，但是本身没有渲染属性
         * @version Egret 3.0
         * @platform Web,Native
         */

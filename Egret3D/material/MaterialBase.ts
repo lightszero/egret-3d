@@ -15,12 +15,15 @@
      * @class egret3d.MaterialBase
      * @classdesc
      * TerrainMaterial,TextureMaterial 的基类。
+     * 材质球共有的基础类型，封装了材质球共有的基础数据设置方法
+     * 不同的渲染通道pass
      * @version Egret 3.0
      * @platform Web,Native
      */
     export class MaterialBase {
 
         /**
+         * @private
          * @language zh_CN
          * 材质数据。
          * @version Egret 3.0
@@ -29,6 +32,7 @@
         public materialData: MaterialData;
 
         /**
+         * @private
          * @language zh_CN
          * diffuse pass。
          * @version Egret 3.0
@@ -36,6 +40,7 @@
          */
         public diffusePass: MaterialPassBase;
         /**
+         * @private
          * @language zh_CN
          * shadow pass。
          * @version Egret 3.0
@@ -43,6 +48,7 @@
          */
         public shadowPass    : ShadowMapPass ;
         /**
+         * @private
          * @language zh_CN
          * 法线pass。
          * @version Egret 3.0
@@ -50,6 +56,7 @@
          */
         public normalPass: NormalMapPass;
         /**
+         * @private
          * @language zh_CN
          * depthPass。
          * @version Egret 3.0
@@ -57,6 +64,7 @@
          */
         public depthPass: DepthMapPass;
         /**
+         * @private
          * @language zh_CN
          * position pass。
          * @version Egret 3.0
@@ -64,6 +72,7 @@
          */
         public positionPass: MaterialPassBase;
         /**
+         * @private
          * @language zh_CN
          * outLin pass。
          * @version Egret 3.0
@@ -71,6 +80,7 @@
          */
         public outLinePass: MaterialPassBase;
         /**
+         * @private
         * @language zh_CN
         * 创建一个新的 MethodBase 对象。
         * @param materialData {MaterialData}
@@ -89,6 +99,7 @@
         }
 
         /**
+         * @private
         * @language zh_CN
         * 初始化 MatPass。
         * @version Egret 3.0
@@ -114,6 +125,7 @@
         /**
         * @language zh_CN
         * 设置材质球数据。
+        * 设置材质球的数据data，今后的工具编辑器会直接使用
         * @param materialData {MaterialData}
         * @version Egret 3.0
         * @platform Web,Native
@@ -135,6 +147,7 @@
         /**
          * @language zh_CN
          * 返回材质球数据。
+         * 返回材质球数据。
          * @returns {MaterialData}
          * @version Egret 3.0
          * @platform Web,Native
@@ -146,6 +159,7 @@
         /**
         * @language zh_CN
         * 添加材质 DiffusePass 方法。
+        * 添加自定义的 材质球渲染通道，渲染不同的pass
         * @param method {MethodBase}
         * @version Egret 3.0
         * @platform Web,Native
@@ -157,6 +171,7 @@
         /**
         * @language zh_CN
         * 添加材质 DiffusePassEffect 方法。
+        * 添加材质球的特效找色片段，其着色shader会加入到最后一行
         * @param method {EffectMethod}
         * @version Egret 3.0
         * @platform Web,Native
@@ -168,6 +183,7 @@
         /**
         * @language zh_CN
         * 设置材质 shadowMaping 方法。
+        * 设置材质 接受阴影的方法，如果要 接受阴影必须设置 acceptShadow 和maping方式
         * @param method {ShadowMapingMethod}
         * @version Egret 3.0
         * @platform Web,Native
@@ -179,6 +195,7 @@
         /**
         * @language zh_CN
         * 返回 shadowMaping 方法。
+        * 返回 阴影的maping 方式。
         * @returns {ShadowMapingMethod}
         * @version Egret 3.0
         * @platform Web,Native
@@ -190,6 +207,7 @@
         /**
         * @language zh_CN
         * 设置材质 diffuseColor。
+        * 设置 16 进制的漫反射颜色
         * @param color {Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -202,6 +220,7 @@
         /**
         * @language zh_CN
         * 设置材质 ambientColor。
+        * 设置 16 进制的环境光颜色
         * @param color {Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -214,6 +233,7 @@
         /**
         * @language zh_CN
         * 设置材质 specularColor。
+        * 设置 16 进制的镜面光反射颜色
         * @param color {Number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -227,6 +247,7 @@
         /**
          * @language zh_CN
          * 设置材质 alpha 值。
+         * 设置 材质球的透明度，如果透明度小于1会自动启用 alphablending
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -241,6 +262,7 @@
         /**
          * @language zh_CN
          * 返回材质 alpha 值。
+         * 返回 alpha 颜色
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -252,6 +274,7 @@
         /**
          * @language zh_CN
          * 设置材质 shininess 值。
+         * 设置材质球的 光滑程度 值越大，越不光滑
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -266,6 +289,7 @@
         /**
          * @language zh_CN
          * 返回材质 shininess 值。
+         * 返回材质 光滑程度 值越大，越不光滑
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -277,6 +301,7 @@
         /**
          * @language zh_CN
          * 设置材质 specularPower 值。
+         * 设置材质 高光颜色的强度 值。
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -291,6 +316,7 @@
         /**
          * @language zh_CN
          * 返回材质 specularPower 值。
+         * 返回材质 高光颜色的强度 值。
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -303,6 +329,7 @@
         /**
          * @language zh_CN
          * 设置材质 ambientPower 值。
+         * 设置材质 环境光颜色的强度 值。
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -317,6 +344,7 @@
         /**
          * @language zh_CN
          * 返回材质 ambientPower 值。
+         * 返回材质 环境光颜色的强度 值。
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -329,6 +357,7 @@
         /**
          * @language zh_CN
          * 设置材质 diffusePower 值。
+         * 设置材质 漫反射颜色的强度 值。
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -343,6 +372,7 @@
         /**
          * @language zh_CN
          * 返回材质 diffusePower 值。
+         * 返回材质 漫反射颜色的强度 值。
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -354,6 +384,7 @@
         /**
          * @language zh_CN
          * 设置材质 normalPower 值。
+         * 设置材质 法线的强度 值。
          * @param value {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -369,6 +400,7 @@
         /**
          * @language zh_CN
          * 返回材质 normalPower 值。
+         * 返回材质 法线的强度 值。
          * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
@@ -380,6 +412,7 @@
         /**
          * @language zh_CN
          * 设置材质 castShadow 值。
+         * 设置材质是否接受阴影，设置了之后必须要给 shadowmaping 的方法。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -399,6 +432,7 @@
         /**
          * @language zh_CN
          * 返回材质 castShadow 值。
+         * 返回材质 是否产生阴影 值。
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -410,6 +444,7 @@
         /**
          * @language zh_CN
          * 设置材质 acceptShadow 值。
+         * 设置材质是否是否产生阴影，设置了之后必须要给 shadowmaping 的方法。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -421,6 +456,7 @@
          /**
          * @language zh_CN
          * 返回材质 acceptShadow 值。
+         * 返回材质是否接受阴影，设置了之后必须要给 shadowmaping 的方法。
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -432,6 +468,7 @@
         /**
          * @language zh_CN
          * 设置材质 smooth 值。
+         * 材质纹理的采样方式，是否抗锯齿，是否精细显示。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -442,6 +479,7 @@
          /**
          * @language zh_CN
          * 返回材质 smooth 值。
+         * 返回 材质纹理的采样方式，是否抗锯齿，是否精细显示。的开关
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -452,6 +490,7 @@
         /**
          * @language zh_CN
          * 设置材质 repeat 值。
+         * 设置材质 是否进行纹理重复采样的方式开关。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -462,6 +501,7 @@
          /**
          * @language zh_CN
          * 返回材质 repeat 值。
+         * 返回材质 是否进行纹理重复采样的方式开关。
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -472,6 +512,7 @@
         /**
          * @language zh_CN
          * 设置材质 bothside 值。
+        * 设置材质是否显示双面的开关，一般情况不需要。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -482,6 +523,7 @@
          /**
          * @language zh_CN
          * 返回材质 bothside 值。
+        * 返回是否显示双面的开关，一般情况不需要。
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -494,6 +536,7 @@
         /**
          * @language zh_CN
          * 设置材质 blendMode 值。
+         * 设置材质球的 混合模式可以参照 blendmode 中的值
          * @param value {BlendMode}
          * @version Egret 3.0
          * @platform Web,Native
@@ -533,6 +576,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 设置材质 Outline 样式。
          * @param color {Number}
@@ -549,6 +593,7 @@
         /**
          * @language zh_CN
          * 设置材质 depthTest。
+         * 设置物件渲染，是否需要进行深度排序的开关。
          * @param value {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -560,6 +605,7 @@
          /**
          * @language zh_CN
          * 返回材质 depthTest 值。
+         * 返回物件渲染，是否需要进行深度排序的开关。
          * @returns {boolean}
          * @version Egret 3.0
          * @platform Web,Native
@@ -570,6 +616,7 @@
 
          /**
          * @language zh_CN
+         * 返回材质 blendMode 值。
          * 返回材质 blendMode 值。
          * @returns {boolean}
          * @version Egret 3.0
@@ -582,6 +629,7 @@
         /**
          * @language zh_CN
          * 设置材质 lightGroup 。
+         * 设置材质球接受的灯光组。
          * @param lightGroup {LightGroup}
          * @version Egret 3.0
          * @platform Web,Native
@@ -595,6 +643,7 @@
         /**
          * @language zh_CN
          * 设置材质 diffuseTexture 。
+         * 设置材质球的漫反射贴图。
          * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -609,6 +658,7 @@
          /**
          * @language zh_CN
          * 返回材质 diffuseTexture。
+         * 返回材质球的漫反射贴图。
          * @returns {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -620,6 +670,7 @@
         /**
          * @language zh_CN
          * 设置材质 normalTexture 。
+         * 设置材质球的凹凸法线贴图。
          * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -638,6 +689,7 @@
         /**
          * @language zh_CN
          * 设置材质 specularTexture 。
+         * 设置材质球的高光贴图。
          * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -656,6 +708,7 @@
         /**
          * @language zh_CN
          * 克隆材质。
+         * 返回新的材质球，但是共用材质纹理，和着色器。
          * @returns {MaterialBase}
          * @version Egret 3.0
          * @platform Web,Native
@@ -666,6 +719,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 激活 DiffusePass
          * @param context3D {Context3D}
@@ -686,6 +740,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 渲染 DiffusePass
          * @param context3D {Context3D}
@@ -709,6 +764,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 激活 ShadowPass
          * @param context3D {Context3D}
@@ -725,6 +781,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 渲染 ShadowPass
          * @language zh_CN
@@ -745,6 +802,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 激活 NormalPass
          * @language zh_CN
@@ -761,6 +819,7 @@
             this.normalPass.activate(context3D, modelMatrix, camera3D, geometry,  animation );
         }
         /**
+         * @private
          * @language zh_CN
          * 渲染 NormalPass
          * @param context3D {Context3D}
@@ -781,6 +840,7 @@
         }
 
         /**
+         * @private
          * @language zh_CN
          * 激活 DepthPass
          * @param context3D {Context3D}
@@ -796,6 +856,7 @@
             this.depthPass.activate(context3D, modelMatrix, camera3D, geometry, animation);
         }
         /**
+         * @private
          * @language zh_CN
          * 渲染 DepthPass
          * @param context3D {Context3D}
@@ -817,6 +878,7 @@
         /**
          * @language zh_CN
          * 销毁
+         * 进行材质球的纹理，着色器回收，相关的克隆对象会受影响
          * @version Egret 3.0
          * @platform Web,Native
          */
