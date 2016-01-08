@@ -23,9 +23,9 @@
         /**
          * @language zh_CN
          * 设置颜色。
+         * @param color {Number} 
          * @version Egret 3.0
          * @platform Web,Native
-         * @param color {Number} 
          */
         public set color(color: number) {
             this.materialData.diffuseColor = color;
@@ -34,9 +34,9 @@
         /**
          * @language zh_CN
          * 返回颜色。
+         * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
-         * @returns {Number}
          */
         public get color(): number {
             return this.materialData.diffuseColor;
@@ -45,9 +45,9 @@
         /**
          * @language zh_CN
          * 设置笔触值。
+         * @param thickness {Number}
          * @version Egret 3.0
          * @platform Web,Native
-         * @param thickness {Number}
          */
         public set thickness(thickness: number) {
             this.materialData.normalPower = thickness;
@@ -56,9 +56,9 @@
         /**
          * @language zh_CN
          * 返回笔触值。
+         * @returns {Number}
          * @version Egret 3.0
          * @platform Web,Native
-         * @returns {Number}
          */
         public get thickness(): number {
             return this.materialData.normalPower;
@@ -81,11 +81,11 @@
         /**
          * @language zh_CN
          * 初始化 shader 。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public initShader(context3D: Context3D, geometry: GeometryBase, animation: IAnimation) {
 
@@ -116,14 +116,14 @@
 
         /**
          * @language zh_CNa
-         * 激活。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 激活 OutLinePass。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase, animation: IAnimation ) {
           
@@ -144,14 +144,14 @@
         public index: number = 0;
         /**
          * @language zh_CNa
-         * 更新。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 更新 OutLinePass。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updata(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase , animation: IAnimation ) {
             super.draw(context3D, modeltransform, camera3D, geometry, animation);

@@ -12,8 +12,6 @@
         /**
          * @language zh_CN
          * 创建一个新的 TerrainMaterial 对象。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param colormap {TextureBase}
          * @param controlTex {TextureBase}
          * @param splat_0 {TextureBase}
@@ -21,6 +19,8 @@
          * @param splat_2 {TextureBase}
          * @param splat_3 {TextureBase}
          * @param lightMap {TextureBase}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         constructor(colormap: TextureBase, controlTex: TextureBase, splat_0: TextureBase, splat_1: TextureBase, splat_2: TextureBase, splat_3: TextureBase,lightMap:TextureBase=null) {
 
@@ -44,11 +44,11 @@
         /**
          * @language zh_CN
          * 设置 UVTitling。
-         * @version Egret 3.0
-         * @platform Web,Native
-         * @param index {Number}
+         * @param index {Number} 图层索引
          * @param x {Number}
          * @param y {Number}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setUVTitling(index: number, x: number, y: number) {
             (<TerrainMethod>this.diffusePass.diffuseMethod).setUVTitling(index, x, y);

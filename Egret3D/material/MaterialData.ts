@@ -425,9 +425,9 @@
         /**
         * @language zh_CN
         * 克隆。
+        * @returns {MaterialData}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {MaterialData}
         */
         public clone(): MaterialData {
 

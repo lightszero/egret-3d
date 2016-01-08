@@ -1,7 +1,6 @@
 ﻿module egret3d {
                 
     /**
-	* @private
     * @language zh_CN
     * @class egret3d.Mouse3DManager
     * @classdesc
@@ -36,10 +35,10 @@
         /**
         * @language zh_CN
         * 创建一个新的 Mouse3DManager 对象。
+        * @param camera {Camera3D}     
+        * @param collect {CollectBase} 3d对象渲染收集器
         * @version Egret 3.0
         * @platform Web,Native
-        * @param camera {Camera3D}
-        * @param collect {CollectBase}
         */
         constructor(camera: Camera3D) {
 
@@ -136,7 +135,13 @@
             }
         }
 
-
+       /**
+       * @language zh_CN
+       * @classdesc
+       * 更新 3d对象渲染收集器。
+       * @version Egret 3.0
+       * @platform Web,Native
+       */
         public update(collect: CollectBase) {
             this._collect = collect; 
         }
