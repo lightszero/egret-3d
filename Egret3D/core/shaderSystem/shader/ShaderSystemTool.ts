@@ -1,4 +1,13 @@
 ﻿module egret3d {
+            
+    /**
+    * @private
+    * @class egret3d.FuncData
+    * @classdesc
+    * shader系统工具类，管理所有要用到的shader文件
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class ShaderSystemTool {
         private libs: string[] = [
             ///---ok------------------

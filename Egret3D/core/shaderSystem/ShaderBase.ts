@@ -1,12 +1,13 @@
 ﻿module egret3d.GLSL {
                                             
     /**
+    * @private
     * @class egret3d.ShaderBase
     * @classdesc
     * shader 基类
     */
     export class ShaderBase {
-
+        
         protected materialData: MaterialData;
         protected useage: MethodUsageData;
 

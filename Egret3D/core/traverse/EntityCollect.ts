@@ -71,6 +71,8 @@
         * @language zh_CN
         * constructor
         * @param root 渲染根节点
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(root:Object3D) {
             super(root);
@@ -98,6 +100,8 @@
         * 返回tags 列表
         * @readOnly
         * @returns tags 列表
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get tags(): Array<Tag> {
             return this._tags;
@@ -108,6 +112,8 @@
         * 设置tag名和name的下标为index 没有的话会新加tag
         * @param name tag名
         * @param index 下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setTags(name: string, index: number) {
             var curIndex: number = this._tagsName.indexOf(name);
@@ -128,6 +134,8 @@
         * 设置layer名和name的下标为index
         * @param layer layer名
         * @param index 下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setTagsItem(layer: string, index: number) {
             this.removeLayer(layer);
@@ -140,6 +148,8 @@
         * @param name tag名
         * @param layer layer名
         * @returns 返回layer的值
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public getTagLayer(name: string = "default", layer: string = "layer_0"): number {
             var typeIndex = this._tagsName.indexOf(name);
@@ -152,6 +162,8 @@
         * 得到tag
         * @param name tag名
         * @returns tag
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public getTag(name: string = "default"): Tag {
             var index:number = this._tagsName.indexOf(name);
@@ -166,6 +178,8 @@
         * 增加tag
         * @param name tag名
         * @param clearDapth 是否清理深度
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addTag(name: string, clearDapth: boolean = false) {
             if (this._tagsName.indexOf(name) != -1) {
@@ -189,6 +203,8 @@
         * 插入tag
         * @param name tag名
         * @param index 下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public insertTag(name: string, index: number) {
             if (this._tagsName.indexOf(name) != -1) {
@@ -210,6 +226,8 @@
         * @language zh_CN
         * 移除tag
         * @param name tag名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public removeTag(name: string) {
             var index: number = this._tagsName.indexOf(name);
@@ -225,6 +243,8 @@
         * @language zh_CN
         * 增加layer
         * @param name layer名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public addLayer(name: string) {
             if (this._layers.indexOf(name) != -1) {
@@ -243,6 +263,8 @@
         * 插入layer
         * @param name layer名
         * @param index layer下标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public insetLayer(name: string, index: number) {
             if (this._layers.indexOf(name) != -1) {
@@ -260,6 +282,8 @@
         * @language zh_CN
         * 移除layer
         * @param name layer名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public removeLayer(name: string) {
             var index: number = this._layers.indexOf(name);
@@ -307,8 +331,10 @@
                 
         /**
         * @language zh_CN
-        * 数据更新
+        * 数据更新 处理需要渲染的对象
         * @param camera 当前摄像机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public update(camera: Camera3D) {
             super.update(camera);

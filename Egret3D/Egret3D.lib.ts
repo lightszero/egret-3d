@@ -123,7 +123,6 @@
 ///import Egret3D/core/render/RenderBase.js
 
 ///import Egret3D/core/render/DefaultRender.js
-///import Egret3D/core/render/GBufferRender.js
 ///import Egret3D/core/render/PositionRender.js
 ///import Egret3D/core/render/NormalRender.js
 ///import Egret3D/core/render/DepthRender.js

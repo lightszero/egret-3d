@@ -36,10 +36,10 @@
         /**
         * @language zh_CN
         * 创建一个新的 Mouse3DManager 对象。
-        * @version Egret 3.0
-        * @platform Web,Native
         * @param camera {Camera3D}
         * @param collect {CollectBase}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(camera: Camera3D) {
 

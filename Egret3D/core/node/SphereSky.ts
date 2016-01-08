@@ -3,9 +3,9 @@
     /**
     * @class egret3d.SphereSky
     * @classdesc
+    * 天空球
     * @version Egret 3.0
     * @platform Web,Native
-    * 天空球
     */
     export class SphereSky {
 
@@ -23,10 +23,10 @@
                         
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * constructor
         * @param tex1 天空球贴图
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(tex1: TextureBase ) {
             this.skyTexture = tex1 ;
@@ -39,11 +39,11 @@
                                 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置渲染用的shader文件名字
         * @param vsName vs文件名
         * @param fsName fs文件名
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setShader(vsName: string, fsName: string) {
             this.vsShader.addShader(vsName);
@@ -100,11 +100,11 @@
                                         
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
-        * 渲染
+        * 提交数据给GPU渲染当前天空球
         * @param context3D 设备上下文
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public draw(context3D: Context3D, camera:Camera3D ) {
             

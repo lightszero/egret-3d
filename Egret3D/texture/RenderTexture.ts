@@ -12,7 +12,8 @@
     export class RenderTexture extends TextureBase{
         /**
          * @language zh_CN
-         * @param texture 
+         * 构造函数
+         * @param texture ITexture2D对象
          */
         constructor( texture:ITexture2D ) {
             super();

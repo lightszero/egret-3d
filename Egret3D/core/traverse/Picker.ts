@@ -11,6 +11,8 @@
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
     * @includeExample egret3d/core/traverse/Picker.ts
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Picker {
         protected static ray: Ray = new Ray();
@@ -21,6 +23,8 @@
         * @param camera 当前相机
         * @param objects 检测的对象列表
         * @returns 拾取的object列表
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public static pickObject3DList(camera: Camera3D, objects: Array<Object3D>): Array<Object3D> {
             var ret: Array<Object3D> = new Array<Object3D>();

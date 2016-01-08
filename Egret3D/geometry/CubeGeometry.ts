@@ -14,34 +14,34 @@
      * @includeExample egret3d/geometry/CubeGeometry.ts
      */
     export class CubeGeometry extends SubGeometry {
-                
+
         /**
         * @language zh_CN
+        * Cube宽度
         * @readOnly
-        * width
         */
         public width: number = 80;
-                        
+
         /**
         * @language zh_CN
+        * Cube高度
         * @readOnly
-        * height
         */
         public height: number = 80;
-                        
+
         /**
         * @language zh_CN
+        * Cube深度
         * @readOnly
-        * depth
         */
         public depth: number = 80;
-                                
+
         /**
         * @language zh_CN
-        * constructor
-        * @param width {Number}
-        * @param height {Number}
-        * @param depth {Number}
+        * 构造函数
+        * @param width 宽度
+        * @param height 高度
+        * @param depth 深度
         */
         constructor(width: number = 80, height: number = 80, depth: number = 80 ) {
             super();

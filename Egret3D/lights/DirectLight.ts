@@ -21,7 +21,7 @@
         * @private
         * 光源数据结构长度
         */
-        public static stride: number = 10;
+        public static stride: number = 11;
 
         /**
         * @language zh_CN
@@ -89,6 +89,7 @@
             lightData[index * DirectLight.stride + 8] = this._halfColor.z;
 
             lightData[index * DirectLight.stride + 9] = this._intensity;
+            lightData[index * DirectLight.stride + 10] = this._halfIntensity;
         }
     }
 } 

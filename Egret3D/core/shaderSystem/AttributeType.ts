@@ -3,7 +3,10 @@
     /**
     * @class egret3d.AttributeType
     * @classdesc
-    * 属性类型
+    *
+    * shader中的变量属性类型
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class AttributeType {
         static int: string = "int";

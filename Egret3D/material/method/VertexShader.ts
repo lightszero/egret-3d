@@ -13,10 +13,10 @@
         /**
         * @language zh_CN
         * 创建一个新的 VertexShader 对象。
-        * @version Egret 3.0
-        * @platform Web,Native
         * @param materialData {MaterialData}
         * @param usage {MethodUsageData}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor( materialData: MaterialData, usage: MethodUsageData) {
             super(materialData, usage );
@@ -26,9 +26,9 @@
         /**
         * @language zh_CN
         * 设置顶点着色器。
+        * @param geometry {GeometryBase}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param geometry {GeometryBase}
         */
         public setVertexShader(geometry: GeometryBase) {
             var baseMethod: MethodBase;
@@ -65,9 +65,9 @@
         /**
         * @language zh_CN
         * 返回 Shader 源。
+        * @returns {String}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {String}
         */
         public getShaderSource(): string {
             var shaderSource: string = super.getShaderSource();

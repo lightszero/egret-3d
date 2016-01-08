@@ -3,7 +3,7 @@
     /**
     * @class egret3d.UniformType
     * @classdesc
-    * Uniform 变量类型
+    * shader Uniform 变量的类型
     */
     export class UniformType {
         static bool: string = "bool";

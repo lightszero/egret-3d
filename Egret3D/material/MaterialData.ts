@@ -424,10 +424,10 @@
 
         /**
         * @language zh_CN
-        * 克隆。
+        * 克隆方法。
+        * @returns {MaterialData}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {MaterialData}
         */
         public clone(): MaterialData {
 

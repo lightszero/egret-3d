@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.Point
      * @classdesc
+     * Point 对象表示二维坐标系统中的某个位置，其中 x 表示水平轴，y 表示垂直轴。
      * @version Egret 3.0
      * @platform Web,Native
-     * Point 对象表示二维坐标系统中的某个位置，其中 x 表示水平轴，y 表示垂直轴。
      */
     export class Point {
         /**

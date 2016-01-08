@@ -2,10 +2,10 @@
     /**
     * @class egret3d.CameraAnimationManager
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * 摄像机动画控制器管理
     * 管理所有摄像机动画
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class CameraAnimationManager {
 
@@ -13,7 +13,9 @@
         
         /**
         * @language zh_CN
-        * constructor
+        * 构建一个摄像机动画管理对象
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor() {
         }
@@ -25,6 +27,8 @@
         * @param name 动画名
         * @param camera 相机
         * @param isLoop 是否循环
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public play(name: string, camera: Camera3D, isLoop:boolean) {
             if (this._animation[name] != undefined) {
@@ -40,9 +44,11 @@
 
         /**
         * @language zh_CN
-        * 更新数据
+        * 更新所有的摄像机动画
         * @param time 当前时间
         * @param delay 每帧间隔时间
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public update(time:number, delay:number) {
 

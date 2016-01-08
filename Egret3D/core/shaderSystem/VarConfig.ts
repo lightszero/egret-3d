@@ -1,9 +1,11 @@
 ﻿module egret3d.GLSL {
                                                     
     /**
+    * @private
     * @class egret3d.VarConstName
     * @classdesc
     * shader 变量 名字定义
+    * 用户在写自定义shader时，按照引擎中已经列取出来的变量名进行命名
     */
     export class VarConstName {
         public static attribute_position: string = "attribute_position";

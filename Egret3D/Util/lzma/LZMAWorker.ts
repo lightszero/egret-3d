@@ -1,10 +1,9 @@
 ///<reference path="LZMA.ts" />
 module nid{
     "use strict"
-
     /**
-     * @private 
-     */
+     * @private
+	 */
     export class LZMAWorker
     {
         static ENCODE:number = 1;

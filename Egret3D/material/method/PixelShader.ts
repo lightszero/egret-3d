@@ -13,10 +13,10 @@
         /**
         * @language zh_CN
         * 创建一个新的 PixelShader 对象。
-        * @version Egret 3.0
-        * @platform Web,Native
         * @param materialData {MaterialData}
         * @param usage {MethodUsageData}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(materialData: MaterialData, usage: MethodUsageData) {
             super(materialData, usage);
@@ -28,9 +28,9 @@
         /**
         * @language zh_CN
         * 添加 Method。
+        * @param method {MethodBase}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param method {MethodBase}
         */
         public addMethod(method: MethodBase) {
             this.stateChange = true;
@@ -40,9 +40,9 @@
         /**
         * @language zh_CN
         * 添加 EffectMethod。
+        * @param method {EffectMethod}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param method {EffectMethod}
         */
         public addEffectMethod(method: EffectMethod) {
             this.stateChange = true;
@@ -53,9 +53,9 @@
         /**
         * @language zh_CN
         * 返回 Shader 源。
+        * @returns {String}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {String}
         */
         public getShaderSource(): string {
             var shaderSource: string = super.getShaderSource();

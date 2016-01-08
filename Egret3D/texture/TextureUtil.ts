@@ -15,6 +15,8 @@
 
         /**
          * @language zh_CN
+         * 获取纹理数据
+         * @private
          * @param image 
          * @returns HTMLCanvasElement 
          */
@@ -36,6 +38,7 @@
 
         /**
          * @language zh_CN
+         * @private
          */
         public static regist() {
             if (!TextureUtil.canvas2D){
@@ -50,6 +53,11 @@
             }
         }
 
+        /**
+         * @language zh_CN
+         * 生成MipMap
+         * @param source  未生成MipMap的MipmapData对象
+         */
         public static generateMipMaps(source: MipmapData) {
             var minW = 1;
             var minH = 1;

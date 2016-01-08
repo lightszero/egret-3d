@@ -3,23 +3,24 @@
      * @language zh_CN
      * @class egret3d.Billborad
      * @classdesc
-     * @version Egret 3.0
-     * @platform Web,Native
      * 公告板渲染对象 始终面朝摄像机的面板
      *
      * 示例:创建一个棋盘格材质的公告板在场景中
      * @includeExample egret3d/core/node/Billborad.ts
+     *
+     * @version Egret 3.0
+     * @platform Web,Native
      */
     export class Billborad extends Object3D{
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * constructor
          * @param material 渲染材质
-         * @param width 
-         * @param height 
+         * @param width 公告板宽
+         * @param height 公告板高
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         constructor(material:MaterialBase, width:number = 100, height:number = 100) {
             super();
@@ -30,12 +31,12 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 数据更新
         * @param camera 当前渲染的摄相机
         * @param time 当前时间
         * @param delay 间隔时间
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public update(camera: Camera3D, time: number, delay: number) {
             this._qut.fromEulerAngles(-90, 0, 0);

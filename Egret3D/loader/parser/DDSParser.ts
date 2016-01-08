@@ -614,9 +614,6 @@
         }
     }
 
-    /**
-     * @private 
-     */
     class DDS {
         public mipmaps: Array<egret3d.MipmapData>;
         public width: number;

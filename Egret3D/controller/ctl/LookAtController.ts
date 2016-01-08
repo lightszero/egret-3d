@@ -3,8 +3,6 @@
     /**
     * @class egret3d.LookAtController
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * look at 摄像机控制器 。
     * 指定摄像机看向的目标对象
     * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转.
@@ -13,6 +11,8 @@
     *
     * 示例:
     * @includeExample egret3d/controller/ctl/LookAtController.ts
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class LookAtController extends ControllerBase{
 
@@ -49,25 +49,25 @@
 
         /**
         * @language zh_CN
+        * 目标点偏移
         * @version Egret 3.0
         * @platform Web,Native
-        * 目标点偏移
         */
         public lookAtOffset: Vector3D = new Vector3D(0, 0, 0);
 
         /**
         * @language zh_CN
+        * 是否第一人称相机
         * @version Egret 3.0
         * @platform Web,Native
-        * 是否第一人称相机
         */
         public firstCamera: boolean = false;
 
         /**
         * @language zh_CN
+        * 控制的目标相机，目标对象
         * @version Egret 3.0
         * @platform Web,Native
-        * 控制的目标相机，目标对象
         */
         constructor(targetObject: Object3D = null, lookAtObject: Object3D = null)
         {
@@ -196,11 +196,11 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回目标的位置
         * @readOnly
         * @returns 目标的位置
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public  get lookAtPosition(): Vector3D {
 
@@ -209,11 +209,11 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置目标坐标
         * @writeOnly
-        * @param val 
+        * @param val 摄像机看向的目标点
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public  set lookAtPosition(val: Vector3D) {
 
@@ -227,11 +227,11 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * @readOnly
         * 返回目标对象
         * @returns 目标对象
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public  get lookAtObject(): Object3D {
 
@@ -240,11 +240,11 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * @writeOnly
         * 设置目标对象
         * @param val 目标
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set lookAtObject(val: Object3D) {
 
@@ -259,10 +259,10 @@
 
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置目标和相机的距离
         * @param length 距离
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public setEyesLength(length: number) {
 
@@ -274,10 +274,10 @@
         
         /**
         * @language zh_CN
+        * 设置相机x轴旋转
+        * @param x 旋转角度
         * @version Egret 3.0
         * @platform Web,Native
-        * 设置相机x轴旋转
-        * @param x 
         */
         public set rotationX(x: number) {
             this._rotaAngle.x = x;
@@ -285,10 +285,10 @@
         
         /**
         * @language zh_CN
+        * 设置相机y轴旋转
+        * @param y 旋转角度
         * @version Egret 3.0
         * @platform Web,Native
-        * 设置相机y轴旋转
-        * @param y 
         */
         public set rotationY(y: number) {
             this._rotaAngle.y = y;
@@ -296,10 +296,10 @@
         
         /**
         * @language zh_CN
+        * 设置相机z轴旋转
+        * @param z 旋转角度
         * @version Egret 3.0
         * @platform Web,Native
-        * 设置相机z轴旋转
-        * @param z
         */
         public set rotationZ(z: number) {
             this._rotaAngle.z = z;
@@ -307,9 +307,9 @@
 
         /**
         * @language zh_CN
+        * 控制器数据更新
         * @version Egret 3.0
         * @platform Web,Native
-        * 数据更新
         */
         public update() {
            

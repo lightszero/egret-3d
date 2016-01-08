@@ -1,11 +1,61 @@
 ﻿module egret3d {
-    export enum CameraType { perspective, orthogonal, VR  };
-    export enum VRType { left, right };
+
+    /**
+    * 摄像机类型
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum CameraType {
+
+        /**
+        * 透视投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        perspective,
+
+        /**
+        * 正交投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        orthogonal,
+
+        /**
+        * VR投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        VR
+    };
+
+    /**
+    * VR类型
+    * @private
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum VRType {
+
+        /**
+        * 左眼
+        * @private
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        left,
+
+        /**
+        * 右眼
+        * @private
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        right
+    };
     /**
     * @class egret3d.Camera3D
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * 相机数据处理，生成3D摄相机。
     * 渲染场景从摄像机视点到缓冲区
     * 相机分为透视摄像机、正交摄像机、VR摄像机
@@ -15,38 +65,40 @@
     * @see egret3d.geom.Matrix4_4
     * 
     * @includeExample egret3d/camera/Camera3D.ts
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Camera3D extends Entity{
 
         /**
          * @language zh_CN
+         * 相机投影矩阵
          * @version Egret 3.0
          * @platform Web,Native
-         * 相机投影矩阵
          */
         public projectMatrix: Matrix4_4 = new Matrix4_4();
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * 眼睛矩阵(左，右眼) 实现VR时会用到
+        * @version Egret 3.0
+         * @platform Web,Native
          */
         public eyeMatrix: EyesMatrix;
 
         /**
          * @language zh_CN
+         * 当前相机使用的世界变换矩阵
          * @version Egret 3.0
          * @platform Web,Native
-         * 当前相机使用的世界变换矩阵
          */
         public cameraMatrix: Matrix4_4;
 
         /**
          * @language zh_CN        
+         * 相机的视椎体，用来检测是否在当前相机可视范围内
          * @version Egret 3.0
          * @platform Web,Native
-         * 相机的视椎体，用来检测是否在当前相机可视范围内
          */
         public frustum: Frustum = new Frustum();
 
@@ -78,10 +130,10 @@
 
         /**
          * @language zh_CN        
-         * @version Egret 3.0
-         * @platform Web,Native
          * constructor
          * @param cameraType 相机类型
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         constructor(cameraType: CameraType = CameraType.perspective ) {
             super();
@@ -90,10 +142,10 @@
 
         /**
          * @language zh_CN        
-         * @version Egret 3.0
-         * @platform Web,Native
          * 设置相机类型
          * @param cameraType 相机类型
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public set cameraType(cameraType: CameraType) {
             this._cameraType = cameraType;
@@ -117,11 +169,11 @@
 
         /**
          * @language zh_CN        
-         * @version Egret 3.0
-         * @platform Web,Native
          * 打开VR相机
          * @param cameraType 相机类型
          * @param vrType VR类型
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public tap(cameraType: CameraType, vrType: VRType = null ) {
             if (cameraType == CameraType.VR) {
@@ -139,11 +191,11 @@
                                               
         /**
         * @language zh_CN        
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置相机横纵比
         * @writeOnly
         * @param value 横纵比
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set aspectRatio(value: number) {
             if (this._aspectRatio != value) {
@@ -154,11 +206,11 @@
                               
         /**
         * @language zh_CN        
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回相机横纵比
         * @readOnly
         * @returns 横纵比
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get aspectRatio(): number {
             return this._aspectRatio;
@@ -166,11 +218,11 @@
                                       
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置相机fovY
         * @writeOnly
         * @param value fovY
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set fieldOfView(value: number) {
             if (this._fovY != value) {
@@ -181,11 +233,11 @@
                       
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回相机fovY
         * @readOnly
         * @returns fovY
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get fieldOfView(): number {
             return this._fovY ;
@@ -193,11 +245,11 @@
                               
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置相机近截面
         * @writeOnly
         * @param value 近截面
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set near(value: number) {
             if (this._near != value) {
@@ -208,11 +260,11 @@
               
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回相机近截面
         * @readOnly
         * @returns 近截面
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get near(): number {
             return this._near;
@@ -220,11 +272,11 @@
                       
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 设置相机远截面
         * @writeOnly
         * @param value 远截面
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public set far(value: number) {
             if (this._far != value) {
@@ -235,11 +287,11 @@
               
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回相机远截面
         * @readOnly
         * @returns 远截面
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get far(): number {
             return this._far;
@@ -247,11 +299,11 @@
       
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
         * 返回相机视图投影矩阵
         * @readOnly
         * @returns 视图投影矩阵
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public get viewProjectionMatrix(): Matrix4_4 {
             this.cameraMatrix = this.modelMatrix
@@ -260,15 +312,16 @@
             this.temp.append(this.projectMatrix);
             return this.temp;
         }
-
+        
         /**
+         * @private
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param x number
          * @param y number
          * @param width number
          * @param height number
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updateScissorRect(x: number, y: number, width: number, height: number) {
             this._scissorRect.x = x;
@@ -279,13 +332,13 @@
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * 更新视口
          * @param x number
          * @param y number
          * @param width number
          * @param height number
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updateViewport(x: number, y: number, width: number, height: number) {
             this._viewPort.x = x;
@@ -296,12 +349,12 @@
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * 当前对象对视位置
          * @param pos 对象的位置
          * @param target 目标的位置
          * @param up 向上的方向
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public lookAt(pos: Vector3D, target: Vector3D, up: Vector3D = Vector3D.Y_AXIS) {
             this.position = pos;
@@ -325,10 +378,10 @@
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * @readOnly
          * 相机视图矩阵
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public get viewMatrix(): Matrix4_4 {
             return this._viewMatrix;
@@ -336,10 +389,10 @@
         
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * @readOnly
          * 相机目标点
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public get lookAtPosition(): Vector3D {
             return this._lookAtPosition;
@@ -347,9 +400,9 @@
 
         /**
          * @language zh_CN
+         * 更新正交矩阵
          * @version Egret 3.0
          * @platform Web,Native
-         * 更新正交矩阵
          */
         public updataOrth() {
             var _projectionHeight: number = 800;
@@ -405,11 +458,11 @@
 
         /**
          * @language zh_CN
-         * @version Egret 3.0
-         * @platform Web,Native
          * 检测对象是否在相机视椎体内
          * @param object 需要体测的对象
          * @returns 成功返回true
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public isVisibleToCamera(object: Object3D): boolean {
             if (this.frustum.inBox(object.box)) {

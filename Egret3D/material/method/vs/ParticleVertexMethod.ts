@@ -23,24 +23,19 @@
 
         /**
          * @language zh_CN
-         * 激活。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 激活 粒子顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
-         * 
-         * 
          * -pos            3       12      0
          * -uv0            2        8      12
          * -speed          3       12      20
          * -lifecycle      1       4       32
-         * 
-         * 
-         * 
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             // 绑定同时包含顶点位置和颜色信息的缓冲
@@ -76,15 +71,15 @@
         private normalMatrix: Matrix4_4 = new Matrix4_4();
         /**
          * @language zh_CN
-         * 更新。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 更新 粒子顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             // 绑定同时包含顶点位置和颜色信息的缓冲

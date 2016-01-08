@@ -1,5 +1,11 @@
 ﻿module egret3d {
 
+    /**
+     * @private
+     * @language zh_CN
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     export enum KeyCode {
         Key_BackSpace = 8,
         Key_Tab,
@@ -117,9 +123,9 @@
      * @class egret3d.Input
      * @classdesc
      * 处理输入设备,鼠标.键盘.触摸。
+     * @includeExample input/Input.ts
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample input/Input.ts
      */
     export class Input {
 

@@ -1,23 +1,131 @@
 ﻿module egret3d.GLSL {
+        
+    /**
+    * @private
+    * @class egret3d.FuncData
+    * @classdesc
+    * shader函数内容的数据
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class FuncData {
+
+        /**
+        * @private
+        * 函数名
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public name: string = "";
+        
+        /**
+        * @private
+        * 函数内容
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public func: string = "";
     }
+        
+    /**
+    * @private
+    * @class egret3d.ShaderContent
+    * @classdesc
+    * shader文件解析后的数据内容
+    * 每种变量类型都进行了规类
+    * 用相应的列表进行存储，这样可以便于shader文件进行合并
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class ShaderContent {
+
+        /**
+        * @private
+        * shader文件名
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public name: string = "";
         private funcDict: { [name: string]: string; } = {};
+        
+        /**
+        * @private
+        * 结构体列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public structDict: { [name: string]: string; } = {};
-
+                
+        /**
+        * @private
+        * attribute列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public attributeList: Array<Attribute> = new Array<Attribute>();
+                        
+        /**
+        * @private
+        * varying列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public varyingList: Array<Varying> = new Array<Varying>();
+                                
+        /**
+        * @private
+        * uniform列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public uniformList: Array<Uniform> = new Array<Uniform>();
+                                        
+        /**
+        * @private
+        * const列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public constList: Array<ConstVar> = new Array<ConstVar>();
+                                                
+        /**
+        * @private
+        * 临时变量列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public tempList: Array<TmpVar> = new Array<TmpVar>();
+                                                
+        /**
+        * @private
+        * sampler2D列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public sampler2DList: Array<Sampler2D> = new Array<Sampler2D>();
+                                                        
+        /**
+        * @private
+        * sampler3D列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public sampler3DList: Array<Sampler3D> = new Array<Sampler3D>();
-
+                                                                
+        /**
+        * @private
+        * 函数列表
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public funcList: Array<FuncData> = new Array<FuncData>();
-
+                                                                        
+        /**
+        * @private
+        * 增加一个变量对象
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public addVar(sVar: VarRegister) {
 
             if (sVar.key == "attribute") {
@@ -42,7 +150,13 @@
                 this.tempList.push(sVar);
             }
         }
-        
+                                                                        
+        /**
+        * @private
+        * 增加一个函数
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public addFunc(name: string, func: string) {
             if (this.funcDict[name] == undefined) {
                 this.funcDict[name] = func;
@@ -71,7 +185,13 @@
                 }
             }
         }
-
+                                                                        
+        /**
+        * @private
+        * 增加一个结构体
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public addStruct(name: string, structStr: string) {
             if (this.structDict[name] == undefined) {
                 this.structDict[name] = structStr;
@@ -80,7 +200,13 @@
                 console.log("<" + name + ">" + "struct重复");
             }
         }
-
+                                                                        
+        /**
+        * @private
+        * 合并一个shader内容
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public addContent(otherContent: ShaderContent) {
             for (var key in otherContent.structDict) {
                 this.structDict[key] = otherContent.structDict[key];

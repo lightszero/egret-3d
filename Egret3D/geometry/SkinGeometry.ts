@@ -13,18 +13,13 @@
 
         /**
         * @language zh_CN
-        * 
+        * 初始骨架（TPose骨架）
         */
         public initialSkeleton: Skeleton;
 
         /**
         * @language zh_CN
-        * 
-        */
-        public time0: number = 0;
-        /**
-        * @language zh_CN
-        * constructor
+        * 构造函数
         */
         constructor() {
             super();

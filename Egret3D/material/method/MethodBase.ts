@@ -50,10 +50,10 @@
         /**
          * @language zh_CN
          * 设置材质信息。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData ) {
             this.usage = usage;
@@ -63,9 +63,9 @@
         /**
         * @language zh_CN
         * 获取顶点方法名。
+        * @returns {String} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {String} 
         */
         public get vertexMethodName(): string {
             return this.vsMethodName; 
@@ -74,9 +74,9 @@
         /**
         * @language zh_CN
         * 获取frag方法名。
+        * @returns {String} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {String} 
         */
         public get fragMethodName(): string {
             return this.fsMethodName;
@@ -85,14 +85,14 @@
         /**
          * @language zh_CN
          * 激活。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public activate(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D ,geometry:GeometryBase , animation:IAnimation ) {
             //change constData
@@ -102,14 +102,14 @@
         /**
          * @language zh_CN
          * 更新。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+        * @version Egret 3.0
+        * @platform Web,Native
          */
         public updata(context3D: Context3D, program3D: IProgram3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry:GeometryBase , animation: IAnimation ) {
 

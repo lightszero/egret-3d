@@ -1,8 +1,9 @@
 ///<reference path="LZMA.d.ts" />
 module nid {
+
     /**
      * LZMA Decoder
-     * @private 
+     * @private
      * @author Nidin Vinayakan | nidinthb@gmail.com
      */
 

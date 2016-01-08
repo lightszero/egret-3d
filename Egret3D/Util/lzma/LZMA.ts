@@ -3,8 +3,8 @@ module nid
 {
     "use strict"
     /**
+     * @private
      * LZMA Decoder
-     * @private 
      * @author Nidin Vinayakan | nidinthb@gmail.com
      */
 

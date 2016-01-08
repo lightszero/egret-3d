@@ -1,9 +1,12 @@
 ﻿module egret3d.GLSL {
     
     /**
+    * @private
     * @class egret3d.Attribute
     * @classdesc
     * 变量属性
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Attribute extends VarRegister {
         

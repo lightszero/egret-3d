@@ -1,14 +1,9 @@
 ///<reference path="LZMA.ts" />
 module nid
 {
-   
-    //import MEMORY = nid.MEMORY;
-
-     /**
-     * @private 
-     * LZMA Decoder
-     * @author Nidin Vinayakan | nidinthb@gmail.com
-     */
+    /**
+     * @private
+	 */
     export class RangeDecoder
     {
         static kTopValue:number = (1 << 24);

@@ -1,11 +1,9 @@
 ///<reference path="LZMA.d.ts" />
 module nid{
 
-    //import LZMA = nid.LZMA;
     /**
-     * 
-     * @private 
-     */
+     * @private
+	 */
     export class LZMAHelper{
         static decoder:LZMA = new LZMA();
         static decoderAsync:Worker = new Worker('LZMAWorker.min.js');

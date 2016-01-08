@@ -1,9 +1,13 @@
 ﻿module egret3d.GLSL {
                                                         
     /**
+    * @private
     * @class egret3d.VarRegister
     * @classdesc
     * shader 变量 基类
+    *
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class VarRegister {
         
