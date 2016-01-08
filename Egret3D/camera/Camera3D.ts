@@ -1,6 +1,58 @@
 ﻿module egret3d {
-    export enum CameraType { perspective, orthogonal, VR  };
-    export enum VRType { left, right };
+
+    /**
+    * 摄像机类型
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum CameraType {
+
+        /**
+        * 透视投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        perspective,
+
+        /**
+        * 正交投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        orthogonal,
+
+        /**
+        * VR投影
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        VR
+    };
+
+    /**
+    * VR类型
+    * @private
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    export enum VRType {
+
+        /**
+        * 左眼
+        * @private
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        left,
+
+        /**
+        * 右眼
+        * @private
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        right
+    };
     /**
     * @class egret3d.Camera3D
     * @classdesc
