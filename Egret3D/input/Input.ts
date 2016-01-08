@@ -256,9 +256,9 @@
         /**
         * @language zh_CN
         * 获取Input类对象的单例。
+        * @returns Input
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns Input
         */
         public static get instance(): Input {
             if (this._instance == null) {

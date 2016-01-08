@@ -4,6 +4,8 @@
     * @class egret3d.Layer
     * @classdesc
     * Object3D 渲染Layer
+    * 每个Layer分两个渲染列表，一个是有alpha的对象列表，另一个是没有alpha的对象列表
+    * 不同的Layer层级可以使用不同的渲染方式，来达到各组不同的渲染效果.
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -11,13 +13,13 @@
         
         /**
         * @language zh_CN
-        * 没有alpht的对象列表
+        * 没有alpha的对象列表
         */
         public objects: Array<Object3D> = new Array<Object3D>();
 
         /**
         * @language zh_CN
-        * 有alpht的对象列表
+        * 有alpha的对象列表
         */
         public alphaObjects: Array<Object3D> = new Array<Object3D>();
     }
@@ -26,6 +28,7 @@
     * @class egret3d.Tag
     * @classdesc
     * Object3D 渲染tag
+    * 图形属性标签页的属性
     * @version Egret 3.0
     * @platform Web,Native
     */

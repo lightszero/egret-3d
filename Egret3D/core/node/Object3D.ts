@@ -3,9 +3,14 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 拣选类型
+    * 拣选类型，拣选时可以分为，包围盒拣选、模型拣选返回模型拣选到的位置、模型拣选返回模型拣选到的UV坐标
+    * 这几种拣选方式
+    *
+    *
+    *
     * 设置鼠标拣选的类型，鼠标拣选不同的类型有不同的效果作用，还有性能
     * 需要的拣选精度越高，性能要求就越高，反之亦然
+    * @see egret3d.core.traverse.Picker
     * @version Egret 3.0
     * @platform Web,Native
     */
