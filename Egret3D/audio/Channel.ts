@@ -47,9 +47,7 @@
         * @version Egret 3.0
         * @platform Web,Native
         * @param sound {Sound} Sound 对象 音频的数据源。
-        * @param {Object} options
-        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
-        * @param {Boolean} [options.loop] 是否循环播放。
+        * @param {Object} options {any} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         */
         constructor(sound: Sound, options: any) {
 

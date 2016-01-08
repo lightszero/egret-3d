@@ -29,7 +29,7 @@
         * @platform Web,Native
         * @returns {AudioBuffer}   
         */
-        public get buffer(): any {
+        public get buffer(): AudioBuffer {
             return this._buffer;
         }
 

@@ -116,7 +116,7 @@
         * @param error {Function} 一个可选的音频文件加载失败的事件处理函数。
         * @returns {Sound}   
         */
-        public createSound (url, success=null, error=null):Sound {
+        public createSound (url:string, success:Function=null, error:Function=null):Sound {
             return new Sound(url, success, error);
         }
 
@@ -127,13 +127,11 @@
         * 生成一个新的 Channel 对象来播放该声音。此方法返回 Channel 对象，访问该对象可停止声音并监控音量。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param sound{sound} 要播放的声音数据。
-        * @param options{Object}  
-        * @param {Number} [options.volume] 回放音量, 0 到 1。
-        * @param {Boolean} [options.loop]  是否循环播放。
+        * @param sound{Sound} 要播放的声音数据。
+        * @param options{any}   {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         * @returns {Channel}   
         */
-        public playSound (sound, options) {
+        public playSound(sound: Sound, options: any) {
             options = options || {};
             var channel: Channel = new Channel(sound, options);
             channel.play();
@@ -148,9 +146,7 @@
         * @platform Web,Native
         * @param sound {Sound}  要播放的声音数据。
         * @param position {Vector3D} 在三维空间中播放的位置。
-        * @param {Object} options
-        * @param {Number} [options.volume] 音量，范围从 0（静音）至 1（最大幅度）。
-        * @param {Boolean} [options.loop] 是否循环播放。
+        * @param {Object} options {Object} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         * @returns {Channel}   
         */
         public playSound3d(sound: Sound, position: Vector3D, options: any):Channel3d {
