@@ -179,7 +179,7 @@
         /**
         * @language zh_CN
         * AudioManager类的单例模式，返回一个 AudioManager 对象。
-        * @returns AudioManager
+        * @returns AudioManager 
         * @version Egret 3.0
         * @platform Web,Native
         */
