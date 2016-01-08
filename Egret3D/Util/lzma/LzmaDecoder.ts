@@ -1,13 +1,13 @@
 ///<reference path="LZMA.d.ts" />
 module nid
 {
-	/**
+	
+    //import MEMORY = nid.MEMORY;
+    /**
 	 * LZMA Decoder
 	 * @private 
 	 * @author Nidin Vinayakan | nidinthb@gmail.com
 	 */
-    //import MEMORY = nid.MEMORY;
-
 	export class LzmaDecoder
 	{
         //Public
