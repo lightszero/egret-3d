@@ -17,22 +17,22 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * Cube宽度
+        * @readOnly
         */
         public width: number = 80;
 
         /**
         * @language zh_CN
-        * @readOnly
         * Cube高度
+        * @readOnly
         */
         public height: number = 80;
 
         /**
         * @language zh_CN
-        * @readOnly
         * Cube深度
+        * @readOnly
         */
         public depth: number = 80;
 
