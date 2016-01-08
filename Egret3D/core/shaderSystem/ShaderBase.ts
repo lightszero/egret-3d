@@ -2,6 +2,7 @@
                                             
     /**
     * @private
+    * @private
     * @class egret3d.ShaderBase
     * @classdesc
     * shader 基类

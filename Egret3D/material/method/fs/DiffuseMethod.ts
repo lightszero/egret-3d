@@ -1,10 +1,12 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @language zh_CN
      * @class egret3d.DiffuseMethod
      * @classdesc
      * 漫反射方法。
+     * 漫反射使用的着色片段方法，可以设置漫反射的贴图
      * @version Egret 3.0
      * @platform Web,Native
      */

@@ -2,6 +2,7 @@
                                         
     /**
     * @private
+    * @private
     * @class egret3d.Sampler3D
     * @classdesc
     * 

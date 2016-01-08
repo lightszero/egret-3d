@@ -1,6 +1,7 @@
 ﻿module egret3d.GLSL {
         
     /**
+    * @private
     * @class egret3d.VaryingType
     * @classdesc
     * shader中varying 变量 类型

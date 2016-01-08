@@ -1,6 +1,7 @@
 ﻿module egret3d.GLSL {
                                                 
     /**
+    * @private
     * @class egret3d.UniformType
     * @classdesc
     * shader Uniform 变量的类型

@@ -74,6 +74,7 @@
         SCREEN 
     }
     /**
+     * @private
      * @class egret3d.ContextSamplerType
      * @classdesc
      * 贴图采样类型

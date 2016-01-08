@@ -1,9 +1,11 @@
 ﻿module egret3d {
 
     /**
+     * @private
      * @class egret3D.Egret3DEngine
      * @classdesc
      * 引擎库文件加载
+     * 引擎库前期加载设置，开发中加载未压缩的编译引擎
      */
     export class Egret3DEngine {
         private static djs: string = "" ;

@@ -38,6 +38,7 @@
     }
             
     /**
+     * @private
      * @class egret3d.Egret3DDrive
      * @classdesc
      * 3d 驱动 

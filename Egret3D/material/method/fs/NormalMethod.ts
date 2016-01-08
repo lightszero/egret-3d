@@ -14,7 +14,7 @@
         * @language zh_CN
         * 创建一个新的 NormalMethod 对象。
         * @version Egret 3.0
-        * @platform Web,Native
+        * @platform Web,Nativeo
         */
         constructor() {
             super();
