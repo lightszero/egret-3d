@@ -22,7 +22,7 @@
 
         /**
          * @language zh_CN
-         * 激活。
+         * 激活 DepthMethod。
          * @version Egret 3.0
          * @platform Web,Native
          * @param context3D {Context3D}
@@ -37,7 +37,7 @@
 
         /**
          * @language zh_CN
-         * 更新。
+         * 更新 DepthMethod。
          * @version Egret 3.0
          * @platform Web,Native
          * @param context3D {Context3D}
@@ -52,7 +52,7 @@
 
         /**
          * @language zh_CN
-         * 销毁。
+         * 销毁 DepthMethod。
          * @version Egret 3.0
          * @platform Web,Native
          */

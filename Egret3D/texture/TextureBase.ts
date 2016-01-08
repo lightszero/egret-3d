@@ -14,6 +14,7 @@
 
         /**
          * @language zh_CN
+         * 边界
          */
         public border: number;
     
@@ -28,16 +29,19 @@
          * 贴图元素对象
          */
         public imageData: HTMLImageElement;
+
         /**
          * @language zh_CN
          * mipmap数据
          */
         public mimapData: Array<MipmapData>;
+
         /**
          * @language zh_CN
          * 颜色格式
          */
         public colorFormat: number;
+
         /**
          * @language zh_CN
          * 内部格式
@@ -55,9 +59,9 @@
          */
         public cubeTexture: ICubeTexture;
 
-
         /**
          * @language zh_CN
+         * 构造函数
          */
         constructor() {
             this.border = 0;
@@ -98,6 +102,7 @@
         /**
          * @language zh_CN
          * @readOnly
+         * 获取宽度值
          * @returns width
          */
         public get width(): number {
@@ -111,6 +116,7 @@
         /**
          * @language zh_CN
          * @readOnly
+         * 获取高度值
          * @returns height
          */
         public get height(): number {

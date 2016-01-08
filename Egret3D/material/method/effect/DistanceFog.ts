@@ -39,9 +39,9 @@
         /**
         * @language zh_CN
         * 设置雾颜色。
+        * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param value{Number}
         */
         public set fogColor(value: number) {
             this._fogColor = value;
@@ -52,9 +52,9 @@
         /**
         * @language zh_CN
         * 获取雾颜色。
+        * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Number} 
         */
         public get fogColor(): number {
             return this._fogColor; 
@@ -63,9 +63,9 @@
         /**
         * @language zh_CN
         * 设置雾的全局密度。
+        * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param value{Number}
         */
         public set globalDensity(value: number) {
             this._globalDensity = value; 
@@ -75,9 +75,9 @@
         /**
         * @language zh_CN
         * 获取雾的全局密度。
+        * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Number} 
         */
         public get globalDensity(): number {
             return this._globalDensity;
@@ -86,9 +86,9 @@
         /**
         * @language zh_CN
         * 设置雾的开始距离。
+        * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param value{Number}
         */
         public set startDistance(value: number) {
             this._startDistance = value; 
@@ -98,9 +98,9 @@
         /**
         * @language zh_CN
         * 获取雾的开始距离。
+        * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Number} 
         */
         public get startDistance(): number {
             return this._startDistance;
@@ -109,9 +109,9 @@
         /**
         * @language zh_CN
         * 设置雾的缩放距离。
+        * @param value{Number}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param value{Number}
         */
         public set distanceScale(value: number) {
             this._distanceScale = value;
@@ -120,9 +120,9 @@
         /**
         * @language zh_CN
         * 获取雾的缩放距离。
+        * @returns {Number} 
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Number} 
         */
         public get distanceScale(): number {
             return this._distanceScale;
@@ -132,8 +132,6 @@
          * @private
          * @language zh_CN
          * 激活特效
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param context3D {Context3D}
          * @param usage {MethodUsageData}
          * @param materialData {MaterialData}
@@ -141,6 +139,8 @@
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activateEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             this.context3D = context3D;
@@ -158,6 +158,8 @@
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updataEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             context3D.gl.uniform1fv(usage["uniform_globalFog"], this._data);

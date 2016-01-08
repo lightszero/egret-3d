@@ -29,6 +29,7 @@
 
         /**
          * @language zh_CN
+         * 构造函数
          */
         constructor() {
             super();

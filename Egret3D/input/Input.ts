@@ -117,9 +117,9 @@
      * @class egret3d.Input
      * @classdesc
      * 处理输入设备,鼠标.键盘.触摸。
+     * @includeExample input/Input.ts
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample input/Input.ts
      */
     export class Input {
 
@@ -250,9 +250,9 @@
         /**
         * @language zh_CN
         * 获取Input类对象的单例。
+        * @returns {Input}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Input}
         */
         public static get instance(): Input {
             if (this._instance == null) {
@@ -295,9 +295,9 @@
         /**
         * @language zh_CN
         * 添加手指按下事件。
+        * @param callback {Function} 手指按下事件的侦听函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param callback {Function} 手指按下事件的侦听函数
         */
         public addTouchStartCallback(callback: Function): void {
             this._touchStartCallback.push(callback);
@@ -306,9 +306,9 @@
         /**
         * @language zh_CN
         * 添加手指弹起事件。
+        * @param callback {Function} 手指弹起事件的侦听函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param callback {Function} 手指弹起事件的侦听函数
         */
         public addTouchEndCallback(callback: Function): void {
             this._touchEndCallback.push(callback);
@@ -317,9 +317,9 @@
         /**
         * @language zh_CN
         * 添加手指移动事件。
+        * @param callback {Function} 手指移动事件的侦听函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param callback {Function} 手指移动事件的侦听函数
         */
         public addTouchMoveCallback(callback: Function): void {
             this._touchMoveCallback.push(callback);
@@ -338,10 +338,10 @@
         /**
         * @language zh_CN
         * 游戏手柄按钮是否按下。
-        * @version Egret 3.0
-        * @platform Web,Native
         * @param index {number}
         * @returns {boolean}
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public getGamepadButtonState(index: number): boolean {
             return navigator.getGamepads()[0].buttons[index].pressed;
@@ -350,9 +350,9 @@
         /**
         * @language zh_CN
         * 游戏手柄摇杆方向 Stick1 。
+        * @returns {Vector3D}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Vector3D}
         */
         public getGamepadStick1(): Vector3D {
             return new Vector3D(navigator.getGamepads()[0].axes[0], navigator.getGamepads()[0].axes[1], 0);
@@ -361,9 +361,9 @@
         /**
         * @language zh_CN
         * 游戏手柄摇杆方向 Stick2 。
+        * @returns {Vector3D}
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {Vector3D}
         */
         public getGamepadStick2(): Vector3D {
             return new Vector3D(navigator.getGamepads()[0].axes[2], navigator.getGamepads()[0].axes[3], 0);
@@ -643,9 +643,9 @@
         /**
         * @language zh_CN
         * 添加鼠标移动事件的侦听器函数。
+        * @param func {Function} 处理鼠标移事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理鼠标移事件的侦听器函数
         */
         public addListenerMouseMove(func: Function) {
             this._mouseMoveFunc.push(func);
@@ -654,9 +654,9 @@
         /**
         * @language zh_CN
         * 添加鼠标滚轮事件的侦听器函数。
+        * @param func {Function} 处理鼠标滚轮事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理鼠标滚轮事件的侦听器函数
         */
         public addListenerMouseWheel(func: Function) {
             this._mouseWheelFunc.push(func);
@@ -665,9 +665,9 @@
         /**
         * @language zh_CN
         * 添加键盘鼠标点击事件的侦听器函数。
+        * @param func {Function} 处理键盘鼠标点击事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理键盘鼠标点击事件的侦听器函数
         */
         public addListenerKeyClick(func: Function) {
             this._listenerKeyClick.push(func);
@@ -677,9 +677,9 @@
         /**
         * @language zh_CN
         * 添加键盘鼠标弹起事件的侦听器函数。
+        * @param func {Function} 处理键盘鼠标弹起事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理键盘鼠标弹起事件的侦听器函数
         */
         public addListenerKeyUp(func: Function) {
             this._listenerKeyUp.push(func);
@@ -688,9 +688,9 @@
         /**
         * @language zh_CN
         * 添加键盘鼠标按下事件的侦听器函数。
+        * @param func {Function} 处理键盘鼠标按下事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理键盘鼠标按下事件的侦听器函数
         */
         public addListenerKeyDown(func: Function) {
             this._listenerKeyDown.push(func);
@@ -700,9 +700,9 @@
         /**
         * @language zh_CN
         * 添加向上划动的手势事件。
+        * @param func {Function} 处理向上划动的手势事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向上划动的手势事件的侦听器函数
         */
         public addListenerSwipeUp(func: Function) {
             this._listenerSwipe.push(func);
@@ -711,9 +711,9 @@
         /**
         * @language zh_CN
         * 添加向下划动的手势事件。
+        * @param func {Function} 处理向下划动的手势事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
         */
         public addListenerSwipeDown(func: Function) {
             this._listenerSwipe.push(func);
@@ -721,9 +721,9 @@
         /**
         * @language zh_CN
         * 添加向左划动的手势事件。
+        * @param func {Function} 处理向下划动的手势事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
         */
         public addListenerSwipeLeft(func: Function) {
             this._listenerSwipe.push(func);
@@ -732,9 +732,9 @@
         /**
         * @language zh_CN
         * 添加向右划动的手势事件。
+        * @param func {Function} 处理向下划动的手势事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
         */
         public addListenerSwipeRight(func: Function) {
             this._listenerSwipe.push(func);
@@ -743,9 +743,9 @@
         /**
         * @language zh_CN
         * 添加设备旋转事件。
+        * @param func {Function} 设备旋转事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 设备旋转事件的侦听器函数
         */
         public addListenerDeviceorientation(func: Function) {
             this._ondeviceorientation.push(func);
@@ -754,9 +754,9 @@
         /**
         * @language zh_CN
         * 添加设备移动事件。
+        * @param func {Function} 设备移动事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 设备移动事件的侦听器函数
         */
         public addListenerDevicemotion(func: Function) {
             this._ondevicemotion.push(func);
@@ -765,9 +765,9 @@
         /**
         * @language zh_CN
         * 添加游戏手柄按钮点击事件。
+        * @param func {Function} 游戏手柄点击事件的侦听器函数。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 游戏手柄点击事件的侦听器函数
         */
         public addListenerGamePadButtons(func: Function) {
             this._listenerGamepadButtons.push(func);
@@ -888,7 +888,9 @@
         * @param  startY {Number} 起点Y坐标
         * @param  endX   {Number} 终点X坐标
         * @param  endY   {Number} 终点Y坐标
-        * @returns result {number} 1：向上，2：向下，3：向左，4：向右,0：未滑动
+        * @returns result {number} 1：向上，2：向下，3：向左，4：向右,0：未滑动。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public GetSlideDirection(startX: number, startY: number, endX: number, endY: number): number {
             var dy = startY - endY;

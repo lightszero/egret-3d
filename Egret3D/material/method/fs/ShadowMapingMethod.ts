@@ -5,9 +5,9 @@ module egret3d {
      * @language zh_CN
      * @class egret3d.ShadowMapingMethod
      * @classdesc
+     * 阴影映射。
      * @version Egret 3.0
      * @platform Web,Native
-     * 阴影映射。
      */
     export class ShadowMapingMethod extends MethodBase {
         /**
@@ -57,10 +57,10 @@ module egret3d {
         /**
          * @language zh_CN
          * 设置材质信息。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData) {
             this.usage = usage;
@@ -70,7 +70,7 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * 激活。
+         * 激活 ShadowMapingMethod。
          * @version Egret 3.0
          * @platform Web,Native
          * @param context3D {Context3D}
@@ -87,7 +87,7 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * 更新。
+         * 更新 ShadowMapingMethod。
          * @version Egret 3.0
          * @platform Web,Native
          * @param context3D {Context3D}
