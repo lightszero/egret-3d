@@ -6,7 +6,6 @@
      * Channel 类控制应用程序中的声音，对声音执行更精细的控制。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample audio/Channel.ts
      */
     export class Channel {
         /**
@@ -44,10 +43,10 @@
         /**
         * @language zh_CN
         * 创建一个新的 Channel 对象。
+        * @param sound {Sound} Sound 对象 音频的数据源。
+        * @param {Object} options {any} ["volume":1,"loop":true volume] 回放音量, 0 到 1 ， loop 是否循环播放。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param sound {Sound} Sound 对象 音频的数据源。
-        * @param {Object} options {any} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
         */
         constructor(sound: Sound, options: any) {
 
@@ -234,9 +233,9 @@
         /**
         * @language zh_CN
         * 是否正在播放。
+        * @returns {boolean}   
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {boolean}   
         */
         public isPlaying():boolean {
             if (AudioManager.instance.hasAudioContext()) {
@@ -253,9 +252,9 @@
         /**
         * @language zh_CN
         * 音频持续时间。
+        * @returns {number}   
         * @version Egret 3.0
         * @platform Web,Native
-        * @returns {number}   
         */
         public getDuration():number {
 
