@@ -1,5 +1,11 @@
 ﻿module egret3d {
 
+    /**
+    * @language zh_CN
+    * 渲染混合模式
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export enum BlendMode {
         /**
          * @language zh_CN

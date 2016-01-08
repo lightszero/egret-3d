@@ -3,7 +3,7 @@
      /**
     * @class egret3d.DirectLight
     * @classdesc
-    * @public 
+    *   
     * 点光源
     * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
     * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式

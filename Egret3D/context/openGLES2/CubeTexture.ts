@@ -31,42 +31,42 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 前面
         */
         public image_front: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 后面
         */
         public image_back: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 左面
         */
         public image_left: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 右面
         */
         public image_right: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 上面
         */
         public image_up: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 立方体贴图的 下面
         */
         public image_down: HTMLImageElement;

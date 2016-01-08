@@ -27,7 +27,7 @@
 
         /**
         * @language zh_CN
-        * @public
+        *  
         * 获取已经有的shader 的ID
         */
         public id: number;
