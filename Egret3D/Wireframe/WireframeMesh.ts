@@ -3,25 +3,30 @@
     /**
      * @class egret3d.WriframeMesh
      * @classdesc
-     * @version Egret 3.0
-     * @platform Web,Native
      *
      * 模型线框网格,以线框形式渲染模型
+     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @version Egret 3.0
+     * @platform Web,Native
      */   
     export class WireframeMesh extends WireframeBase {
                                 
         /**
         * @language zh_CN
-        * constructor
+        * 构建一个线框渲染Mesh对象
+        * @version Egret 3.0
+        * @platform Web,Native
         */
-        constructor() {
-            super("wireframe_vertex", "wireframe_fragment");
+        constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
+            super(vs, fs);
         }
 
         /**
         * @language zh_CN
         * 根据mesh创建一个线框
-        * @param mesh 
+        * @param mesh 需要渲染的Mesh
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public createByMesh(mesh: Mesh) {
             this.createFromGeometry(mesh.geometry);
@@ -32,6 +37,8 @@
         * @language zh_CN
         * 根据geometry创建一个线框
         * @param geometry 模型数据
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public createFromGeometry(geometry: GeometryBase) {
             this.vertexData = [];

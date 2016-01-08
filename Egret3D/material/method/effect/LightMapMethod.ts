@@ -15,9 +15,9 @@
         /**
         * @language zh_CN
         * 创建一个新的 LightMapMethod 对象。
+        * @param texture {TextureBase}
         * @version Egret 3.0
         * @platform Web,Native
-        * @param texture {TextureBase}
         */
         constructor(texture: TextureBase) {
             super();
@@ -28,10 +28,10 @@
         /**
          * @language zh_CN
          * 设置材质信息。
-         * @version Egret 3.0
-         * @platform Web,Native
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public setMaterialData(materialData: MaterialData, usage: MethodUsageData) {
             this.usage = usage;
@@ -46,9 +46,9 @@
         /**
          * @language zh_CN
          * 设置灯光贴图。
+         * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
-         * @param texture {TextureBase}
          */
         public set lightTexture(texture: TextureBase) {
             this.texture = texture; 
@@ -71,6 +71,8 @@
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activateEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             this.context3D = context3D;
@@ -88,6 +90,8 @@
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public updataEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
            // context3D.gl.uniform1fv(usage["uniform_globalFog"], this._data);

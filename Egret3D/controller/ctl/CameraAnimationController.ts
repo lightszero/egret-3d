@@ -3,17 +3,19 @@
     /**
     * @class egret3d.CameraAnimationController
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * 摄像机动画控制器。
     * 每个摄像机动画绑定一个摄像机，控制摄像机的行为
     * 可以更换绑定的摄像机
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class CameraAnimationController{
 
         /**
         * @language zh_CN
         * 相机动画每帧数据列表
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public cameraAnimationFrames: Array<CameraAnimationFrame> = [];
 
@@ -28,7 +30,9 @@
 
         /**
         * @language zh_CN
-        * @param camera
+        * @param camera 需要一个摄像机对象来创建摄像机动画
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(camera: Camera3D = null) {
             this._camera = camera;
@@ -42,6 +46,8 @@
         * @language zh_CN
         * 绑定动画控制的相机
         * @param camera
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public bindCamera(camera: Camera3D): void {
 
@@ -52,6 +58,8 @@
         * @language zh_CN
         * 播放相机动画 是否循环
         * @param isLoop 是否循环播放
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public play(isLoop: boolean): void {
 
@@ -70,6 +78,8 @@
         * 数据更新
         * @param time 当前时间
         * @param delay 每帧间隔时间
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public update(time: number, delay: number) {
 
@@ -123,33 +133,44 @@
     * @class egret3d.CameraAnimationFrame
     * @classdesc
     * 摄像机动画每帧数据
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class CameraAnimationFrame {
         /**
         * @language zh_CN
         * 帧时间
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public time: number;
 
         /**
         * @language zh_CN
         * 观察时y 轴方向的角度，就是观察范围夹角。
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public fov: number;
 
         /**
         * @language zh_CN
         * 旋转
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public rotation: Vector3D;
 
         /**
         * @language zh_CN
         * 平移
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public translation: Vector3D;
-
+        
         /**
+        * @private
         * @language zh_CN
         * 计算时用的矩阵
         */

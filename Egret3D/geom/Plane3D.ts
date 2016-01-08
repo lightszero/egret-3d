@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.Plane3D
      * @classdesc
+     * Plane3D 类 3D空间中的平面表示数据
      * @version Egret 3.0
      * @platform Web,Native
-     * Plane3D 类 3D空间中的平面表示数据
      */
     export class Plane3D {
         /**

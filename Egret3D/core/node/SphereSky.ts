@@ -100,11 +100,11 @@
                                         
         /**
         * @language zh_CN
-        * @version Egret 3.0
-        * @platform Web,Native
-        * 渲染
+        * 提交数据给GPU渲染当前天空球
         * @param context3D 设备上下文
         * @param camera 渲染时的相机
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public draw(context3D: Context3D, camera:Camera3D ) {
             

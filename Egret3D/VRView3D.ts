@@ -145,7 +145,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this.leftViewPort);
             this._context3D.setRenderToBackBuffer();
         }
 
@@ -160,7 +160,7 @@
                 this._sphereSky.draw(this._context3D, this.camera3D);
             }
             this._context3D.clearDepth(1);
-            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
+            this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this.rightViewPort);
             this._context3D.setRenderToBackBuffer();
 
         }

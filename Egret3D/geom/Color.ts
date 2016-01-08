@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.Color
      * @classdesc
+     * 可使用 Color 类调整显示对象的颜色值
      * @version Egret 3.0
      * @platform Web,Native
-     * 可使用 Color 类调整显示对象的颜色值
      */
     export class Color {
 

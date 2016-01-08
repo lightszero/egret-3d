@@ -3,9 +3,12 @@
     export enum FrameBufferFormat { FLOAT_RGB, FLOAT_RGBA, UNSIGNED_BYTE_RGB, UNSIGNED_BYTE_RGBA }
                                     
     /**
+    * @private
     * @class egret3d.RttManager
     * @classdesc
-    * 离屏渲染管理
+    * 离屏渲染管理, 把数据渲染在一张纹理上，
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class RttManager {
         static instance: RttManager = new RttManager();
@@ -31,7 +34,7 @@
         /**
         * @language zh_CN
         * 创建帧缓冲
-        * @param framName
+        * @param framName 
         * @param context3D
         * @param width
         * @param height
@@ -76,7 +79,7 @@
         public static drawToTexture(time: number, delay: number, renderTragetTexture: ITexture2D, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
             context3D.viewPort(rec.x, rec.y, rec.width, rec.height);
             context3D.setRenderToTexture(renderTragetTexture, true, 0);
-            render.draw(time, delay, context3D, collect, camera);
+            render.draw(time, delay, context3D, collect, camera, rec );
             context3D.setRenderToBackBuffer();
         }
                                         
@@ -103,9 +106,8 @@
         * @param camera
         * @param rec
         */
-        public static drawToTextureEnd(time: number, delay: number, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
-            render.draw(time, delay, context3D, collect, camera);
-           // context3D.setRenderToBackBuffer();
+        public static drawToTextureEnd(context3D: Context3D) {
+            context3D.setRenderToBackBuffer();
         }
 
         

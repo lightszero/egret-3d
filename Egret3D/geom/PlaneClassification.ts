@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.PlaneClassification
      * @classdesc
+     * 定义 PlaneClassification 常量
      * @version Egret 3.0
      * @platform Web,Native
-     * 定义 PlaneClassification 常量
      */
     export class PlaneClassification {
         public static BACK: number = 0;

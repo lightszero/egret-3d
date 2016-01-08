@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.Ray
      * @classdesc
+     * Ray 类 用于检测射线,由一个原点,和一个方向构成
      * @version Egret 3.0
      * @platform Web,Native
-     * Ray 类 用于检测射线
      */
     export class Ray {
         public origin: Vector3D = new Vector3D();
@@ -16,6 +16,8 @@
         * constructor
         * @origin 射线原点
         * @direction 射线方向
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         constructor(origin: Vector3D = new Vector3D(), direction: Vector3D = new Vector3D()) {
             this.origin.copyFrom(origin);
@@ -30,6 +32,8 @@
         * @param v2 三角形的第三个顶点
         * @param ret t(交点到射线起始点的距离) u(交点在v1-v0上的投影的位置) v(交点在v1-v2上的投影的位置, 交点为ret=v0+pU*(v1-v0)+pV*(v2-v0))
         * @returns 相交返回true
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public IntersectTriangle(v0: Vector3D, v1: Vector3D, v2: Vector3D, ret: Array<number> = null): boolean {
             var edge1: Vector3D = v1.subtract(v0);
@@ -99,6 +103,8 @@
         * @param mesh 检测的模型
         * @param inPos 相交点
         * @returns 相交返回true
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public IntersectMeshEx(mesh: Mesh, uv_offset: number, result:PickResult): boolean {
             return this.IntersectMesh(mesh.geometry.verticesData, mesh.geometry.indexData, mesh.geometry.vertexAttLength, mesh.geometry.indexData.length / 3, uv_offset, mesh.modelMatrix, result);
@@ -114,6 +120,8 @@
         * @param inPos 返回相交点
         * @param mMat 顶点的世界变换矩阵
         * @returns 相交返回true
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public IntersectMesh(verticesData: Array<number>, indexData: Array<number>, offset: number, faces: number, uv_offset: number, mMat: Matrix4_4, result: PickResult): boolean {
 
@@ -223,6 +231,8 @@
         * @param projMat 相机投影矩阵
         * @param x 鼠标x
         * @param y 鼠标y
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public CalculateAndTransformRay(width: number, height: number, viewMat: Matrix4_4, projMat: Matrix4_4, x: number, y: number) {
             this.reset();
@@ -239,6 +249,8 @@
         /**
         * @language zh_CN
         * 射线重置
+        * @version Egret 3.0
+        * @platform Web,Native
         */
         public reset() {
             this.origin.setTo(0, 0, 0);
