@@ -24,7 +24,7 @@
         * @param collect 渲染对象收集器
         * @param camera 渲染时的相机
         */
-        public draw(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D ) {
+        public draw(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D, viewPort: Rectangle) {
             this._renderList = collect.renderList;
             this._numEntity = this._renderList.length;
 

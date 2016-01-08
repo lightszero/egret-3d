@@ -39,7 +39,7 @@
         /**
          * @language zh_CN
          */
-        public getShaderSource(): string {
+        public getShaderSource(  ): string {
             var shaderSource: string = super.getShaderSource();
             var index: number = shaderSource.lastIndexOf("}");
             var endS: string = shaderSource.substr(index, shaderSource.length - index);

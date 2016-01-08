@@ -8,7 +8,7 @@
     * @includeExample events/Mouse3DManager.ts
     */
     export class Mouse3DManager {
-        public static left_mouse_over: string = "left_mouse_over" ;
+        public static left_mouse_over: string = "left_mouse_over";
         public static left_mouse_down: string = "left_mouse_down";
         public static left_mouse_up: string = "left_mouse_up";
         public static left_mouse_click: string = "left_mouse_click";
@@ -41,18 +41,19 @@
 
             this._camera = camera;
 
-            Input.instance.addListenerKeyClick((code:number)=>this.onMouseClick(code));
+            Input.instance.addListenerKeyClick((code: number) => this.onMouseClick(code));
             Input.instance.addListenerKeyDown((code: number) => this.onMouseDown(code));
             Input.instance.addListenerKeyUp((code: number) => this.onMouseUp(code));
             Input.instance.addListenerMouseMove((e: MouseEvent) => this.onMouseMove(e));
 
-            Input.instance.addTouchStartCallback((e: TouchEvent) => this.onTouchMove(e));
-            Input.instance.addTouchEndCallback((e: TouchEvent) => this.onTouchEnd(e));
-            Input.instance.addTouchMoveCallback((e: TouchEvent) => this.onTouchStart(e));
+            //Input.instance.addTouchStartCallback((e: TouchEvent) => this.onTouchMove(e));
+            //Input.instance.addTouchEndCallback((e: TouchEvent) => this.onTouchEnd(e));
+            //Input.instance.addTouchMoveCallback((e: TouchEvent) => this.onTouchStart(e));
         }
 
 
         private onTouchMove(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -63,6 +64,7 @@
             }
         }
         private onTouchEnd(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -73,6 +75,7 @@
             }
         }
         private onTouchStart(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -83,7 +86,7 @@
             }
         }
         private onMouseClick(code: number) {
-
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -95,7 +98,7 @@
         }
 
         private onMouseDown(code: number) {
-
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
 
@@ -105,10 +108,11 @@
                 event.data = code;
                 ret[i].dispatchEvent(event);
             }
+
         }
 
         private onMouseUp(code: number) {
-
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -121,7 +125,7 @@
 
 
         private onMouseMove(e: MouseEvent) {
-
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -134,7 +138,7 @@
 
 
         public update(collect: CollectBase) {
-            this._collect = collect; 
+            this._collect = collect;
         }
     }
 } 

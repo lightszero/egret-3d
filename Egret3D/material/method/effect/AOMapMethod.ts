@@ -7,14 +7,16 @@
     export class AOMapMethod extends EffectMethod {
 
         private texture: TextureBase;
+        private useSecond: boolean = false ;
         /**
          * @language zh_CN
          * @param texture 
          */
-        constructor(texture: TextureBase) {
+        constructor(texture: TextureBase,useSecond:boolean=true) {
             super();
             this.fsMethodName = "AOMap_fragment";
             this.lightTexture = texture;
+            this.useSecond = useSecond;
         }
 
         /**

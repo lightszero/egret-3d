@@ -76,7 +76,7 @@
         public static drawToTexture(time: number, delay: number, renderTragetTexture: ITexture2D, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
             context3D.viewPort(rec.x, rec.y, rec.width, rec.height);
             context3D.setRenderToTexture(renderTragetTexture, true, 0);
-            render.draw(time, delay, context3D, collect, camera);
+            render.draw(time, delay, context3D, collect, camera, rec );
             context3D.setRenderToBackBuffer();
         }
                                         
@@ -103,9 +103,8 @@
         * @param camera
         * @param rec
         */
-        public static drawToTextureEnd(time: number, delay: number, context3D: Context3D, render: RenderBase, collect: CollectBase, camera: Camera3D, rec: Rectangle) {
-            render.draw(time, delay, context3D, collect, camera);
-           // context3D.setRenderToBackBuffer();
+        public static drawToTextureEnd(context3D: Context3D) {
+            context3D.setRenderToBackBuffer();
         }
 
         

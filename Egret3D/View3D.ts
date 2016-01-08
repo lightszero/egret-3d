@@ -126,6 +126,10 @@
             }
         }
 
+        public get render(): RenderBase {
+            return this._render; 
+        }
+
         /**
         * @language zh_CN
         * @writeOnly
@@ -482,14 +486,14 @@
 
                     this._context3D.clearDepth(1);
                     this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
-                    this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
+                    this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this._viewPort);
                 }
             }
             else {
                 //----------延迟渲染部分-------------------
                 this._context3D.clearDepth(1);
                 this._context3D.viewPort(this._viewPort.x, this._viewPort.y, this._viewPort.width, this._viewPort.height);
-                this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera);
+                this._render.draw(time, delay, this._context3D, this._scene.collect, this._camera, this._viewPort);
             }
       
             for (var i: number = 0; i < this._wireframeList.length; i++) {

@@ -56,7 +56,6 @@
                 this.materialData = materialData; 
             }
             this.setData(this.materialData);
-            
         }
 
         /**
@@ -77,6 +76,9 @@
                     this.diffusePass = new TerrainMapPass(this.materialData);
                     break;
             }
+
+            this.normalPass = new NormalMapPass(this.materialData);
+            //this.depthPass = new DepthMapPass(this.materialData);
         }
 
         /**
@@ -84,9 +86,9 @@
          * @param matData 
          */
         public setData(matData: MaterialData) {
-            if (this.materialData) {
-                this.materialData.dispose();
-            } 
+            //if (this.materialData) {
+            //    this.materialData.dispose();
+            //} 
 
             this.materialData = matData;
             this.ambientColor = this.materialData.ambientColor;
@@ -573,12 +575,11 @@
          * @param animation 
          */
         public rendenNormalPass(context3D: Context3D, camera3D: Camera3D, modelMatrix: Matrix4_4, geometry: GeometryBase, animation: IAnimation  ) {
-            //if (this.materialData._NormalActiveState) {
-            //    this.normalPass.draw(context3D, modelMatrix, camera3D,geometry, animation )
-            //} else {
-            //    this.materialData._NormalActiveState = true;
-            //    this.activateNormalPass(context3D, camera3D,modelMatrix,geometry, animation);
-            //}
+            if (this.materialData.normalPassUsageData.program3D) {
+                this.normalPass.draw(context3D, modelMatrix, camera3D, geometry, animation);
+            } else {
+                this.activateNormalPass(context3D, camera3D, modelMatrix, geometry, animation);
+            }
         }
 
         /**

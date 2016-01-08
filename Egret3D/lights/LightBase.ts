@@ -63,6 +63,13 @@
          * @param value 强度
          */
         protected _intensity: number = 1;
+
+         /**
+         *@language zh_CN
+         *@private
+         * @param value 背光强度
+         */
+        protected _halfIntensity: number = 0.5;
  
         /**
          * @language zh_CN  
@@ -144,6 +151,31 @@
          */
         public get intensity(): number {
             return this._intensity;
+        }
+
+        /**
+        * @language zh_CN  
+        * @public
+        * @writeOnly
+        * 设置灯光强度
+        * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
+        */
+        public set halfIntensity(value: number) {
+            if (this._halfIntensity != value) {
+                this._halfIntensity = value;
+                this._change = false;
+            }
+        }
+        
+        /**
+         * @language zh_CN  
+         * @public
+         * @readOnly
+         * 得到灯光强度
+         * 影响灯光的强弱显示，值的范围0~没有上限，但是值过大会导致画面过度曝光
+         */
+        public get halfIntensity(): number {
+            return this._halfIntensity;
         }
                 
         /**
