@@ -15,31 +15,31 @@
         /**
         * @readOnly
         */
-        image_front: HTMLImageElement;
+        image_front: TextureBase;
         
         /**
         * @readOnly
         */
-        image_back: HTMLImageElement;
+        image_back: TextureBase;
         
         /**
         * @readOnly
         */
-        image_left: HTMLImageElement;
+        image_left: TextureBase;
         
         /**
         * @readOnly
         */
-        image_right: HTMLImageElement;
+        image_right: TextureBase;
         
         /**
         * @readOnly
         */
-        image_up: HTMLImageElement;
+        image_up: TextureBase;
         
         /**
         * @readOnly
         */
-        image_down: HTMLImageElement;
+        image_down: TextureBase;
     }
 }

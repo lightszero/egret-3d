@@ -34,13 +34,12 @@
      */
     export class SkyTexture extends TextureBase  {
 
-         private image_front: HTMLImageElement;
-         private image_back: HTMLImageElement;
-         private image_left: HTMLImageElement;
-         private image_right: HTMLImageElement;
-         private image_up: HTMLImageElement;
-         private image_down: HTMLImageElement;
-
+        private image_front: TextureBase;
+        private image_back: TextureBase;
+        private image_left: TextureBase;
+        private image_right: TextureBase;
+        private image_up: TextureBase;
+        private image_down: TextureBase;
 
         /**
          * @language zh_CN
@@ -53,12 +52,12 @@
          * @param image_down 底部HTMLImageElement图片元素
          */
          constructor(
-            image_front: HTMLImageElement,
-            image_back: HTMLImageElement,
-            image_left: HTMLImageElement,
-            image_right: HTMLImageElement,
-            image_up: HTMLImageElement,
-            image_down: HTMLImageElement
+             image_front: TextureBase,
+             image_back: TextureBase,
+             image_left: TextureBase,
+             image_right: TextureBase,
+             image_up: TextureBase,
+             image_down: TextureBase
              ) {
             super();
 
@@ -76,22 +75,19 @@
         /**
          * @language zh_CN
          * 上传贴图数据给GPU
+         * 更新上传 cube 贴图纹理到GPU 现存中缓存起来
          * @param context3D 
          */
         public upload(context3D: Context3D) {
             if (!this.cubeTexture) {
                 this.cubeTexture = context3D.creatCubeTexture();
-                //this.texture.gpu_internalformat = InternalFormat.ImageData;
-                //this.texture.gpu_colorformat = egret3d.ColorFormat_RGBA8888;
                 this.cubeTexture.image_front = this.image_front;
                 this.cubeTexture.image_back = this.image_back;
                 this.cubeTexture.image_left = this.image_left;
                 this.cubeTexture.image_right = this.image_right;
                 this.cubeTexture.image_up = this.image_up;
                 this.cubeTexture.image_down  = this.image_down;
-
                 context3D.uploadCubetexture(this.cubeTexture);
-                //context3D.setTexture2DSamplerState(egret3d.NEAREST, egret3d.NEAREST, egret3d.CLAMP_TO_EDGE, egret3d.CLAMP_TO_EDGE);
             }
         }
     }

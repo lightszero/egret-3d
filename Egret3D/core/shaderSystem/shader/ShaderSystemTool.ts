@@ -43,6 +43,7 @@
             "warpedImage_fragment",
             "lightMap_fragment",
             "EnvironmentMapping_fragment", 
+            "SpecularEnvironmentMappingMethod", 
             "distanceFog_fragment", 
             "AOMap_fragment", 
             "wireframe_vertex",

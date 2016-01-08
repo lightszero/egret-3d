@@ -17,59 +17,53 @@
     export class CubeTexture implements egret3d.ICubeTexture {
         /**
         * @language zh_CN
-        * @private
         * gpu texture 的引用
+        * @private
         */
         public gpu_texture: any;
 
         /**
         * @language zh_CN
-        * @private
         * texture 的引用
+        * @private
         */
         public image: HTMLImageElement;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 前面
         */
-        public image_front: HTMLImageElement;
+        public image_front: TextureBase;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 后面
         */
-        public image_back: HTMLImageElement;
+        public image_back: TextureBase;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 左面
         */
-        public image_left: HTMLImageElement;
+        public image_left: TextureBase;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 右面
         */
-        public image_right: HTMLImageElement;
+        public image_right: TextureBase;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 上面
         */
-        public image_up: HTMLImageElement;
+        public image_up: TextureBase;
 
         /**
         * @language zh_CN
-        * @public
         * 立方体贴图的 下面
         */
-        public image_down: HTMLImageElement;
+        public image_down: TextureBase;
         constructor(cubeTexture: WebGLTexture) {
             this.gpu_texture = cubeTexture;
         }
