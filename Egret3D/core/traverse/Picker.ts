@@ -3,8 +3,6 @@
     /**
     * @class egret3d.Picker
     * @classdesc
-    * @version Egret 3.0
-    * @platform Web,Native
     * 射线对场景中的实体对像进行检测
     *
     * @see egret3d.geom.Ray

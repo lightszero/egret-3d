@@ -1,6 +1,7 @@
 ﻿module egret3d.GLSL {
                                         
     /**
+    * @private
     * @class egret3d.Sampler3D
     * @classdesc
     * 
@@ -13,11 +14,11 @@
     * @platform Web,Native
     */
     export class Sampler3D extends VarRegister {
-                        
+
         /**
         * @language zh_CN
-        * constructor
-        * @param name
+        * 构造
+        * @param name 变量名
         */
         constructor(name: string) {
             super();
