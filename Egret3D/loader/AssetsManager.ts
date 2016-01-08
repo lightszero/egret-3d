@@ -61,7 +61,7 @@
         /**
          * @language zh_CN
          * 查找资源
-         * @param url
+         * @param url 路径地址
          * @returns 返回对应url的资源
          * @version Egret 3.0
          * @platform Web,Native
@@ -73,7 +73,7 @@
         /**
          * @language zh_CN
          * 查找已下载的模型.
-         * @param url
+         * @param url 路径地址
          * @returns mesh
          * @version Egret 3.0
          * @platform Web,Native
@@ -85,7 +85,7 @@
         /**
          * @language zh_CN
          * 查找已下载的动作模型文件
-         * @param url
+         * @param url 路径地址
          * @returns Mesh
          * @version Egret 3.0
          * @platform Web,Native
@@ -96,7 +96,8 @@
 
         /**
          * @language zh_CN
-         * @param url
+         * 查找已经下载完成的场景资源文件
+         * @param url 路径地址
          * @returns Array<Mesh>
          * @version Egret 3.0
          * @platform Web,Native
@@ -107,7 +108,7 @@
 
         /**
          * @language zh_CN
-         * @param url
+         * @param url路径地址
          * @returns TexureBase
          * @version Egret 3.0
          * @platform Web,Native
