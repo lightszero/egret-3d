@@ -108,7 +108,8 @@
 
         /**
          * @language zh_CN
-         * @param url路径地址
+         * 查找贴图
+         * @param url 路径地址
          * @returns TexureBase
          * @version Egret 3.0
          * @platform Web,Native
@@ -170,8 +171,8 @@
 
         /**
          * @language zh_CN
-         * @param url 场景文件地址
          * 加载场景, 将加入加载队列, 在调用startLoad()之后进行加载
+         * @param url 场景文件地址
          * @version Egret 3.0
          * @platform Web,Native
          */
