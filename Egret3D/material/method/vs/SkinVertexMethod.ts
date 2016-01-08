@@ -23,7 +23,7 @@
 
         /**
          * @language zh_CN
-         * 激活 SkinVertexMethod。
+         * 激活 蒙皮顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -78,7 +78,7 @@
         private normalMatrix: Matrix4_4 = new Matrix4_4();
         /**
          * @language zh_CN
-         * 更新 SkinVertexMethod。
+         * 更新 蒙皮顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

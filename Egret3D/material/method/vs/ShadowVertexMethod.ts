@@ -25,7 +25,7 @@
 
         /**
          * @language zh_CN
-         * 激活 ShadowVertexMethod。
+         * 激活 阴影顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -64,7 +64,7 @@
 
         /**
          * @language zh_CN
-         * 更新 ShadowVertexMethod。
+         * 更新 阴影顶点方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}

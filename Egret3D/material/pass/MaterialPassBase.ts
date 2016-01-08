@@ -20,13 +20,11 @@
          * @language zh_CN
          */
         protected context3DChange: boolean = false;
-
         /**
          * @private
          * @language zh_CN
          */
         protected materialData: MaterialData;
-
         /**
          * @private
          * @language zh_CN
@@ -37,17 +35,16 @@
          * @language zh_CN
          */
         protected pixelShader: PixelShader;
-
         /**
          * @private
          * @language zh_CN
          */
         protected methodList: Array<MethodBase>;
         /**
+         * @private
          * @language zh_CN
          */
         protected effectMethodList: Array<EffectMethod>;
-
         /**
          * @private
          * @language zh_CN
@@ -58,7 +55,6 @@
          * @language zh_CN
          */
         public shadowMaping: ShadowMapingMethod;
-
         /**
          * @private
          * @language zh_CN
@@ -68,8 +64,8 @@
         * @language zh_CN
         * 创建一个新的 MaterialPassBase 对象。
         * @param data {MaterialData} 材质数据
-        * @version Egret 3.0
-        * @platform Web,Native
+         * @version Egret 3.0
+         * @platform Web,Native
         */
         constructor(data: MaterialData = null) {
             this.materialData = data; 
@@ -197,6 +193,11 @@
             this.animation = animation; 
         }
 
+        /**
+         * @private
+         * @language zh_CN
+         * @returns {} 
+         */
         protected resetTexture() {
 
         }
@@ -207,7 +208,7 @@
          
         /**
          * @language zh_CNa
-         * 激活MaterialPassBase。
+         * 激活 材质通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}

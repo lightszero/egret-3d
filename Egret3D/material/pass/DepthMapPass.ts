@@ -73,14 +73,14 @@
 
         /**
          * @language zh_CNa
-         * 激活DepthMapPass。
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 激活 深度贴图通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
          * @param geometry {GeometryBase}
          * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
          */
         public activate(context3D: Context3D, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
          

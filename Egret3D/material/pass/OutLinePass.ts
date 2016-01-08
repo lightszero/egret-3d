@@ -116,7 +116,7 @@
 
         /**
          * @language zh_CNa
-         * 激活 OutLinePass。
+         * 激活 边框通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
@@ -144,7 +144,7 @@
         public index: number = 0;
         /**
          * @language zh_CNa
-         * 更新 OutLinePass。
+         * 更新 边框通道渲染器。
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}

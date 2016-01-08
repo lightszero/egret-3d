@@ -34,12 +34,10 @@
 
         /**
          * @language zh_CN
-         * 设置UVTitling
-         * @param index {Number} 图层索引
-         * @param x {Number}     
-         * @param y {Number}
-         * @version Egret 3.0
-         * @platform Web,Native
+         * 设置UVTitling 图层索引
+         * @param index 
+         * @param x 
+         * @param y 
          */
         public setUVTitling(index: number, x: number, y: number) {
             this.uvData[index * 2] = x ;
@@ -48,7 +46,7 @@
 
         /**
          * @language zh_CN
-         * 激活 TerrainMethod。
+         * 激活 地形图方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -77,7 +75,7 @@
 
         /**
          * @language zh_CN
-         * 更新 TerrainMethod。
+         * 更新 地形图方法。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
          * @param modeltransform {Matrix4_4}
@@ -124,7 +122,7 @@
 
         /**
          * @language zh_CN
-         * 销毁 TerrainMethod。
+         * 销毁 地形图方法。
          * @version Egret 3.0
          * @platform Web,Native
          */

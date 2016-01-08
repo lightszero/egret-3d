@@ -1,13 +1,67 @@
 ﻿module egret3d {
 
     export enum BlendMode {
-        ALPHA , 
-        LAYER , 
-        NORMAL , 
-        MULTIPLY , 
-        ADD , 
-        SUB , 
-        DIV , 
+        /**
+         * @language zh_CN
+         * 将显示对象的每个像素的 Alpha 值应用于背景。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        ALPHA,
+        
+        /**
+         * @language zh_CN
+         * 强制为该显示对象创建一个透明度组。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */         
+        LAYER, 
+
+         /**
+         * @language zh_CN
+         * 该显示对象出现在背景前面。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
+        NORMAL, 
+
+         /**
+         * @language zh_CN
+         * 将显示对象的原色值与背景颜色的原色值相乘，然后除以 0xFF 进行标准化，从而得到较暗的颜色。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
+        MULTIPLY, 
+
+         /**
+         * @language zh_CN
+         * 将显示对象的原色值添加到它的背景颜色中，上限值为 0xFF。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
+        ADD, 
+
+
+         /**
+         * @language zh_CN
+         * 从背景颜色的值中减去显示对象原色的值，下限值为 0。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
+        SUB, 
+         /**
+         * @language zh_CN
+         * 将显示对象颜色的补色（反色）与背景颜色的补色相除。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
+        DIV, 
+         /**
+         * @language zh_CN
+         * 将显示对象颜色的补色（反色）与背景颜色的补色相乘，会产生漂白效果。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */ 
         SCREEN 
     }
     /**

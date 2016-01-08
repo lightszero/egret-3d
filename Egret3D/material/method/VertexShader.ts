@@ -97,9 +97,9 @@
         /**
         * @language zh_CN
         * 添加 Method。
-        * @param method {MethodBase}
         * @version Egret 3.0
         * @platform Web,Native
+        * @param method {MethodBase}
         */
         public addMethod(method: MethodBase) {
             this.stateChange = true;

@@ -83,7 +83,9 @@
         private index: number;
         /**
          * @language zh_CNa
-         * 激活 ShadowMapPass。
+         * 激活 阴影贴图通道渲染器。
+         * @version Egret 3.0
+         * @platform Web,Native
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}
@@ -119,6 +121,8 @@
         /**
          * @language zh_CNa
          * 绘制。
+         * @version Egret 3.0
+         * @platform Web,Native
          * @param context3D {Context3D}
          * @param modeltransform {Matrix4_4}
          * @param camera3D {Camera3D}

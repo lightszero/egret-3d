@@ -69,7 +69,7 @@
         * @language zh_CN
         * 浏览器是否可以播放这种音频类型。
         * @param url 指向外部音频文件的 URL。
-        * @param audio {HTMLAudioElement}  
+        * @param audio {HTMLAudioElement} HTMLAudio元素
         * @returns {boolean}   
         * @version Egret 3.0
         * @platform Web,Native
@@ -126,10 +126,10 @@
         * @language zh_CN
         * 生成一个新的 Channel 对象来播放该声音。此方法返回 Channel 对象，访问该对象可停止声音并监控音量。
         * @param sound{Sound} 要播放的声音数据。
-        * @param options{any}   {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
-        * @returns {Channel}   
+        * @param options{any}   ["volume":1,"loop":true volume] 回放音量, 0 到 1 ， loop 是否循环播放。
+        * @returns {Channel}  
         * @version Egret 3.0
-        * @platform Web,Native
+        * @platform Web,Native         
         */
         public playSound(sound: Sound, options: any) {
             options = options || {};
@@ -144,7 +144,7 @@
         * 生成一个新的 Channel3d 对象来播放该声音。此方法返回 Channel3d 对象，访问该对象可停止声音并监控音量。
         * @param sound {Sound}  要播放的声音数据。
         * @param position {Vector3D} 在三维空间中播放的位置。
-        * @param {Object} options {Object} {"volume":1,"loop":true} volume 回放音量, 0 到 1 ， loop 是否循环播放。
+        * @param options {any} ["volume":1,"loop":true volume] 回放音量, 0 到 1 ， loop 是否循环播放。
         * @returns {Channel}   
         * @version Egret 3.0
         * @platform Web,Native
@@ -179,7 +179,7 @@
         /**
         * @language zh_CN
         * AudioManager类的单例模式，返回一个 AudioManager 对象。
-        * @returns {AudioManager}  
+        * @returns {AudioManager}   
         * @version Egret 3.0
         * @platform Web,Native
         */

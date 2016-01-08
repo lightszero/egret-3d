@@ -14,9 +14,9 @@
         /**
         * @language zh_CN
         * 创建一个新的 ColorMapPass 对象。
-        * @param data {MaterialData} 材质数据
         * @version Egret 3.0
         * @platform Web,Native
+        * @param data {MaterialData} 材质数据
         */
         constructor(data: MaterialData) {
             super(data);
