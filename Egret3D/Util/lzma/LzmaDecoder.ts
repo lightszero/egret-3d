@@ -2,6 +2,7 @@
 module nid
 {
 	/**
+     * @private
 	 * LZMA Decoder
 	 * @author Nidin Vinayakan | nidinthb@gmail.com
 	 */

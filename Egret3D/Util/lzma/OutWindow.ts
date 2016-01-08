@@ -2,10 +2,8 @@
 module nid
 {
     /**
-     * LZMA Decoder
-     * @author Nidin Vinayakan | nidinthb@gmail.com
-     */
-
+     * @private
+	 */
     export class OutWindow
     {
         public totalPos:number;

@@ -3,7 +3,14 @@
     /**
     * @class egret3d.Sampler3D
     * @classdesc
-    * 采样3D类型
+    * 
+    * shader中samplerCube类型变量的所有数据
+    * 包含变量类型，变量名，变量的值
+    *
+    * @see egret3d.core.shaderSystem.AttributeType
+    *
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class Sampler3D extends VarRegister {
                         

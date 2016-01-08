@@ -3,7 +3,9 @@
     /**
     * @class egret3d.VaryingType
     * @classdesc
-    * shader Varying 变量 类型
+    * shader中varying 变量 类型
+    * @version Egret 3.0
+    * @platform Web,Native
     */
     export class VaryingType {
         static bool: string = "bool";
