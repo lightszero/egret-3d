@@ -12,7 +12,8 @@
 
         /**
         * @language zh_CN
-        * 材质类型。默认为 MaterialType.DIFFUSE。
+        * 材质类型。
+        * @default MaterialType.DIFFUSE
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -77,7 +78,8 @@
 
         /**
         * @language zh_CN
-        * 渲染模式。默认为 DrawMode.TRIANGLES。
+        * 渲染模式。
+        * @default DrawMode.TRIANGLES
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -112,6 +114,7 @@
         /**
         * @language zh_CN
         * 法线贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -120,6 +123,7 @@
         /**
         * @language zh_CN
         * 特效贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -128,6 +132,7 @@
         /**
         * @language zh_CN
         * 灯光贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -136,6 +141,7 @@
         /**
         * @language zh_CN
         * ao 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -144,6 +150,7 @@
         /**
         * @language zh_CN
         * 环境贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -153,6 +160,7 @@
         /**
         * @language zh_CN
         * mask 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -161,6 +169,7 @@
         /**
         * @language zh_CN
         * splat_0 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -169,6 +178,7 @@
         /**
         * @language zh_CN
         * splat_1 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -177,6 +187,7 @@
         /**
         * @language zh_CN
         * splat_2 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -185,6 +196,7 @@
         /**
         * @language zh_CN
         * splat_3 贴图。
+        * @default CheckerboardTexture.texture
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -218,7 +230,8 @@
 
         /**
         * @language zh_CN
-        * 层。
+        * layer。
+        * @default 0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -226,7 +239,8 @@
 
         /**
         * @language zh_CN
-        * castShadow 默认值为 false。
+        * 投射阴影 。
+        * @default false
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -234,7 +248,8 @@
 
         /**
         * @language zh_CN
-        * acceptShadow 默认值为 true。
+        * 接受阴影。
+        * @default true
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -242,7 +257,8 @@
 
         /**
         * @language zh_CN
-        * depthTest 默认值为 true。
+        * 深度测试 。
+        * @default true
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -250,7 +266,8 @@
 
         /**
         * @language zh_CN
-        * smooth 默认值为 true。
+        * 是否平滑 。
+        * @default true
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -258,7 +275,8 @@
 
         /**
         * @language zh_CN
-        * 混合模式 默认值为 BlendMode.NORMAL。
+        * 混合模式 。
+        * @default BlendMode.NORMAL
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -266,7 +284,7 @@
 
         /**
         * @language zh_CN
-        * blend_src。
+        * blend_src 值。
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -274,7 +292,7 @@
 
         /**
         * @language zh_CN
-        * blend_dest。
+        * blend_dest 值。
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -282,7 +300,8 @@
 
         /**
         * @language zh_CN
-        * alphaBlending 默认值为 false。
+        * alphaBlending。
+        * @default false
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -290,7 +309,8 @@
 
         /**
         * @language zh_CN
-        * ambientColor 默认值为 0x0。
+        * ambientColor 值。
+        * @default 0x0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -299,7 +319,8 @@
 
         /**
         * @language zh_CN
-        * diffuseColor 默认值为 0xffffff。
+        * diffuseColor 值。
+        * @default 0xffffff
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -307,7 +328,8 @@
 
         /**
         * @language zh_CN
-        * specularColor 默认值为 0xffffff。
+        * specularColor 值。
+        * @default 0xffffff
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -315,7 +337,8 @@
 
         /**
         * @language zh_CN
-        * shininess 默认值为 8.0。
+        * shininess 值。
+        * @default 8.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -323,7 +346,8 @@
 
         /**
         * @language zh_CN
-        * cutAlpha 默认值为 0.7。
+        * cutAlpha 值。
+        * @default 0.7
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -331,7 +355,8 @@
 
         /**
         * @language zh_CN
-        * repeat 默认值为 false。
+        * 是否重复。
+        * @default false
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -340,7 +365,8 @@
 
         /**
         * @language zh_CN
-        * bothside 默认值为 false。
+        * bothside 值。
+        * @default false
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -348,7 +374,8 @@
 
         /**
         * @language zh_CN
-        * alpha 默认值为 1。
+        * alpha 值。
+        * @default 1.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -356,7 +383,8 @@
 
         /**
         * @language zh_CN
-        * specularPower 默认值为 1.0。
+        * specularPower 值。
+        * @default 1.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -364,7 +392,8 @@
 
         /**
         * @language zh_CN
-        * ambientPower 默认值为 1.0。
+        * ambientPower 值。
+        * @default 1.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -372,7 +401,8 @@
 
         /**
         * @language zh_CN
-        * diffusePower 默认值为 1.0。
+        * diffusePower。
+        * @default 1.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -380,7 +410,8 @@
 
         /**
         * @language zh_CN
-        * normalPower 默认值为 1.0。
+        * normalPower 值。
+        * @default 1.0
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -388,7 +419,8 @@
 
         /**
         * @language zh_CN
-        * materialDataNeedChange 默认值为 true。
+        * 材质数据需要变化。
+        * @default true
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -397,7 +429,8 @@
 
         /**
         * @language zh_CN
-        * textureChange 默认值为 false。
+        * 纹理变化。
+        * @default false
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -405,7 +438,8 @@
 
         /**
         * @language zh_CN
-        * passChange 默认值为 true。
+        * passChange
+        * @default true
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -414,7 +448,8 @@
 
         /**
         * @language zh_CN
-        * cullFrontOrBack 默认值为 Egret3DDrive.BACK。
+        * cullFrontOrBack。
+        * @default Egret3DDrive.BACK
         * @version Egret 3.0
         * @platform Web,Native
         */
