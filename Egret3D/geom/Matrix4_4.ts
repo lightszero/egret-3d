@@ -3,11 +3,13 @@
      * @language zh_CN
      * @class egret3d.Matrix4_4
      * @classdesc
+     *
      * Matrix4_4 类表示一个转换矩阵，该矩阵确定三维 (3D) 显示对象的位置和方向。
      * 该矩阵可以执行转换功能，包括平移（沿 x、y 和 z 轴重新定位）、旋转和缩放（调整大小）.
      * Matrix4_4 类还可以执行透视投影，这会将 3D 坐标空间中的点映射到二维 (2D) 视图.
      * 单一矩阵可以将多个转换组合在一起，并一次性对 3D 显示对象应用这些转换.
      * 例如，可以将一个矩阵应用于 3D 坐标，以便依次执行旋转和平移.
+     * 
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -21,7 +23,7 @@
 
         /**
         * @language zh_CN
-        * constructor
+        * 构造
         * @param datas {number[16]}
         */
         constructor(datas: Float32Array = null) {

@@ -10,9 +10,29 @@
      * LINE_STRIP 连接线显示模式
      */ 
     export class DrawMode {
+                    
+        /**
+         * @language zh_CN
+         * 线框显示模式
+         */
         static LINES: number;
+                            
+        /**
+         * @language zh_CN
+         * 点显示模式
+         */
         static POINTS: number;
+                                    
+        /**
+         * @language zh_CN
+         * 三角形显示模式
+         */
         static TRIANGLES: number;
+                                    
+        /**
+         * @language zh_CN
+         * 连接线显示模式
+         */
         static LINE_STRIP: number;
 
     }

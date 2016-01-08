@@ -4,11 +4,22 @@
      * @class egret3d.Ray
      * @classdesc
      * Ray 类 用于检测射线,由一个原点,和一个方向构成
+     *
      * @version Egret 3.0
      * @platform Web,Native
      */
     export class Ray {
+
+        /**
+        * @language zh_CN
+        * 射线原点
+        */
         public origin: Vector3D = new Vector3D();
+
+        /**
+        * @language zh_CN
+        * 射线方向
+        */
         public dir: Vector3D = new Vector3D();
         
         /**

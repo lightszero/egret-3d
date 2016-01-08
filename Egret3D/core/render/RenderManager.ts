@@ -1,4 +1,8 @@
 ﻿module egret3d {
+
+    /**
+    * @private
+    */
     export enum RenderType {
         defaultRender,
         positionRender,

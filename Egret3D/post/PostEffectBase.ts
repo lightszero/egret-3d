@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.PostEffectBase
      * @classdesc
      * 后期合成基类
@@ -8,11 +9,12 @@
     export class PostEffectBase {
         /**
          * @language zh_CN
+         * @private
          */
         public nextFrameBuffer: FrameBuffer;
         protected rec: Rectangle = new Rectangle(); 
         protected postCanvas: PostCanvas; 
-
+        
         /**
          * @language zh_CN
          */

@@ -8,7 +8,13 @@
     * @platform Web,Native
     */
     export class SphereSky {
-
+                                
+        /**
+        * @language zh_CN
+        * 天空球贴图
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public skyTexture: TextureBase;
 
         private viewMatIndex: WebGLUniformLocation;

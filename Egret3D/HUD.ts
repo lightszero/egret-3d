@@ -281,7 +281,10 @@
         }
 
     }
-
+    
+    /**
+    * @private
+    */
     class QuadShader {
 
         public vertexShaderSource: string = "";

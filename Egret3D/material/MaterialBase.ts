@@ -1,5 +1,14 @@
 ﻿module egret3d {
-    export enum MaterialType { DIFFUSE, DIFFUSE_BUMP, DIFFUSE_BUMP_SPECULAR, RGBATERRAIN }
+    
+    /**
+    * @private
+    */
+    export enum MaterialType{
+        DIFFUSE,
+        DIFFUSE_BUMP,
+        DIFFUSE_BUMP_SPECULAR,
+        RGBATERRAIN
+    }
 
      /**
      * @language zh_CN
