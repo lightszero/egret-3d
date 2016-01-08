@@ -1,9 +1,10 @@
 ﻿module egret3d {
     /**
+     * @private
      * @language zh_CN
      * @class egret3d.GeometryBase
      * @classdesc
-     * 网络类型
+     * 网格类型类型
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -64,6 +65,7 @@
         Shadow
     }
     /**
+     * @private
      * @language zh_CN
      * @class egret3d.GeometryBase
      * @classdesc

@@ -4,6 +4,9 @@
      * @class egret3d.AOMapMethod
      * @classdesc
      * AO贴图方法。
+     * 
+     * 可通过目前流行的 3d渲染软件 C4D 3Dmax Zbush 等都可以渲染环境吸收贴图，将对于不需要显示的光线屏蔽在外。
+     * 
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -20,12 +23,13 @@
         constructor(texture: TextureBase) {
             super();
             this.fsMethodName = "AOMap_fragment";
-            this.lightTexture = texture;
+            this.aoTexture = texture;
         }
 
         /**
          * @language zh_CN
          * 设置MaterialData。
+         * @private  
          * @param materialData {MaterialData}
          * @param usage {MethodUsageData}
          * @version Egret 3.0
@@ -43,12 +47,13 @@
 
         /**
          * @language zh_CN
-         * 设置lightTexture。
+         * 设置ao Texture。
+         * 这里设置 环境吸收贴图纹理 ， 可通过 load 加载
          * @param texture {TextureBase}
          * @version Egret 3.0
          * @platform Web,Native
          */
-        public set lightTexture(texture: TextureBase) {
+        public set aoTexture(texture: TextureBase) {
             this.texture = texture;
             if (texture) {
                 if (this.materialData) {
@@ -62,6 +67,7 @@
          * @private
          * @language zh_CN
          * 激活特效
+         * @private  
          * @param context3D {Context3D}
          * @param usage {MethodUsageData}
          * @param materialData {MaterialData}
@@ -80,6 +86,7 @@
          * @private
          * @language zh_CN
          * 更新特效
+         * @private  
          * @param context3D {Context3D}
          * @param usage {MethodUsageData}
          * @param materialData {MaterialData}
@@ -97,6 +104,7 @@
          * @private
          * @language zh_CN
          * 销毁
+         * 进行相关的 贴图纹理资源回收
          * @version Egret 3.0
          * @platform Web,Native
          */

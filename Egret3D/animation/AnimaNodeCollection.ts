@@ -4,8 +4,8 @@
      * @language zh_CN
      * @class egret3d.AnimaNodeCollection
      * @classdesc
-     * 动画节点容器
-     * 
+     * 动画功能节点收集器
+     * 动画功能的收集，整理，初始化容器，一般在粒子系统里使用
      * @version Egret 3.0
      * @platform Web,Native
      * @includeExample egret3d/animation/AnimaNodeCollection.ts
@@ -15,28 +15,40 @@
         /**
         * @language zh_CN
         * 动画节点容器
+        * @priavte 
         */
         public nodes: Array<AnimNodeBase> = new Array<AnimNodeBase>();
 
         /**
         * @language zh_CN
         * 顶点数
+        * @priavte 
         */
         public numberOfVertices: number;
 
         /**
         * @language zh_CN
         * 顶点字节大小
+        * @priavte 
         */
         public vertexSizeInBytes: number;
-
+        
+        /**
+        * @language zh_CN
+        * @priavte 
+        */
         private _nodeData: Float32Array;
 
+        /**
+        * @language zh_CN
+        * @priavte 
+        */
         private _vertexAttributes: Object = {};
 
         /**
         * @language zh_CN
         * 构造函数
+        * @priavte 
         */
         constructor() {
             this.nodes = new Array<AnimNodeBase>();
@@ -44,7 +56,8 @@
 
         /**
         * @language zh_CN
-        * 添加节点
+        * 添加动画功能节点
+        * 添加继承 animNodeBase 功能节点 例如粒子的 加速度功能节点，匀速功能节点
         * @param node 节点对象
         */
         public addNode(node: AnimNodeBase) {
@@ -53,7 +66,8 @@
 
         /**
         * @language zh_CN
-        * 移除节点
+        * 移除动画功能节点
+        * 删除指定的动画功能节点，但是不能动态删除，需要进行 功能重置
         * @param node 节点对象
         */
         public removeNode(node: AnimNodeBase) {
@@ -65,6 +79,7 @@
         /**
         * @language zh_CN
         * 获取节点容器
+        * 获取整体的功能节点列表
         * @return 节点容器
         */
         public getNodes(): Array<AnimNodeBase> {
@@ -75,6 +90,7 @@
         * @language zh_CN
         * 获取节点顶点Shader
         * @return 顶点Shader容器
+        * @private 
         */
         public getNodesVertexShaders(): Array<string> {
             var shaderNames: string[] = [];
@@ -89,6 +105,7 @@
         * @language zh_CN
         * 获取节点片元Shader
         * @return 片元Shader容器
+        * @private 
         */
         public getNodesFragmentShaders(): Array<string> {
             var shaderNames: string[] = [];
@@ -102,6 +119,7 @@
         /**
         * @language zh_CN
         * 计算节点
+        * @private 
         */
         public calculateNode() {
             ///init data to updata gpu

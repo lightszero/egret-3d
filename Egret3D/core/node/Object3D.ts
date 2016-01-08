@@ -100,6 +100,7 @@
         /**
         * @language zh_CN
         * 是否开启鼠标事件
+        * 设定这个物件是否具有 鼠标交互能力的开关
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -108,6 +109,7 @@
         /**
         * @language zh_CN
         * 是否需要视锥体裁剪
+        * 设定这个物件是否具有 视锥体裁剪功能，为否的话，将永远不参加场景渲染剔除树，无论是否在显示范围内都会进行相关的渲染逻辑运算
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -116,6 +118,7 @@
         /**
         * @language zh_CN
         * 父亲节点
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -124,6 +127,7 @@
         /**
         * @language zh_CN
         * 子对象列表
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -132,6 +136,8 @@
         /**
         * @language zh_CN
         * 动作对象，控制骨骼动画
+        * 可拓展的动画功能属性，动画功能的驱动类总接口
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -139,7 +145,8 @@
 
         /**
         * @language zh_CN
-        * 网络信息
+        * 网格信息
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -148,6 +155,7 @@
         /**
         * @language zh_CN
         * 材质信息
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -156,6 +164,7 @@
         /**
         * @language zh_CN
         * 对象模型包围盒
+        * 每个场景物件都需要有的 包围盒子，可以自定义包围盒形状大小，也可以根据模型本身生成
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -164,6 +173,7 @@
         /**
         * @language zh_CN
         * 鼠标检测数据
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -172,6 +182,7 @@
         /**
         * @language zh_CN
         * 是否控制，当摄像机被绑定摄像机动画时，这个值为false.
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -180,6 +191,7 @@
         /**
         * @language zh_CN
         * 是否可见
+        * 设置渲染是否显示的快速通道，在渲染列表中，但是不进行渲染，但是进行逻辑运算
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -188,6 +200,7 @@
         /**
         * @language zh_CN
         * 是否关闭
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -196,6 +209,10 @@
         /**
         * @language zh_CN
         * 鼠标拣选类型
+        * 设置鼠标的拣选类型，可通过 PickType来进行设置
+        * 快速拣选默认使用 正方形包围盒子
+        * 高精度型需要 PositionPick ， uv pick 等
+        * @see egret3d.PickType
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -204,6 +221,7 @@
         /**
         * @language zh_CN
         * 鼠标 事件开关
+        * 设置是否进行鼠标的pick 的开关，有的需要鼠标事件，但是不需要拣选能力
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -223,7 +241,7 @@
         /**
         * @language zh_CN
         * 返回位移
-        *  
+        * 获取容器的坐标位置，基于父节点的位置坐标
         * @returns 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -235,7 +253,7 @@
         /**
         * @language zh_CN
         * 设置位移
-        *  
+        * 设置基于父节点的位置坐标，当父容器发生变化时，子节点也会变化
         * @param vec 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -248,8 +266,8 @@
         /**
         * @language zh_CN
         * 返回旋转
-        *  
-        * @returns 旋转
+        * 获取容器的旋转信息，基于父节点的旋转信息 欧拉角信息
+        * @returns 旋转 欧拉角信息
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -259,9 +277,9 @@
 
         /**
         * @language zh_CN
-        * 设置旋转
-        *  
-        * @param vec 旋转
+        * 设置旋转 
+        * 设置基于父节点的旋转信息 欧拉角信息，当父容器发生变化时，子节点也会变化
+        * @param vec 旋转 欧拉角信息
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -278,7 +296,7 @@
         /**
         * @language zh_CN
         * 设置旋转
-        *  
+        * 设置旋转 基于四元素 旋转信息，当父容器发生变化时，子节点也会变化
         * @param value 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -294,7 +312,7 @@
         /**
         * @language zh_CN
         * 返回旋转
-        *  
+        * 返回 基于四元素的旋转信息
         * @returns 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -306,7 +324,7 @@
         /**
         * @language zh_CN
         * 返回缩放
-        *  
+        * 返回基于父容器的缩放信息
         * @returns 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -318,7 +336,7 @@
         /**
         * @language zh_CN
         * 设置缩放
-        *  
+        * 设置基于父容器的缩放信息，当父容器发生变化时，子节点也会变化
         * @param vec 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -331,7 +349,7 @@
         /**
         * @language zh_CN
         * 设置x坐标
-        *  
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value x坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -349,6 +367,7 @@
         * @language zh_CN
         * 设置y坐标
         *  
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value y坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -366,6 +385,7 @@
         * @language zh_CN
         * 设置z坐标
         *  
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value z坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -383,6 +403,7 @@
         * @language zh_CN
         * 设置x轴旋转
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value x轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -402,6 +423,7 @@
         * @language zh_CN
         * 设置y轴旋转
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value y轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -421,6 +443,7 @@
         * @language zh_CN
         * 设置z轴旋转
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value z轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -440,6 +463,7 @@
         * @language zh_CN
         * 设置x轴缩放
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value x轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -457,6 +481,7 @@
         * @language zh_CN
         * 设置y轴缩放
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value y轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -474,6 +499,7 @@
         * @language zh_CN
         * 设置z轴缩放
         *  
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value z轴缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -490,6 +516,7 @@
         /**
         * @language zh_CN
         * 以axis轴为中心进行旋转
+        * 设置基于父容器的旋转信息，数值通过axis的角度进行设置。当父容器发生变化时，子节点也会变化，值不变
         * @param axis 中心轴
         * @param angle 旋转的角度
         * @version Egret 3.0
@@ -507,7 +534,7 @@
         /**
         * @language zh_CN
         * 返回x坐标
-        *  
+        * 返回基于父容器的位置坐标信息值
         * @returns x坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -520,6 +547,7 @@
         * @language zh_CN
         * 返回y坐标
         *  
+        * 返回基于父容器的位置坐标信息值
         * @returns y坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -532,6 +560,7 @@
         * @language zh_CN
         * 返回z坐标
         *  
+        * 返回基于父容器的位置坐标信息值
         * @returns z坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -544,6 +573,7 @@
         * @language zh_CN
         * 返回x旋转
         *  
+        * 返回基于父容器的位置旋转信息值
         * @returns x旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -556,6 +586,7 @@
         * @language zh_CN
         * 返回y旋转
         *  
+        * 返回基于父容器的位置旋转信息值
         * @returns y旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -568,6 +599,7 @@
         * @language zh_CN
         * 返回z旋转
         *  
+        * 返回基于父容器的位置旋转信息值
         * @returns z旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -579,7 +611,7 @@
         /**
         * @language zh_CN
         * 返回x缩放
-        *  
+        * 返回基于父容器的缩放信息值
         * @returns x缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -591,7 +623,7 @@
         /**
         * @language zh_CN
         * 返回y缩放
-        *  
+        * 返回基于父容器的缩放信息值
         * @returns y缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -603,7 +635,7 @@
         /**
         * @language zh_CN
         * 返回z缩放
-        *  
+        * 返回基于父容器的缩放信息值
         * @returns z缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -616,7 +648,6 @@
         * @language zh_CN
         * 返回 object 世界渲染矩阵
         * 如果有父亲节点对象的话，要乘以父对象的变换.
-        *  
         * @returns object 世界渲染矩阵
         * @version Egret 3.0
         * @platform Web,Native
@@ -629,6 +660,15 @@
             return this._modeMatrix3D;
         }
 
+        /**
+        * @language zh_CN
+        * 返回 object 世界渲染矩阵
+        * 如果有父亲节点对象的话，要乘以父对象的变换.
+        * @private
+        * @returns object 世界渲染矩阵
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         protected updateModleMatrix() {
             
             if (this.parent != null) {
@@ -662,7 +702,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界位置
-        *  
+        * 返回世界坐标系的 全局位置坐标
         * @returns object 世界位置
         * @version Egret 3.0
         * @platform Web,Native
@@ -677,7 +717,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界旋转
-        *  
+        * 返回世界坐标系的 全局旋转信息
         * @returns object 世界旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -692,7 +732,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界缩放
-        *  
+        * 返回世界坐标系的 全局缩放信息
         * @returns object 世界缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -707,7 +747,7 @@
         /**
         * @language zh_CN
         * 返回 object 世界旋转
-        *  
+        * 返回世界坐标系的 全局旋转信息，数据类型是 四元素
         * @returns object 世界旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -722,6 +762,7 @@
         /**
         * @language zh_CN
         * 增加一个子对象,并返回当前子对象
+        * 在容器中添加子对象，如果有显示接口的，将会放到场景显示树种进行渲染逻辑运算，及渲染
         * @param child 增加的子对象
         * @returns 子对象
         * @version Egret 3.0
@@ -742,6 +783,7 @@
         /**
         * @language zh_CN
         * 增加一个子对象,并返回当前子对象
+        * 在容器中添加子对象，如果有显示接口的，将会放到场景显示树种进行渲染逻辑运算，及渲染
         * @param child 增加的子对象
         * @param index 子对象的下标
         * @returns 子对象
@@ -769,6 +811,7 @@
         /**
         * @language zh_CN
         * 返回下标为index的子对象
+        * @private
         * @param index 子对象下标
         * @returns 如果有就返回子对象,否则就返回null.
         * @version Egret 3.0
@@ -784,6 +827,7 @@
                         
         /**
         * @language zh_CN
+        * @private
         * 返回子对角child的下标
         * @param child 子对象
         * @returns 如果有就返回子对象的下标,否则就返回-1.
@@ -807,6 +851,7 @@
         /**
         * @language zh_CN
         * 移除child子对象 并返回
+        * 移除显示列表中的指定对象，如果为空将会返回
         * @param child 子对象
         * @returns 如果成功就返回child,否则返回null
         * @version Egret 3.0
@@ -833,6 +878,7 @@
         /**
         * @language zh_CN
         * 移除下标为index的子对象 并返回
+        * @private
         * @param index 子对象的下标
         * @returns 如果成功就返回child,否则返回null
         * @version Egret 3.0
@@ -855,6 +901,7 @@
         /**
         * @language zh_CN
         * 设置子对象的下标
+        * @private
         * @param child 子对象
         * @param index 子对象的下标
         * @version Egret 3.0
@@ -892,6 +939,7 @@
                                                         
         /**
         * @language zh_CN
+        * @private
         * 交换子对象的位置
         * @param child1 子对象1
         * @param child2 子对象2
@@ -929,6 +977,7 @@
                                                                 
         /**
         * @language zh_CN
+        * @private
         * 交换子对象的位置
         * @param index1 子对象1下标
         * @param index2 子对象2下标
@@ -950,6 +999,13 @@
             this.childs[index2] = tmp;
         }
 
+        /**
+        * @language zh_CN
+        * @private
+        * @param wireframe 网格对象
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public bindWireframe(wireframe: WireframeBase) {
             wireframe.modleMatrix = this._modeMatrix3D; 
         }
@@ -957,6 +1013,7 @@
         /**
         * @language zh_CN
         * 当前对象对视位置
+        * @private
         * @param pos 对象的位置
         * @param target 目标的位置
         * @param up 向上的方向
@@ -971,6 +1028,7 @@
         * @language zh_CN
         * 返回目标的位置
         *  
+        * @private
         * @returns 目标的位置
         * @version Egret 3.0
         * @platform Web,Native
@@ -990,6 +1048,7 @@
         /**
         * @language zh_CN
         * 当前对象数据更新
+        * @private
         * @param camera 当前渲染的摄相机
         * @param time 当前时间
         * @param delay 每帧时间间隔
@@ -1003,6 +1062,7 @@
         /**
         * @language zh_CN
         * 返回对象的屏幕坐标
+        * 获取当前物体的屏幕坐标值，一般用来指定屏幕相关的ui绑定及其他功能
         * @param camera 对象渲染的摄像机
         * @returns 对象的屏幕坐标 
         * @version Egret 3.0
@@ -1017,6 +1077,7 @@
         /**
         * @language zh_CN
         * 释放所有数据
+        * 是否内存中的相关数据连接引用，移除逻辑运算，从主渲染刘表中挪出
         * @version Egret 3.0
         * @platform Web,Native
         */

@@ -4,6 +4,13 @@
      * @class egret3d.View3D
      * @classdesc
      * 渲染视图
+     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式
+     * 可以设置不同的相机 camera3D
+     * 交换不同的场景元素 scene3D 
+     * skyBox需要在这里直接设置，有cube sky 和 sphere sky
+     * 整个渲染的主循环通过 render  
+     * @see egret3d.camera3d
+     * @see egret3d.scene3D
      * @version Egret 3.0
      * @platform Web,Native
      */   
@@ -44,6 +51,7 @@
         /**
         * @language zh_CN
         * 返回渲染根节点
+        * 返回渲染场景的 scene3D 
         * @returns Object3D
         * @version Egret 3.0
         * @platform Web,Native
@@ -55,6 +63,7 @@
         /**
         * @language zh_CN
         * 设置场景
+        * 设置渲染场景的 scene3D ， 可以将整个渲染 列表替换，可作为游戏中切换游戏场景的主要接口
         * @param scene {Scene3D}
         * @version Egret 3.0
         * @platform Web,Native
@@ -66,6 +75,7 @@
         /**
         * @language zh_CN
         * 返回 Scene3D 对象
+        * 返回 Scene3D 对象
         * @returns {Scene3D}
         * @version Egret 3.0
         * @platform Web,Native
@@ -73,8 +83,6 @@
         public get scene(): Scene3D {
             return this._scene;
         }
-
-        
 
         /**
         * @language zh_CN
@@ -125,9 +133,11 @@
                 this._resizeFuncs[i]();
             }
         }
+
         /**
         * @language zh_CN
-        * 设置渲染对象
+        * 设置渲染器
+        * view3D 可以使用不同的渲染器，每个渲染器可以渲染不同的渲染通道使之直接在主屏幕中显示出来
         * @param val {RenderBase}
         * @version Egret 3.0
         * @platform Web,Native
@@ -144,6 +154,7 @@
         /**
         * @language zh_CN
         * 是否使用影子
+        * 在当前的渲染时口中，是否可以使用阴影映射，如果是将开始进行渲染逻辑
         * @param flag {boolean}
         * @version Egret 3.0
         * @platform Web,Native
@@ -159,6 +170,7 @@
         /**
         * @language zh_CN
         * 是否使用影子
+        * 在当前的渲染时口中，是否可以使用阴影映射，如果是将开始进行渲染逻辑
         * @returns {boolean}
         * @version Egret 3.0
         * @platform Web,Native
@@ -178,7 +190,9 @@
 
         /**
         * @language zh_CN
+        * @private
         * 监听设备重置回调
+        * 事件机制
         * @event func  {Function}
         * @version Egret 3.0
         * @platform Web,Native
@@ -190,6 +204,7 @@
         /**
         * @language zh_CN
         * 返回视口
+        * 返回视口的尺寸大小
         * @returns {Rectangle}
         * @version Egret 3.0
         * @platform Web,Native
@@ -201,6 +216,7 @@
         /**
         * @language zh_CN
         * 设置天空盒子
+        * 设置天空盒子，天空盒子的类型有 cubesky 和 spheresky 两种类型，其中 spheresky 是属于360天空全景照片使用
         * @param value {Sky} 天空盒子
         * @version Egret 3.0
         * @platform Web,Native
@@ -212,6 +228,7 @@
         /**
         * @language zh_CN
         * 设置天空球
+        * 设置天空盒子，天空盒子的类型有 cubesky 和 spheresky 两种类型，其中 spheresky 是属于360天空全景照片使用
         * @param value {SphereSky} 天空球
         * @version Egret 3.0
         * @platform Web,Native
@@ -223,6 +240,7 @@
         /**
         * @language zh_CN
         * 返回天空盒子
+        * 设置天空盒子，天空盒子的类型有 cubesky 和 spheresky 两种类型，其中 spheresky 是属于360天空全景照片使用
         * @returns {Sky}
         * @version Egret 3.0
         * @platform Web,Native
@@ -234,6 +252,7 @@
         /**
         * @language zh_CN
         * 添加 HUD 到渲染列表中
+        * 设置天空盒子，天空盒子的类型有 cubesky 和 spheresky 两种类型，其中 spheresky 是属于360天空全景照片使用
         * @param hud {HUD}
         * @version Egret 3.0
         * @platform Web,Native
@@ -244,6 +263,7 @@
 
         /**
         * @language zh_CN
+        * @private
         * 在渲染列表中删除一个HUD
         * @param hud {HUD}
         * @version Egret 3.0
@@ -258,6 +278,7 @@
         /**
         * @language zh_CN
         * 增加wireframe进渲染列表
+        * 在view3D中添加物体的网格显示对象
         * @param wireframe 
         * @version Egret 3.0
         * @platform Web,Native
@@ -269,6 +290,7 @@
         /**
         * @language zh_CN
         * 在渲染列表中删除一个wireframe
+        * 动态删除物体的显示网格
         * @param hud 
         * @version Egret 3.0
         * @platform Web,Native
@@ -281,6 +303,7 @@
         /**
         * @language zh_CN
         * 设置背景渲染贴图
+        * 设置一个可跟随视口大小匹配，且永远在最后的背景显示贴图
         * @param texture 贴图
         * @version Egret 3.0
         * @platform Web,Native
@@ -301,6 +324,7 @@
         /**
         * @language zh_CN
         * 设置 postEffect
+        * 设置后期MRT处理的着色滤镜，例如（HDR，tonymaping，bloom）
         * @param postEffects {Array<PostEffectBase>}
         * @version Egret 3.0
         * @platform Web,Native
@@ -320,6 +344,7 @@
         /**
         * @language zh_CN
         * 返回 摄像机
+        * 返回 摄像机 Camera3D
         * @returns Camera3D
         * @version Egret 3.0
         * @platform Web,Native
@@ -330,6 +355,7 @@
 
         /**
         * @language zh_CN
+        * @private
         * 返回 Context3D
         * @returns Context3D
         * @version Egret 3.0
@@ -342,19 +368,20 @@
 
         /**
         * @language zh_CN
+        * 获取视口的大小
         * 视口的宽度。当使用软件渲染，平台限制2048像素
-        * @returns number
+        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
         public get width(): number {
-
             return this._width;
         }
 
         /**
         * @language zh_CN
         * 设置视口的宽度。
+        * 视口的宽度。当使用软件渲染，平台限制2048像素
         * @param width {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -370,6 +397,7 @@
 		
         /**
         * @language zh_CN
+        * 获取视口的大小
         * 视口的高度。当使用软件渲染，平台限制2048像素
         * @returns {number}
         * @version Egret 3.0
@@ -383,6 +411,7 @@
         /**
         * @language zh_CN
         * 设置视口的宽度。
+        * 视口的高度。当使用软件渲染，平台限制2048像素
         * @param height {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -399,6 +428,7 @@
         /**
         * @language zh_CN
         * 设置 x 坐标值。
+        * 设置在网页中的webgl画面位置
         * @param  x {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -417,6 +447,7 @@
         /**
         * @language zh_CN
         * 设置 y 坐标值。
+        * 设置在网页中的webgl画面位置
         * @param  x {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -434,6 +465,7 @@
         /**
         * @language zh_CN
         * 返回 x 坐标值
+        * 返回在网页中的webgl画面位置
         * @returns {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -446,6 +478,7 @@
         /**
         * @language zh_CN
         * 返回 y 坐标值
+        * 返回在网页中的webgl画面位置
         * @returns {number}
         * @version Egret 3.0
         * @platform Web,Native
@@ -458,6 +491,7 @@
         /**
         * @language zh_CN
         * 将一个 Object3D 实例添加到 Scene3D 实例中。
+        * 将一个 Object3D 实例添加到 Scene3D 实例中。参与scene3D中的显示树优化，并且即时渲染出来
         * @param  child3D {Object3D}
         * @version Egret 3.0
         * @platform Web,Native
@@ -469,6 +503,7 @@
         /**
         * @language zh_CN
         * 渲染
+        * 渲染中的主循环，可以使用外部时间控制器驱动，也可使用 requestFrame
         * @param time 当前时间
         * @param delay 时间间隔
         * @version Egret 3.0
@@ -584,6 +619,7 @@
         /**
         * @language zh_CN
         * 设置tag名和name的下标为index 没有的话会新加tag
+        * 设置渲染的层级标签，可以自定义渲染优先顺序，让渲染可自定义化
         * @param name tag名
         * @param index 下标
         * @version Egret 3.0
@@ -596,6 +632,7 @@
         /**
         * @language zh_CN
         * 设置layer名和name的下标为index
+        * 设置渲染的层级标签，可以自定义渲染优先顺序，让渲染可自定义化
         * @param layer layer名
         * @param index 下标
         * @version Egret 3.0
@@ -608,6 +645,7 @@
         /**
         * @language zh_CN
         * 返回layer的值
+        * 返回当前标签的渲染层级
         * @param name tag名
         * @param layer layer名
         * @returns {Number}
@@ -621,6 +659,7 @@
         /**
         * @language zh_CN
         * 得到tag
+        * 返回当前标签的渲染标签的名字
         * @param name tag名
         * @returns {Tag}
         * @version Egret 3.0

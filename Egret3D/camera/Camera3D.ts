@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
     /**
+    * @private
     * 摄像机类型
     * @version Egret 3.0
     * @platform Web,Native
