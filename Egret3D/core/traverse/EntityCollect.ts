@@ -98,7 +98,7 @@
         /**
         * @language zh_CN
         * 返回tags 列表
-        * @readOnly
+        *  
         * @returns tags 列表
         * @version Egret 3.0
         * @platform Web,Native

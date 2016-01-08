@@ -102,7 +102,7 @@
         /**
          * @language zh_CN
          * 获取宽度值
-         * @readOnly
+         *  
          * @returns width
          */
         public get width(): number {
@@ -116,7 +116,7 @@
         /**
          * @language zh_CN
          * 获取高度值
-         * @readOnly
+         *  
          * @returns height
          */
         public get height(): number {

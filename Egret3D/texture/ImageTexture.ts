@@ -24,7 +24,7 @@
         /**
          * @language zh_CN
          * 贴图数据
-         * @readOnly
+         *  
          */
         public imageData: HTMLImageElement;
 

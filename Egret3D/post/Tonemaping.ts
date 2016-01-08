@@ -1,6 +1,7 @@
 ﻿module egret3d {
 
      /**
+     * @private
      * @class egret3d.Tonemaping
      * @classdesc
      * 颜色调和
@@ -17,6 +18,7 @@
 
         /**
          * @language zh_CN
+         
          * @param source 数据来源buffer
          * @param target 渲染的目标buffer
          * @param context3D  gpu设备

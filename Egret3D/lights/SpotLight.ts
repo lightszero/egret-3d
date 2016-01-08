@@ -36,11 +36,11 @@
         }
                                 
         /**
-         * @language en_US
+         * @language zh_CN
          *   
          * spot 的 裁切范围
          * spot light 照射范围的大小指数
-         * @writeOnly
+         *  
          * @param value Cutoff
          */
         public set spotCosCutoff(value: number) {
@@ -48,8 +48,8 @@
         }
                 
         /**
-         * @language en_US
-         * @readOnly        
+         * @language zh_CN
+         *          
          * spot 的 裁切范围
          * spot light 照射范围的大小指数
          * @returns Cutoff -spot 的 裁切范围
@@ -59,10 +59,10 @@
         }
                         
         /**
-         * @language en_US
+         * @language zh_CN
          * spot 的 灯光强弱
          * spot light 灯光圆形范围内随半径大小改变发生的灯光强弱指数
-         * @writeOnly
+         *  
          * @param value 灯光强弱指数
          */
         public set spotExponent(value: number) {
@@ -70,8 +70,8 @@
         }
                 
         /**
-         * @language en_US
-         * @readOnly  
+         * @language zh_CN
+         *    
          * spot 的 灯光强弱
          * spot light 灯光圆形范围内随半径大小改变发生的灯光强弱指数
          * @returns 灯光强弱指数
@@ -81,8 +81,8 @@
         }
                                 
         /**
-         * @language en_US
-         * @writeOnly  
+         * @language zh_CN
+         *    
          * spot 的 灯光衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光衰减常数指数
          * @param value 持续衰减
@@ -92,8 +92,7 @@
         }
                 
         /**
-         * @language en_US
-         * @readOnly        
+         * @language zh_CN
          * spot 的 灯光衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光衰减常数指数
          * @returns 持续衰减
@@ -103,8 +102,8 @@
         }
 
         /**
-         * @language en_US
-         * @writeOnly
+         * @language zh_CN
+         *  
          * spot 的 灯光线性衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光线性衰减
          * @param value 线性衰减 
@@ -114,8 +113,8 @@
         }
                 
         /**
-         * @language en_US
-         * @readOnly
+         * @language zh_CN
+         *  
          * spot 的 灯光线性衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光线性衰减
          * @returns 线性衰减   
@@ -125,8 +124,8 @@
         }
         
         /**
-         * @language en_US
-         * @writeOnly   
+         * @language zh_CN
+         *     
          * spot 的 灯光线性2次衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光线性2次衰减
          * @param value 2次衰减
@@ -136,8 +135,8 @@
         }
         
         /**
-         * @language en_US
-         * @readOnly
+         * @language zh_CN
+         *  
          * spot 的 灯光线性2次衰减
          * spot light 灯光圆形范围内随半径大小改变发生的灯光线性2次衰减
          * @returns 返回2次衰减

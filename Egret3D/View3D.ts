@@ -43,9 +43,8 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * 返回渲染根节点
-        * @returns {Object3D}
+        * @returns Object3D
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -320,9 +319,8 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * 返回 摄像机
-        * @returns {Camera3D}
+        * @returns Camera3D
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -332,9 +330,8 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * 返回 Context3D
-        * @returns {Context3D}
+        * @returns Context3D
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -346,7 +343,7 @@
         /**
         * @language zh_CN
         * 视口的宽度。当使用软件渲染，平台限制2048像素
-        * @returns {number}
+        * @returns number
         * @version Egret 3.0
         * @platform Web,Native
         */

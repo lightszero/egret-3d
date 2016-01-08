@@ -21,6 +21,12 @@
         * WebGLBuffer的引用
         */
         public buffer: WebGLBuffer;
+        
+        /**
+        * @language zh_CN
+        * 构造
+        * @param buffer webglbuffer
+        */
         constructor(buffer: WebGLBuffer) {
             this.buffer = buffer;
         }

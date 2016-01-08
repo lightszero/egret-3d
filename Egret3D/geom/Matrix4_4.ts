@@ -1071,7 +1071,7 @@
         /**
         * @language zh_CN
         * 返回矩阵行列式
-        * @readOnly
+        *  
         * @returns 行列式值
         */
         public get determinant(): number {
@@ -1082,7 +1082,7 @@
         /**
         * @language zh_CN
         * 返回矩阵位移
-        * @readOnly
+        *  
         * @returns 位移
         */
         public get position(): Vector3D {
@@ -1092,7 +1092,7 @@
         /**
         * @language zh_CN
         * 设置矩阵位移
-        * @writeOnly
+        *  
         * @param value 位移
         */
         public set position(value: Vector3D) {
@@ -1104,7 +1104,7 @@
         /**
         * @language zh_CN
         * 返回矩阵缩放
-        * @readOnly
+        *  
         * @returns 缩放
         */
         public get scale(): Vector3D {
@@ -1114,7 +1114,7 @@
         /**
         * @language zh_CN
         * 以字符串返回矩阵的值
-        * @readOnly
+        *  
         * @returns 字符
         */
         public toString(): string {

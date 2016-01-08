@@ -747,7 +747,7 @@
         /**
         * @language zh_CN
         * 版本号
-        * @readOnly
+        *  
         * @param context3D
         */
         public get version(): string {

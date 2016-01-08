@@ -1,7 +1,7 @@
 ﻿module egret3d {
 
-
      /**
+     * @private
      * @class egret3d.GaussianBlurVerticalPost
      * @classdesc
      * 后期纵向高斯模糊

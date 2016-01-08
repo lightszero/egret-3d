@@ -13,57 +13,57 @@
     export interface ITexture2D {
         
         /**
-        * @readOnly
+        *  
         */
         gpu_index: number;
         
         /**
-        * @readOnly
+        *  
         */
         gpu_border: number;
         
         /**
-        * @readOnly
+        *  
         */
         gpu_texture: any;
         
         /**
-        * @readOnly
+        *  
         */
         gpu_colorformat: number;
         
         /**
-        * @readOnly
+        *  
         */
         gpu_internalformat: InternalFormat;
       
         /**
-        * @readOnly
+        *  
         */
         width: number;
         
         /**
-        * @readOnly
+        *  
         */
         height: number;
         
         /**
-        * @readOnly
+        *  
         */
         image: HTMLImageElement;
         
         /**
-        * @readOnly
+        *  
         */
         mipmapDatas: Array<MipmapData>;
 
         /**
-        * @readOnly
+        *  
         */
         frameBuffer :WebGLFramebuffer;
 
         /**
-        * @readOnly
+        *  
         */
         renderbuffer : WebGLRenderbuffer;
         

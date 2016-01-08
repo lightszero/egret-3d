@@ -18,21 +18,21 @@
         /**
         * @language zh_CN
         * Cube宽度
-        * @readOnly
+        *  
         */
         public width: number = 80;
 
         /**
         * @language zh_CN
         * Cube高度
-        * @readOnly
+        *  
         */
         public height: number = 80;
 
         /**
         * @language zh_CN
         * Cube深度
-        * @readOnly
+        *  
         */
         public depth: number = 80;
 

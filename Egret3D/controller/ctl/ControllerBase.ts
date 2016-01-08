@@ -23,7 +23,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns 返回当前的目标
         */
         public get target(): Object3D {
@@ -33,7 +33,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param val 当前的目标
         */
         public set target(val: Object3D) {
@@ -54,7 +54,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * @returns 是否自动更新
         */
         public get autoUpdate(): boolean {
@@ -64,7 +64,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * @param val 是否自动更新
         */
         public set autoUpdate(val: boolean) {

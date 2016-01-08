@@ -78,12 +78,12 @@
 
         /**
         * @language en_US
-        * @readOnly
+        *  
         * @returns the magnitude of the quaternion object.
         */
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * 返回四元数的大小.
         * @param w
         * @returns 四元数的大小.

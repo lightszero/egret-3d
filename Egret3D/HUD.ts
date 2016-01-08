@@ -141,7 +141,6 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
         * @param value x坐标
         */
         public set x(value: number) {
@@ -151,7 +150,6 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
         * @param value y坐标
         */
         public set y(value: number) {
@@ -161,7 +159,6 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * @returns x坐标
         */
         public get x(): number {
@@ -171,7 +168,6 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * @returns y坐标
         */
         public get y(): number {
@@ -181,7 +177,6 @@
 
        /**
        * @language zh_CN
-       * @writeOnly
        * @param value HUD宽
        */
        public set width(value: number) {
@@ -191,7 +186,6 @@
 
        /**
        * @language zh_CN
-       * @writeOnly
        * @param value HUD高
        */
        public set height(value: number) {
@@ -201,7 +195,6 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * @returns HUD宽
         */
         public get width(): number {
@@ -211,7 +204,6 @@
 
         /**
         * @language zh_CN
-        * @readOnly
         * @returns HUD高
         */
         public get height(): number {

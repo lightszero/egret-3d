@@ -197,7 +197,7 @@
         /**
         * @language zh_CN
         * 返回目标的位置
-        * @readOnly
+        *  
         * @returns 目标的位置
         * @version Egret 3.0
         * @platform Web,Native
@@ -210,7 +210,7 @@
         /**
         * @language zh_CN
         * 设置目标坐标
-        * @writeOnly
+        *  
         * @param val 摄像机看向的目标点
         * @version Egret 3.0
         * @platform Web,Native
@@ -227,7 +227,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * 返回目标对象
         * @returns 目标对象
         * @version Egret 3.0
@@ -240,7 +240,7 @@
 
         /**
         * @language zh_CN
-        * @writeOnly
+        *  
         * 设置目标对象
         * @param val 目标
         * @version Egret 3.0

@@ -23,6 +23,7 @@
          */
         /**
          * @language zh_CN  
+         * 灯光个数
          */
         public lightNum: number = 0;
         /**

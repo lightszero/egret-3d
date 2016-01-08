@@ -20,7 +20,16 @@
         * 1角度为多少弧度
         */
         public static DEGREES_TO_RADIANS: number = Math.PI / 180;
+                                                                                       
+        /**
+        * @private
+        * 1角度为多少弧度
+        */
         public static RAW_DATA_CONTAINER: Float32Array = new Float32Array(16);
+                                                                                       
+        /**
+        * @private
+        */
         public static CALCULATION_MATRIX: Matrix4_4 = new Matrix4_4();
                                                                                        
         /**

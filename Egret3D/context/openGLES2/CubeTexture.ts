@@ -66,10 +66,16 @@
 
         /**
         * @language zh_CN
-        *  
         * 立方体贴图的 下面
         */
         public image_down: HTMLImageElement;
+
+        
+        /**
+        * @language zh_CN
+        * 需要一张贴图来构造CubeTexture
+        * @param cubeTexture 贴图数据
+        */
         constructor(cubeTexture: WebGLTexture) {
             this.gpu_texture = cubeTexture;
         }

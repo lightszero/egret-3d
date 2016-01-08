@@ -84,7 +84,7 @@
 
         /**
         * @language zh_CN
-        * @readOnly
+        *  
         * 单例
         */
         public static get instance(): ShaderSystemTool {
