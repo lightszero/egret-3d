@@ -1,4 +1,4 @@
-﻿class Sample_Character {
+class Sample_Character {
 
     private _view3D: egret3d.View3D;
     private _cameraCtl: egret3d.LookAtController;
@@ -22,9 +22,18 @@
 
         window.requestAnimationFrame(() => this.update());
 
-        egret3d.AssetsManager.getInstance().setRootURL("resource/suoluo/");
-        egret3d.AssetsManager.getInstance().addLoadModel("","hair.esm");
-        egret3d.AssetsManager.getInstance().addLoadModel("","body.esm");
+        egret3d.AssetsManager.getInstance().setRootURL("resource/");
+        egret3d.AssetsManager.getInstance().addLoadModel("","suoluo/hair.esm");
+        egret3d.AssetsManager.getInstance().addLoadModel("", "suoluo/body.esm");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_b.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_l.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_r.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_u.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_d.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("suoluo/suoluomen_cl.png");
+        egret3d.AssetsManager.getInstance().addLoadTexture("suoluo/suoluomen_nm.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("suoluo/suoluomen_sp.jpg");
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE, (e: egret3d.Event3D) => this.initScene(e));
         egret3d.AssetsManager.getInstance().startLoad();
     }
@@ -33,7 +42,18 @@
     private body: egret3d.Mesh;
     private initScene(e: egret3d.Event3D) {
 
-        var sprherMesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.SphereGeometry(5, 25, 25), new egret3d.TextureMaterial());
+        var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
+        var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
+        var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");
+        var sky_r: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_r.jpg");
+        var sky_u: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_u.jpg");
+        var sky_d: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_d.jpg");
+        
+        var skyTexture: egret3d.SkyTexture = new egret3d.SkyTexture(sky_f, sky_b, sky_l, sky_r, sky_u, sky_d);
+        var sky: egret3d.Sky = new egret3d.Sky(skyTexture);
+        this._view3D.sky = sky; 
+
+        var sprherMesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(25, 25, 25), new egret3d.TextureMaterial());
         sprherMesh.x = 120;
         sprherMesh.y = 120;
         sprherMesh.z = -120;
@@ -41,6 +61,8 @@
         var directLight: egret3d.DirectLight = new egret3d.DirectLight(sprherMesh.position.clone());
         directLight.position = sprherMesh.position;
         directLight.diffuse = 0xffffff;
+        directLight.halfColor = 0xffffff;
+        directLight.halfIntensity = 1.0;
         lightGroup.addDirectLight(directLight);
         egret3d.ShadowRender.castShadowLight = directLight; 
 
@@ -53,16 +75,16 @@
         planeMesh.material.specularColor = 0xffffff; 
         planeMesh.material.specularPower = 0.5;
         planeMesh.material.ambientColor = 0x00235c; 
-
         planeMesh.material.shininess = 10.0;
 
-        //planeMesh.material.castShadow = true;
-        //planeMesh.material.acceptShadow = true; 
-
-        //this._view3D.addChild3D(planeMesh);
-
+        var suoluo_texture_d:egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("suoluo/suoluomen_cl.png");
+        var suoluo_texture_n: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("suoluo/suoluomen_nm.jpg");
+        var suoluo_texture_s: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("suoluo/suoluomen_sp.jpg");
         
-        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("hair.esm");
+        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/hair.esm");
+        mesh.material.diffuseTexture = suoluo_texture_d;
+        mesh.material.normalTexture = suoluo_texture_n;
+        mesh.material.specularTexture = suoluo_texture_s;
         mesh.material.lightGroup = lightGroup; 
         mesh.material.castShadow = true;
         mesh.material.ambientColor = 0x00235c; 
@@ -70,7 +92,10 @@
         mesh.material.shadowMapingMethod = this._shadowMaping;
         this._view3D.addChild3D(mesh);
 
-        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("body.esm");
+        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/body.esm");
+        mesh.material.diffuseTexture = suoluo_texture_d;
+        mesh.material.normalTexture = suoluo_texture_n;
+        mesh.material.specularTexture = suoluo_texture_s;
         mesh.material.lightGroup = lightGroup; 
         mesh.material.castShadow = true;
         mesh.material.ambientColor = 0x00235c; 
@@ -80,12 +105,17 @@
         //mesh.material.acceptShadow = true; 
         mesh.material.shadowMapingMethod = this._shadowMaping;
         mesh.material.bothside = true; 
+
+        //var env: egret3d.SpecularEnvironmentMappingMethod = new egret3d.SpecularEnvironmentMappingMethod(skyTexture);
+        //mesh.material.addDiffusePassEffectMothod(env);
         //var wireframeMesh: egret3d.WireframeMesh = new egret3d.WireframeMesh();
         //wireframeMesh.creatByMesh(mesh);
         //this._view3D.addWireframe(wireframeMesh);
         this.body = mesh; 
        
         this._view3D.addChild3D(mesh);
+        this._view3D.addChild3D(sprherMesh);
+        
     }
 
     private time: number = 0;

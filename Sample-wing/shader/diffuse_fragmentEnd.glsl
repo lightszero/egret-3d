@@ -1,4 +1,8 @@
 void main() {
+
+	//float lambertTerm = min(1.0,max(0.0,dot(normal,normalize(eyedir)))) * 0.5 + 0.5;		  
+	//diffuse.xyz = diffuse.xyz * lambertTerm  ;
+
 	ttt.xyz = materialSource.ambient.xyz * materialSource.ambientPower;
 	light.xyz = light.xyz + ttt.xyz;
 	specular.xyz = specular.w * (specular.xyz * materialSource.specular * materialSource.specularPower);
