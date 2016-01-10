@@ -12,7 +12,7 @@
         private static scriptSource: Array<string>;
         private static importList: Array<string> ;
         private static _xhr: XMLHttpRequest ;
-        private static _libUrl: string = "/js/Egret3D/egret3D.lib.js";
+        private static _libUrl: string = "/js/Egret3D/Egret3D.lib.js";
         private static _complete:Function ;
         private static getXHR(): any {
             var xhr: any = null;

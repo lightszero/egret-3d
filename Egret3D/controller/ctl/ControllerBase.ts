@@ -11,14 +11,16 @@
     export class ControllerBase {
         protected _autoUpdate:boolean = true;
         protected _target: Object3D;
-
+        protected _lookAtObject: Object3D;
+        protected _origin:Vector3D = new Vector3D(0.0, 0.0, 0.0);
         /**
         * @language zh_CN
         * 构造函数
         * @param targetObject 控制的目标
         */
-        constructor(targetObject: Object3D = null) {
+        constructor(targetObject: Object3D = null,lookAtObject:Object3D = null) {
             this._target = targetObject;
+            this._lookAtObject = lookAtObject;
         }
 
         /**

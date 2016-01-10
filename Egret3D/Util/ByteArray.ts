@@ -113,11 +113,14 @@ module egret3d {
             return this.data;
         }
 
+        /**
+         * @private
+         */
         public uncompress(type: string = "7z") {
-            var decoder: nid.LZMA = new nid.LZMA();
-            var tmp: ArrayBuffer = decoder.decode(new Uint8Array(this.data.buffer)).buffer;
-            this.buffer = tmp; 
-            decoder = null;
+            //var decoder: nid.LZMA = new nid.LZMA();
+            //var tmp: ArrayBuffer = decoder.decode(new Uint8Array(this.data.buffer)).buffer;
+            //this.buffer = tmp; 
+            //decoder = null;
         }
 
         /**

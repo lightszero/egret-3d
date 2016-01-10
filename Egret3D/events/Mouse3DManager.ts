@@ -57,6 +57,7 @@
 
 
         private onTouchMove(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -67,6 +68,7 @@
             }
         }
         private onTouchEnd(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -77,6 +79,7 @@
             }
         }
         private onTouchStart(e: TouchEvent) {
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -88,6 +91,7 @@
         }
         private onMouseClick(code: number) {
 
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -100,6 +104,7 @@
 
         private onMouseDown(code: number) {
 
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
 
@@ -113,6 +118,7 @@
 
         private onMouseUp(code: number) {
 
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {
@@ -126,6 +132,7 @@
 
         private onMouseMove(e: MouseEvent) {
 
+            if (!this._collect) return;
             var ret: Array<Object3D> = Picker.pickObject3DList(this._camera, this._collect.mousePickList);
             var event: Event3D;
             for (var i: number = 0; i < ret.length; i++) {

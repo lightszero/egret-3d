@@ -248,7 +248,7 @@
             if (!this.context3D || (this.context3D && !this.context3D.isLost)) {
                 switch (GPU_CONFIG) {
                     case Egret3DDrive.OpenGLES_2_0:
-                        var tapContext3D: WebGLRenderingContext = Egret3DDrive.requstWEBGL(canvasRec)
+                        var tapContext3D: WebGLRenderingContext = Egret3DDrive.requestWEBGL(canvasRec)
                         Egret3DDrive.context3D = new Context3DChild_OpenGLES_2_0(tapContext3D);
 
 
@@ -325,8 +325,13 @@
             ShaderSystemTool.regist(call);
         }
 
-        private static requstWEBGL(viewPort: Rectangle): WebGLRenderingContext {
+        private static requestWEBGL(viewPort: Rectangle): WebGLRenderingContext {
             Egret3DDrive.canvas = document.createElement("canvas");
+            Egret3DDrive.canvas.style.position = "absolute";
+            Egret3DDrive.canvas.style.zIndex = "-1";
+            Egret3DDrive.canvas.style.left = "0px";
+            Egret3DDrive.canvas.style.top = "0px";
+         
             document.body.appendChild(this.canvas);
             Egret3DDrive.canvas.id = "egret3D";
             Egret3DDrive.canvas["x"] = viewPort.x;

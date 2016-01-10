@@ -125,22 +125,14 @@
             context3D.gl.blendFunc(Egret3DDrive.ONE, Egret3DDrive.ZERO);
 
             context3D.bindVertexBuffer(this.sphereGeometry.sharedVertexBuffer);
-
             context3D.vertexAttribPointer(this.usage.program3D, this.usage.attribute_position.uniformIndex, 3, Egret3DDrive.FLOAT, false, this.sphereGeometry.vertexSizeInBytes, 0);
-            context3D.vertexAttribPointer(this.usage.program3D, this.usage.attribute_normal.uniformIndex, 3, Egret3DDrive.FLOAT, false, this.sphereGeometry.vertexSizeInBytes, 12);
             context3D.vertexAttribPointer(this.usage.program3D, this.usage.attribute_uv0.uniformIndex, 2, Egret3DDrive.FLOAT, false, this.sphereGeometry.vertexSizeInBytes, 52 );
 
             this.skyMatrix.identity();
             this.skyMatrix.appendTranslation(camera.x, camera.y, camera.z);
 
-            this.normalMatrix.copyFrom(this.skyMatrix);
-            this.normalMatrix.invert();
-            this.normalMatrix.transpose();
-            this.normalMatrix.appendScale(1, 1, 1);
-
             context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera.viewProjectionMatrix.rawData);
             context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.skyMatrix.rawData );
-            context3D.uniformMatrix4fv(this.usage.uniform_normalMatrix.uniformIndex, false, this.normalMatrix.rawData);
 
             ///--------texture----------------
             var sampler2D: GLSL.Sampler2D;
