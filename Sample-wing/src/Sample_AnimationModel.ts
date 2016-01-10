@@ -1,4 +1,4 @@
-﻿class Sample_AnimationModel extends Sample_CreateSky {
+class Sample_AnimationModel extends Sample_CreateSky {
 
     protected _xiaoQiao: egret3d.Mesh = null;
 
@@ -49,7 +49,7 @@
 
         this._xiaoQiao = egret3d.AssetsManager.getInstance().findAnimModel("resource/xiaoqiao/xiaoqiao.esm");
 
-        this._xiaoQiao.y = -80;
+        //this._xiaoQiao.y = -80;
 
         this._view3D.addChild3D(this._xiaoQiao);
 
