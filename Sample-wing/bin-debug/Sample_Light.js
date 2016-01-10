@@ -1,91 +1,75 @@
 var Sample_Light = (function () {
-    function Sample_Light() {
+    function Sample_Light(width, height) {
         var _this = this;
-        this.time = 0;
-        this.delay = 0;
-        this._viewPort = new egret3d.Rectangle(0, 0, window.innerWidth, window.innerHeight);
-        egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, new egret3d.Rectangle(0, 0, this._viewPort.width, this._viewPort.height), function () { return _this.init3D(); });
+        if (width === void 0) { width = 800; }
+        if (height === void 0) { height = 600; }
+        this._time = 0;
+        this._delay = 0;
+        this._timeDate = null;
+        this._view3D = null;
+        this._viewPort = null;
+        this._cameraCtl = null;
+        this._viewPort = new egret3d.Rectangle(0, 0, width, height);
+        egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, this._viewPort, function () { return _this.onInit3D(); });
     }
     var d = __define,c=Sample_Light;p=c.prototype;
-    p.init3D = function () {
+    p.onInit3D = function () {
         var _this = this;
+        //创建View3D对象;
         this._view3D = new egret3d.View3D(this._viewPort);
-        this._view3D.useShadow = true;
-        this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D, new egret3d.Object3D());
-        this._cameraCtl.setEyesLength(400);
-        this.initScene();
-        window.requestAnimationFrame(function () { return _this.update(); });
-        egret3d.Input.instance.addListenerKeyDown(function (e) { return _this.keyDown(e); });
+        //创建像机控制器;
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D, null);
+        this._cameraCtl.distance = 1500;
+        //View3D初始化完成;
+        this.onView3DInitComplete();
+        egret3d.AssetsManager.getInstance().setRootURL("resource/");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_b.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_l.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_r.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_u.jpg");
+        egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_d.jpg");
+        egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE, function (e) { return _this.initScene(e); });
+        egret3d.AssetsManager.getInstance().startLoad();
     };
-    p.keyDown = function (e) {
-        switch (e) {
-            case egret3d.KeyCode.Key_L:
-                this._shadowMaping.bias += 0.00001;
-                break;
-            case egret3d.KeyCode.Key_K:
-                this._shadowMaping.bias -= 0.00001;
-                break;
-            case egret3d.KeyCode.Key_H:
-                this._shadowMaping.bias += 0.001;
-                break;
-            case egret3d.KeyCode.Key_J:
-                this._shadowMaping.bias -= 0.001;
-                break;
-        }
-    };
-    p.initScene = function () {
-        var sprherMesh = new egret3d.Mesh(new egret3d.SphereGeometry(5, 25, 25), new egret3d.TextureMaterial());
-        sprherMesh.x = 120;
-        sprherMesh.y = 120;
-        sprherMesh.z = 120;
-        var lightGroup = new egret3d.LightGroup();
-        var directLight = new egret3d.DirectLight(sprherMesh.position.clone());
-        directLight.position = sprherMesh.position;
-        directLight.diffuse = 0xffffff;
-        lightGroup.addDirectLight(directLight);
-        egret3d.ShadowRender.castShadowLight = directLight;
-        var cubeMesh = new egret3d.Mesh(new egret3d.CubeGeometry(50, 50, 50), new egret3d.TextureMaterial());
-        var planeMesh = new egret3d.Mesh(new egret3d.PlaneGeometry(1000, 1000, 1, 1, 10, 10), new egret3d.TextureMaterial());
-        cubeMesh.material.lightGroup = lightGroup;
-        this._shadowMaping = new egret3d.ShadowMapingMethod();
-        for (var i = 0; i < 1; i++) {
-            var mesh = cubeMesh.clone();
-            mesh.material.acceptShadow = true;
-            mesh.material.castShadow = true;
-            mesh.material.lightGroup = lightGroup;
-            mesh.material.shadowMapingMethod = this._shadowMaping;
-            mesh.y = 25;
-            this._view3D.addChild3D(mesh);
-            var wireframeMesh = new egret3d.WireframeMesh();
-            wireframeMesh.creatByMesh(mesh);
-            this._view3D.addWireframe(wireframeMesh);
-        }
-        planeMesh.material.lightGroup = lightGroup;
-        planeMesh.material.shadowMapingMethod = this._shadowMaping;
-        cubeMesh.material.specularColor = 0xffffff;
-        planeMesh.material.specularColor = 0xffffff;
-        cubeMesh.material.specularPower = 0.5;
-        planeMesh.material.specularPower = 0.5;
-        cubeMesh.material.ambientColor = 0x00235c;
-        planeMesh.material.ambientColor = 0x00235c;
-        cubeMesh.material.shininess = 10.0;
-        planeMesh.material.shininess = 10.0;
-        planeMesh.material.castShadow = true;
-        cubeMesh.material.acceptShadow = true;
-        planeMesh.material.acceptShadow = true;
-        this._view3D.addChild3D(sprherMesh);
-        this._view3D.addChild3D(planeMesh);
-    };
-    p.update = function () {
+    p.initScene = function (e) {
         var _this = this;
-        this.timeDate = new Date();
-        this.delay = this.timeDate.getTime() - this.time;
-        this.time = this.timeDate.getTime();
+        var sky_f = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
+        var sky_b = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
+        var sky_l = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");
+        var sky_r = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_r.jpg");
+        var sky_u = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_u.jpg");
+        var sky_d = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_d.jpg");
+        var skyTexture = new egret3d.SkyTexture(sky_b, sky_f, sky_l, sky_r, sky_u, sky_d);
+        var sky = new egret3d.Sky(skyTexture);
+        this._view3D.sky = sky;
+        var directLight = new egret3d.DirectLight(new egret3d.Vector3D(-0.3, 1.0, -0.2));
+        directLight.diffuse = 0xffcfcf;
+        directLight.halfColor = 0xccccff;
+        directLight.halfIntensity = 0.1;
+        var lightGroup = new egret3d.LightGroup();
+        lightGroup.addDirectLight(directLight);
+        var material = new egret3d.TextureMaterial(null);
+        material.ambientColor = 0xcccccc;
+        material.ambientPower = 0.1;
+        material.lightGroup = lightGroup;
+        var mesh = new egret3d.Mesh(new egret3d.CubeGeometry(300, 300, 300), material);
+        this._view3D.addChild3D(mesh);
+        this._time = new Date().getTime();
+        requestAnimationFrame(function () { return _this.onUpdate(); });
+    };
+    p.onView3DInitComplete = function () {
+    };
+    p.onUpdate = function () {
+        var _this = this;
+        this._timeDate = new Date();
+        this._delay = this._timeDate.getTime() - this._time;
+        this._time = this._timeDate.getTime();
         this._cameraCtl.update();
-        this._view3D.renden(this.time, this.delay);
-        window.requestAnimationFrame(function () { return _this.update(); });
+        this._view3D.renden(this._time, this._delay);
+        requestAnimationFrame(function () { return _this.onUpdate(); });
     };
     return Sample_Light;
 })();
 egret.registerClass(Sample_Light,"Sample_Light");
+//# sourceMappingURL=Sample_Light.js.map

@@ -36,10 +36,11 @@ var Sample_AnimationModel = (function (_super) {
     p.onLoadComplete = function (e) {
         var _this = this;
         this._xiaoQiao = egret3d.AssetsManager.getInstance().findAnimModel("resource/xiaoqiao/xiaoqiao.esm");
-        this._xiaoQiao.y = -80;
+        //this._xiaoQiao.y = -80;
         this._view3D.addChild3D(this._xiaoQiao);
         egret3d.Input.instance.addListenerKeyUp(function (keyCode) { return _this.onKeyUp(keyCode); });
     };
     return Sample_AnimationModel;
 })(Sample_CreateSky);
 egret.registerClass(Sample_AnimationModel,"Sample_AnimationModel");
+//# sourceMappingURL=Sample_AnimationModel.js.map

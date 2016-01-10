@@ -47,3 +47,4 @@ var Sample_ModelTexture = (function () {
     return Sample_ModelTexture;
 })();
 egret.registerClass(Sample_ModelTexture,"Sample_ModelTexture");
+//# sourceMappingURL=Sample_ModelTexture.js.map

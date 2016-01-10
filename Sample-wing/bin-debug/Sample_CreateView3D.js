@@ -40,3 +40,4 @@ var Sample_CreateView3D = (function () {
     return Sample_CreateView3D;
 })();
 egret.registerClass(Sample_CreateView3D,"Sample_CreateView3D");
+//# sourceMappingURL=Sample_CreateView3D.js.map

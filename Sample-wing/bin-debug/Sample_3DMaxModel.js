@@ -41,3 +41,4 @@ var Sample_3DMaxModel = (function () {
     return Sample_3DMaxModel;
 })();
 egret.registerClass(Sample_3DMaxModel,"Sample_3DMaxModel");
+//# sourceMappingURL=Sample_3DMaxModel.js.map
