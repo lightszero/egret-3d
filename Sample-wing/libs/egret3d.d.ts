@@ -4414,6 +4414,7 @@ declare module egret3d {
          * @param context3D
          */
         upload(context3D: Context3D): void;
+        uploadForcing(context3D: Context3D): void;
         /**
          * @language zh_CN
          * 获取宽度值

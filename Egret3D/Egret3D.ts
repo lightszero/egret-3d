@@ -312,7 +312,7 @@
                         ContextSamplerType.TEXTURE_4 = tapContext3D.TEXTURE4;
                         ContextSamplerType.TEXTURE_5 = tapContext3D.TEXTURE5;
                         ContextSamplerType.TEXTURE_6 = tapContext3D.TEXTURE6;
-                        ContextSamplerType.TEXTURE_7 = tapContext3D.TEXTURE7;
+                        ContextSamplerType.TEXTURE_7 = tapContext3D.TEXTURE7; 
                         ContextSamplerType.TEXTURE_8 = tapContext3D.TEXTURE8;
 
                         break;

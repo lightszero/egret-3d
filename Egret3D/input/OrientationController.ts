@@ -81,8 +81,8 @@
         */
         public orientationchangeHandler() {
 
-            if (window.orientation != undefined)
-                this.screenOrientation = <number>window.orientation ;
+            //if (window.orientation != undefined)
+              //  this.screenOrientation = <number>window.orientation ;
             //.this.state = window.orientation;
         }
 
@@ -152,8 +152,8 @@
             // this returns 90 if width is greater then height 
             // and window orientation is undefined OR 0
             // if (!window.orientation && window.innerWidth > window.innerHeight)
-            //   return 90;
-            return <number>window.orientation || 0;
+            //   return 90;<number>window.orientation ||
+            return  0;
         }
 
         private degtorad = Math.PI / 180; // Degree-to-Radian conversion
