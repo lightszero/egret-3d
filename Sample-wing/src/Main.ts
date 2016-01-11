@@ -10,7 +10,7 @@ class Main extends egret.DisplayObjectContainer {
         //new Sample_Light();
         //new Sample_MaterialBlend();
         //new Sample_MousePick();
-        //new Sample_AnimationModel();
+        new Sample_AnimationModel();
        
         
         //第二部分
@@ -18,7 +18,7 @@ class Main extends egret.DisplayObjectContainer {
         //new Sample_BlendTerrain();
         //new Sample_ModelTexture();
         //new Sample_Character();
-        new Sample_360Photo();
+        //new Sample_360Photo();
         
     }
 }

@@ -1,7 +1,7 @@
 class Sample_Character {
 
     private _view3D: egret3d.View3D;
-    private _cameraCtl: egret3d.LookAtController;
+    private _cameraCtl: egret3d.HoverController;
     private _viewPort: egret3d.Rectangle;
 
     private _shadowMaping: egret3d.ShadowMapingMethod;
@@ -16,9 +16,7 @@ class Sample_Character {
         this._view3D.useShadow = true;
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
 
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D, new egret3d.Object3D());
-
-        this._cameraCtl.setEyesLength(400);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null);
 
         window.requestAnimationFrame(() => this.update());
 
