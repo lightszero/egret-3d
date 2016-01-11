@@ -101,7 +101,7 @@
 		"material/TextureMaterial.ts"
 		"core/traverse/Frustum.ts"
 		"core/node/Object3D.ts"
-		"core/node/Billborad.ts"
+		"core/node/Billboard.ts"
 		"core/node/SphereSky.ts"
 		"core/node/Sky.ts"
 		"core/node/Entity.ts"

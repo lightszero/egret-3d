@@ -1,17 +1,17 @@
 ﻿module egret3d {
     /**
      * @language zh_CN
-     * @class egret3d.Billborad
+     * @class egret3d.Billboard
      * @classdesc
      * 公告板渲染对象 始终面朝摄像机的面板
      *
      * 示例:创建一个棋盘格材质的公告板在场景中
-     * @includeExample egret3d/core/node/Billborad.ts
+     * @includeExample egret3d/core/node/Billboard.ts
      *
      * @version Egret 3.0
      * @platform Web,Native
      */
-    export class Billborad extends Object3D{
+    export class Billboard extends Object3D{
 
         /**
          * @language zh_CN

@@ -92,7 +92,7 @@
 ///import Egret3D/material/TextureMaterial.js
 ///import Egret3D/core/traverse/Frustum.js
 ///import Egret3D/core/node/Object3D.js
-///import Egret3D/core/node/Billborad.js
+///import Egret3D/core/node/Billboard.js
 ///import Egret3D/core/node/SphereSky.js
 ///import Egret3D/core/node/Sky.js
 ///import Egret3D/core/node/Entity.js
