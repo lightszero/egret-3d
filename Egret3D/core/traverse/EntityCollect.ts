@@ -320,7 +320,7 @@
                 }
             }
 
-            if (object3d.mousePickEnable) {
+            if (object3d.mouseEnable) {
                 this.mousePickList.push(object3d);
             }
 
