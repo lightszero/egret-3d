@@ -179,7 +179,7 @@
         * @param zf 远裁剪面位置Z值.
         */
         public orthoOffCenter(l: number, r: number, b: number, t: number, zn: number, zf: number) {
-            this.rawData[0] = 2 / (r - 1);
+            this.rawData[0] = 2 / (r - l);
             this.rawData[1] = 0;
             this.rawData[2] = 0;
             this.rawData[3] = 0;
@@ -194,7 +194,7 @@
             this.rawData[10] = 1 / (zf - zn);
             this.rawData[11] = 0;
 
-            this.rawData[12] = (1 + r) / (1 - r);
+            this.rawData[12] = (l + r) / (l - r);
             this.rawData[13] = (t + b) / (b - t);
             this.rawData[14] = zn / (zn - zf);
             this.rawData[15] = 1;
