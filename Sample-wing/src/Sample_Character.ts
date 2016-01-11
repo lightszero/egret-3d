@@ -21,8 +21,8 @@ class Sample_Character {
         window.requestAnimationFrame(() => this.update());
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
-        egret3d.AssetsManager.getInstance().addLoadModel("","suoluo/hair.esm");
-        egret3d.AssetsManager.getInstance().addLoadModel("", "suoluo/body.esm");
+        egret3d.AssetsManager.getInstance().addLoadModel("suoluo/","hair.esm");
+        egret3d.AssetsManager.getInstance().addLoadModel("suoluo/", "body.esm");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_b.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_l.jpg");
@@ -81,8 +81,8 @@ class Sample_Character {
         
         var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/hair.esm");
         mesh.material.diffuseTexture = suoluo_texture_d;
-        mesh.material.normalTexture = suoluo_texture_n;
-        mesh.material.specularTexture = suoluo_texture_s;
+        mesh.material.normalTexture = null;
+        mesh.material.specularTexture = null;
         mesh.material.lightGroup = lightGroup; 
         mesh.material.castShadow = true;
         mesh.material.ambientColor = 0x00235c; 
@@ -92,8 +92,8 @@ class Sample_Character {
 
         var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/body.esm");
         mesh.material.diffuseTexture = suoluo_texture_d;
-        mesh.material.normalTexture = suoluo_texture_n;
-        mesh.material.specularTexture = suoluo_texture_s;
+        mesh.material.normalTexture = null;
+        mesh.material.specularTexture = null;
         mesh.material.lightGroup = lightGroup; 
         mesh.material.castShadow = true;
         mesh.material.ambientColor = 0x00235c; 
