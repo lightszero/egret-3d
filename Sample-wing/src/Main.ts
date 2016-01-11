@@ -3,10 +3,6 @@ class Main extends egret.DisplayObjectContainer {
     public constructor() {
         super();
         
-        var text: egret.TextField = new egret.TextField();
-        text.text = "Egret3D Sample";
-        this.stage.addChild( text);
-        
         //第一部分
         //new Sample_CreateView3D();
         //new Sample_CreateSky();
@@ -22,7 +18,7 @@ class Main extends egret.DisplayObjectContainer {
         //new Sample_BlendTerrain();
         //new Sample_ModelTexture();
         //new Sample_Character();
-        //new Sample_360Photo();
+        new Sample_360Photo();
         
     }
 }

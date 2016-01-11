@@ -203,10 +203,10 @@ var egret3d;
         };
         Egret3DDrive.requestWEBGL = function (viewPort) {
             Egret3DDrive.canvas = document.createElement("canvas");
-            Egret3DDrive.canvas.style.position = "absolute";
-            Egret3DDrive.canvas.style.zIndex = "-1";
-            Egret3DDrive.canvas.style.left = "0px";
-            Egret3DDrive.canvas.style.top = "0px";
+            //Egret3DDrive.canvas.style.position = "absolute";
+            //Egret3DDrive.canvas.style.zIndex = "-1";
+            //Egret3DDrive.canvas.style.left = "0px";
+            //Egret3DDrive.canvas.style.top = "0px";
             document.body.appendChild(this.canvas);
             Egret3DDrive.canvas.id = "egret3D";
             Egret3DDrive.canvas["x"] = viewPort.x;
@@ -5491,7 +5491,7 @@ var egret3d;
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/TextureBase.ts
+    * @includeExample texture/TextureBase.ts
     */
     var TextureBase = (function () {
         /**
@@ -5583,7 +5583,7 @@ var egret3d;
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/RenderTexture.ts
+    * @includeExample texture/RenderTexture.ts
     */
     var RenderTexture = (function (_super) {
         __extends(RenderTexture, _super);
@@ -5640,7 +5640,7 @@ var egret3d;
     * @see egret3d.Sky
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/SkyTexture.ts
+    * @includeExample texture/SkyTexture.ts
     */
     var SkyTexture = (function (_super) {
         __extends(SkyTexture, _super);
@@ -5711,7 +5711,7 @@ var egret3d;
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/ImageTexture.ts
+    * @includeExample texture/ImageTexture.ts
     */
     var ImageTexture = (function (_super) {
         __extends(ImageTexture, _super);
@@ -5764,7 +5764,7 @@ var egret3d;
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/CheckerboardTexture.ts
+    * @includeExample texture/CheckerboardTexture.ts
     */
     var CheckerboardTexture = (function (_super) {
         __extends(CheckerboardTexture, _super);
@@ -5844,7 +5844,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimNodeBase.ts
+     * @includeExample animation/AnimNodeBase.ts
      */
     var AnimNodeBase = (function () {
         function AnimNodeBase() {
@@ -5872,7 +5872,7 @@ var egret3d;
      * 动画功能的收集，整理，初始化容器，一般在粒子系统里使用
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimaNodeCollection.ts
+     * @includeExample animation/AnimaNodeCollection.ts
      */
     var AnimaNodeCollection = (function () {
         /**
@@ -5987,7 +5987,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Joint.ts
+     * @includeExample animation/skeletonAnimation/Joint.ts
      */
     var Joint = (function () {
         /**
@@ -6133,7 +6133,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Skeleton.ts
+     * @includeExample animation/skeletonAnimation/Skeleton.ts
      */
     var Skeleton = (function () {
         function Skeleton(initialSkeleton) {
@@ -6409,7 +6409,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimationClip.ts
+     * @includeExample animation/skeletonAnimation/SkeletonAnimationClip.ts
      */
     var SkeletonAnimationClip = (function () {
         function SkeletonAnimationClip(animName) {
@@ -6718,7 +6718,7 @@ var egret3d;
      * @see egret3d.SkeletonAnimationClip
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimation.ts
+     * @includeExample animation/skeletonAnimation/SkeletonAnimation.ts
      */
     var SkeletonAnimation = (function (_super) {
         __extends(SkeletonAnimation, _super);
@@ -14910,18 +14910,18 @@ var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
-     * @class egret3d.Billborad
+     * @class egret3d.Billboard
      * @classdesc
      * 公告板渲染对象 始终面朝摄像机的面板
      *
      * 示例:创建一个棋盘格材质的公告板在场景中
-     * @includeExample egret3d/core/node/Billborad.ts
+     * @includeExample core/node/Billboard.ts
      *
      * @version Egret 3.0
      * @platform Web,Native
      */
-    var Billborad = (function (_super) {
-        __extends(Billborad, _super);
+    var Billboard = (function (_super) {
+        __extends(Billboard, _super);
         /**
          * @language zh_CN
          * 指定材质，和公告板宽、高，构建一个公告板
@@ -14931,7 +14931,7 @@ var egret3d;
          * @version Egret 3.0
          * @platform Web,Native
          */
-        function Billborad(material, width, height) {
+        function Billboard(material, width, height) {
             if (width === void 0) { width = 100; }
             if (height === void 0) { height = 100; }
             _super.call(this);
@@ -14948,14 +14948,14 @@ var egret3d;
         * @version Egret 3.0
         * @platform Web,Native
         */
-        Billborad.prototype.update = function (camera, time, delay) {
+        Billboard.prototype.update = function (camera, time, delay) {
             this._qut.fromEulerAngles(-90, 0, 0);
             this._qut.multiply(camera.orientation, this._qut);
             this.orientation = this._qut;
         };
-        return Billborad;
+        return Billboard;
     })(egret3d.Object3D);
-    egret3d.Billborad = Billborad;
+    egret3d.Billboard = Billboard;
 })(egret3d || (egret3d = {}));
 
 var egret3d;
@@ -15086,7 +15086,7 @@ var egret3d;
     * 示例:
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/core/node/Sky.ts
+    * @includeExample core/node/Sky.ts
     */
     var Sky = (function () {
         /**
@@ -15288,7 +15288,7 @@ var egret3d;
     * @see egret3d.core.traverse.Frustum
     * @see egret3d.geom.Matrix4_4
     *
-    * @includeExample egret3d/camera/Camera3D.ts
+    * @includeExample camera/Camera3D.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -15955,6 +15955,7 @@ var egret3d;
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
+    * @includeExample lights/DirectLight.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -16059,6 +16060,7 @@ var egret3d;
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
+    * @includeExample lights/PointLight.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -17357,7 +17359,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/GeometryData.ts
+     * @includeExample geometry/GeometryData.ts
      */
     var GeometryData = (function () {
         function GeometryData() {
@@ -17963,7 +17965,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/GeometryBase.ts
+     * @includeExample geometry/GeometryBase.ts
      */
     var GeometryBase = (function () {
         /**
@@ -18126,7 +18128,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SubGeometry.ts
+     * @includeExample geometry/SubGeometry.ts
      */
     var SubGeometry = (function (_super) {
         __extends(SubGeometry, _super);
@@ -18172,7 +18174,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CubeGeometry.ts
+     * @includeExample geometry/CubeGeometry.ts
      */
     var CubeGeometry = (function (_super) {
         __extends(CubeGeometry, _super);
@@ -18247,7 +18249,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SphereGeometry.ts
+     * @includeExample geometry/SphereGeometry.ts
      */
     var SphereGeometry = (function (_super) {
         __extends(SphereGeometry, _super);
@@ -18392,7 +18394,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/PlaneGeometry.ts
+     * @includeExample geometry/PlaneGeometry.ts
      */
     var PlaneGeometry = (function (_super) {
         __extends(PlaneGeometry, _super);
@@ -18503,7 +18505,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CylinderGeometry.ts
+     * @includeExample geometry/CylinderGeometry.ts
      */
     var CylinderGeometry = (function (_super) {
         __extends(CylinderGeometry, _super);
@@ -18566,7 +18568,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/FaceData.ts
+     * @includeExample geometry/FaceData.ts
      */
     var FaceData = (function () {
         function FaceData() {
@@ -18621,7 +18623,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SkinGeometry.ts
+     * @includeExample geometry/SkinGeometry.ts
      */
     var SkinGeometry = (function (_super) {
         __extends(SkinGeometry, _super);
@@ -18668,7 +18670,7 @@ var egret3d;
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/ElevationGeometry.ts
+     * @includeExample geometry/ElevationGeometry.ts
      */
     var ElevationGeometry = (function (_super) {
         __extends(ElevationGeometry, _super);
@@ -18937,7 +18939,7 @@ var egret3d;
     * @see egret3d.animation.IAnimation
     *
     * 示例:
-    * @includeExample egret3d/core/node/Mesh.ts
+    * @includeExample core/node/Mesh.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -21468,7 +21470,7 @@ var egret3d;
     * @see egret3d.core.PickType
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
-    * @includeExample egret3d/core/traverse/Picker.ts
+    * @includeExample core/traverse/Picker.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -21628,7 +21630,7 @@ var egret3d;
     * 3.滑动鼠标滚轮可以控制摄像机的视距.
     *
     * 示例:
-    * @includeExample egret3d/controller/ctl/LookAtController.ts
+    * @includeExample controller/ctl/LookAtController.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -23874,7 +23876,7 @@ var egret3d;
      * @classdesc
      *
      * 线渲染把两个顶点之间以线渲染的形式渲染出来
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      *
@@ -23925,7 +23927,7 @@ var egret3d;
      * @classdesc
      *
      * 模型线框网格,以线框形式渲染模型
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      */

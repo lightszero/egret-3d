@@ -4360,7 +4360,7 @@ declare module egret3d {
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/TextureBase.ts
+    * @includeExample texture/TextureBase.ts
     */
     class TextureBase {
         /**
@@ -4440,7 +4440,7 @@ declare module egret3d {
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/RenderTexture.ts
+    * @includeExample texture/RenderTexture.ts
     */
     class RenderTexture extends TextureBase {
         /**
@@ -4484,7 +4484,7 @@ declare module egret3d {
     * @see egret3d.Sky
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/SkyTexture.ts
+    * @includeExample texture/SkyTexture.ts
     */
     class SkyTexture extends TextureBase {
         private image_front;
@@ -4532,7 +4532,7 @@ declare module egret3d {
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/ImageTexture.ts
+    * @includeExample texture/ImageTexture.ts
     */
     class ImageTexture extends TextureBase {
         /**
@@ -4570,7 +4570,7 @@ declare module egret3d {
     *
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/texture/CheckerboardTexture.ts
+    * @includeExample texture/CheckerboardTexture.ts
     */
     class CheckerboardTexture extends TextureBase {
         /**
@@ -4606,7 +4606,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/IAnimation.ts
+     * @includeExample animation/IAnimation.ts
      */
     interface IAnimation {
         /**
@@ -4697,7 +4697,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimNodeBase.ts
+     * @includeExample animation/AnimNodeBase.ts
      */
     class AnimNodeBase {
         /**
@@ -4761,7 +4761,7 @@ declare module egret3d {
      * 动画功能的收集，整理，初始化容器，一般在粒子系统里使用
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimaNodeCollection.ts
+     * @includeExample animation/AnimaNodeCollection.ts
      */
     class AnimaNodeCollection {
         /**
@@ -4852,7 +4852,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Joint.ts
+     * @includeExample animation/skeletonAnimation/Joint.ts
      */
     class Joint {
         /**
@@ -4956,7 +4956,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Skeleton.ts
+     * @includeExample animation/skeletonAnimation/Skeleton.ts
      */
     class Skeleton {
         /**
@@ -5077,7 +5077,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimationClip.ts
+     * @includeExample animation/skeletonAnimation/SkeletonAnimationClip.ts
      */
     class SkeletonAnimationClip {
         /**
@@ -5227,7 +5227,7 @@ declare module egret3d {
      * @see egret3d.SkeletonAnimationClip
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimation.ts
+     * @includeExample animation/skeletonAnimation/SkeletonAnimation.ts
      */
     class SkeletonAnimation extends EventDispatcher implements IAnimation {
         /**
@@ -10360,17 +10360,17 @@ declare module egret3d {
 declare module egret3d {
     /**
      * @language zh_CN
-     * @class egret3d.Billborad
+     * @class egret3d.Billboard
      * @classdesc
      * 公告板渲染对象 始终面朝摄像机的面板
      *
      * 示例:创建一个棋盘格材质的公告板在场景中
-     * @includeExample egret3d/core/node/Billborad.ts
+     * @includeExample core/node/Billboard.ts
      *
      * @version Egret 3.0
      * @platform Web,Native
      */
-    class Billborad extends Object3D {
+    class Billboard extends Object3D {
         /**
          * @language zh_CN
          * 指定材质，和公告板宽、高，构建一个公告板
@@ -10465,7 +10465,7 @@ declare module egret3d {
     * 示例:
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/core/node/Sky.ts
+    * @includeExample core/node/Sky.ts
     */
     class Sky {
         private viewMatIndex;
@@ -10596,7 +10596,7 @@ declare module egret3d {
     * @see egret3d.core.traverse.Frustum
     * @see egret3d.geom.Matrix4_4
     *
-    * @includeExample egret3d/camera/Camera3D.ts
+    * @includeExample camera/Camera3D.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -11009,6 +11009,7 @@ declare module egret3d {
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
+    * @includeExample lights/DirectLight.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -11071,6 +11072,7 @@ declare module egret3d {
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
+    * @includeExample lights/PointLight.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -11872,7 +11874,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/GeometryData.ts
+     * @includeExample geometry/GeometryData.ts
      */
     class GeometryData {
         /**
@@ -12092,7 +12094,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/GeometryBase.ts
+     * @includeExample geometry/GeometryBase.ts
      */
     class GeometryBase {
         /**
@@ -12243,7 +12245,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SubGeometry.ts
+     * @includeExample geometry/SubGeometry.ts
      */
     class SubGeometry extends GeometryBase {
         /**
@@ -12274,7 +12276,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CubeGeometry.ts
+     * @includeExample geometry/CubeGeometry.ts
      */
     class CubeGeometry extends SubGeometry {
         /**
@@ -12324,7 +12326,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SphereGeometry.ts
+     * @includeExample geometry/SphereGeometry.ts
      */
     class SphereGeometry extends SubGeometry {
         private _segmentsW;
@@ -12355,7 +12357,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/PlaneGeometry.ts
+     * @includeExample geometry/PlaneGeometry.ts
      */
     class PlaneGeometry extends SubGeometry {
         private _segmentsW;
@@ -12393,7 +12395,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CylinderGeometry.ts
+     * @includeExample geometry/CylinderGeometry.ts
      */
     class CylinderGeometry extends SubGeometry {
         /**
@@ -12420,7 +12422,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/FaceData.ts
+     * @includeExample geometry/FaceData.ts
      */
     class FaceData {
         /**
@@ -12465,7 +12467,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SkinGeometry.ts
+     * @includeExample geometry/SkinGeometry.ts
      */
     class SkinGeometry extends GeometryBase {
         /**
@@ -12500,7 +12502,7 @@ declare module egret3d {
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/ElevationGeometry.ts
+     * @includeExample geometry/ElevationGeometry.ts
      */
     class ElevationGeometry extends GeometryBase {
         private _segmentsW;
@@ -12582,7 +12584,7 @@ declare module egret3d {
     * @see egret3d.animation.IAnimation
     *
     * 示例:
-    * @includeExample egret3d/core/node/Mesh.ts
+    * @includeExample core/node/Mesh.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -13456,7 +13458,7 @@ declare module egret3d {
     * @see egret3d.core.PickType
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
-    * @includeExample egret3d/core/traverse/Picker.ts
+    * @includeExample core/traverse/Picker.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -13537,7 +13539,7 @@ declare module egret3d {
     * 3.滑动鼠标滚轮可以控制摄像机的视距.
     *
     * 示例:
-    * @includeExample egret3d/controller/ctl/LookAtController.ts
+    * @includeExample controller/ctl/LookAtController.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -14393,7 +14395,7 @@ declare module egret3d {
      * @classdesc
      *
      * 线渲染把两个顶点之间以线渲染的形式渲染出来
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      *
@@ -14426,7 +14428,7 @@ declare module egret3d {
      * @classdesc
      *
      * 模型线框网格,以线框形式渲染模型
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      */

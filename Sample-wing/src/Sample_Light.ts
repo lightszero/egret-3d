@@ -11,7 +11,7 @@ class Sample_Light {
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
 
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
-    }
+    } 
 
     protected onInit3D(): void {
 
