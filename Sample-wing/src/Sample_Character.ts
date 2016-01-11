@@ -16,7 +16,9 @@ class Sample_Character {
         this._view3D.useShadow = true;
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
 
-        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null);
+    
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,0,1000);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0,180,0);
 
         window.requestAnimationFrame(() => this.update());
 
@@ -60,16 +62,12 @@ class Sample_Character {
         directLight.position = sprherMesh.position;
         directLight.diffuse = 0xffffff;
         directLight.halfColor = 0xffffff;
-        directLight.halfIntensity = 1.0;
+        directLight.halfIntensity = 0.6;
         lightGroup.addDirectLight(directLight);
-        egret3d.ShadowRender.castShadowLight = directLight; 
 
         var planeMesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.PlaneGeometry(10000,10000,1,1,1,1) , new egret3d.TextureMaterial() );
-       // var wireframeMesh: egret3d.WireframeMesh = new egret3d.WireframeMesh();
         planeMesh.material.lightGroup = lightGroup; 
         planeMesh.material.repeat = true; 
-        planeMesh.material.shadowMapingMethod = this._shadowMaping;
-
         planeMesh.material.specularColor = 0xffffff; 
         planeMesh.material.specularPower = 0.5;
         planeMesh.material.ambientColor = 0x00235c; 
@@ -79,39 +77,30 @@ class Sample_Character {
         var suoluo_texture_n: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("suoluo/suoluomen_nm.jpg");
         var suoluo_texture_s: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("suoluo/suoluomen_sp.jpg");
         
-        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/hair.esm");
-        mesh.material.diffuseTexture = suoluo_texture_d;
-        mesh.material.normalTexture = null;
-        mesh.material.specularTexture = null;
-        mesh.material.lightGroup = lightGroup; 
-        mesh.material.castShadow = true;
-        mesh.material.ambientColor = 0x00235c; 
-        mesh.material.acceptShadow = true; 
-        mesh.material.shadowMapingMethod = this._shadowMaping;
-        this._view3D.addChild3D(mesh);
-
-        var mesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/body.esm");
-        mesh.material.diffuseTexture = suoluo_texture_d;
-        mesh.material.normalTexture = null;
-        mesh.material.specularTexture = null;
-        mesh.material.lightGroup = lightGroup; 
-        mesh.material.castShadow = true;
-        mesh.material.ambientColor = 0x00235c; 
-        mesh.material.ambientPower = 0.0; 
-        mesh.material.specularPower = 5.0;
-        mesh.material.shininess = 10.0;
-        //mesh.material.acceptShadow = true; 
-        mesh.material.shadowMapingMethod = this._shadowMaping;
-        mesh.material.bothside = true; 
-
-        //var env: egret3d.SpecularEnvironmentMappingMethod = new egret3d.SpecularEnvironmentMappingMethod(skyTexture);
-        //mesh.material.addDiffusePassEffectMothod(env);
-        //var wireframeMesh: egret3d.WireframeMesh = new egret3d.WireframeMesh();
-        //wireframeMesh.creatByMesh(mesh);
-        //this._view3D.addWireframe(wireframeMesh);
-        this.body = mesh; 
+        var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(suoluo_texture_d);
+        material.diffuseTexture = suoluo_texture_d;
+        material.normalTexture = suoluo_texture_n;
+        material.specularTexture = suoluo_texture_s;
+        material.lightGroup = lightGroup;
+        material.specularPower = 1.0;
+        material.ambientColor = 0x00235c;
        
-        this._view3D.addChild3D(mesh);
+        var hairmesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/hair.esm");
+        hairmesh.material = material;
+        this._view3D.addChild3D(hairmesh);
+
+        var bodyMaterial: egret3d.TextureMaterial = new egret3d.TextureMaterial(suoluo_texture_d);
+        bodyMaterial.diffuseTexture = suoluo_texture_d;
+        bodyMaterial.normalTexture = suoluo_texture_n;
+        bodyMaterial.specularTexture = suoluo_texture_s;
+        bodyMaterial.lightGroup = lightGroup;
+        bodyMaterial.ambientColor = 0x00235c;
+        bodyMaterial.specularPower = 5.3;
+        var bodymesh: egret3d.Mesh = egret3d.AssetsManager.getInstance().findModel("suoluo/body.esm");
+        bodymesh.material = bodyMaterial;
+        bodymesh.material.bothside = true; 
+       
+        this._view3D.addChild3D(bodymesh);
         this._view3D.addChild3D(sprherMesh);
         
     }
