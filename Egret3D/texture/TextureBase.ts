@@ -99,6 +99,24 @@
             }
         }
 
+        public uploadForcing(context3D: Context3D) {
+            this.texture = context3D.creatTexture2D();
+            this.texture.gpu_internalformat = this.internalFormat;
+            this.texture.gpu_colorformat = this.colorFormat;
+            this.texture.mipmapDatas = this.mimapData;
+            this.texture.image = this.imageData;
+            this.texture.gpu_border = 0;
+
+            if (this.useMipmap) {
+                for (var i: number = 0; i < this.mimapData.length; i++) {
+                    context3D.upLoadTextureData(i, this.texture);
+                }
+            }
+            else {
+                context3D.upLoadTextureData(0, this.texture);
+            }
+        }
+
         /**
          * @language zh_CN
          * 获取宽度值

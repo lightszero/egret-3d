@@ -70,7 +70,7 @@
                 context3D.setProgram(this.usage.program3D);
             }
 
-            this.sphereGeometry = this.sphereGeometry || new SphereGeometry();
+            this.sphereGeometry = this.sphereGeometry || new SphereGeometry(50);
             if (!this.sphereGeometry.sharedVertexBuffer) {
                 this.sphereGeometry.sharedVertexBuffer = context3D.creatVertexBuffer(this.sphereGeometry.verticesData);
                 this.sphereGeometry.numberOfVertices = this.sphereGeometry.verticesData.length / this.sphereGeometry.vertexAttLength;
