@@ -5,7 +5,7 @@
      * @classdesc
      *
      * 模型线框网格,以线框形式渲染模型
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      */   

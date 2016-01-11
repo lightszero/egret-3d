@@ -7,7 +7,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/texture/TextureUtil.ts
+     * @includeExample texture/TextureUtil.ts
      */
     export class TextureUtil {
         private static context2D: CanvasRenderingContext2D; 

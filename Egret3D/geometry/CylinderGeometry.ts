@@ -11,7 +11,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CylinderGeometry.ts
+     * @includeExample geometry/CylinderGeometry.ts
      */
     export class CylinderGeometry extends SubGeometry {
 

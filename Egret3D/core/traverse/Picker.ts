@@ -14,7 +14,7 @@
     * @see egret3d.core.PickType
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
-    * @includeExample egret3d/core/traverse/Picker.ts
+    * @includeExample core/traverse/Picker.ts
     * @version Egret 3.0
     * @platform Web,Native
     */

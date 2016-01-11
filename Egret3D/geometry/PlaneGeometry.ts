@@ -11,7 +11,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/PlaneGeometry.ts
+     * @includeExample geometry/PlaneGeometry.ts
      */
     export class PlaneGeometry extends SubGeometry {
 

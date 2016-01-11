@@ -11,7 +11,7 @@
      * @see egret3d.SkeletonAnimationClip
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/SkeletonAnimation.ts
+     * @includeExample animation/skeletonAnimation/SkeletonAnimation.ts
      */
     export class SkeletonAnimation extends EventDispatcher implements IAnimation {
 

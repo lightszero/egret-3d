@@ -9,7 +9,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/ElevationGeometry.ts
+     * @includeExample geometry/ElevationGeometry.ts
      */
     export class ElevationGeometry extends GeometryBase {
 

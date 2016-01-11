@@ -7,7 +7,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SkinGeometry.ts
+     * @includeExample geometry/SkinGeometry.ts
      */
     export class SkinGeometry extends GeometryBase {
 

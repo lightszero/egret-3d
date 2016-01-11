@@ -5,7 +5,7 @@
      * @classdesc
      *
      * 线渲染把两个顶点之间以线渲染的形式渲染出来
-     * @includeExample egret3d/Wireframe/WireframeLine.ts
+     * @includeExample Wireframe/WireframeLine.ts
      * @version Egret 3.0
      * @platform Web,Native
      *

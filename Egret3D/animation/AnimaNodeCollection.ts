@@ -8,7 +8,7 @@
      * 动画功能的收集，整理，初始化容器，一般在粒子系统里使用
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimaNodeCollection.ts
+     * @includeExample animation/AnimaNodeCollection.ts
      */
     export class AnimaNodeCollection {
 

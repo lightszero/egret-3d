@@ -8,7 +8,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/GeometryData.ts
+     * @includeExample geometry/GeometryData.ts
      */
     export class GeometryData {
 

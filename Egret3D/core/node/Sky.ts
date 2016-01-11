@@ -10,7 +10,7 @@
     * 示例:
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample egret3d/core/node/Sky.ts
+    * @includeExample core/node/Sky.ts
     */
     export class Sky {
 

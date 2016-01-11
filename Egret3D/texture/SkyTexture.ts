@@ -30,7 +30,7 @@
      * @see egret3d.Sky
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/texture/SkyTexture.ts
+     * @includeExample texture/SkyTexture.ts
      */
     export class SkyTexture extends TextureBase  {
 

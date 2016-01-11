@@ -11,7 +11,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/CubeGeometry.ts
+     * @includeExample geometry/CubeGeometry.ts
      */
     export class CubeGeometry extends SubGeometry {
 

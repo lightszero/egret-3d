@@ -10,7 +10,7 @@
     * 3.滑动鼠标滚轮可以控制摄像机的视距.
     *
     * 示例:
-    * @includeExample egret3d/controller/ctl/LookAtController.ts
+    * @includeExample controller/ctl/LookAtController.ts
     * @version Egret 3.0
     * @platform Web,Native
     */

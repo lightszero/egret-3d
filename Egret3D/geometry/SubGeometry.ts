@@ -8,7 +8,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SubGeometry.ts
+     * @includeExample geometry/SubGeometry.ts
      */
     export class SubGeometry extends GeometryBase {
         /**

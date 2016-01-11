@@ -65,7 +65,7 @@
     * @see egret3d.core.traverse.Frustum
     * @see egret3d.geom.Matrix4_4
     * 
-    * @includeExample egret3d/camera/Camera3D.ts
+    * @includeExample camera/Camera3D.ts
     * @version Egret 3.0
     * @platform Web,Native
     */

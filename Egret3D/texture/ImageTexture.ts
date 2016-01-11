@@ -17,7 +17,7 @@
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/texture/ImageTexture.ts
+     * @includeExample texture/ImageTexture.ts
      */
     export class ImageTexture extends TextureBase  {
 

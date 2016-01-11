@@ -13,7 +13,7 @@
     * @see egret3d.animation.IAnimation
     *
     * 示例:
-    * @includeExample egret3d/core/node/Mesh.ts
+    * @includeExample core/node/Mesh.ts
     * @version Egret 3.0
     * @platform Web,Native
     */

@@ -10,7 +10,7 @@
      *  
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/AnimNodeBase.ts
+     * @includeExample animation/AnimNodeBase.ts
      */
     export class AnimNodeBase {
 

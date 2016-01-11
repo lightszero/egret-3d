@@ -9,7 +9,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Skeleton.ts
+     * @includeExample animation/skeletonAnimation/Skeleton.ts
      */
     export class Skeleton {
 

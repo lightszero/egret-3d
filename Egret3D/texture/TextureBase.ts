@@ -8,7 +8,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/texture/TextureBase.ts
+     * @includeExample texture/TextureBase.ts
      */
     export class TextureBase {
 

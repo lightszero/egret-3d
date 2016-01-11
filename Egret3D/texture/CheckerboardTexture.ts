@@ -13,7 +13,7 @@
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/texture/CheckerboardTexture.ts
+     * @includeExample texture/CheckerboardTexture.ts
      */
     export class CheckerboardTexture extends TextureBase {
 

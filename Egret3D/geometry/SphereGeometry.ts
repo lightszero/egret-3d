@@ -11,7 +11,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/SphereGeometry.ts
+     * @includeExample geometry/SphereGeometry.ts
      */
     export class SphereGeometry extends SubGeometry {
 

@@ -9,7 +9,7 @@
      *
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/geometry/FaceData.ts
+     * @includeExample geometry/FaceData.ts
      */
     export class FaceData {
 

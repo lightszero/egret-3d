@@ -9,7 +9,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/IAnimation.ts
+     * @includeExample animation/IAnimation.ts
      */
     export interface IAnimation {
 

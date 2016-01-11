@@ -8,7 +8,7 @@
      * 
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample egret3d/animation/skeletonAnimation/Joint.ts
+     * @includeExample animation/skeletonAnimation/Joint.ts
      */
     export class Joint {
         

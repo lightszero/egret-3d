@@ -11,6 +11,7 @@
     * @see egret3d.LightBase
     * @see egret3d.PointLight
     * @see egret3d.SportLight
+    * @includeExample lights/DirectLight.ts
     * @version Egret 3.0
     * @platform Web,Native
     */
