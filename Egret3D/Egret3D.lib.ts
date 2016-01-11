@@ -146,6 +146,7 @@
 ///import Egret3D/core/render/DefaultRender.js
 ///import Egret3D/controller/ctl/ControllerBase.js
 ///import Egret3D/controller/ctl/LookAtController.js
+///import Egret3D/controller/ctl/HoverController.js
 ///import Egret3D/controller/ctl/CameraAnimationController.js
 ///import Egret3D/controller/ctl/CameraAnimationManager.js
 ///import Egret3D/Util/DeviceUtil.js
