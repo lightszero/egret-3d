@@ -327,10 +327,10 @@
 
         private static requestWEBGL(viewPort: Rectangle): WebGLRenderingContext {
             Egret3DDrive.canvas = document.createElement("canvas");
-            Egret3DDrive.canvas.style.position = "absolute";
-            Egret3DDrive.canvas.style.zIndex = "-1";
-            Egret3DDrive.canvas.style.left = "0px";
-            Egret3DDrive.canvas.style.top = "0px";
+            //Egret3DDrive.canvas.style.position = "absolute";
+            //Egret3DDrive.canvas.style.zIndex = "-1";
+            //Egret3DDrive.canvas.style.left = "0px";
+            //Egret3DDrive.canvas.style.top = "0px";
          
             document.body.appendChild(this.canvas);
             Egret3DDrive.canvas.id = "egret3D";
