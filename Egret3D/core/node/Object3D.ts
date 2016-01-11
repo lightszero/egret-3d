@@ -112,15 +112,6 @@
 
         /**
         * @language zh_CN
-        * 是否开启鼠标事件
-        * 设定这个物件是否具有 鼠标交互能力的开关
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        public mouseEnable: boolean = false;
-
-        /**
-        * @language zh_CN
         * 是否需要视锥体裁剪
         * 设定这个物件是否具有 视锥体裁剪功能，为否的话，将永远不参加场景渲染剔除树，无论是否在显示范围内都会进行相关的渲染逻辑运算
         * @version Egret 3.0
