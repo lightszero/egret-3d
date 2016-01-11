@@ -14080,14 +14080,6 @@ var egret3d;
             * @platform Web,Native
             */
             this.pickType = PickType.BoundPick;
-            /**
-            * @language zh_CN
-            * 鼠标 事件开关
-            * 设置是否进行鼠标的pick 的开关，有的需要鼠标事件，但是不需要拣选能力
-            * @version Egret 3.0
-            * @platform Web,Native
-            */
-            this.mousePickEnable = false;
             this.id = ++Object3D.s_id;
         }
         Object.defineProperty(Object3D.prototype, "position", {
@@ -15026,7 +15018,7 @@ var egret3d;
             if (this.usage.program3D) {
                 context3D.setProgram(this.usage.program3D);
             }
-            this.sphereGeometry = this.sphereGeometry || new egret3d.SphereGeometry();
+            this.sphereGeometry = this.sphereGeometry || new egret3d.SphereGeometry(25);
             if (!this.sphereGeometry.sharedVertexBuffer) {
                 this.sphereGeometry.sharedVertexBuffer = context3D.creatVertexBuffer(this.sphereGeometry.verticesData);
                 this.sphereGeometry.numberOfVertices = this.sphereGeometry.verticesData.length / this.sphereGeometry.vertexAttLength;
@@ -17133,7 +17125,7 @@ var egret3d;
                     return;
                 }
             }
-            if (object3d.mousePickEnable) {
+            if (object3d.mouseEnable) {
                 this.mousePickList.push(object3d);
             }
             var layer = this.findLayer(object3d);

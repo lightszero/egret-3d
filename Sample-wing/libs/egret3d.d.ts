@@ -9891,14 +9891,6 @@ declare module egret3d {
         pickType: PickType;
         /**
         * @language zh_CN
-        * 鼠标 事件开关
-        * 设置是否进行鼠标的pick 的开关，有的需要鼠标事件，但是不需要拣选能力
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        mousePickEnable: boolean;
-        /**
-        * @language zh_CN
         * 实例化这个类
         * 如果直接实例化这个类，就会生成一个空的3D容器，可以往里添加3D显示对象，作为对象的父级，但是本身没有渲染属性
         * @version Egret 3.0

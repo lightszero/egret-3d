@@ -1,4 +1,4 @@
-﻿class Sample_360Photo {
+class Sample_360Photo {
     private _view3D: egret3d.View3D;
     private _cameraCtl: egret3d.ControllerBase;
     private _viewPort: egret3d.Rectangle;
@@ -17,14 +17,14 @@
         window.requestAnimationFrame(() => this.update());
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
-        egret3d.AssetsManager.getInstance().addLoadTexture("360photo/R0010038.JPG");
+        egret3d.AssetsManager.getInstance().addLoadTexture("360photo/2.JPG");
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE, (e: egret3d.Event3D) => this.initScene(e));
         egret3d.AssetsManager.getInstance().startLoad();
     }
 
     private initScene(e: egret3d.Event3D) {
 
-        var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/R0010038.JPG") ;
+        var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/2.JPG") ;
         var sphereSky: egret3d.SphereSky = new egret3d.SphereSky(photoTexture);
         this._view3D.sphereSky = sphereSky;
         

@@ -9,15 +9,15 @@ class Main extends egret.DisplayObjectContainer {
         //new Sample_CreateBox();
         //new Sample_Light();
         //new Sample_MaterialBlend();
-        //new Sample_MousePick();
+        new Sample_MousePick();
         //new Sample_AnimationModel();
        
-        
+          
         //第二部分
+        //new Sample_ModelTexture();
         //new Sample_LoadScene();
         //new Sample_BlendTerrain();
-        //new Sample_ModelTexture();
-        new Sample_Character();
+        //new Sample_Character();
         //new Sample_360Photo();
         
     }
