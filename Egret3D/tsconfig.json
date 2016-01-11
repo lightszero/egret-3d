@@ -155,7 +155,6 @@
 		"core/render/DefaultRender.ts"
 		"controller/ctl/ControllerBase.ts"
 		"controller/ctl/LookAtController.ts"
-		"controller/ctl/HoverController.ts"
 		"controller/ctl/CameraAnimationController.ts"
 		"controller/ctl/CameraAnimationManager.ts"
 		"Util/DeviceUtil.ts"
