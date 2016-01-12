@@ -732,15 +732,15 @@
             
             ///enable necessry extensions.
             ///var OES_texture_float_linear = this.gl.getExtension("OES_texture_float_linear");
-            var OES_texture_float = this.gl.getExtension("OES_texture_float");
+            //var OES_texture_float = this.gl.getExtension("OES_texture_float");
             ///var OES_texture_half_float = this.gl.getExtension("OES_texture_half_float");
             ///var OES_texture_half_float_linear = this.gl.getExtension("OES_texture_half_float_linear");
             ///var OES_standard_derivatives = this.gl.getExtension("OES_standard_derivatives");
             ///var WEBGL_draw_buffers = this.gl.getExtension("WEBGL_draw_buffers");
             ///var WEBGL_depth_texture = this.gl.getExtension("WEBGL_depth_texture");
-            if (!OES_texture_float) {
-                alert("OES_texture_float Texture is not available");
-            }
+            //if (!OES_texture_float) {
+            //    alert("OES_texture_float Texture is not available");
+            //}
            
         }
 
