@@ -1,22 +1,22 @@
-ï»¿module egret3d {
+module egret3d {
                 
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUDç›´æ¥æ¸²æŸ“åœ¨å±å¹•ä¸Šçš„ä¸€å¼ è´´å›¾ã€‚
-     * å¯ç›´æ¥æŒ‡å®š2ç»´åæ ‡ï¼Œè´´å›¾çš„å®½åº¦å’Œé«˜åº¦
-     * å…¶åº•å±‚æ¸²æŸ“ä¹Ÿæ˜¯ç”±4ä¸ªé¡¶ç‚¹æ„æˆï¼Œé¡¶ç‚¹æ•°æ®ç»“æ„æœ‰ä½ç½®ä¿¡æ¯å’Œuvä¿¡æ¯
-     * å…¶æ‰€æœ‰çš„HUDå¯¹è±¡çš„é¡¶ç‚¹ä¿¡æ¯æ•°æ®éƒ½æ˜¯å…±ç”¨çš„
+     * HUDÖ±½ÓäÖÈ¾ÔÚÆÁÄ»ÉÏµÄÒ»ÕÅÌùÍ¼¡£
+     * ¿ÉÖ±½ÓÖ¸¶¨2Î¬×ø±ê£¬ÌùÍ¼µÄ¿í¶ÈºÍ¸ß¶È
+     * Æäµ×²ãäÖÈ¾Ò²ÊÇÓÉ4¸ö¶¥µã¹¹³É£¬¶¥µãÊı¾İ½á¹¹ÓĞÎ»ÖÃĞÅÏ¢ºÍuvĞÅÏ¢
+     * ÆäËùÓĞµÄHUD¶ÔÏóµÄ¶¥µãĞÅÏ¢Êı¾İ¶¼ÊÇ¹²ÓÃµÄ
      * @version Egret 3.0
      * @platform Web,Native
      */   
     export class HUD {
         private static singleQuadData: Array<number> = [
 
-            -0.5, -0.5, 0.0, 0.0, 0.0,
-            0.5, -0.5, 0.0, 1.0, 0.0,
-            0.5, 0.5, 0.0, 1.0, 1.0,
-            -0.5, 0.5, 0.0, 0.0, 1.0
+            -0.5, -0.5, 0.0, 0.0, 1.0,
+            0.5, -0.5, 0.0, 1.0, 1.0,
+            0.5, 0.5, 0.0, 1.0, 0.0,
+            -0.5, 0.5, 0.0, 0.0, 0.0
         ];
 
         private static singleQuadIndex: Array<number> = [0, 1, 2, 0, 2, 3];
@@ -124,7 +124,7 @@
         
         /**
         * @language zh_CN
-        * æ„é€ 
+        * ¹¹Ôì
         */
         constructor( ) {
             this.rectangle.x = 0;
@@ -146,8 +146,8 @@
 
         /**
         * @language zh_CN
-        * è®¾ç½®xåæ ‡
-        * @param value xåæ ‡
+        * ÉèÖÃx×ø±ê
+        * @param value x×ø±ê
         */
         public set x(value: number) {
 
@@ -156,8 +156,8 @@
 
         /**
         * @language zh_CN
-        * è®¾ç½®yåæ ‡
-        * @param value yåæ ‡
+        * ÉèÖÃy×ø±ê
+        * @param value y×ø±ê
         */
         public set y(value: number) {
 
@@ -166,8 +166,8 @@
 
         /**
         * @language zh_CN
-        * å¾—åˆ°xåæ ‡
-        * @returns xåæ ‡
+        * µÃµ½x×ø±ê
+        * @returns x×ø±ê
         */
         public get x(): number {
 
@@ -176,8 +176,8 @@
 
         /**
         * @language zh_CN
-        * å¾—åˆ°yåæ ‡
-        * @returns yåæ ‡
+        * µÃµ½y×ø±ê
+        * @returns y×ø±ê
         */
         public get y(): number {
 
@@ -186,8 +186,8 @@
 
        /**
        * @language zh_CN
-       * è®¾ç½®HUDçš„å®½åº¦
-       * @param value HUDå®½
+       * ÉèÖÃHUDµÄ¿í¶È
+       * @param value HUD¿í
        */
        public set width(value: number) {
 
@@ -196,8 +196,8 @@
 
        /**
        * @language zh_CN
-       * è®¾ç½®HUDçš„é«˜åº¦
-       * @param value HUDé«˜
+       * ÉèÖÃHUDµÄ¸ß¶È
+       * @param value HUD¸ß
        */
        public set height(value: number) {
 
@@ -206,8 +206,8 @@
 
         /**
         * @language zh_CN
-        * å¾—åˆ°HUDçš„å®½åº¦
-        * @returns HUDå®½
+        * µÃµ½HUDµÄ¿í¶È
+        * @returns HUD¿í
         */
         public get width(): number {
 
@@ -216,8 +216,8 @@
 
         /**
         * @language zh_CN
-        * å¾—åˆ°HUDçš„é«˜åº¦
-        * @returns HUDé«˜
+        * µÃµ½HUDµÄ¸ß¶È
+        * @returns HUD¸ß
         */
         public get height(): number {
 
@@ -252,7 +252,7 @@
 
         /**
         * @language zh_CN
-        * æäº¤æ•°æ®ç»™GPUæ¸²æŸ“
+        * Ìá½»Êı¾İ¸øGPUäÖÈ¾
         * @param context3D Context3D
         */
         public draw(context3D: Context3D) {
