@@ -2,6 +2,7 @@ class Sample_MousePick {
 
     protected _boxs: egret3d.Mesh[] = [null, null];
     protected _currentSelected: egret3d.Mesh = null;
+    protected _currentDistance: number = Number.MAX_VALUE;
 
     protected _time: number = 0;
     protected _delay: number = 0;
@@ -50,42 +51,18 @@ class Sample_MousePick {
         var sky: egret3d.Sky = new egret3d.Sky(skyTexture);
         this._view3D.sky = sky;
 
-        var plane: egret3d.Mesh = new egret3d.Mesh(new egret3d.PlaneGeometry(),new egret3d.TextureMaterial());
-
-        var box1: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(40,40,40),new egret3d.TextureMaterial());
-        box1.x = -40;
-        box1.y = 20;
-        box1.material.blendMode = egret3d.BlendMode.ADD;
-
-        var box2: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(40,40,40),new egret3d.TextureMaterial());
-        box2.x = 40;
-        box2.y = 20;
-        box2.material.blendMode = egret3d.BlendMode.ALPHA;
-
-        this._view3D.addChild3D(box1);
-        this._view3D.addChild3D(box2);
-        this._view3D.addChild3D(plane);
-        
-        var lightGroup: egret3d.LightGroup = new egret3d.LightGroup();
-        var directLight: egret3d.DirectLight = new egret3d.DirectLight(new egret3d.Vector3D(100,100,100));
-        directLight.diffuse = 0xffffff;
-        lightGroup.addDirectLight(directLight);
-
         this._boxs[0] = new egret3d.Mesh(new egret3d.CubeGeometry(),new egret3d.TextureMaterial());
         this._boxs[0].x = -80;
         this._boxs[0].mouseEnable = true;
+        //this._boxs[0].mouseEnable = true;
         this._boxs[0].addEventListener(egret3d.Event3D.MOUSE_CLICK,(e: egret3d.Event3D) => this.onMouseClick(e));
-        this._boxs[0].material.lightGroup = lightGroup;
         this._view3D.addChild3D(this._boxs[0]);
 
         this._boxs[1] = new egret3d.Mesh(new egret3d.CubeGeometry(),new egret3d.TextureMaterial());
         this._boxs[1].x = 80;
         this._boxs[1].mouseEnable = true;
         this._boxs[1].addEventListener(egret3d.Event3D.MOUSE_CLICK,(e: egret3d.Event3D) => this.onMouseClick(e));
-        this._boxs[1].material.lightGroup = lightGroup;
         this._view3D.addChild3D(this._boxs[1]);
-
-
 
         this._cameraCtl.setEyesLength(1000);
 
@@ -95,7 +72,17 @@ class Sample_MousePick {
     }
 
     protected onMouseClick(e: egret3d.Event3D): void {
-        this._currentSelected = e.currentTarget;
+        
+        var box: egret3d.Mesh = e.currentTarget;
+
+        var distance: number = egret3d.Vector3D.distance(this._view3D.camera3D.position,box.position);
+
+        if(this._currentDistance >= distance) {
+
+            this._currentDistance = distance;
+
+            this._currentSelected = box;
+        }
     }
 
     protected onUpdate(): void {
@@ -107,7 +94,10 @@ class Sample_MousePick {
         this._time = this._timeDate.getTime();
         
         if(this._currentSelected != null) {
+
             this._currentSelected.rotationY += this._delay / 4.0;
+
+            this._currentDistance = Number.MAX_VALUE;
         }
 
         this._cameraCtl.update();
