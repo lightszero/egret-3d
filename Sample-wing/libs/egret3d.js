@@ -1,109 +1,6 @@
 var egret3d;
 (function (egret3d) {
     /**
-     * @private
-     * @class egret3D.Egret3DEngine
-     * @classdesc
-     * 引擎库文件加载
-     * 引擎库前期加载设置，开发中加载未压缩的编译引擎
-     */
-    var Egret3DEngine = (function () {
-        function Egret3DEngine() {
-        }
-        Egret3DEngine.getXHR = function () {
-            var xhr = null;
-            if (window["XMLHttpRequest"]) {
-                xhr = new window["XMLHttpRequest"]();
-            }
-            else {
-                xhr = new ActiveXObject("MSXML2.XMLHTTP");
-            }
-            return xhr;
-        };
-        /**
-         * @language zh_CN
-         * 请求读取
-         * @event complete 读取完成响应回调
-         */
-        Egret3DEngine.preload = function (complete) {
-            this._complete = complete;
-            if (this._xhr == null) {
-                this._xhr = this.getXHR();
-            }
-            if (this._xhr == null) {
-                alert("Your browser does not support XMLHTTP.");
-                return;
-            }
-            if (this._xhr.readyState > 0) {
-                this._xhr.abort();
-            }
-            this._xhr.open("GET", this._libUrl, true);
-            this._xhr.addEventListener("progress", function (e) { return Egret3DEngine.onProgress(e); }, false);
-            this._xhr.addEventListener("readystatechange", function (e) { return Egret3DEngine.onReadyStateChange(e); }, false);
-            this._xhr.addEventListener("error", function (e) { return Egret3DEngine.onError(e); }, false);
-            this._xhr.responseType = "text";
-            this._xhr.send();
-        };
-        Egret3DEngine.onReadyStateChange = function (event) {
-            if (this._xhr.readyState == 4) {
-                if (this._xhr.status >= 400 || this._xhr.status == 0) {
-                    console.log(this._libUrl, "load fail");
-                }
-                else {
-                    this.loadComplete();
-                }
-            }
-        };
-        Egret3DEngine.loadComplete = function () {
-            var libTex = this._xhr.responseText;
-            this.applyClass(libTex);
-        };
-        Egret3DEngine.onProgress = function (event) {
-            var e = event.loaded.toString() + event.total;
-            console.log("progress event```" + e);
-        };
-        Egret3DEngine.onError = function (event) {
-            console.log("load error", event);
-        };
-        Egret3DEngine.applyClass = function (source) {
-            this.importList = source.split("///");
-            this.importList.shift();
-            for (var i = 0; i < this.importList.length; i++) {
-                this.importList[i] = this.importList[i].replace("\r\n", "");
-                this.importList[i] = this.importList[i].replace("import ", "/js/");
-            }
-            this.importList.pop();
-            this.startLoadScript(null);
-        };
-        Egret3DEngine.startLoadScript = function (e) {
-            var _this = this;
-            if (this.importList.length > 0) {
-                var egret3DScript = document.createElement("script");
-                egret3DScript.src = this.importList.shift();
-                egret3DScript.onload = function (e) { return _this.startLoadScript(e); };
-                egret3DScript.onerror = function (e) { return _this.loadScriptError(e); };
-                document.head.appendChild(egret3DScript);
-            }
-            else {
-                console.log("all complete");
-                this._complete();
-            }
-        };
-        Egret3DEngine.loadScriptError = function (e) {
-            var error = "load Script Error \r\n no file:" + e.srcElement.src;
-            alert(error);
-            this.startLoadScript(null);
-        };
-        Egret3DEngine.djs = "";
-        Egret3DEngine._libUrl = "/js/Egret3D/Egret3D.lib.js";
-        return Egret3DEngine;
-    })();
-    egret3d.Egret3DEngine = Egret3DEngine;
-})(egret3d || (egret3d = {}));
-
-var egret3d;
-(function (egret3d) {
-    /**
      * @class egret3d.DrawMode
      * @classdesc
      * 渲染模式
@@ -299,9 +196,6 @@ var egret3d;
     })();
     egret3d.Egret3DDrive = Egret3DDrive;
 })(egret3d || (egret3d = {}));
-
-
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -330,7 +224,6 @@ var egret3d;
     })();
     egret3d.MipmapData = MipmapData;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     ///export enum number { Unknown = 0x0000, RGB565 = 0x8d62, RGBA5551 = 0x8057, RGBA4444 = 0x8056, RGBA8888 = 0x1908, DXT1_RGB = 0x83f0, DXT1_RGBA = 0x83f1, DXT3_RGBA = 0x83f2, DXT5_RGBA = 0x83f3 };
@@ -345,10 +238,6 @@ var egret3d;
     var InternalFormat = egret3d.InternalFormat;
     ;
 })(egret3d || (egret3d = {}));
-
-
-
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -383,7 +272,6 @@ var egret3d;
         openGLES.IndexBuffer3D = IndexBuffer3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -428,7 +316,6 @@ var egret3d;
         openGLES.Program3D = Program3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -480,7 +367,6 @@ var egret3d;
         openGLES.Shader = Shader;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -530,7 +416,6 @@ var egret3d;
         openGLES.Texture2D = Texture2D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -558,7 +443,6 @@ var egret3d;
         openGLES.CubeTexture = CubeTexture;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -589,7 +473,6 @@ var egret3d;
         openGLES.VertexBuffer3D = VertexBuffer3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -615,7 +498,6 @@ var egret3d;
     })();
     egret3d.FrameBuffer = FrameBuffer;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -637,15 +519,15 @@ var egret3d;
             egret3d.ContextSamplerType.REPEAT = this.gl.REPEAT;
             ///enable necessry extensions.
             ///var OES_texture_float_linear = this.gl.getExtension("OES_texture_float_linear");
-            var OES_texture_float = this.gl.getExtension("OES_texture_float");
+            //var OES_texture_float = this.gl.getExtension("OES_texture_float");
             ///var OES_texture_half_float = this.gl.getExtension("OES_texture_half_float");
             ///var OES_texture_half_float_linear = this.gl.getExtension("OES_texture_half_float_linear");
             ///var OES_standard_derivatives = this.gl.getExtension("OES_standard_derivatives");
             ///var WEBGL_draw_buffers = this.gl.getExtension("WEBGL_draw_buffers");
             ///var WEBGL_depth_texture = this.gl.getExtension("WEBGL_depth_texture");
-            if (!OES_texture_float) {
-                alert("OES_texture_float Texture is not available");
-            }
+            //if (!OES_texture_float) {
+            //    alert("OES_texture_float Texture is not available");
+            //}
         }
         Object.defineProperty(Context3DChild_OpenGLES_2_0.prototype, "version", {
             /**
@@ -1346,7 +1228,6 @@ var egret3d;
     })();
     egret3d.Context3DChild_OpenGLES_2_0 = Context3DChild_OpenGLES_2_0;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -1430,7 +1311,6 @@ var egret3d;
     })();
     egret3d.ContextSamplerType = ContextSamplerType;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -1470,7 +1350,6 @@ var egret3d;
     })();
     egret3d.UV = UV;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -1676,7 +1555,6 @@ var egret3d;
     })();
     egret3d.Point = Point;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -2212,7 +2090,6 @@ var egret3d;
     })();
     egret3d.Vector3D = Vector3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -2273,7 +2150,6 @@ var egret3d;
     })();
     egret3d.Rectangle = Rectangle;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -2758,7 +2634,6 @@ var egret3d;
     })();
     egret3d.Quaternion = Quaternion;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -2803,7 +2678,6 @@ var egret3d;
     })();
     egret3d.Orientation3D = Orientation3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -2992,7 +2866,6 @@ var egret3d;
     })();
     egret3d.Plane3D = Plane3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -3215,7 +3088,6 @@ var egret3d;
     })();
     egret3d.CubeBoxBound = CubeBoxBound;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4268,7 +4140,6 @@ var egret3d;
     })();
     egret3d.Matrix4_4 = Matrix4_4;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4326,7 +4197,6 @@ var egret3d;
     })();
     egret3d.EyesMatrix = EyesMatrix;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4350,7 +4220,6 @@ var egret3d;
     })();
     egret3d.PlaneClassification = PlaneClassification;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var MathUtil = (function () {
@@ -4370,7 +4239,6 @@ var egret3d;
     })();
     egret3d.MathUtil = MathUtil;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4581,7 +4449,6 @@ var egret3d;
     })();
     egret3d.Matrix3DUtils = Matrix3DUtils;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4827,7 +4694,6 @@ var egret3d;
     })();
     egret3d.Ray = Ray;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4952,7 +4818,6 @@ var egret3d;
     })();
     egret3d.Color = Color;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -4993,7 +4858,6 @@ var egret3d;
     })();
     egret3d.PickResult = PickResult;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -5344,7 +5208,6 @@ var egret3d;
     })();
     egret3d.Event3D = Event3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -5480,7 +5343,6 @@ var egret3d;
     })();
     egret3d.Mouse3DManager = Mouse3DManager;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -5583,7 +5445,6 @@ var egret3d;
     })();
     egret3d.TextureBase = TextureBase;
 })(egret3d || (egret3d = {}));
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -5617,12 +5478,6 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.RenderTexture = RenderTexture;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -5702,12 +5557,6 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.SkyTexture = SkyTexture;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -5759,12 +5608,6 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.ImageTexture = ImageTexture;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -5846,8 +5689,6 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.CheckerboardTexture = CheckerboardTexture;
 })(egret3d || (egret3d = {}));
-
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -5877,7 +5718,6 @@ var egret3d;
     })();
     egret3d.AnimNodeBase = AnimNodeBase;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -5991,7 +5831,6 @@ var egret3d;
     })();
     egret3d.AnimaNodeCollection = AnimaNodeCollection;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -6137,7 +5976,6 @@ var egret3d;
     })();
     egret3d.Joint = Joint;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -6412,7 +6250,6 @@ var egret3d;
     })();
     egret3d.Skeleton = Skeleton;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -6715,12 +6552,6 @@ var egret3d;
     })();
     egret3d.SkeletonAnimationClip = SkeletonAnimationClip;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -7164,7 +6995,6 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.SkeletonAnimation = SkeletonAnimation;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7245,7 +7075,6 @@ var egret3d;
         GLSL.VarConstName = VarConstName;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7315,7 +7144,6 @@ var egret3d;
         GLSL.AttributeType = AttributeType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7436,7 +7264,6 @@ var egret3d;
         GLSL.UniformType = UniformType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7559,7 +7386,6 @@ var egret3d;
         GLSL.VaryingType = VaryingType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7643,12 +7469,6 @@ var egret3d;
         GLSL.VarRegister = VarRegister;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7686,12 +7506,6 @@ var egret3d;
         GLSL.TmpVar = TmpVar;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7724,12 +7538,6 @@ var egret3d;
         GLSL.Attribute = Attribute;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7767,12 +7575,6 @@ var egret3d;
         GLSL.Varying = Varying;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7810,12 +7612,6 @@ var egret3d;
         GLSL.Uniform = Uniform;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7854,12 +7650,6 @@ var egret3d;
         GLSL.ConstVar = ConstVar;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7896,12 +7686,6 @@ var egret3d;
         GLSL.Sampler2D = Sampler2D;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7938,7 +7722,6 @@ var egret3d;
         GLSL.Sampler3D = Sampler3D;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -8196,7 +7979,6 @@ var egret3d;
         GLSL.ShaderBase = ShaderBase;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -8569,7 +8351,6 @@ var egret3d;
         GLSL.ShaderContent = ShaderContent;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -8995,7 +8776,6 @@ var egret3d;
     })();
     egret3d.ShaderSystemTool = ShaderSystemTool;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -9057,7 +8837,6 @@ var egret3d;
     })();
     egret3d.MethodUsageData = MethodUsageData;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -9519,7 +9298,6 @@ var egret3d;
     })();
     egret3d.MaterialData = MaterialData;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -9637,12 +9415,6 @@ var egret3d;
     })();
     egret3d.MethodBase = MethodBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9691,7 +9463,7 @@ var egret3d;
                     baseMethod.acceptShadow = this.materialData.acceptShadow;
                     break;
                 case egret3d.GeometryType.Particle:
-                    baseMethod = new ParticleVertexMethod();
+                    baseMethod = new egret3d.ParticleVertexMethod();
                     this.useage.vsMethodList.push(baseMethod);
                     this.addShader(baseMethod.vertexMethodName);
                     this.addEnd("particle_vertexEnd");
@@ -9745,12 +9517,6 @@ var egret3d;
     })(egret3d.GLSL.ShaderBase);
     egret3d.VertexShader = VertexShader;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9836,12 +9602,6 @@ var egret3d;
     })(egret3d.GLSL.ShaderBase);
     egret3d.PixelShader = PixelShader;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9945,12 +9705,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.StaticVertexMethod = StaticVertexMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10031,12 +9785,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowVertexMethod = ShadowVertexMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10157,12 +9905,107 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.SkinVertexMethod = SkinVertexMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var egret3d;
+(function (egret3d) {
+    /**
+   * @private
+    * @language zh_CN
+    * @class egret3d.ParticleVertexMethod
+    * @classdesc
+    * 粒子顶点方法。
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    var ParticleVertexMethod = (function (_super) {
+        __extends(ParticleVertexMethod, _super);
+        /**
+        * @language zh_CN
+        * 创建一个新的 ParticleVertexMethod 对象。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        function ParticleVertexMethod() {
+            _super.call(this);
+            this.index = 0;
+            this.time = 0;
+            this.normalMatrix = new egret3d.Matrix4_4();
+            this.vsMethodName = "particle_vertex";
+        }
+        /**
+         * @language zh_CN
+         * 激活 粒子顶点方法。
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * -pos            3       12      0
+         * -uv0            2        8      12
+         * -speed          3       12      20
+         * -lifecycle      1       4       32
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        ParticleVertexMethod.prototype.activate = function (context3D, program3D, modeltransform, camera3D, geometry, animation) {
+            // 绑定同时包含顶点位置和颜色信息的缓冲
+            geometry.sharedVertexBuffer = context3D.creatVertexBuffer(geometry.verticesData);
+            geometry.numberOfVertices = animation.animaNodeCollection.numberOfVertices;
+            geometry.vertexSizeInBytes = animation.animaNodeCollection.vertexSizeInBytes;
+            geometry.sharedIndexBuffer = context3D.creatIndexBuffer(geometry.indexData);
+            context3D.bindVertexBuffer(geometry.sharedVertexBuffer);
+            //pos
+            //offset
+            //uv
+            this.usage.attribute_position.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_position.name);
+            this.usage.attribute_offset.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_offset.name);
+            this.usage.attribute_uv0.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_uv0.name);
+            for (this.index = 0; this.index < animation.animaNodeCollection.nodes.length; this.index++) {
+                if (animation.animaNodeCollection.nodes[this.index].usageAttributeLen > 0)
+                    animation.animaNodeCollection.nodes[this.index].uniformIndex = context3D.getShaderAttribLocation(program3D, animation.animaNodeCollection.nodes[this.index].usageAttribute);
+            }
+            this.usage.uniform_ModelMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_ModelMatrix.name);
+            this.usage.uniform_ProjectionMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_ProjectionMatrix.name);
+            //this.usage.uniform_normalMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_normalMatrix.name);
+            this.usage.uniform_eyepos.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_eyepos.name);
+            this.usage.uniform_time.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_time.name);
+            this.usage.uniform_cameraMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_cameraMatrix.name);
+        };
+        /**
+         * @language zh_CN
+         * 更新 粒子顶点方法。
+         * @param context3D {Context3D}
+         * @param program3D {IProgram3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        ParticleVertexMethod.prototype.updata = function (context3D, program3D, modeltransform, camera3D, geometry, animation) {
+            // 绑定同时包含顶点位置和颜色信息的缓冲
+            context3D.bindVertexBuffer(geometry.sharedVertexBuffer);
+            context3D.vertexAttribPointer(program3D, this.usage.attribute_position.uniformIndex, 4, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 0);
+            context3D.vertexAttribPointer(program3D, this.usage.attribute_offset.uniformIndex, 3, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 16);
+            context3D.vertexAttribPointer(program3D, this.usage.attribute_uv0.uniformIndex, 2, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 28);
+            var node;
+            for (this.index = 0; this.index < animation.animaNodeCollection.nodes.length; this.index++) {
+                if (animation.animaNodeCollection.nodes[this.index].usageAttributeLen > 0) {
+                    node = animation.animaNodeCollection.nodes[this.index];
+                    context3D.vertexAttribPointer(program3D, node.uniformIndex, node.usageAttributeLen, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, node.offsetBytes);
+                }
+            }
+            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, modeltransform.rawData);
+            context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera3D.viewProjectionMatrix.rawData);
+            context3D.uniformMatrix4fv(this.usage.uniform_cameraMatrix.uniformIndex, false, camera3D.modelMatrix.rawData);
+            context3D.uniform3f(this.usage.uniform_eyepos.uniformIndex, camera3D.x, camera3D.y, camera3D.z);
+            context3D.uniform1f(this.usage.uniform_time.uniformIndex, animation.time);
+        };
+        return ParticleVertexMethod;
+    })(egret3d.MethodBase);
+    egret3d.ParticleVertexMethod = ParticleVertexMethod;
+})(egret3d || (egret3d = {}));
 var egret3d;
 (function (egret3d) {
     /**
@@ -10221,12 +10064,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowMapMethod = ShadowMapMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10348,12 +10185,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.TerrainMethod = TerrainMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10377,7 +10208,7 @@ var egret3d;
             this.fsMethodName = "normalMethod_fragment";
         }
         /**
-         * @language zh_CN
+         * @language zh_CNO
          * 激活 NormalMethod。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
@@ -10419,12 +10250,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.NormalMethod = NormalMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10488,12 +10313,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.DepthMethod = DepthMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10559,12 +10378,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.DiffuseMethod = DiffuseMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10665,7 +10478,6 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowMapingMethod = ShadowMapingMethod;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -10775,12 +10587,6 @@ var egret3d;
     })();
     egret3d.EffectMethod = EffectMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10895,12 +10701,6 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.AOMapMethod = AOMapMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11015,12 +10815,6 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.LightMapMethod = LightMapMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11155,12 +10949,6 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.EnvironmentMappingMethod = EnvironmentMappingMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11298,12 +11086,6 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.SpecularEnvironmentMappingMethod = SpecularEnvironmentMappingMethod;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11498,7 +11280,6 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.DistanceFog = DistanceFog;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -11711,12 +11492,6 @@ var egret3d;
     })();
     egret3d.MaterialPassBase = MaterialPassBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12010,12 +11785,6 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.DiffuseMapPass = DiffuseMapPass;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12105,12 +11874,6 @@ var egret3d;
     })(egret3d.DiffuseMapPass);
     egret3d.TerrainMapPass = TerrainMapPass;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12227,13 +11990,6 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.DepthMapPass = DepthMapPass;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-/// <reference path="../method/fs/normalmethod.ts" />
 var egret3d;
 (function (egret3d) {
     /**
@@ -12367,12 +12123,6 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.NormalMapPass = NormalMapPass;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12503,12 +12253,6 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.ColorMapPass = ColorMapPass;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12669,7 +12413,6 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.ShadowMapPass = ShadowMapPass;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -13563,12 +13306,6 @@ var egret3d;
     })();
     egret3d.MaterialBase = MaterialBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -13627,12 +13364,6 @@ var egret3d;
     })(egret3d.MaterialBase);
     egret3d.TerrainMaterial = TerrainMaterial;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -13683,7 +13414,6 @@ var egret3d;
     })(egret3d.MaterialBase);
     egret3d.TextureMaterial = TextureMaterial;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -13898,12 +13628,6 @@ var egret3d;
     })();
     egret3d.Frustum = Frustum;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -14920,12 +14644,6 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.Object3D = Object3D;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -14977,7 +14695,6 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Billboard = Billboard;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -15093,7 +14810,6 @@ var egret3d;
     })();
     egret3d.SphereSky = SphereSky;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -15208,12 +14924,6 @@ var egret3d;
     })();
     egret3d.Sky = Sky;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15237,12 +14947,6 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Entity = Entity;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15695,12 +15399,6 @@ var egret3d;
     })(egret3d.Entity);
     egret3d.Camera3D = Camera3D;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15956,12 +15654,6 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.LightBase = LightBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16058,12 +15750,6 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.DirectLight = DirectLight;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16123,12 +15809,6 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.PointLight = PointLight;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16312,7 +15992,6 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.SpotLight = SpotLight;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -16393,7 +16072,6 @@ var egret3d;
     })();
     egret3d.LightGroup = LightGroup;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -16428,12 +16106,6 @@ var egret3d;
     })();
     egret3d.RenderBase = RenderBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16487,12 +16159,6 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.DefaultRender = DefaultRender;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16540,12 +16206,6 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.PositionRender = PositionRender;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16593,12 +16253,6 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.NormalRender = NormalRender;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16646,12 +16300,6 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.DepthRender = DepthRender;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16716,7 +16364,6 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.ShadowRender = ShadowRender;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -16776,7 +16423,6 @@ var egret3d;
     })();
     egret3d.RenderManager = RenderManager;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -16829,12 +16475,6 @@ var egret3d;
     })();
     egret3d.CollectBase = CollectBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -17216,12 +16856,6 @@ var egret3d;
     })(egret3d.CollectBase);
     egret3d.EntityCollect = EntityCollect;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -17237,7 +16871,6 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Scene3D = Scene3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -17367,7 +17000,6 @@ var egret3d;
     })();
     egret3d.RttManager = RttManager;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -17916,7 +17548,6 @@ var egret3d;
     })();
     egret3d.GeometryData = GeometryData;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -18131,12 +17762,6 @@ var egret3d;
     })();
     egret3d.GeometryBase = GeometryBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18174,12 +17799,6 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.SubGeometry = SubGeometry;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18249,12 +17868,6 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.CubeGeometry = CubeGeometry;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18402,12 +18015,6 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.SphereGeometry = SphereGeometry;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18513,12 +18120,6 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.PlaneGeometry = PlaneGeometry;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18583,7 +18184,6 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.CylinderGeometry = CylinderGeometry;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -18635,12 +18235,6 @@ var egret3d;
     })();
     egret3d.FaceData = FaceData;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18680,12 +18274,6 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.SkinGeometry = SkinGeometry;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18891,7 +18479,6 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.ElevationGeometry = ElevationGeometry;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -18946,12 +18533,6 @@ var egret3d;
     })();
     egret3d.GeometryUtil = GeometryUtil;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -19020,12 +18601,6 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Mesh = Mesh;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -19082,12 +18657,6 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.BaseLoader = BaseLoader;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -19137,12 +18706,6 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.TextureLoader = TextureLoader;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -19268,12 +18831,6 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.ModeLoader = ModeLoader;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -19394,7 +18951,6 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.SceneLoader = SceneLoader;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -19819,7 +19375,6 @@ var egret3d;
     })();
     egret3d.URLLoader = URLLoader;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -19883,7 +19438,6 @@ var egret3d;
     })();
     egret3d.AsyncLoadingTexturematerial = AsyncLoadingTexturematerial;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -20411,7 +19965,6 @@ var egret3d;
         return DDS;
     })();
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -20739,7 +20292,6 @@ var egret3d;
     })();
     egret3d.TGAParser = TGAParser;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -20983,7 +20535,6 @@ var egret3d;
     })();
     egret3d.ESMParser = ESMParser;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21056,7 +20607,6 @@ var egret3d;
     })();
     egret3d.EAMParser = EAMParser;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21096,7 +20646,6 @@ var egret3d;
     })();
     egret3d.ECAParser = ECAParser;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21113,7 +20662,6 @@ var egret3d;
     })();
     egret3d.PVR = PVR;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21271,12 +20819,6 @@ var egret3d;
     })();
     egret3d.PVRParser = PVRParser;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -21481,7 +21023,6 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.AssetsManager = AssetsManager;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21551,7 +21092,6 @@ var egret3d;
     })();
     egret3d.Picker = Picker;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -21640,12 +21180,6 @@ var egret3d;
     })();
     egret3d.ControllerBase = ControllerBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -22040,12 +21574,6 @@ var egret3d;
     })(egret3d.ControllerBase);
     egret3d.LookAtController = LookAtController;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     var HoverController = (function (_super) {
@@ -22350,7 +21878,6 @@ var egret3d;
     })(egret3d.ControllerBase);
     egret3d.HoverController = HoverController;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -22473,7 +22000,6 @@ var egret3d;
     })();
     egret3d.CameraAnimationFrame = CameraAnimationFrame;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -22538,7 +22064,6 @@ var egret3d;
     })();
     egret3d.CameraAnimationManager = CameraAnimationManager;
 })(egret3d || (egret3d = {}));
-
 var DeviceUtil = (function () {
     function DeviceUtil() {
     }
@@ -22569,7 +22094,6 @@ var DeviceUtil = (function () {
     });
     return DeviceUtil;
 })();
-
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (c) 2014-2015, Egret Technology Inc.
@@ -23381,7 +22905,6 @@ var egret3d;
     })();
     egret3d.ByteArray = ByteArray;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -23648,7 +23171,6 @@ var egret3d;
     })();
     egret3d.StringUtil = StringUtil;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -23711,7 +23233,6 @@ var egret3d;
     })();
     egret3d.Debug = Debug;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -23891,12 +23412,6 @@ var egret3d;
     })();
     egret3d.WireframeBase = WireframeBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -23942,12 +23457,6 @@ var egret3d;
     })(egret3d.WireframeBase);
     egret3d.WireframeLine = WireframeLine;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24017,7 +23526,6 @@ var egret3d;
     })(egret3d.WireframeBase);
     egret3d.WireframeMesh = WireframeMesh;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -24276,7 +23784,6 @@ var egret3d;
     })();
     egret3d.PostCanvas = PostCanvas;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -24529,7 +24036,6 @@ var egret3d;
         return QuadShader;
     })();
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -24569,12 +24075,6 @@ var egret3d;
     })();
     egret3d.PostEffectBase = PostEffectBase;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24622,12 +24122,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.BrightPost = BrightPost;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24663,12 +24157,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.GaussianBlurHorizontalPost = GaussianBlurHorizontalPost;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24705,12 +24193,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.GaussianBlurVerticalPost = GaussianBlurVerticalPost;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24750,12 +24232,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.Composition = Composition;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24792,12 +24268,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.Tonemaping = Tonemaping;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24860,7 +24330,6 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.HDR = HDR;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -25493,12 +24962,6 @@ var egret3d;
     })();
     egret3d.View3D = View3D;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -25641,7 +25104,6 @@ var egret3d;
     })(egret3d.View3D);
     egret3d.VRView3D = VRView3D;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -26427,7 +25889,6 @@ var egret3d;
     })();
     egret3d.Input = Input;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -26617,7 +26078,6 @@ var egret3d;
     })();
     egret3d.OrientationController = OrientationController;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -26787,7 +26247,6 @@ var egret3d;
     })();
     egret3d.AudioManager = AudioManager;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -27026,12 +26485,6 @@ var egret3d;
     })();
     egret3d.Channel = Channel;
 })(egret3d || (egret3d = {}));
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var egret3d;
 (function (egret3d) {
     /**
@@ -27256,7 +26709,6 @@ var egret3d;
     })(egret3d.Channel);
     egret3d.Channel3d = Channel3d;
 })(egret3d || (egret3d = {}));
-
 var egret3d;
 (function (egret3d) {
     /**
@@ -27370,4 +26822,105 @@ var egret3d;
     })();
     egret3d.Sound = Sound;
 })(egret3d || (egret3d = {}));
-
+var egret3d;
+(function (egret3d) {
+    /**
+     * @private
+     * @class egret3D.Egret3DEngine
+     * @classdesc
+     * 引擎库文件加载
+     * 引擎库前期加载设置，开发中加载未压缩的编译引擎
+     */
+    var Egret3DEngine = (function () {
+        function Egret3DEngine() {
+        }
+        Egret3DEngine.getXHR = function () {
+            var xhr = null;
+            if (window["XMLHttpRequest"]) {
+                xhr = new window["XMLHttpRequest"]();
+            }
+            else {
+                xhr = new ActiveXObject("MSXML2.XMLHTTP");
+            }
+            return xhr;
+        };
+        /**
+         * @language zh_CN
+         * 请求读取
+         * @event complete 读取完成响应回调
+         */
+        Egret3DEngine.preload = function (complete) {
+            this._complete = complete;
+            if (this._xhr == null) {
+                this._xhr = this.getXHR();
+            }
+            if (this._xhr == null) {
+                alert("Your browser does not support XMLHTTP.");
+                return;
+            }
+            if (this._xhr.readyState > 0) {
+                this._xhr.abort();
+            }
+            this._xhr.open("GET", this._libUrl, true);
+            this._xhr.addEventListener("progress", function (e) { return Egret3DEngine.onProgress(e); }, false);
+            this._xhr.addEventListener("readystatechange", function (e) { return Egret3DEngine.onReadyStateChange(e); }, false);
+            this._xhr.addEventListener("error", function (e) { return Egret3DEngine.onError(e); }, false);
+            this._xhr.responseType = "text";
+            this._xhr.send();
+        };
+        Egret3DEngine.onReadyStateChange = function (event) {
+            if (this._xhr.readyState == 4) {
+                if (this._xhr.status >= 400 || this._xhr.status == 0) {
+                    console.log(this._libUrl, "load fail");
+                }
+                else {
+                    this.loadComplete();
+                }
+            }
+        };
+        Egret3DEngine.loadComplete = function () {
+            var libTex = this._xhr.responseText;
+            this.applyClass(libTex);
+        };
+        Egret3DEngine.onProgress = function (event) {
+            var e = event.loaded.toString() + event.total;
+            console.log("progress event```" + e);
+        };
+        Egret3DEngine.onError = function (event) {
+            console.log("load error", event);
+        };
+        Egret3DEngine.applyClass = function (source) {
+            this.importList = source.split("///");
+            this.importList.shift();
+            for (var i = 0; i < this.importList.length; i++) {
+                this.importList[i] = this.importList[i].replace("\r\n", "");
+                this.importList[i] = this.importList[i].replace("import ", "/js/");
+            }
+            this.importList.pop();
+            this.startLoadScript(null);
+        };
+        Egret3DEngine.startLoadScript = function (e) {
+            var _this = this;
+            if (this.importList.length > 0) {
+                var egret3DScript = document.createElement("script");
+                egret3DScript.src = this.importList.shift();
+                egret3DScript.onload = function (e) { return _this.startLoadScript(e); };
+                egret3DScript.onerror = function (e) { return _this.loadScriptError(e); };
+                document.head.appendChild(egret3DScript);
+            }
+            else {
+                console.log("all complete");
+                this._complete();
+            }
+        };
+        Egret3DEngine.loadScriptError = function (e) {
+            var error = "load Script Error \r\n no file:" + e.srcElement.src;
+            alert(error);
+            this.startLoadScript(null);
+        };
+        Egret3DEngine.djs = "";
+        Egret3DEngine._libUrl = "/js/Egret3D/Egret3D.lib.js";
+        return Egret3DEngine;
+    })();
+    egret3d.Egret3DEngine = Egret3DEngine;
+})(egret3d || (egret3d = {}));
