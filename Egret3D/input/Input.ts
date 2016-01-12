@@ -192,7 +192,7 @@
         private _listenerKeyUp: Array<Function> = new Array<Function>();
         private _listenerKeyDown: Array<Function> = new Array<Function>();
 
-        private _listenerSwipe: Array<Function> = new Array<Function>();
+        private _listenerSwipe: Function = null;
 
         private _mouseMoveFunc: Array<Function> = new Array<Function>();
         private _mouseWheelFunc: Array<Function> = new Array<Function>();
@@ -524,8 +524,6 @@
 
             e.preventDefault();
 
-            Debug.instance.trace("touchStart: " + e.touches.length);
-
             var x1: number = e.targetTouches[0].clientX - egret3d.Egret3DDrive.clientRect.left;
             var y1: number = e.targetTouches[0].clientY - egret3d.Egret3DDrive.clientRect.top;
 
@@ -549,8 +547,6 @@
         private _oldPosition2: Point = null;
 
         private touchEnd(e: TouchEvent) {
-
-            Debug.instance.trace("touchEnd : " + e.touches.length);
 
             if (e.targetTouches.length > 1) {
 
@@ -620,24 +616,9 @@
                     this._mouseWheelFunc[i]();
                 }
 
-                //Debug.instance.trace("touchMove: " + e.touches.length, "this.wheelDelta:" + this.wheelDelta);
             }
             else {
-                if (new Date().getTime() - this._time > 500) {
-
-                    for (var i: number = 0; i < this._mouseMoveFunc.length; ++i) {
-                        this._mouseMoveFunc[i]();
-                    }
-                }
-                else {
-
-
-                    var direction: number = this.GetSlideDirection(this.mouseLastX, this.mouseLastY, this.mouseX, this.mouseY);
-
-                    if (direction > 0) {
-                        this._listenerSwipe[direction - 1]();
-                    }
-                }
+                this._listenerSwipe();
             }
 
             for (var i: number = 0; i < this._touchMoveCallback.length; i++) {
@@ -705,46 +686,15 @@
 
         /**
         * @language zh_CN
-        * 添加向上划动的手势事件。
+        * 移动端手指划动的手势事件。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向上划动的手势事件的侦听器函数
+        * @param func {Function} 手指划动划动的手势事件的侦听器函数
         */
-        public addListenerSwipeUp(func: Function) {
-            this._listenerSwipe.push(func);
+        public addListenerSwipe(func: Function) {
+            this._listenerSwipe = func;
         }
 
-        /**
-        * @language zh_CN
-        * 添加向下划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        public addListenerSwipeDown(func: Function) {
-            this._listenerSwipe.push(func);
-        }
-        /**
-        * @language zh_CN
-        * 添加向左划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        public addListenerSwipeLeft(func: Function) {
-            this._listenerSwipe.push(func);
-        }
-
-        /**
-        * @language zh_CN
-        * 添加向右划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        public addListenerSwipeRight(func: Function) {
-            this._listenerSwipe.push(func);
-        }
 
         /**
         * @language zh_CN

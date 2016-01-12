@@ -40,7 +40,10 @@
             Input.instance.addListenerKeyDown((e: number) => this.keyDown(e));
             Input.instance.addListenerMouseWheel(() => this.mouseWheel());
 
+            Input.instance.addListenerSwipe(() => this.mouseMove());
         }
+
+
         private mouseWheel() {
             this._distance -= Input.instance.wheelDelta * 0.1; 
         }
@@ -90,7 +93,6 @@
                     break;
             }
         }
-
         private mouseMove() {
             //Input.instance.mouseLastX
             if ( this._mouseDown ){
