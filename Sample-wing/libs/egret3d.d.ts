@@ -8479,44 +8479,6 @@ declare module egret3d {
         removeEffectMethod(method: EffectMethod): void;
         /**
          * @language zh_CN
-         * 返回 cull 模式。
-         * @returns {Number}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 设置 cull 模式。
-         * @param value {Number}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        cullMode: number;
-        /**
-         * @language zh_CN
-         * 返回bothSides。
-         * @returns {boolean}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 设置 bothSides。
-         * @param flag {boolean}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        bothSides: boolean;
-        /**
-         * @language zh_CN
-         * 设置 lightGroup。
-         * @param lights {Array<LightBase>}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        lightGroup: Array<LightBase>;
-        /**
-         * @language zh_CN
          * 初始化 shader 。
          * @param context3D {Context3D}
          * @param geometry {GeometryBase}
@@ -9316,6 +9278,21 @@ declare module egret3d {
          * @platform Web,Native
          */
         bothside: boolean;
+        /**
+         * @language zh_CN
+         * 返回 cull 模式。
+         * @returns {Number}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        /**
+       * @language zh_CN
+       * 设置 cull 模式。
+       * @param value {Number}
+       * @version Egret 3.0
+       * @platform Web,Native
+       */
+        cullMode: number;
         /**
         * @language zh_CN
         * 返回材质 blendMode 值。

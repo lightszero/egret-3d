@@ -11580,69 +11580,57 @@ var egret3d;
             this.effectMethodList.splice(index, 1);
             method.dispose();
         };
-        Object.defineProperty(MaterialPassBase.prototype, "cullMode", {
-            /**
-             * @language zh_CN
-             * 返回 cull 模式。
-             * @returns {Number}
-             * @version Egret 3.0
-             * @platform Web,Native
-             */
-            get: function () {
-                return this.materialData.cullFrontOrBack;
-            },
-            /**
-             * @language zh_CN
-             * 设置 cull 模式。
-             * @param value {Number}
-             * @version Egret 3.0
-             * @platform Web,Native
-             */
-            set: function (value) {
-                this.materialData.cullFrontOrBack = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MaterialPassBase.prototype, "bothSides", {
-            /**
-             * @language zh_CN
-             * 返回bothSides。
-             * @returns {boolean}
-             * @version Egret 3.0
-             * @platform Web,Native
-             */
-            get: function () {
-                if (this.materialData.cullFrontOrBack == -1)
-                    return true;
-                return false;
-            },
-            /**
-             * @language zh_CN
-             * 设置 bothSides。
-             * @param flag {boolean}
-             * @version Egret 3.0
-             * @platform Web,Native
-             */
-            set: function (flag) {
-                this.materialData.cullFrontOrBack = -1;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MaterialPassBase.prototype, "lightGroup", {
-            /**
-             * @language zh_CN
-             * 设置 lightGroup。
-             * @param lights {Array<LightBase>}
-             * @version Egret 3.0
-             * @platform Web,Native
-             */
-            set: function (lights) {
-            },
-            enumerable: true,
-            configurable: true
-        });
+        ///**
+        // * @language zh_CN
+        // * 设置 cull 模式。
+        // * @param value {Number}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set cullMode(value: number) {
+        //    this.materialData.cullFrontOrBack = value;
+        //}
+        ///**
+        // * @language zh_CN
+        // * 返回 cull 模式。
+        // * @returns {Number}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public get cullMode( ): number {
+        //    return this.materialData.cullFrontOrBack ;
+        //}
+        ///**
+        // * @language zh_CN
+        // * 设置 bothSides。
+        // * @param flag {boolean}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set bothSides(flag: boolean) {
+        //    this.materialData.cullFrontOrBack = -1; 
+        //}
+        ///**
+        // * @language zh_CN
+        // * 返回bothSides。
+        // * @returns {boolean}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public get bothSides( ): boolean {
+        //    if (this.materialData.cullFrontOrBack == -1)
+        //        return true
+        //    return false ;
+        //}
+        ///**
+        // * @language zh_CN
+        // * 设置 lightGroup。
+        // * @param lights {Array<LightBase>}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set lightGroup(lights: Array<LightBase> ) {
+        //}
         /**
          * @language zh_CN
          * 初始化 shader 。
@@ -13183,6 +13171,30 @@ var egret3d;
              */
             set: function (val) {
                 this.materialData.bothside = val;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MaterialBase.prototype, "cullMode", {
+            /**
+             * @language zh_CN
+             * 返回 cull 模式。
+             * @returns {Number}
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            get: function () {
+                return this.materialData.cullFrontOrBack;
+            },
+            /**
+           * @language zh_CN
+           * 设置 cull 模式。
+           * @param value {Number}
+           * @version Egret 3.0
+           * @platform Web,Native
+           */
+            set: function (value) {
+                this.materialData.cullFrontOrBack = value;
             },
             enumerable: true,
             configurable: true
@@ -18321,6 +18333,10 @@ var egret3d;
                         vertices[index++] = tanLen > .007 ? -y / tanLen : 1;
                         vertices[index++] = t1;
                         vertices[index++] = t2;
+                        vertices[index + 0] = 1.0;
+                        vertices[index + 1] = 1.0;
+                        vertices[index + 2] = 1.0;
+                        vertices[index + 3] = 1.0;
                     }
                     else {
                         vertices[index++] = x;
@@ -18332,6 +18348,10 @@ var egret3d;
                         vertices[index++] = tanLen > .007 ? -y / tanLen : 1;
                         vertices[index++] = t1;
                         vertices[index++] = t2;
+                        vertices[index] = 1.0;
+                        vertices[index + 1] = 1.0;
+                        vertices[index + 2] = 1.0;
+                        vertices[index + 3] = 1.0;
                     }
                     if (i > 0 && j > 0) {
                         var a = (this._segmentsW + 1) * j + i;
@@ -22130,7 +22150,7 @@ var egret3d;
             //Input.instance.mouseLastX
             if (this._mouseDown) {
                 this._tiltAngle += egret3d.Input.instance.mouseOffsetY * 0.1;
-                this._panAngle += egret3d.Input.instance.mouseOffsetX * 0.1;
+                this._panAngle -= egret3d.Input.instance.mouseOffsetX * 0.1;
             }
         };
         Object.defineProperty(HoverController.prototype, "lookAtPosition", {

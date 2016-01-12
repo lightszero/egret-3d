@@ -6,6 +6,7 @@ var game_file_list = [
 	"libs/modules/egret/egret.native.js",
 	"libs/egret3d.js",
 	"bin-debug/Main.js",
+	"bin-debug/Sample_360.js",
 	"bin-debug/Sample_360Photo.js",
 	"bin-debug/Sample_3DMaxModel.js",
 	"bin-debug/Sample_AnimationModel.js",
