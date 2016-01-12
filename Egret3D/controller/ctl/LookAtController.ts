@@ -95,97 +95,16 @@
             Input.instance.addListenerKeyUp((e:number) => this.keyUp(e));
             Input.instance.addListenerKeyDown((e: number) => this.keyDown(e));
 
-            Input.instance.addListenerSwipeUp(() => this.onSwipeUp());
-            Input.instance.addListenerSwipeDown(() => this.onSwipeDown());
-            Input.instance.addListenerSwipeLeft(() => this.onSwipeLeft());
-            Input.instance.addListenerSwipeRight(() => this.onSwipeRight());
+            Input.instance.addListenerSwipe(() => this.mouseMove());
         }
 
-        private onSwipeUp() {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, Vector3D.X_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.z = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(Input.instance.mouseOffsetY));
-            this._tempVec.copyFrom(this._lookAtObject.position.add(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        }
-
-        private onSwipeDown() {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, Vector3D.X_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.z = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(Input.instance.mouseOffsetY));
-            this._tempVec.copyFrom(this._lookAtObject.position.subtract(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        }
-
-        private onSwipeLeft() {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, Vector3D.Y_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.y = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(Input.instance.mouseOffsetX));
-            this._tempVec.copyFrom(this._lookAtObject.position.add(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        }
-
-        private onSwipeRight() {
-
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, Vector3D.Y_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.y = 0;
-            this._tempVec.normalize();
-
-            this._tempVec.scaleBy(Math.abs(Input.instance.mouseOffsetX));
-            this._tempVec.copyFrom(this._lookAtObject.position.subtract(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        }
 
         private mouseWheel() {
             this.setEyesLength(this._eyesLength - Input.instance.wheelDelta * 0.1);
         }
 
         private mouseMove() {
-            if (this._mouseDown && this._mouseRightDown) {
-                var x1 = Input.instance.mouseLastX ;
-                var y1 = Input.instance.mouseLastY;
-                var x2 = Input.instance.mouseX;
-                var y2 = Input.instance.mouseY;
-
-
-                var direction: number = Input.instance.GetSlideDirection(x1, y1, x2, y2);
-
-                switch (direction) {
-                    case 0:
-                        break;
-                    case 1:
-                        this.onSwipeUp();
-                        break;
-                    case 2:
-                        this.onSwipeDown();
-                        break;
-                    case 3:
-                        this.onSwipeLeft();
-          
-                        break;
-                    case 4:
-                        this.onSwipeRight();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (this._mouseDown) {
+            if (this._mouseDown) {
                 this._rotaAngle.y += Input.instance.mouseOffsetX;
                 this._rotaAngle.x += Input.instance.mouseOffsetY;
 
