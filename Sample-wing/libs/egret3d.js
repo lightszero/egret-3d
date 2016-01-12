@@ -8373,7 +8373,7 @@ var egret3d;
                 "diffuseMethod_fragment",
                 "Color_fragment",
                 "directLight_fragment",
-                "sportLight_fragment",
+                "spotLight_fragment",
                 "pointLight_fragment",
                 "skeleton_vertex",
                 "particle_vertex",
@@ -11552,7 +11552,7 @@ var egret3d;
                 this.pixelShader.addShader("directLight_fragment");
             }
             for (i = 0; i < this.materialData.sportLightList.length; i++) {
-                this.pixelShader.addShader("sportLight_fragment");
+                this.pixelShader.addShader("spotLight_fragment");
             }
             for (i = 0; i < this.materialData.pointLightList.length; i++) {
                 this.pixelShader.addShader("pointLight_fragment");
@@ -11839,7 +11839,7 @@ var egret3d;
                 this.pixelShader.addShader("directLight_fragment");
             }
             for (i = 0; i < this.materialData.sportLightList.length; i++) {
-                this.pixelShader.addShader("sportLight_fragment");
+                this.pixelShader.addShader("spotLight_fragment");
             }
             for (i = 0; i < this.materialData.pointLightList.length; i++) {
                 this.pixelShader.addShader("pointLight_fragment");
@@ -21258,85 +21258,13 @@ var egret3d;
             egret3d.Input.instance.addListenerMouseMove(function () { return _this.mouseMove(); });
             egret3d.Input.instance.addListenerKeyUp(function (e) { return _this.keyUp(e); });
             egret3d.Input.instance.addListenerKeyDown(function (e) { return _this.keyDown(e); });
-            egret3d.Input.instance.addListenerSwipeUp(function () { return _this.onSwipeUp(); });
-            egret3d.Input.instance.addListenerSwipeDown(function () { return _this.onSwipeDown(); });
-            egret3d.Input.instance.addListenerSwipeLeft(function () { return _this.onSwipeLeft(); });
-            egret3d.Input.instance.addListenerSwipeRight(function () { return _this.onSwipeRight(); });
+            egret3d.Input.instance.addListenerSwipe(function () { return _this.mouseMove(); });
         }
-        LookAtController.prototype.onSwipeUp = function () {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, egret3d.Vector3D.X_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.z = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(egret3d.Input.instance.mouseOffsetY));
-            this._tempVec.copyFrom(this._lookAtObject.position.add(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        };
-        LookAtController.prototype.onSwipeDown = function () {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, egret3d.Vector3D.X_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.z = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(egret3d.Input.instance.mouseOffsetY));
-            this._tempVec.copyFrom(this._lookAtObject.position.subtract(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        };
-        LookAtController.prototype.onSwipeLeft = function () {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, egret3d.Vector3D.Y_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.y = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(egret3d.Input.instance.mouseOffsetX));
-            this._tempVec.copyFrom(this._lookAtObject.position.add(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        };
-        LookAtController.prototype.onSwipeRight = function () {
-            this._tempVec.copyFrom(this._rotaEyesLine);
-            this._matTemp.identity();
-            this._matTemp.appendRotation(90, egret3d.Vector3D.Y_AXIS);
-            this._tempVec.copyFrom(this._matTemp.transformVector(this._tempVec));
-            this._tempVec.y = 0;
-            this._tempVec.normalize();
-            this._tempVec.scaleBy(Math.abs(egret3d.Input.instance.mouseOffsetX));
-            this._tempVec.copyFrom(this._lookAtObject.position.subtract(this._tempVec));
-            this._lookAtObject.position = this._tempVec;
-        };
         LookAtController.prototype.mouseWheel = function () {
             this.setEyesLength(this._eyesLength - egret3d.Input.instance.wheelDelta * 0.1);
         };
         LookAtController.prototype.mouseMove = function () {
-            if (this._mouseDown && this._mouseRightDown) {
-                var x1 = egret3d.Input.instance.mouseLastX;
-                var y1 = egret3d.Input.instance.mouseLastY;
-                var x2 = egret3d.Input.instance.mouseX;
-                var y2 = egret3d.Input.instance.mouseY;
-                var direction = egret3d.Input.instance.GetSlideDirection(x1, y1, x2, y2);
-                switch (direction) {
-                    case 0:
-                        break;
-                    case 1:
-                        this.onSwipeUp();
-                        break;
-                    case 2:
-                        this.onSwipeDown();
-                        break;
-                    case 3:
-                        this.onSwipeLeft();
-                        break;
-                    case 4:
-                        this.onSwipeRight();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (this._mouseDown) {
+            if (this._mouseDown) {
                 this._rotaAngle.y += egret3d.Input.instance.mouseOffsetX;
                 this._rotaAngle.x += egret3d.Input.instance.mouseOffsetY;
                 this._rotaAngle.y %= 360;
@@ -21626,6 +21554,7 @@ var egret3d;
             egret3d.Input.instance.addListenerKeyUp(function (e) { return _this.keyUp(e); });
             egret3d.Input.instance.addListenerKeyDown(function (e) { return _this.keyDown(e); });
             egret3d.Input.instance.addListenerMouseWheel(function () { return _this.mouseWheel(); });
+            egret3d.Input.instance.addListenerSwipe(function () { return _this.mouseMove(); });
         }
         HoverController.prototype.mouseWheel = function () {
             this._distance -= egret3d.Input.instance.wheelDelta * 0.1;
@@ -23185,9 +23114,13 @@ var egret3d;
          * 构造
          */
         function Debug() {
-            this._isDebug = false;
-            this._console = document.getElementById('console');
+            this.isDebug = false;
+            this._console = document.createElement('console');
+            document.body.appendChild(this._console);
             this._console.style.color = "red";
+            this._console.style.position = "absolute";
+            this._console.style.top = "10px";
+            this._console.style.left = "10px";
         }
         /**
          * @language zh_CN
@@ -23199,7 +23132,7 @@ var egret3d;
             for (var _i = 0; _i < arguments.length; _i++) {
                 parameters[_i - 0] = arguments[_i];
             }
-            if (this._isDebug) {
+            if (this.isDebug) {
                 this.reset();
                 var len = parameters.length;
                 for (var i = 0; i < len; i++) {
@@ -25293,7 +25226,7 @@ var egret3d;
             this._listenerKeyClick = new Array();
             this._listenerKeyUp = new Array();
             this._listenerKeyDown = new Array();
-            this._listenerSwipe = new Array();
+            this._listenerSwipe = null;
             this._mouseMoveFunc = new Array();
             this._mouseWheelFunc = new Array();
             this._ondeviceorientation = new Array();
@@ -25551,7 +25484,6 @@ var egret3d;
         };
         Input.prototype.touchStart = function (e) {
             e.preventDefault();
-            egret3d.Debug.instance.trace("touchStart: " + e.touches.length);
             var x1 = e.targetTouches[0].clientX - egret3d.Egret3DDrive.clientRect.left;
             var y1 = e.targetTouches[0].clientY - egret3d.Egret3DDrive.clientRect.top;
             if (e.targetTouches.length == 2) {
@@ -25567,7 +25499,6 @@ var egret3d;
             }
         };
         Input.prototype.touchEnd = function (e) {
-            egret3d.Debug.instance.trace("touchEnd : " + e.touches.length);
             if (e.targetTouches.length > 1) {
                 var x = e.targetTouches[0].clientX - egret3d.Egret3DDrive.clientRect.left;
                 var y = e.targetTouches[0].clientY - egret3d.Egret3DDrive.clientRect.top;
@@ -25616,17 +25547,7 @@ var egret3d;
                 }
             }
             else {
-                if (new Date().getTime() - this._time > 500) {
-                    for (var i = 0; i < this._mouseMoveFunc.length; ++i) {
-                        this._mouseMoveFunc[i]();
-                    }
-                }
-                else {
-                    var direction = this.GetSlideDirection(this.mouseLastX, this.mouseLastY, this.mouseX, this.mouseY);
-                    if (direction > 0) {
-                        this._listenerSwipe[direction - 1]();
-                    }
-                }
+                this._listenerSwipe();
             }
             for (var i = 0; i < this._touchMoveCallback.length; i++) {
                 this._touchMoveCallback[i](e);
@@ -25684,43 +25605,13 @@ var egret3d;
         };
         /**
         * @language zh_CN
-        * 添加向上划动的手势事件。
+        * 移动端手指划动的手势事件。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向上划动的手势事件的侦听器函数
+        * @param func {Function} 手指划动划动的手势事件的侦听器函数
         */
-        Input.prototype.addListenerSwipeUp = function (func) {
-            this._listenerSwipe.push(func);
-        };
-        /**
-        * @language zh_CN
-        * 添加向下划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        Input.prototype.addListenerSwipeDown = function (func) {
-            this._listenerSwipe.push(func);
-        };
-        /**
-        * @language zh_CN
-        * 添加向左划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        Input.prototype.addListenerSwipeLeft = function (func) {
-            this._listenerSwipe.push(func);
-        };
-        /**
-        * @language zh_CN
-        * 添加向右划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        Input.prototype.addListenerSwipeRight = function (func) {
-            this._listenerSwipe.push(func);
+        Input.prototype.addListenerSwipe = function (func) {
+            this._listenerSwipe = func;
         };
         /**
         * @language zh_CN

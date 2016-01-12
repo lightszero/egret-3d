@@ -13433,10 +13433,6 @@ declare module egret3d {
         * @platform Web,Native
         */
         constructor(targetObject?: Object3D, lookAtObject?: Object3D);
-        private onSwipeUp();
-        private onSwipeDown();
-        private onSwipeLeft();
-        private onSwipeRight();
         private mouseWheel();
         private mouseMove();
         /**
@@ -14081,7 +14077,7 @@ declare module egret3d {
     */
     class Debug {
         private _console;
-        private _isDebug;
+        isDebug: boolean;
         /**
          * @language zh_CN
          * 构造
@@ -15529,36 +15525,12 @@ declare module egret3d {
         addListenerKeyDown(func: Function): void;
         /**
         * @language zh_CN
-        * 添加向上划动的手势事件。
+        * 移动端手指划动的手势事件。
         * @version Egret 3.0
         * @platform Web,Native
-        * @param func {Function} 处理向上划动的手势事件的侦听器函数
+        * @param func {Function} 手指划动划动的手势事件的侦听器函数
         */
-        addListenerSwipeUp(func: Function): void;
-        /**
-        * @language zh_CN
-        * 添加向下划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        addListenerSwipeDown(func: Function): void;
-        /**
-        * @language zh_CN
-        * 添加向左划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        addListenerSwipeLeft(func: Function): void;
-        /**
-        * @language zh_CN
-        * 添加向右划动的手势事件。
-        * @version Egret 3.0
-        * @platform Web,Native
-        * @param func {Function} 处理向下划动的手势事件的侦听器函数
-        */
-        addListenerSwipeRight(func: Function): void;
+        addListenerSwipe(func: Function): void;
         /**
         * @language zh_CN
         * 添加设备旋转事件。
