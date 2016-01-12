@@ -1,5 +1,4 @@
-﻿/// <reference path="../method/fs/normalmethod.ts" />
-module egret3d {
+﻿module egret3d {
 
      /**
     * @private
