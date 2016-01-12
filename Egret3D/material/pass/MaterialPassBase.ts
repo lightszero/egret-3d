@@ -124,62 +124,62 @@
             method.dispose();
         }
 
-        /**
-         * @language zh_CN
-         * 设置 cull 模式。
-         * @param value {Number}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        public set cullMode(value: number) {
-            this.materialData.cullFrontOrBack = value;
-        }
+        ///**
+        // * @language zh_CN
+        // * 设置 cull 模式。
+        // * @param value {Number}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set cullMode(value: number) {
+        //    this.materialData.cullFrontOrBack = value;
+        //}
 
-        /**
-         * @language zh_CN
-         * 返回 cull 模式。
-         * @returns {Number}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        public get cullMode( ): number {
-            return this.materialData.cullFrontOrBack ;
-        }
+        ///**
+        // * @language zh_CN
+        // * 返回 cull 模式。
+        // * @returns {Number}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public get cullMode( ): number {
+        //    return this.materialData.cullFrontOrBack ;
+        //}
 
-        /**
-         * @language zh_CN
-         * 设置 bothSides。
-         * @param flag {boolean}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        public set bothSides(flag: boolean) {
-            this.materialData.cullFrontOrBack = -1; 
-        }
+        ///**
+        // * @language zh_CN
+        // * 设置 bothSides。
+        // * @param flag {boolean}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set bothSides(flag: boolean) {
+        //    this.materialData.cullFrontOrBack = -1; 
+        //}
 
-        /**
-         * @language zh_CN
-         * 返回bothSides。
-         * @returns {boolean}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        public get bothSides( ): boolean {
-            if (this.materialData.cullFrontOrBack == -1)
-                return true
-            return false ;
-        }
+        ///**
+        // * @language zh_CN
+        // * 返回bothSides。
+        // * @returns {boolean}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public get bothSides( ): boolean {
+        //    if (this.materialData.cullFrontOrBack == -1)
+        //        return true
+        //    return false ;
+        //}
 
-        /**
-         * @language zh_CN
-         * 设置 lightGroup。
-         * @param lights {Array<LightBase>}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        public set lightGroup(lights: Array<LightBase> ) {
+        ///**
+        // * @language zh_CN
+        // * 设置 lightGroup。
+        // * @param lights {Array<LightBase>}
+        // * @version Egret 3.0
+        // * @platform Web,Native
+        // */
+        //public set lightGroup(lights: Array<LightBase> ) {
       
-        }
+        //}
 
         /**
          * @language zh_CN

@@ -532,6 +532,27 @@
             return this.materialData.bothside;
         }
 
+        /**
+       * @language zh_CN
+       * 设置 cull 模式。
+       * @param value {Number}
+       * @version Egret 3.0
+       * @platform Web,Native
+       */
+        public set cullMode(value: number) {
+            this.materialData.cullFrontOrBack = value;
+        }
+
+        /**
+         * @language zh_CN
+         * 返回 cull 模式。
+         * @returns {Number}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        public get cullMode(): number {
+            return this.materialData.cullFrontOrBack;
+        }
         
         /**
          * @language zh_CN

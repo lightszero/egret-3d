@@ -85,6 +85,11 @@
                         vertices[index++] = t1;
                         vertices[index++] = t2;
 
+                        vertices[index + 0] = 1.0;
+                        vertices[index + 1 ] = 1.0 ;
+                        vertices[index + 2 ] = 1.0 ;
+                        vertices[index + 3 ] = 1.0 ;
+
                     } else {
                         vertices[index++] = x;
                         vertices[index++] = comp1;
@@ -96,6 +101,11 @@
                         vertices[index++] = tanLen > .007 ? -y / tanLen : 1;
                         vertices[index++] = t1;
                         vertices[index++] = t2;
+
+                        vertices[index ] = 1.0;
+                        vertices[index + 1 ] = 1.0;
+                        vertices[index + 2 ] = 1.0;
+                        vertices[index + 3 ] = 1.0;
                     }
 
                     if (i > 0 && j > 0) {
