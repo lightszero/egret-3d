@@ -9,7 +9,7 @@
     export class Debug {
 
         private _console: HTMLElement;
-        private _isDebug: boolean = false;
+        public isDebug: boolean = false;
 
 
         /**
@@ -17,8 +17,12 @@
          * 构造
          */
         constructor() {
-            this._console = document.getElementById('console');
+            this._console = document.createElement('console');
+            document.body.appendChild(this._console);
             this._console.style.color = "red";
+            this._console.style.position = "absolute";
+            this._console.style.top = "10px";
+            this._console.style.left = "10px";
         }
 
 
@@ -28,7 +32,7 @@
          * @param parameters 
          */
         public trace(...parameters: string[]): void {
-            if (this._isDebug) {      
+            if (this.isDebug) {      
                 this.reset();
                 var len: number = parameters.length;
                 for (var i: number = 0; i < len; i++) {

@@ -524,8 +524,6 @@
 
             e.preventDefault();
 
-            Debug.instance.trace("touchStart: " + e.touches.length);
-
             var x1: number = e.targetTouches[0].clientX - egret3d.Egret3DDrive.clientRect.left;
             var y1: number = e.targetTouches[0].clientY - egret3d.Egret3DDrive.clientRect.top;
 
@@ -549,8 +547,6 @@
         private _oldPosition2: Point = null;
 
         private touchEnd(e: TouchEvent) {
-
-            Debug.instance.trace("touchEnd : " + e.touches.length);
 
             if (e.targetTouches.length > 1) {
 
