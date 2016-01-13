@@ -97,6 +97,13 @@
             //Input.instance.mouseLastX
             if ( this._mouseDown ){
                 this._tiltAngle += Input.instance.mouseOffsetY * 0.1;
+                if (this._tiltAngle > 60) {
+                    this._tiltAngle = 60;
+                }
+                
+                if (this._tiltAngle < -60) {
+                    this._tiltAngle = -60;
+                }
                 this._panAngle -= Input.instance.mouseOffsetX * 0.1;
             }
         }
