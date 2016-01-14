@@ -1,4 +1,12 @@
 ﻿module egret3d {
+
+    /**
+     * @private
+     * @class egret3d.HoverController
+     * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     export class HoverController extends ControllerBase {
         _currentPanAngle: number = 0;
         _currentTiltAngle: number = 90;

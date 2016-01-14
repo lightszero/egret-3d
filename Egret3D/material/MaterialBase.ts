@@ -14,9 +14,9 @@
      * @language zh_CN
      * @class egret3d.MaterialBase
      * @classdesc
-     * TerrainMaterial,TextureMaterial 的基类。
-     * 材质球共有的基础类型，封装了材质球共有的基础数据设置方法
-     * 不同的渲染通道pass
+     * TerrainMaterial,TextureMaterial 的基类。</p>
+     * 材质球共有的基础类型，封装了材质球共有的基础数据设置方法。</p>
+     * 不同的渲染通道pass。</p>
      * @version Egret 3.0
      * @platform Web,Native
      */

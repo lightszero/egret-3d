@@ -1,4 +1,11 @@
 ﻿module egret3d {
+    /**
+     * @private
+     * @class egret3d.MathUtil
+     * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     export class MathUtil {
         /**
       * @language zh_CN
