@@ -3,15 +3,17 @@ module egret3d {
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUD直接渲染在屏幕上的一张贴图。
-     * 可直接指定2维坐标，贴图的宽度和高度
-     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息
-     * 其所有的HUD对象的顶点信息数据都是共用的
+
+     * HUD直接渲染在屏幕上的一张贴图。</p>
+     * 可直接指定2维坐标，贴图的宽度和高度。</p>
+     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息。</p>
+     * 其所有的HUD对象的顶点信息数据都是共用的。</p>
      * @version Egret 3.0
      * @platform Web,Native
      */   
     export class HUD {
         private static singleQuadData: Array<number> = [
+
 
             -0.5, -0.5, 0.0, 0.0, 1.0,
             0.5, -0.5, 0.0, 1.0, 1.0,
