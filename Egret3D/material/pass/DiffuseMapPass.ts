@@ -55,7 +55,7 @@
             }
 
             for (i = 0; i < this.materialData.sportLightList.length; i++) {
-                this.pixelShader.addShader("sportLight_fragment");
+                this.pixelShader.addShader("spotLight_fragment");
             }
 
             for (i = 0; i < this.materialData.pointLightList.length; i++) {

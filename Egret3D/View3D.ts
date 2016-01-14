@@ -110,17 +110,33 @@
             this.width = viewPort.width;
             this.height = viewPort.height;
 
-            window.addEventListener("resize", () => this.resize());
-
+            window.addEventListener("resize", () => this.onResize());
             this._mouseEventManager = new Mouse3DManager( this._camera );
 
         }
 
-        private resize() {
-            this.x = this.viewPort.x = 0 ;
-            this.y = this.viewPort.y = 0 ;
-            this.width = this.viewPort.width = window.innerWidth ;
-            this.height = this.viewPort.height = window.innerHeight ;
+        private onResize() {
+            this.resize(0, 0, window.innerWidth, window.innerHeight);
+            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
+                this._resizeFuncs[i]();
+            }
+        }
+        
+        /**
+        * @language zh_CN
+        * 重置canvas位置和大小
+        * @param x canvas的x坐标
+        * @param y canvas的y坐标
+        * @param width  canvas的宽度
+        * @param height canvas的高度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */  
+        public resize(x:number, y:number, width:number, height:number) {
+            this.x = this.viewPort.x = x ;
+            this.y = this.viewPort.y = y ;
+            this.width = this.viewPort.width = width ;
+            this.height = this.viewPort.height = height ;
             Egret3DDrive.canvas.width = this.viewPort.width;
             Egret3DDrive.canvas.height = this.viewPort.height;
             Egret3DDrive.canvasRectangle.x = this.x;
@@ -128,10 +144,6 @@
             Egret3DDrive.canvasRectangle.width = this.width;
             Egret3DDrive.canvasRectangle.height = this.height;
             this.updateViewSizeData();
-
-            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
-                this._resizeFuncs[i]();
-            }
         }
 
         /**

@@ -5,19 +5,18 @@
      * @classdesc
      * ImageTexture 类为 图像贴图
      * 
-     * 图像贴图用于封装 HTMLImageElement（网页图像元素）到引擎内部可使用的Texture2D对象，HTMLImageElement 可通过内嵌HTML文件中获取。
+     * 图像贴图用于封装 HTMLImageElement（网页图像元素）到引擎内部可使用的Texture2D对象, </p>
+      * HTMLImageElement 可通过内嵌HTML文件中获取。</p>
      *
+      *
      * 示例：
-     * 假设html中已有 <img id="t1" src="xxx.png" />
-     *
-     * TS代码：
+     * 假设html中已有 &lt;img id="t1" src="xxx.png" /&gt;
+     * <pre>
      * var img: HTMLImageElement = <HTMLImageElement>document.getElementById("t1");
-     *
      * var imageTexture: egret3d.ImageTexture = new egret3d.ImageTexture(img);
-     *
+      * </pre>
      * @version Egret 3.0
      * @platform Web,Native
-     * @includeExample texture/ImageTexture.ts
      */
     export class ImageTexture extends TextureBase  {
 

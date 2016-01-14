@@ -19,7 +19,7 @@
             "diffuseMethod_fragment",
             "Color_fragment",
             "directLight_fragment",
-            "sportLight_fragment",
+            "spotLight_fragment",
             "pointLight_fragment", 
             "skeleton_vertex", 
             "particle_vertex", 

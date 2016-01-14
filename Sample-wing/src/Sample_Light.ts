@@ -19,7 +19,7 @@ class Sample_Light {
         this._view3D = new egret3d.View3D(this._viewPort);
 
         //创建像机控制器;
-        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null, 0, 30);
         this._cameraCtl.distance = 1500;
      
 
