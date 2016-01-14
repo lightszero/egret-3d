@@ -21607,7 +21607,13 @@ var egret3d;
             //Input.instance.mouseLastX
             if (this._mouseDown) {
                 this._tiltAngle += egret3d.Input.instance.mouseOffsetY * 0.1;
-                this._panAngle -= egret3d.Input.instance.mouseOffsetX * 0.1;
+                if (this._tiltAngle > 60) {
+                    this._tiltAngle = 60;
+                }
+                if (this._tiltAngle < -60) {
+                    this._tiltAngle = -60;
+                }
+                this._panAngle += egret3d.Input.instance.mouseOffsetX * 0.1;
             }
         };
         Object.defineProperty(HoverController.prototype, "lookAtPosition", {
@@ -23722,17 +23728,17 @@ var egret3d;
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUD直接渲染在屏幕上的一张贴图。
-     * 可直接指定2维坐标，贴图的宽度和高度
-     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息
-     * 其所有的HUD对象的顶点信息数据都是共用的
+     * HUDֱ����Ⱦ����Ļ�ϵ�һ����ͼ��
+     * ��ֱ��ָ��2ά���꣬��ͼ�Ŀ��Ⱥ͸߶�
+     * ���ײ���ȾҲ����4�����㹹�ɣ��������ݽṹ��λ����Ϣ��uv��Ϣ
+     * �����е�HUD�����Ķ�����Ϣ���ݶ��ǹ��õ�
      * @version Egret 3.0
      * @platform Web,Native
      */
     var HUD = (function () {
         /**
         * @language zh_CN
-        * 构造
+        * ����
         */
         function HUD() {
             /**
@@ -23796,16 +23802,16 @@ var egret3d;
         Object.defineProperty(HUD.prototype, "x", {
             /**
             * @language zh_CN
-            * 得到x坐标
-            * @returns x坐标
+            * �õ�x����
+            * @returns x����
             */
             get: function () {
                 return this.rectangle.x;
             },
             /**
             * @language zh_CN
-            * 设置x坐标
-            * @param value x坐标
+            * ����x����
+            * @param value x����
             */
             set: function (value) {
                 this.rectangle.x = value;
@@ -23816,16 +23822,16 @@ var egret3d;
         Object.defineProperty(HUD.prototype, "y", {
             /**
             * @language zh_CN
-            * 得到y坐标
-            * @returns y坐标
+            * �õ�y����
+            * @returns y����
             */
             get: function () {
                 return this.rectangle.y;
             },
             /**
             * @language zh_CN
-            * 设置y坐标
-            * @param value y坐标
+            * ����y����
+            * @param value y����
             */
             set: function (value) {
                 this.rectangle.y = value;
@@ -23836,16 +23842,16 @@ var egret3d;
         Object.defineProperty(HUD.prototype, "width", {
             /**
             * @language zh_CN
-            * 得到HUD的宽度
-            * @returns HUD宽
+            * �õ�HUD�Ŀ���
+            * @returns HUD��
             */
             get: function () {
                 return this.rectangle.width;
             },
             /**
             * @language zh_CN
-            * 设置HUD的宽度
-            * @param value HUD宽
+            * ����HUD�Ŀ���
+            * @param value HUD��
             */
             set: function (value) {
                 this.rectangle.width = value;
@@ -23856,16 +23862,16 @@ var egret3d;
         Object.defineProperty(HUD.prototype, "height", {
             /**
             * @language zh_CN
-            * 得到HUD的高度
-            * @returns HUD高
+            * �õ�HUD�ĸ߶�
+            * @returns HUD��
             */
             get: function () {
                 return this.rectangle.height;
             },
             /**
             * @language zh_CN
-            * 设置HUD的高度
-            * @param value HUD高
+            * ����HUD�ĸ߶�
+            * @param value HUD��
             */
             set: function (value) {
                 this.rectangle.height = value;
@@ -23893,7 +23899,7 @@ var egret3d;
         };
         /**
         * @language zh_CN
-        * 提交数据给GPU渲染
+        * �ύ���ݸ�GPU��Ⱦ
         * @param context3D Context3D
         */
         HUD.prototype.draw = function (context3D) {
@@ -23928,10 +23934,10 @@ var egret3d;
             context3D.gl.clear(egret3d.Egret3DDrive.DEPTH_BUFFER_BIT);
         };
         HUD.singleQuadData = [
-            -0.5, -0.5, 0.0, 0.0, 0.0,
-            0.5, -0.5, 0.0, 1.0, 0.0,
-            0.5, 0.5, 0.0, 1.0, 1.0,
-            -0.5, 0.5, 0.0, 0.0, 1.0
+            -0.5, -0.5, 0.0, 0.0, 1.0,
+            0.5, -0.5, 0.0, 1.0, 1.0,
+            0.5, 0.5, 0.0, 1.0, 0.0,
+            -0.5, 0.5, 0.0, 0.0, 0.0
         ];
         HUD.singleQuadIndex = [0, 1, 2, 0, 2, 3];
         return HUD;
@@ -24317,7 +24323,7 @@ var egret3d;
             this.y = viewPort.y;
             this.width = viewPort.width;
             this.height = viewPort.height;
-            window.addEventListener("resize", function () { return _this.resize(); });
+            window.addEventListener("resize", function () { return _this.onResize(); });
             this._mouseEventManager = new egret3d.Mouse3DManager(this._camera);
         }
         Object.defineProperty(View3D.prototype, "root", {
@@ -24361,11 +24367,27 @@ var egret3d;
             enumerable: true,
             configurable: true
         });
-        View3D.prototype.resize = function () {
-            this.x = this.viewPort.x = 0;
-            this.y = this.viewPort.y = 0;
-            this.width = this.viewPort.width = window.innerWidth;
-            this.height = this.viewPort.height = window.innerHeight;
+        View3D.prototype.onResize = function () {
+            this.resize(0, 0, window.innerWidth, window.innerHeight);
+            for (var i = 0; i < this._resizeFuncs.length; ++i) {
+                this._resizeFuncs[i]();
+            }
+        };
+        /**
+        * @language zh_CN
+        * 重置canvas位置和大小
+        * @param x canvas的x坐标
+        * @param y canvas的y坐标
+        * @param width  canvas的宽度
+        * @param height canvas的高度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        View3D.prototype.resize = function (x, y, width, height) {
+            this.x = this.viewPort.x = x;
+            this.y = this.viewPort.y = y;
+            this.width = this.viewPort.width = width;
+            this.height = this.viewPort.height = height;
             egret3d.Egret3DDrive.canvas.width = this.viewPort.width;
             egret3d.Egret3DDrive.canvas.height = this.viewPort.height;
             egret3d.Egret3DDrive.canvasRectangle.x = this.x;
@@ -24373,9 +24395,6 @@ var egret3d;
             egret3d.Egret3DDrive.canvasRectangle.width = this.width;
             egret3d.Egret3DDrive.canvasRectangle.height = this.height;
             this.updateViewSizeData();
-            for (var i = 0; i < this._resizeFuncs.length; ++i) {
-                this._resizeFuncs[i]();
-            }
         };
         Object.defineProperty(View3D.prototype, "render", {
             /**

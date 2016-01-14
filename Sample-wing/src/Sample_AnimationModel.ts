@@ -6,7 +6,7 @@ class Sample_AnimationModel {
     protected _timeDate: Date = null;
     protected _view3D: egret3d.View3D = null;
     protected _viewPort: egret3d.Rectangle = null;
-    protected _cameraCtl: egret3d.LookAtController = null;
+    protected _cameraCtl: egret3d.HoverController = null;
     public constructor(width: number = 800,height: number = 600) {
 
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
@@ -20,10 +20,8 @@ class Sample_AnimationModel {
         this._view3D = new egret3d.View3D(this._viewPort);
 
         //创建像机控制器;
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D,new egret3d.Object3D());
-
-        //设置像机视野距离;
-        this._cameraCtl.setEyesLength(0.1);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,10,600);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0, 50,0);
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
@@ -36,7 +34,6 @@ class Sample_AnimationModel {
             ["idle_1.eam","run_1.eam","attack_1.eam","death_1.eam","skill_1.eam","skill_2.eam","skill_3.eam","skill_4.eam"]);
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE,(e: egret3d.Event3D) => this.onLoadComplete(e));
         egret3d.AssetsManager.getInstance().startLoad();
-        this._cameraCtl.setEyesLength(600);
     }
 
     protected onKeyUp(keyCode:number): void {

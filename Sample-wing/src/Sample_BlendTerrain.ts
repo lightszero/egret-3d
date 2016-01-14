@@ -4,7 +4,7 @@ class Sample_BlendTerrain {
     protected _timeDate: Date = null;
     protected _view3D: egret3d.View3D = null;
     protected _viewPort: egret3d.Rectangle = null;
-    protected _cameraCtl: egret3d.LookAtController = null;
+    protected _cameraCtl: egret3d.HoverController = null;
     protected _wireframeMesh: egret3d.WireframeMesh = null;
     protected _enableWireframe: boolean = false;
 
@@ -21,11 +21,8 @@ class Sample_BlendTerrain {
         this._view3D = new egret3d.View3D(this._viewPort);
 
         //创建像机控制器;
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D,new egret3d.Object3D());
-
-        //设置像机视野距离;
-        this._cameraCtl.setEyesLength(100);
-
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,10,5000);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0,180,0);
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
         egret3d.AssetsManager.getInstance().addLoadTexture("sky/Mars_skybox_front.jpg");
@@ -77,7 +74,6 @@ class Sample_BlendTerrain {
         var sky: egret3d.Sky = new egret3d.Sky(skyTexture);
         this._view3D.sky = sky;
 
-        this._cameraCtl.setEyesLength(5000);
         var dir: egret3d.DirectLight = new egret3d.DirectLight(new egret3d.Vector3D(0.5,0.9,0.7));
         dir.intensity = 0.6;
         var lightGroup: egret3d.LightGroup = new egret3d.LightGroup();
