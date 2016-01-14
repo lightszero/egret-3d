@@ -110,9 +110,16 @@
             this.width = viewPort.width;
             this.height = viewPort.height;
 
-            //window.addEventListener("resize", () => this.resize());
+            window.addEventListener("resize", () => this.onResize());
             this._mouseEventManager = new Mouse3DManager( this._camera );
 
+        }
+
+        private onResize() {
+            this.resize(0, 0, window.innerWidth, window.innerHeight);
+            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
+                this._resizeFuncs[i]();
+            }
         }
         
         /**
@@ -137,10 +144,6 @@
             Egret3DDrive.canvasRectangle.width = this.width;
             Egret3DDrive.canvasRectangle.height = this.height;
             this.updateViewSizeData();
-
-            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
-                this._resizeFuncs[i]();
-            }
         }
 
         /**
