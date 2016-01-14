@@ -8,7 +8,7 @@ class Sample_MousePick {
     protected _timeDate: Date = null;
     protected _view3D: egret3d.View3D = null;
     protected _viewPort: egret3d.Rectangle = null;
-    protected _cameraCtl: egret3d.LookAtController = null;
+    protected _cameraCtl: egret3d.HoverController = null;
 
     public constructor(width: number = 800,height: number = 600) {
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
@@ -21,10 +21,8 @@ class Sample_MousePick {
         this._view3D = new egret3d.View3D(this._viewPort);
 
         //创建像机控制器;
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D,new egret3d.Object3D());
-
-        //设置像机视野距离;
-        this._cameraCtl.setEyesLength(400);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,10,1000);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0,50,0);
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
@@ -85,9 +83,6 @@ class Sample_MousePick {
         this._boxs[1].material.lightGroup = lightGroup;
         this._view3D.addChild3D(this._boxs[1]);
 
-
-
-        this._cameraCtl.setEyesLength(1000);
 
         this._time = new Date().getTime();
 

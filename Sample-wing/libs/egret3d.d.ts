@@ -14408,10 +14408,10 @@ declare module egret3d {
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUD直接渲染在屏幕上的一张贴图。
-     * 可直接指定2维坐标，贴图的宽度和高度
-     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息
-     * 其所有的HUD对象的顶点信息数据都是共用的
+     * HUDֱ����Ⱦ����Ļ�ϵ�һ����ͼ��
+     * ��ֱ��ָ��2ά���꣬��ͼ�Ŀ��Ⱥ͸߶�
+     * ���ײ���ȾҲ����4�����㹹�ɣ��������ݽṹ��λ����Ϣ��uv��Ϣ
+     * �����е�HUD�����Ķ�����Ϣ���ݶ��ǹ��õ�
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -14501,57 +14501,57 @@ declare module egret3d {
         private list;
         /**
         * @language zh_CN
-        * 构造
+        * ����
         */
         constructor();
         /**
         * @language zh_CN
-        * 得到x坐标
-        * @returns x坐标
+        * �õ�x����
+        * @returns x����
         */
         /**
         * @language zh_CN
-        * 设置x坐标
-        * @param value x坐标
+        * ����x����
+        * @param value x����
         */
         x: number;
         /**
         * @language zh_CN
-        * 得到y坐标
-        * @returns y坐标
+        * �õ�y����
+        * @returns y����
         */
         /**
         * @language zh_CN
-        * 设置y坐标
-        * @param value y坐标
+        * ����y����
+        * @param value y����
         */
         y: number;
         /**
         * @language zh_CN
-        * 得到HUD的宽度
-        * @returns HUD宽
+        * �õ�HUD�Ŀ���
+        * @returns HUD��
         */
         /**
         * @language zh_CN
-        * 设置HUD的宽度
-        * @param value HUD宽
+        * ����HUD�Ŀ���
+        * @param value HUD��
         */
         width: number;
         /**
         * @language zh_CN
-        * 得到HUD的高度
-        * @returns HUD高
+        * �õ�HUD�ĸ߶�
+        * @returns HUD��
         */
         /**
         * @language zh_CN
-        * 设置HUD的高度
-        * @param value HUD高
+        * ����HUD�ĸ߶�
+        * @param value HUD��
         */
         height: number;
         private rebuild(context3D);
         /**
         * @language zh_CN
-        * 提交数据给GPU渲染
+        * �ύ���ݸ�GPU��Ⱦ
         * @param context3D Context3D
         */
         draw(context3D: Context3D): void;
@@ -14832,7 +14832,18 @@ declare module egret3d {
         * @platform Web,Native
         */
         constructor(viewPort: Rectangle, camera?: Camera3D);
-        private resize();
+        private onResize();
+        /**
+        * @language zh_CN
+        * 重置canvas位置和大小
+        * @param x canvas的x坐标
+        * @param y canvas的y坐标
+        * @param width  canvas的宽度
+        * @param height canvas的高度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        resize(x: number, y: number, width: number, height: number): void;
         /**
         * @language zh_CN
         * 设置渲染器
