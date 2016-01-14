@@ -10,6 +10,8 @@
         _maxPanAngle: number = Infinity;
         _minTiltAngle: number = -90;
         _maxTiltAngle: number = 90;
+        _maxDistance: number = 5000;
+        _minDistance: number = -5000;
         _steps: number = 8;
         _yFactor: number = 2;
         _wrapPanAngle: boolean = false;
@@ -45,7 +47,14 @@
 
 
         private mouseWheel() {
-            this._distance -= Input.instance.wheelDelta * 0.1; 
+            this._distance -= Input.instance.wheelDelta * 0.1;
+            if (this._distance > this._maxDistance) {
+                this._distance = this._maxDistance;
+            }
+
+            if (this._distance < this._minDistance) {
+                this._distance = this._minDistance;
+            }
         }
 
         private keyDown(key: number) {
@@ -94,17 +103,12 @@
             }
         }
         private mouseMove() {
-            //Input.instance.mouseLastX
             if ( this._mouseDown ){
                 this._tiltAngle += Input.instance.mouseOffsetY * 0.1;
-                if (this._tiltAngle > this._maxTiltAngle) {
-                    this._tiltAngle = this._maxTiltAngle;
-                }
-                
-                if (this._tiltAngle < this._minTiltAngle) {
-                    this._tiltAngle = this._minTiltAngle;
-                }
+                this._tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle))
+
                 this._panAngle += Input.instance.mouseOffsetX * 0.1;
+                this._panAngle = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, this._panAngle))
             }
         }
 
@@ -166,7 +170,7 @@
         public set distance(val: number) {
             if (this._distance == val)
                 return;
-            this._distance = val;
+            this._distance = this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, val));
             this.notifyUpdate();
         }
 		
@@ -214,6 +218,28 @@
             this.tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle));
         }
 		
+        public set maxDistance(val: number) {
+            if (this._maxDistance == val)
+                return;
+            this._maxDistance = val;
+            this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
+        }
+
+        public get maxDistance(): number {
+            return this._maxDistance;
+        }
+
+        public set minDistance(val: number) {
+            if (this._minDistance == val)
+                return;
+            this._minDistance = val;
+            this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
+        }
+
+        public get minDistance(): number {
+            return this._maxDistance;
+        }
+
 		/**
 		 * Fractional difference in distance between the horizontal camera orientation and vertical camera orientation. Defaults to 2.
 		 *
@@ -283,7 +309,6 @@
                 //else if (this._lookAtObject) 
                 //    this._target.lookAt(pos, this._lookAtObject.position); //this._lookAtObject.parent ? this._lookAtObject.getScreenPosition() : 
             }
-
         }
     }
 }
