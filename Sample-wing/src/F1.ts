@@ -1,8 +1,9 @@
-﻿class F1 {
+class F1 extends SampleBase{
     private _view3D: egret3d.View3D;
     private _cameraCtl: egret3d.HoverController;
     private _viewPort: egret3d.Rectangle;
     constructor() {
+        super();
         this._viewPort = new egret3d.Rectangle(0, 0, window.innerWidth, window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, new egret3d.Rectangle(0, 0, this._viewPort.width, this._viewPort.height), () => this.init3D());
     }
@@ -50,7 +51,7 @@
     }
 
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_l.jpg");
