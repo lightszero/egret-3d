@@ -54,7 +54,7 @@ class F1 extends SampleBase {
     }
 
     private initScene(e: egret3d.Event3D) {
-        this._removeID = setTimeout(super.remove,0);
+        this._removeID = setTimeout(super.remove,this._timeout);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_l.jpg");

@@ -20,6 +20,7 @@
             this._console = document.createElement('console');
             document.body.appendChild(this._console);
             this._console.style.color = "red";
+            this._console.style.zIndex = "1000"; 
             this._console.style.position = "absolute";
             this._console.style.top = "10px";
             this._console.style.left = "10px";
