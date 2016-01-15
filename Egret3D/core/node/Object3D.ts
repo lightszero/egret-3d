@@ -659,7 +659,6 @@
         */
         public get modelMatrix(): Matrix4_4 {
             if (this._transformChange) {
-                this._transformChange = false;
                 this.updateModleMatrix();
             }
             return this._modeMatrix3D;
@@ -687,17 +686,18 @@
                 this._globalSca.copyFrom(parentScale.multiply(this._sca));
 
                 parentOrientation.rotatePoint(parentScale.multiply(this._pos), this._globalPos);
-                this._globalPos.copyFrom(this._globalPos.add(this.globalPosition));
+                this._globalPos.copyFrom(this._globalPos.add(this.parent.globalPosition));
             }
             else {
-                this._globalOrientation = this._orientation;
-                this._globalPos = this._pos;
-                this._globalSca = this._sca;
-                this._globalRot = this._rot;
+                this._globalOrientation.copyFrom(this._orientation);
+                this._globalPos.copyFrom(this._pos);
+                this._globalSca.copyFrom(this._sca);
+                this._globalRot.copyFrom(this._rot);
             }
             //this._modeMatrix3D.recompose([this._globalPos, this._globalRot, this._globalSca]);
             this._modeMatrix3D.makeTransform(this._globalPos, this._globalSca, this._globalOrientation);
             this.box.Transform = this._modeMatrix3D;
+            this._transformChange = false;
             this.onUpdateTransform();
         }
 
@@ -774,14 +774,12 @@
         * @platform Web,Native
         */
         public addChild(child: Object3D): Object3D {
-            child.updateTransformChange(true);
-
-            Object3D.renderListChange = true;
-
             this.childs.push(child);
+            Object3D.renderListChange = true;
 
             child.parent = this;
 
+            child.updateTransformChange(true);
             return child;
         }
         
@@ -796,8 +794,6 @@
         * @platform Web,Native
         */
         public addChildAt(child: Object3D, index: number): Object3D {
-            child.updateTransformChange(true);
-
             if (index < 0) {
                 this.childs.splice(0, 0, child);
             }
@@ -809,7 +805,7 @@
             }
 
             child.parent = this;
-
+            child.updateTransformChange(true);
             return child;
         }
                 
@@ -877,6 +873,7 @@
                 return child;
             }
 
+            child.updateTransformChange(true);
             return null;
         }
                                         
@@ -900,6 +897,7 @@
 
             this.childs.splice(index, 1);
 
+            object3D.updateTransformChange(true);
             return object3D;
         }
                                                 
@@ -1002,17 +1000,6 @@
             this.childs[index1] = this.childs[index2];
 
             this.childs[index2] = tmp;
-        }
-
-        /**
-        * @language zh_CN
-        * @private
-        * @param wireframe 网格对象
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        public bindWireframe(wireframe: WireframeBase) {
-            wireframe.modleMatrix = this._modeMatrix3D; 
         }
                                                                         
         /**

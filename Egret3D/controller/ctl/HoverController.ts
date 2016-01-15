@@ -1,21 +1,35 @@
 ﻿module egret3d {
+        
+    /**
+    * @class egret3d.HoverController
+    * @classdesc
+    * 摄像机控制器 ,实现摄像机平滑移动
+    * 指定摄像机看向的目标对象
+    * 1.按下鼠标左键并移动鼠标(或手机手指滑动)可以使摄像机绕着目标进行旋转.
+    * 2.滑动鼠标滚轮(或双指滑动)可以控制摄像机的视距.
+    *
+    * 示例:
+    * @includeExample controller/ctl/HoverController.ts
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     export class HoverController extends ControllerBase {
-        _currentPanAngle: number = 0;
-        _currentTiltAngle: number = 90;
+        private _currentPanAngle: number = 0;
+        private _currentTiltAngle: number = 90;
 
-        _panAngle: number = 0;
-        _tiltAngle: number = 90;
-        _distance: number = 1000;
-        _minPanAngle: number = -Infinity;
-        _maxPanAngle: number = Infinity;
-        _minTiltAngle: number = -90;
-        _maxTiltAngle: number = 90;
-        _maxDistance: number = 5000;
-        _minDistance: number = -5000;
-        _steps: number = 8;
-        _yFactor: number = 2;
-        _wrapPanAngle: boolean = false;
-        _lookAtPosition: Vector3D = new Vector3D(0.0, 0.0, 0.0);
+        private _panAngle: number = 0;
+        private _tiltAngle: number = 90;
+        private _distance: number = 1000;
+        private _minPanAngle: number = -Infinity;
+        private _maxPanAngle: number = Infinity;
+        private _minTiltAngle: number = -90;
+        private _maxTiltAngle: number = 90;
+        private _maxDistance: number = 5000;
+        private _minDistance: number = -5000;
+        private _steps: number = 8;
+        private _yFactor: number = 2;
+        private _wrapPanAngle: boolean = false;
+        private _lookAtPosition: Vector3D = new Vector3D(0.0, 0.0, 0.0);
         private _mouseDown: boolean = false;
         private _mouseRightDown: boolean = false;
         private _keyArray: Array<boolean> = new Array<boolean>();
@@ -48,13 +62,7 @@
 
         private mouseWheel() {
             this._distance -= Input.instance.wheelDelta * 0.1;
-            if (this._distance > this._maxDistance) {
-                this._distance = this._maxDistance;
-            }
-
-            if (this._distance < this._minDistance) {
-                this._distance = this._minDistance;
-            }
+            this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
         }
 
         private keyDown(key: number) {
@@ -111,20 +119,42 @@
                 this._panAngle = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, this._panAngle))
             }
         }
-
+        
+        /**
+        * @language zh_CN
+        * 返回目标的位置
+        *  
+        * @returns 目标的位置
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get lookAtPosition(): Vector3D {
             return this._lookAtPosition;
         }
-
+        
+        /**
+        * @language zh_CN
+        * 设置目标坐标
+        *  
+        * @param val 摄像机看向的目标点
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set lookAtPosition(val: Vector3D) {
             this._lookAtPosition = val; 
             this.notifyUpdate();
         }
-
+                
+        /**
+        * @private
+        */
         public get steps(): number {
             return this._steps ;
         }
-
+                        
+        /**
+        * @private
+        */
         public set steps(val: number) {
             val = (val < 1) ? 1 : val;
             if (this._steps == val)
@@ -132,14 +162,25 @@
             this._steps = val;
             this.notifyUpdate();
         }
-		
-		/**
-		 * Rotation of the camera in degrees around the y axis. Defaults to 0.
-		 */
+                        
+        /**
+        * @language zh_CN
+        * 得到相机y轴旋转角度
+        * @returns 相机y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get panAngle(): number {
             return this._panAngle;
         }
-
+                
+        /**
+        * @language zh_CN
+        * 设置相机y轴旋转
+        * @param val 旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set panAngle(val: number) {
             val = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, val));
             if (this._panAngle == val)
@@ -147,14 +188,25 @@
             this._panAngle = val;
             this.notifyUpdate();
         }
-		
-		/**
-		 * Elevation angle of the camera in degrees. Defaults to 90.
-		 */
+                        
+        /**
+        * @language zh_CN
+        * 得到相机x轴旋转角度
+        * @returns 相机x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get tiltAngle(): number {
             return this._tiltAngle;
         }
-
+                
+        /**
+        * @language zh_CN
+        * 设置相机x轴旋转
+        * @param val 旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set tiltAngle(val: number) {
             val = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, val));
             if (this._tiltAngle == val)
@@ -162,93 +214,192 @@
             this._tiltAngle = val;
             this.notifyUpdate();
         }
-		
+		        
+        /**
+        * @language zh_CN
+        * 得到目标和相机的距离
+        * @returns 目标和相机的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get distance(): number {
             return this._distance;
         }
-
+        
+        /**
+        * @language zh_CN
+        * 设置目标和相机的距离
+        * @param val 距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set distance(val: number) {
             if (this._distance == val)
                 return;
             this._distance = this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, val));
             this.notifyUpdate();
         }
-		
+		                        
+        /**
+        * @language zh_CN
+        * 得到相机最小y轴旋转角度
+        * @returns 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get minPanAngle(): number {
             return this._minPanAngle;
         }
-
+        		                        
+        /**
+        * @language zh_CN
+        * 设置相机最小y轴旋转角度
+        * @param val 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set minPanAngle(val: number) {
             if (this._minPanAngle == val)
                 return;
             this._minPanAngle = val;
             this.panAngle = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, this._panAngle));
         }
-		
+				                        
+        /**
+        * @language zh_CN
+        * 得到相机最大y轴旋转角度
+        * @returns 相机最大y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get maxPanAngle(): number {
             return this._maxPanAngle;
         }
-
+                		                        
+        /**
+        * @language zh_CN
+        * 设置相机最大y轴旋转角度
+        * @param val 相机最大y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set maxPanAngle(val: number) {
             if (this._maxPanAngle == val)
                 return;
             this._maxPanAngle = val;
             this.panAngle = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, this._panAngle));
         }
-		
+				                        
+        /**
+        * @language zh_CN
+        * 得到相机最小x轴旋转角度
+        * @returns 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get minTiltAngle(): number {
             return this._minTiltAngle;
         }
-
+                		                        
+        /**
+        * @language zh_CN
+        * 设置相机最小x轴旋转角度
+        * @param val 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set minTiltAngle(val: number) {
             if (this._minTiltAngle == val)
                 return;
             this._minTiltAngle = val;
             this.tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle));
         }
-		
+						                        
+        /**
+        * @language zh_CN
+        * 得到相机最大x轴旋转角度
+        * @returns 相机最大x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get maxTiltAngle(): number {
             return this._maxTiltAngle;
         }
-
+                        		                        
+        /**
+        * @language zh_CN
+        * 设置相机最大x轴旋转角度
+        * @param val 相机最大x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public  set maxTiltAngle(val: number) {
             if (this._maxTiltAngle == val)
                 return;
             this._maxTiltAngle = val;
             this.tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle));
         }
-		
+		                        		                        
+        /**
+        * @language zh_CN
+        * 设置相机和目标最大的距离
+        * @param val 相机和目标最大的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set maxDistance(val: number) {
             if (this._maxDistance == val)
                 return;
             this._maxDistance = val;
             this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
         }
-
+        		                        		                        
+        /**
+        * @language zh_CN
+        * 得到相机和目标最大的距离
+        * @returns 相机和目标最大的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get maxDistance(): number {
             return this._maxDistance;
         }
-
+        		                        		                        
+        /**
+        * @language zh_CN
+        * 设置相机和目标最小的距离
+        * @param val 相机和目标最小的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public set minDistance(val: number) {
             if (this._minDistance == val)
                 return;
             this._minDistance = val;
             this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
         }
-
+                		                        		                        
+        /**
+        * @language zh_CN
+        * 得到相机和目标最小的距离
+        * @returns 相机和目标最小的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public get minDistance(): number {
             return this._maxDistance;
         }
 
-		/**
-		 * Fractional difference in distance between the horizontal camera orientation and vertical camera orientation. Defaults to 2.
-		 *
-		 * @see    #distance
-		 */
+        /**
+        * @private
+        */
         public  get yFactor(): number {
             return this._yFactor;
         }
 
+        /**
+        * @private
+        */
         public  set yFactor(val: number) {
             if (this._yFactor == val)
                 return;
@@ -256,17 +407,30 @@
             this.notifyUpdate();
         }
 		
+        /**
+        * @private
+        */
         public  get wrapPanAngle(): boolean {
             return this._wrapPanAngle;
         }
-
+        
+        /**
+        * @private
+        */
         public set wrapPanAngle(val: boolean) {
             if (this._wrapPanAngle == val)
                 return;
             this._wrapPanAngle = val;
             this.notifyUpdate();
         }
-        
+
+        /**
+        * @language zh_CN
+        * 控制器数据更新
+        * @param interpolate
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         public update(interpolate: boolean = true): void {
             if (this._tiltAngle != this._currentTiltAngle || this._panAngle != this._currentPanAngle) {
                 this.notifyUpdate();
