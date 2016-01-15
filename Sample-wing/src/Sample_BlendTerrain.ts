@@ -1,4 +1,4 @@
-class Sample_BlendTerrain {
+class Sample_BlendTerrain extends SampleBase{
     protected _time: number = 0;
     protected _delay: number = 0;
     protected _timeDate: Date = null;
@@ -9,6 +9,7 @@ class Sample_BlendTerrain {
     protected _enableWireframe: boolean = false;
 
     public constructor(width: number = 800,height: number = 600) {
+        super();
         
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
 
@@ -62,7 +63,7 @@ class Sample_BlendTerrain {
     }
     
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_front.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_back.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_left.jpg");

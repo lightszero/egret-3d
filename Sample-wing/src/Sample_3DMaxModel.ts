@@ -3,7 +3,7 @@
  * @author 
  *
  */
-class Sample_3DMaxModel {
+class Sample_3DMaxModel extends SampleBase{
   
     private viewPort: egret3d.Rectangle; 
     private view3D: egret3d.View3D; 
@@ -11,6 +11,7 @@ class Sample_3DMaxModel {
     private time: number = 0 ;
     private cameraController: egret3d.LookAtController;
 	public constructor() {
+        super();
     	  //获取网页内屏幕大小
         this.viewPort = new egret3d.Rectangle(0,0,window.innerWidth,window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,new egret3d.Rectangle(0,0,this.viewPort.width,this.viewPort.height),() => this.init3D());
@@ -30,6 +31,7 @@ class Sample_3DMaxModel {
     }
     
     private checkComplete(e:egret3d.Event3D) {
+        setTimeout(super.remove,1000);
         var loader: egret3d.ModeLoader = <egret3d.ModeLoader>e.data; 
         var mesh: egret3d.Mesh = loader.mesh ;
         this.view3D.addChild3D(mesh);

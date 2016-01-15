@@ -1,4 +1,4 @@
-class Sample_Character {
+class Sample_Character extends SampleBase{
 
     private _view3D: egret3d.View3D;
     private _cameraCtl: egret3d.HoverController;
@@ -6,6 +6,7 @@ class Sample_Character {
 
     private _shadowMaping: egret3d.ShadowMapingMethod;
     constructor() {
+        super();
         this._viewPort = new egret3d.Rectangle(0, 0, window.innerWidth, window.innerHeight );
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, new egret3d.Rectangle(0, 0, this._viewPort.width, this._viewPort.height), () => this.init3D());
     }
@@ -41,7 +42,7 @@ class Sample_Character {
 
     private body: egret3d.Mesh;
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");

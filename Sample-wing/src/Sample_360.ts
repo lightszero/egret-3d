@@ -1,8 +1,9 @@
-class Sample_360 {
+class Sample_360 extends SampleBase{
     private _view3D: egret3d.View3D;
     private _viewPort: egret3d.Rectangle;
     private _cameraController: egret3d.HoverController;
     constructor() {
+        super();
         this._viewPort = new egret3d.Rectangle(0,0,800,400);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, this._viewPort , () => this.init3D());
     }
@@ -19,7 +20,7 @@ class Sample_360 {
     }
 
     private initScene(e) {
-
+        setTimeout(super.remove,1000);
         var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/1.JPG"); 
         var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(photoTexture);
         material.ambientPower = 0.5;

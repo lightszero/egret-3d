@@ -1,4 +1,4 @@
-class Sample_CreateBox {
+class Sample_CreateBox extends SampleBase{
     protected _time: number = 0;
     protected _delay: number = 0;
     protected _timeDate: Date = null;
@@ -7,7 +7,8 @@ class Sample_CreateBox {
     protected _cameraCtl: egret3d.HoverController = null;
 
     public constructor(width: number = 800,height: number = 600) {
-
+        super();
+        
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
 
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
@@ -38,7 +39,7 @@ class Sample_CreateBox {
     }
 
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");

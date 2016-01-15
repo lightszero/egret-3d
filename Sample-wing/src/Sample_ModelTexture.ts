@@ -3,7 +3,7 @@
  * @author 
  *
  */
-class Sample_ModelTexture {
+class Sample_ModelTexture extends SampleBase{
   
     private viewPort: egret3d.Rectangle; 
     private _view3D: egret3d.View3D; 
@@ -12,6 +12,7 @@ class Sample_ModelTexture {
     private _cameraCtl: egret3d.HoverController;
     private sampleMesh: egret3d.Mesh;
 	public constructor() {
+        super();
     	  //获取网页内屏幕大小
         this.viewPort = new egret3d.Rectangle(0,0,window.innerWidth,window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,new egret3d.Rectangle(0,0,this.viewPort.width,this.viewPort.height),() => this.init3D());
@@ -30,6 +31,7 @@ class Sample_ModelTexture {
     }
     
     private modelComplete(e:egret3d.Event3D) {
+        setTimeout(super.remove,1000);
         var loader: egret3d.ModeLoader = <egret3d.ModeLoader>e.data; 
         this.sampleMesh = loader.mesh ;
      
