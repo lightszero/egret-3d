@@ -1,6 +1,5 @@
 ﻿uniform samplerCube environmentMapTex ;
 uniform sampler2D maskTex ;
-uniform float reflectValue;
 uniform float rimPower;
 uniform float envLightPower;
 
@@ -39,7 +38,7 @@ void main(){
 
 	float rim = 1.0 - clamp(dot (-NV,N),0.0,1.0) ;
 
-	rim = pow (rim, rimPower ) ;
+	rim = pow (rim, rimPower ) * 0.5 ;
 
 	vec3RefractColor = (1.0-rim ) * fb * maskColor;
 
