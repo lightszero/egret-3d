@@ -63,7 +63,7 @@ class Sample_BlendTerrain extends SampleBase{
     }
     
     private initScene(e: egret3d.Event3D) {
-        setTimeout(super.remove,1000);
+        this._removeID = setTimeout(super.remove,this._timeout);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_front.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_back.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("sky/Mars_skybox_left.jpg");
