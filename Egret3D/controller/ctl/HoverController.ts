@@ -1,5 +1,5 @@
 ﻿module egret3d {
-        
+
     /**
     * @class egret3d.HoverController
     * @classdesc
