@@ -434,13 +434,18 @@
 			},
 			{
 				"isFolder":false,
-				"key":"resource/360photo/R0010038.JPG",
-				"name":"R0010038.JPG"
+				"key":"resource/scene/jingjichang_1_1.png",
+				"name":"jingjichang_1_1.png"
 			},
 			{
 				"isFolder":false,
-				"key":"resource/scene/jingjichang_1_1.png",
-				"name":"jingjichang_1_1.png"
+				"key":"resource/360photo/1.jpg",
+				"name":"1.jpg"
+			},
+			{
+				"isFolder":false,
+				"key":"resource/360photo/2.jpg",
+				"name":"2.jpg"
 			}]
 		}
 	}

@@ -4,8 +4,8 @@
      * @language zh_CN
      * @class egret3d.TerrainMaterial
      * @classdesc
-     * 地形材质。</p>
-     * 地形材质球，可以使用 一张control 的rgba 贴图控制融合地表纹理，最大只能融合4张地表纹理，后期可以进行拓展，也可设置单独的纹理重复次数，纹理的uv映射方式，具体可以看官方的示例教程。</p>
+     * 地形材质。
+     * 地形材质球，可以使用 一张control 的rgba 贴图控制融合地表纹理，最大只能融合4张地表纹理，后期可以进行拓展，也可设置单独的纹理重复次数，纹理的uv映射方式，具体可以看官方的示例教程
      * @version Egret 3.0
      * @platform Web,Native
      */

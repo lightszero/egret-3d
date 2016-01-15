@@ -4,8 +4,8 @@
      * @language zh_CN
      * @class egret3d.LightMapMethod
      * @classdesc
-     * 光照贴图方法。</p>
-     * 可通过目前流行的 3d渲染软件 C4D 3Dmax Zbush 等都可以烘焙灯光贴图，再使用模型中的第二uvmaping 映射出来。</p>
+     * 光照贴图方法。
+     * 可通过目前流行的 3d渲染软件 C4D 3Dmax Zbush 等都可以烘焙灯光贴图，再使用模型中的第二uvmaping 映射出来。
      * @version Egret 3.0
      * @platform Web,Native
      */

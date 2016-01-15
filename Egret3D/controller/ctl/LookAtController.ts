@@ -3,12 +3,13 @@
     /**
     * @class egret3d.LookAtController
     * @classdesc
-    * look at 摄像机控制器 。</p>
-    * 指定摄像机看向的目标对象。</p>
-    * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转。</p>
-    * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动。</p>
-    * 3.滑动鼠标滚轮可以控制摄像机的视距。</p>
+    * look at 摄像机控制器 。
+    * 指定摄像机看向的目标对象
+    * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转.
+    * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动.
+    * 3.滑动鼠标滚轮可以控制摄像机的视距.
     *
+    * 示例:
     * @includeExample controller/ctl/LookAtController.ts
     * @version Egret 3.0
     * @platform Web,Native

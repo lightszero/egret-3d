@@ -1,6 +1,109 @@
 var egret3d;
 (function (egret3d) {
     /**
+     * @private
+     * @class egret3D.Egret3DEngine
+     * @classdesc
+     * 引擎库文件加载
+     * 引擎库前期加载设置，开发中加载未压缩的编译引擎
+     */
+    var Egret3DEngine = (function () {
+        function Egret3DEngine() {
+        }
+        Egret3DEngine.getXHR = function () {
+            var xhr = null;
+            if (window["XMLHttpRequest"]) {
+                xhr = new window["XMLHttpRequest"]();
+            }
+            else {
+                xhr = new ActiveXObject("MSXML2.XMLHTTP");
+            }
+            return xhr;
+        };
+        /**
+         * @language zh_CN
+         * 请求读取
+         * @event complete 读取完成响应回调
+         */
+        Egret3DEngine.preload = function (complete) {
+            this._complete = complete;
+            if (this._xhr == null) {
+                this._xhr = this.getXHR();
+            }
+            if (this._xhr == null) {
+                alert("Your browser does not support XMLHTTP.");
+                return;
+            }
+            if (this._xhr.readyState > 0) {
+                this._xhr.abort();
+            }
+            this._xhr.open("GET", this._libUrl, true);
+            this._xhr.addEventListener("progress", function (e) { return Egret3DEngine.onProgress(e); }, false);
+            this._xhr.addEventListener("readystatechange", function (e) { return Egret3DEngine.onReadyStateChange(e); }, false);
+            this._xhr.addEventListener("error", function (e) { return Egret3DEngine.onError(e); }, false);
+            this._xhr.responseType = "text";
+            this._xhr.send();
+        };
+        Egret3DEngine.onReadyStateChange = function (event) {
+            if (this._xhr.readyState == 4) {
+                if (this._xhr.status >= 400 || this._xhr.status == 0) {
+                    console.log(this._libUrl, "load fail");
+                }
+                else {
+                    this.loadComplete();
+                }
+            }
+        };
+        Egret3DEngine.loadComplete = function () {
+            var libTex = this._xhr.responseText;
+            this.applyClass(libTex);
+        };
+        Egret3DEngine.onProgress = function (event) {
+            var e = event.loaded.toString() + event.total;
+            console.log("progress event```" + e);
+        };
+        Egret3DEngine.onError = function (event) {
+            console.log("load error", event);
+        };
+        Egret3DEngine.applyClass = function (source) {
+            this.importList = source.split("///");
+            this.importList.shift();
+            for (var i = 0; i < this.importList.length; i++) {
+                this.importList[i] = this.importList[i].replace("\r\n", "");
+                this.importList[i] = this.importList[i].replace("import ", "/js/");
+            }
+            this.importList.pop();
+            this.startLoadScript(null);
+        };
+        Egret3DEngine.startLoadScript = function (e) {
+            var _this = this;
+            if (this.importList.length > 0) {
+                var egret3DScript = document.createElement("script");
+                egret3DScript.src = this.importList.shift();
+                egret3DScript.onload = function (e) { return _this.startLoadScript(e); };
+                egret3DScript.onerror = function (e) { return _this.loadScriptError(e); };
+                document.head.appendChild(egret3DScript);
+            }
+            else {
+                console.log("all complete");
+                this._complete();
+            }
+        };
+        Egret3DEngine.loadScriptError = function (e) {
+            var error = "load Script Error \r\n no file:" + e.srcElement.src;
+            alert(error);
+            this.startLoadScript(null);
+        };
+        Egret3DEngine.djs = "";
+        Egret3DEngine._libUrl = "/js/Egret3D/Egret3D.lib.js";
+        return Egret3DEngine;
+    })();
+    egret3d.Egret3DEngine = Egret3DEngine;
+})(egret3d || (egret3d = {}));
+
+var egret3d;
+(function (egret3d) {
+    /**
      * @class egret3d.DrawMode
      * @classdesc
      * 渲染模式
@@ -196,6 +299,9 @@ var egret3d;
     })();
     egret3d.Egret3DDrive = Egret3DDrive;
 })(egret3d || (egret3d = {}));
+
+
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -224,6 +330,7 @@ var egret3d;
     })();
     egret3d.MipmapData = MipmapData;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     ///export enum number { Unknown = 0x0000, RGB565 = 0x8d62, RGBA5551 = 0x8057, RGBA4444 = 0x8056, RGBA8888 = 0x1908, DXT1_RGB = 0x83f0, DXT1_RGBA = 0x83f1, DXT3_RGBA = 0x83f2, DXT5_RGBA = 0x83f3 };
@@ -238,6 +345,10 @@ var egret3d;
     var InternalFormat = egret3d.InternalFormat;
     ;
 })(egret3d || (egret3d = {}));
+
+
+
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -272,6 +383,7 @@ var egret3d;
         openGLES.IndexBuffer3D = IndexBuffer3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -316,6 +428,7 @@ var egret3d;
         openGLES.Program3D = Program3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -323,9 +436,9 @@ var egret3d;
         /**
         * @class egret3d.Shader
         * @classdesc
-        * Shader 类表示上载到渲染上下文的一对渲染程序中的 顶点找色shader，或片段着色的shader 。
+        * Shader 类表示上载到渲染上下文的一对渲染程序中的 顶点找色shader，或片段着色的shader 。</p>
         *
-        * shader 是基于 opengl es 2.0 标准 也就是webgl版本的shader着色器
+        * shader 是基于 opengl es 2.0 标准 也就是webgl版本的shader着色器。</p>
         *
         * @see egret3d.Program3D
         * @see egret3d.IndexBuffer3D
@@ -367,6 +480,7 @@ var egret3d;
         openGLES.Shader = Shader;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -416,6 +530,7 @@ var egret3d;
         openGLES.Texture2D = Texture2D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
@@ -443,28 +558,35 @@ var egret3d;
         openGLES.CubeTexture = CubeTexture;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var openGLES;
     (function (openGLES) {
         /**
-        * @class egret3d.IndexBuffer3D
-        * @classdesc
-        * IndexBuffer3D 用于表示顶点索引列表，由图形子系统保留的图形元素构成。
-        * VertexBuffer3D 类表示上载到渲染上下文的一组顶点数据。
-        * 使用 VertexBuffer3D 对象定义与一组顶点中每个点相关联的数据。您可以从 Vector 数组或 ByteArray 上载顶点数据。（上载完成后，将不再引用原始数组中的数据；更改或放弃源数组不会更改顶点数据。）
-        * 与每个顶点相关联的数据采用应用程序定义的格式，并用作顶点着色器程序的输入。使用 Context3D.vertexAttribPointer  函数标识哪些值属于哪个顶点程序输入。一个顶点程序最多可以使用 8 个输入（也称为顶点属性寄存器）。每个输入可能需要 1 到 4 个 32 位值。例如，一个顶点的 [x,y,z] 位置坐标可以作为包含 3 个 32 位值的矢量传递到顶点程序。您最多可以为每个点提供 64 个 32 位值（256 字节）数据（但在这种情况下，单个顶点着色器无法使用所有数据）。
-        * @see egret3d.Context3D
-        * @see egret3d.base.CubeTexture
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
+         * @class egret3d.IndexBuffer3D
+         * @classdesc
+         * IndexBuffer3D 用于表示顶点索引列表，由图形子系统保留的图形元素构成。</p>
+         * VertexBuffer3D 类表示上载到渲染上下文的一组顶点数据。</p>
+         * 使用 VertexBuffer3D 对象定义与一组顶点中每个点相关联的数据。</p>
+         * 您可以从 Vector 数组或 ByteArray 上载顶点数据。（上载完成后，将不再引用原始数组中的数据；更改或放弃源数组不会更改顶点数据。）</p>
+         * 与每个顶点相关联的数据采用应用程序定义的格式，并用作顶点着色器程序的输入。</p>
+         * 使用 Context3D.vertexAttribPointer  函数标识哪些值属于哪个顶点程序输入。</p>
+         * 一个顶点程序最多可以使用 8 个输入（也称为顶点属性寄存器）。</p>
+         * 每个输入可能需要 1 到 4 个 32 位值。</p>
+         * 例如，一个顶点的 [x,y,z] 位置坐标可以作为包含 3 个 32 位值的矢量传递到顶点程序。</p>
+         * 您最多可以为每个点提供 64 个 32 位值（256 字节）数据（但在这种情况下，单个顶点着色器无法使用所有数据）。</p>
+         * @see egret3d.Context3D
+         * @see egret3d.base.CubeTexture
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
         var VertexBuffer3D = (function () {
             /**
-            * @language zh_CN
-            * 构造
-            * @param buffer webglbuffer
-            */
+             * @language zh_CN
+             * 构造
+             * @param buffer webglbuffer
+             */
             function VertexBuffer3D(buffer) {
                 this.buffer = buffer;
             }
@@ -473,6 +595,7 @@ var egret3d;
         openGLES.VertexBuffer3D = VertexBuffer3D;
     })(openGLES = egret3d.openGLES || (egret3d.openGLES = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -498,6 +621,7 @@ var egret3d;
     })();
     egret3d.FrameBuffer = FrameBuffer;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -1228,6 +1352,7 @@ var egret3d;
     })();
     egret3d.Context3DChild_OpenGLES_2_0 = Context3DChild_OpenGLES_2_0;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -1311,6 +1436,7 @@ var egret3d;
     })();
     egret3d.ContextSamplerType = ContextSamplerType;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -1350,6 +1476,7 @@ var egret3d;
     })();
     egret3d.UV = UV;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -1555,16 +1682,17 @@ var egret3d;
     })();
     egret3d.Point = Point;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.Vector3D
      * @classdesc
-     * 用 Vector3D 表示三维空间中的位置,也可以做4维向量,当为3维向量时w始终为0。
-     * 定义了一个三元的浮点向量
-     * 当使用一个向量表示一个表面法线时，向量应该是标准化的
-     * 其他用途的定向矢量的大小不变。当用作一个点，元素的矢量表示在三维空间中的位置
+     * 用 Vector3D 表示三维空间中的位置,也可以做4维向量,当为3维向量时w始终为0。</p>
+     * 定义了一个三元的浮点向量。</p>
+     * 当使用一个向量表示一个表面法线时，向量应该是标准化的。</p>
+     * 其他用途的定向矢量的大小不变。当用作一个点，元素的矢量表示在三维空间中的位置。</p>
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -2090,6 +2218,7 @@ var egret3d;
     })();
     egret3d.Vector3D = Vector3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -2150,6 +2279,7 @@ var egret3d;
     })();
     egret3d.Rectangle = Rectangle;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -2634,15 +2764,19 @@ var egret3d;
     })();
     egret3d.Quaternion = Quaternion;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.Orientation3D
      * @classdesc
-     * 定义 Orientation3D 常量
-     * Matrix4_4.decompose 会分 axisAngle、eulerAngles、quaternion这3种类型进行分解
-     * 比如: matrix.decompose(Orientation3D.QUATERNION)
+     * 定义 Orientation3D 常量。</p>
+     * Matrix4_4.decompose 会分 axisAngle、eulerAngles、quaternion这3种类型进行分解。</p>
+     * 比如:</p>
+     <pre>
+     matrix.decompose(Orientation3D.QUATERNION)
+     </pre>
      *
      * @see egret3d.geom.Matrix4_4
      * @see egret3d.geom.Quaternion
@@ -2678,6 +2812,7 @@ var egret3d;
     })();
     egret3d.Orientation3D = Orientation3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -2866,14 +3001,15 @@ var egret3d;
     })();
     egret3d.Plane3D = Plane3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.CubeBoxBound
      * @classdesc
-     * 可使用 CubeBoxBound 类 取得包围盒的数据。
-     * 包含包围盒的各顶点信息，当包围盒要进行世界变换时，应当变换各顶点信息.
+     * 可使用 CubeBoxBound 类 取得包围盒的数据。</p>
+     * 包含包围盒的各顶点信息，当包围盒要进行世界变换时，应当变换各顶点信息。</p>
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -3088,6 +3224,7 @@ var egret3d;
     })();
     egret3d.CubeBoxBound = CubeBoxBound;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4140,6 +4277,7 @@ var egret3d;
     })();
     egret3d.Matrix4_4 = Matrix4_4;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4197,6 +4335,7 @@ var egret3d;
     })();
     egret3d.EyesMatrix = EyesMatrix;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4220,8 +4359,16 @@ var egret3d;
     })();
     egret3d.PlaneClassification = PlaneClassification;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
+    /**
+     * @private
+     * @class egret3d.MathUtil
+     * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     var MathUtil = (function () {
         function MathUtil() {
         }
@@ -4239,6 +4386,7 @@ var egret3d;
     })();
     egret3d.MathUtil = MathUtil;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4449,6 +4597,7 @@ var egret3d;
     })();
     egret3d.Matrix3DUtils = Matrix3DUtils;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4694,6 +4843,7 @@ var egret3d;
     })();
     egret3d.Ray = Ray;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4818,15 +4968,16 @@ var egret3d;
     })();
     egret3d.Color = Color;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
     * @language zh_CN
     * @class egret3d.PickResult
     * @classdesc
-    * 鼠标拾取返回数据。
-    * 鼠标拾取模型上的交点 (本地坐标、世界坐标)
-    * 鼠标拾取模型的uv
+    * 鼠标拾取返回数据。</p>
+    * 鼠标拾取模型上的交点 (本地坐标、世界坐标)。</p>
+    * 鼠标拾取模型的uv。</p>
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -4858,6 +5009,7 @@ var egret3d;
     })();
     egret3d.PickResult = PickResult;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -4911,7 +5063,7 @@ var egret3d;
         };
         /**
         * @language zh_CN
-        * 使用 EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知。可以为特定类型的事件和优先级注册事件侦听器。成功注册一个事件侦听器后，无法通过额外调用 addEventListener() 来更改其优先级。要更改侦听器的优先级，必须首先调用 removeListener()。然后，可以使用新的优先级再次注册该侦听器。
+        * 使用 EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知。可以为特定类型的事件和优先级注册事件侦听器。成功注册一个事件侦听器后，无法通过额外调用 addEventListener() 来更改其优先级。要更改侦听器的优先级，必须首先调用 removeEventListener()。然后，可以使用新的优先级再次注册该侦听器。
         * @param type {string} 事件的类型。
         * @param callback {Function} 处理事件的侦听器函数。此函数必须接受 Event3D 对象作为其唯一的参数，并且不能返回任何结果，
         * 如下面的示例所示： function(evt:Event3D):void 函数可以有任何名称。
@@ -5143,6 +5295,13 @@ var egret3d;
         Event3D.EVENT_LOAD_COMPLETE = "load_complete";
         /**
         * @language zh_CN
+        * EVENT_LOAD_PROGRESS 常量定义 onLoadProgress 事件对象的 type 属性的值。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        Event3D.EVENT_LOAD_PROGRESS = "onLoadProgress";
+        /**
+        * @language zh_CN
         * MOUSE_CLICK 常量定义 onClick 事件对象的 type 属性的值。
         * @version Egret 3.0
         * @platform Web,Native
@@ -5208,6 +5367,7 @@ var egret3d;
     })();
     egret3d.Event3D = Event3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -5343,6 +5503,7 @@ var egret3d;
     })();
     egret3d.Mouse3DManager = Mouse3DManager;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -5445,6 +5606,7 @@ var egret3d;
     })();
     egret3d.TextureBase = TextureBase;
 })(egret3d || (egret3d = {}));
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -5478,41 +5640,49 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.RenderTexture = RenderTexture;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
-    * @class egret3d.SkyTexture
-    * @classdesc
-    * SkyTexture 类为天空贴图
-    *
-    * 天空贴图用于Sky类使用，其内部是将6张HTMLImageElement（网页图片元素）封装到CubeTexture对象，CubeTexture为引擎内部使用对象。
-    *
-    * 示例：
-    * 假设html中已有
-    *     <img id="t1" src="image_front.png" />
-    *     <img id="t2" src="image_back.png" />
-    *     <img id="t3" src="image_left.png" />
-    *     <img id="t4" src="image_right.png" />
-    *     <img id="t5" src="image_up.png" />
-    *     <img id="t6" src="image_down.png" />
-    *
-    * 使用示例：
-    * var skyTexture: egret3d.SkyTexture = new egret3d.SkyTexture(
-    *     <HTMLImageElement>document.getElementById("t1"),
-    *     <HTMLImageElement>document.getElementById("t2"),
-    *     <HTMLImageElement>document.getElementById("t3"),
-    *     <HTMLImageElement>document.getElementById("t4"),
-    *     <HTMLImageElement>document.getElementById("t5"),
-    *     <HTMLImageElement>document.getElementById("t6")
-    * );
-    *
-    * view3D.sky = new egret3d.Sky(skyTexture);
-    *
-    * @see egret3d.Sky
-    * @version Egret 3.0
-    * @platform Web,Native
-    * @includeExample texture/SkyTexture.ts
-    */
+     * @class egret3d.SkyTexture
+     * @classdesc
+     * SkyTexture 类为天空贴图
+     *
+     * 天空贴图用于Sky类使用，其内部是将6张HTMLImageElement（网页图片元素）封装到CubeTexture对象，CubeTexture为引擎内部使用对象。</p>
+     *
+     * 示例：</p>
+     * 假设html中已有</p>
+     <pre>
+     <img id="t1" src="image_front.png" />
+     <img id="t2" src="image_back.png" />
+     <img id="t3" src="image_left.png" />
+     <img id="t4" src="image_right.png" />
+     <img id="t5" src="image_up.png" />
+     <img id="t6" src="image_down.png" />
+     </pre>
+     使用示例：</p>
+     <pre>
+     var skyTexture: egret3d.SkyTexture = new egret3d.SkyTexture(
+     <HTMLImageElement>document.getElementById("t1"),
+     <HTMLImageElement>document.getElementById("t2"),
+     <HTMLImageElement>document.getElementById("t3"),
+     <HTMLImageElement>document.getElementById("t4"),
+     <HTMLImageElement>document.getElementById("t5"),
+     <HTMLImageElement>document.getElementById("t6")
+     );
+
+     view3D.sky = new egret3d.Sky(skyTexture);
+     </pre>
+     * @see egret3d.Sky
+     * @version Egret 3.0
+     * @platform Web,Native
+     * @includeExample texture/SkyTexture.ts
+     */
     var SkyTexture = (function (_super) {
         __extends(SkyTexture, _super);
         /**
@@ -5557,6 +5727,12 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.SkyTexture = SkyTexture;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -5564,19 +5740,18 @@ var egret3d;
     * @classdesc
     * ImageTexture 类为 图像贴图
     *
-    * 图像贴图用于封装 HTMLImageElement（网页图像元素）到引擎内部可使用的Texture2D对象，HTMLImageElement 可通过内嵌HTML文件中获取。
+    * 图像贴图用于封装 HTMLImageElement（网页图像元素）到引擎内部可使用的Texture2D对象, </p>
+     * HTMLImageElement 可通过内嵌HTML文件中获取。</p>
     *
+     *
     * 示例：
-    * 假设html中已有 <img id="t1" src="xxx.png" />
-    *
-    * TS代码：
+    * 假设html中已有 &lt;img id="t1" src="xxx.png" /&gt;
+    * <pre>
     * var img: HTMLImageElement = <HTMLImageElement>document.getElementById("t1");
-    *
     * var imageTexture: egret3d.ImageTexture = new egret3d.ImageTexture(img);
-    *
+     * </pre>
     * @version Egret 3.0
     * @platform Web,Native
-    * @includeExample texture/ImageTexture.ts
     */
     var ImageTexture = (function (_super) {
         __extends(ImageTexture, _super);
@@ -5608,18 +5783,26 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.ImageTexture = ImageTexture;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @language zh_CN
     * @class egret3d.CheckerboardTexture
     * @classdesc
-    * CheckerboardTexture 类为 棋盘格纹理类
+    * CheckerboardTexture 类为 棋盘格纹理类</p>
     *
-    * 棋盘格纹理为黑白间隔色块组成的一张纹理，主要用于判别模型UV的正确性，若某模型UV值不正确，其纹理表现必定乱序不规整。
-    * 使用示例;
-    * var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(egret3d.CheckerboardTexture.texture );
-    * var mesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(), material);
+    * 棋盘格纹理为黑白间隔色块组成的一张纹理，主要用于判别模型UV的正确性，若某模型UV值不正确，其纹理表现必定乱序不规整。</p>
+    * 使用示例:</p>
+     <pre>
+    var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(egret3d.CheckerboardTexture.texture );
+    var mesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.CubeGeometry(), material);
+     </pre>
     *
     * @version Egret 3.0
     * @platform Web,Native
@@ -5689,6 +5872,8 @@ var egret3d;
     })(egret3d.TextureBase);
     egret3d.CheckerboardTexture = CheckerboardTexture;
 })(egret3d || (egret3d = {}));
+
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -5718,6 +5903,7 @@ var egret3d;
     })();
     egret3d.AnimNodeBase = AnimNodeBase;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -5831,6 +6017,7 @@ var egret3d;
     })();
     egret3d.AnimaNodeCollection = AnimaNodeCollection;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -5976,6 +6163,7 @@ var egret3d;
     })();
     egret3d.Joint = Joint;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -6250,6 +6438,7 @@ var egret3d;
     })();
     egret3d.Skeleton = Skeleton;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -6552,6 +6741,12 @@ var egret3d;
     })();
     egret3d.SkeletonAnimationClip = SkeletonAnimationClip;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -6995,6 +7190,7 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.SkeletonAnimation = SkeletonAnimation;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7075,6 +7271,7 @@ var egret3d;
         GLSL.VarConstName = VarConstName;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7144,6 +7341,7 @@ var egret3d;
         GLSL.AttributeType = AttributeType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7264,6 +7462,7 @@ var egret3d;
         GLSL.UniformType = UniformType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7386,6 +7585,7 @@ var egret3d;
         GLSL.VaryingType = VaryingType;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7469,6 +7669,12 @@ var egret3d;
         GLSL.VarRegister = VarRegister;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7506,6 +7712,12 @@ var egret3d;
         GLSL.TmpVar = TmpVar;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7538,6 +7750,12 @@ var egret3d;
         GLSL.Attribute = Attribute;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7575,6 +7793,12 @@ var egret3d;
         GLSL.Varying = Varying;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7612,6 +7836,12 @@ var egret3d;
         GLSL.Uniform = Uniform;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7650,6 +7880,12 @@ var egret3d;
         GLSL.ConstVar = ConstVar;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7686,6 +7922,12 @@ var egret3d;
         GLSL.Sampler2D = Sampler2D;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7722,6 +7964,7 @@ var egret3d;
         GLSL.Sampler3D = Sampler3D;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -7979,6 +8222,7 @@ var egret3d;
         GLSL.ShaderBase = ShaderBase;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     var GLSL;
@@ -8351,6 +8595,7 @@ var egret3d;
         GLSL.ShaderContent = ShaderContent;
     })(GLSL = egret3d.GLSL || (egret3d.GLSL = {}));
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -8402,6 +8647,10 @@ var egret3d;
                 "AOMap_fragment",
                 "wireframe_vertex",
                 "wireframe_fragment",
+                "FresnelReflection_fragment",
+                "PaintFresnelReflection_fragment",
+                "AlphaEnvironmentMapping_fragment",
+                "cubeDiffuseMap_fragment",
                 ///ok
                 ///--particle--
                 "particle_time",
@@ -8776,6 +9025,7 @@ var egret3d;
     })();
     egret3d.ShaderSystemTool = ShaderSystemTool;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -8837,6 +9087,7 @@ var egret3d;
     })();
     egret3d.MethodUsageData = MethodUsageData;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -8851,13 +9102,15 @@ var egret3d;
     var MaterialData = (function () {
         function MaterialData() {
             /**
+            * @private
             * @language zh_CN
-            * 材质类型。
+            * 材质类型数组。
+            * @每个材质球可能会有很多种贴图方法，而这个是做为默认支持的材质方法的添加通道。要使用的方法
             * @default MaterialType.DIFFUSE
             * @version Egret 3.0
             * @platform Web,Native
             */
-            this.matType = egret3d.MaterialType.DIFFUSE;
+            this.textureMethodTypes = [];
             /**
             * @language zh_CN
             * diffuse pass usage 数据。
@@ -9220,7 +9473,7 @@ var egret3d;
             data.shadowPassUsageData = this.positionPassUsageData;
             data.diffuseTex = egret3d.CheckerboardTexture.texture;
             data.textureChange = true;
-            data.matType = egret3d.MaterialType.DIFFUSE;
+            data.textureMethodTypes = this.textureMethodTypes;
             data.drawMode = this.drawMode;
             data.context3D = this.context3D;
             data.diffuseTex = this.diffuseTex;
@@ -9298,6 +9551,7 @@ var egret3d;
     })();
     egret3d.MaterialData = MaterialData;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -9415,6 +9669,12 @@ var egret3d;
     })();
     egret3d.MethodBase = MethodBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9463,7 +9723,7 @@ var egret3d;
                     baseMethod.acceptShadow = this.materialData.acceptShadow;
                     break;
                 case egret3d.GeometryType.Particle:
-                    baseMethod = new egret3d.ParticleVertexMethod();
+                    baseMethod = new ParticleVertexMethod();
                     this.useage.vsMethodList.push(baseMethod);
                     this.addShader(baseMethod.vertexMethodName);
                     this.addEnd("particle_vertexEnd");
@@ -9517,6 +9777,12 @@ var egret3d;
     })(egret3d.GLSL.ShaderBase);
     egret3d.VertexShader = VertexShader;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9602,6 +9868,12 @@ var egret3d;
     })(egret3d.GLSL.ShaderBase);
     egret3d.PixelShader = PixelShader;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9705,6 +9977,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.StaticVertexMethod = StaticVertexMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9785,6 +10063,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowVertexMethod = ShadowVertexMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -9905,107 +10189,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.SkinVertexMethod = SkinVertexMethod;
 })(egret3d || (egret3d = {}));
-var egret3d;
-(function (egret3d) {
-    /**
-   * @private
-    * @language zh_CN
-    * @class egret3d.ParticleVertexMethod
-    * @classdesc
-    * 粒子顶点方法。
-    * @version Egret 3.0
-    * @platform Web,Native
-    */
-    var ParticleVertexMethod = (function (_super) {
-        __extends(ParticleVertexMethod, _super);
-        /**
-        * @language zh_CN
-        * 创建一个新的 ParticleVertexMethod 对象。
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        function ParticleVertexMethod() {
-            _super.call(this);
-            this.index = 0;
-            this.time = 0;
-            this.normalMatrix = new egret3d.Matrix4_4();
-            this.vsMethodName = "particle_vertex";
-        }
-        /**
-         * @language zh_CN
-         * 激活 粒子顶点方法。
-         * @param context3D {Context3D}
-         * @param program3D {IProgram3D}
-         * @param modeltransform {Matrix4_4}
-         * @param camera3D {Camera3D}
-         * @param geometry {GeometryBase}
-         * @param animation {IAnimation}
-         * -pos            3       12      0
-         * -uv0            2        8      12
-         * -speed          3       12      20
-         * -lifecycle      1       4       32
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        ParticleVertexMethod.prototype.activate = function (context3D, program3D, modeltransform, camera3D, geometry, animation) {
-            // 绑定同时包含顶点位置和颜色信息的缓冲
-            geometry.sharedVertexBuffer = context3D.creatVertexBuffer(geometry.verticesData);
-            geometry.numberOfVertices = animation.animaNodeCollection.numberOfVertices;
-            geometry.vertexSizeInBytes = animation.animaNodeCollection.vertexSizeInBytes;
-            geometry.sharedIndexBuffer = context3D.creatIndexBuffer(geometry.indexData);
-            context3D.bindVertexBuffer(geometry.sharedVertexBuffer);
-            //pos
-            //offset
-            //uv
-            this.usage.attribute_position.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_position.name);
-            this.usage.attribute_offset.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_offset.name);
-            this.usage.attribute_uv0.uniformIndex = context3D.getShaderAttribLocation(program3D, this.usage.attribute_uv0.name);
-            for (this.index = 0; this.index < animation.animaNodeCollection.nodes.length; this.index++) {
-                if (animation.animaNodeCollection.nodes[this.index].usageAttributeLen > 0)
-                    animation.animaNodeCollection.nodes[this.index].uniformIndex = context3D.getShaderAttribLocation(program3D, animation.animaNodeCollection.nodes[this.index].usageAttribute);
-            }
-            this.usage.uniform_ModelMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_ModelMatrix.name);
-            this.usage.uniform_ProjectionMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_ProjectionMatrix.name);
-            //this.usage.uniform_normalMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_normalMatrix.name);
-            this.usage.uniform_eyepos.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_eyepos.name);
-            this.usage.uniform_time.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_time.name);
-            this.usage.uniform_cameraMatrix.uniformIndex = context3D.getUniformLocation(program3D, this.usage.uniform_cameraMatrix.name);
-        };
-        /**
-         * @language zh_CN
-         * 更新 粒子顶点方法。
-         * @param context3D {Context3D}
-         * @param program3D {IProgram3D}
-         * @param modeltransform {Matrix4_4}
-         * @param camera3D {Camera3D}
-         * @param geometry {GeometryBase}
-         * @param animation {IAnimation}
-         * @version Egret 3.0
-         * @platform Web,Native
-         */
-        ParticleVertexMethod.prototype.updata = function (context3D, program3D, modeltransform, camera3D, geometry, animation) {
-            // 绑定同时包含顶点位置和颜色信息的缓冲
-            context3D.bindVertexBuffer(geometry.sharedVertexBuffer);
-            context3D.vertexAttribPointer(program3D, this.usage.attribute_position.uniformIndex, 4, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 0);
-            context3D.vertexAttribPointer(program3D, this.usage.attribute_offset.uniformIndex, 3, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 16);
-            context3D.vertexAttribPointer(program3D, this.usage.attribute_uv0.uniformIndex, 2, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, 28);
-            var node;
-            for (this.index = 0; this.index < animation.animaNodeCollection.nodes.length; this.index++) {
-                if (animation.animaNodeCollection.nodes[this.index].usageAttributeLen > 0) {
-                    node = animation.animaNodeCollection.nodes[this.index];
-                    context3D.vertexAttribPointer(program3D, node.uniformIndex, node.usageAttributeLen, egret3d.Egret3DDrive.FLOAT, false, geometry.vertexSizeInBytes, node.offsetBytes);
-                }
-            }
-            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, modeltransform.rawData);
-            context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera3D.viewProjectionMatrix.rawData);
-            context3D.uniformMatrix4fv(this.usage.uniform_cameraMatrix.uniformIndex, false, camera3D.modelMatrix.rawData);
-            context3D.uniform3f(this.usage.uniform_eyepos.uniformIndex, camera3D.x, camera3D.y, camera3D.z);
-            context3D.uniform1f(this.usage.uniform_time.uniformIndex, animation.time);
-        };
-        return ParticleVertexMethod;
-    })(egret3d.MethodBase);
-    egret3d.ParticleVertexMethod = ParticleVertexMethod;
-})(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10064,6 +10253,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowMapMethod = ShadowMapMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10185,6 +10380,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.TerrainMethod = TerrainMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10208,7 +10409,7 @@ var egret3d;
             this.fsMethodName = "normalMethod_fragment";
         }
         /**
-         * @language zh_CNO
+         * @language zh_CN
          * 激活 NormalMethod。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}
@@ -10250,6 +10451,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.NormalMethod = NormalMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10313,6 +10520,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.DepthMethod = DepthMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10378,6 +10591,12 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.DiffuseMethod = DiffuseMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10478,6 +10697,7 @@ var egret3d;
     })(egret3d.MethodBase);
     egret3d.ShadowMapingMethod = ShadowMapingMethod;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -10587,6 +10807,12 @@ var egret3d;
     })();
     egret3d.EffectMethod = EffectMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10611,9 +10837,20 @@ var egret3d;
          */
         function AOMapMethod(texture) {
             _super.call(this);
+            this._aoPower = 1.0;
             this.fsMethodName = "AOMap_fragment";
             this.aoTexture = texture;
         }
+        Object.defineProperty(AOMapMethod.prototype, "aoPower", {
+            get: function () {
+                return this._aoPower;
+            },
+            set: function (val) {
+                this._aoPower = val;
+            },
+            enumerable: true,
+            configurable: true
+        });
         /**
          * @language zh_CN
          * 设置MaterialData。
@@ -10669,6 +10906,7 @@ var egret3d;
          */
         AOMapMethod.prototype.activateEffect = function (context3D, usage, materialData, modeltransform, camera3D, geometry, animation) {
             this.context3D = context3D;
+            usage["aoPower"] = context3D.getUniformLocation(usage.program3D, "aoPower");
         };
         /**
          * @private
@@ -10686,6 +10924,7 @@ var egret3d;
          * @platform Web,Native
          */
         AOMapMethod.prototype.updataEffect = function (context3D, usage, materialData, modeltransform, camera3D, geometry, animation) {
+            context3D.gl.uniform1f(usage["aoPower"], this._aoPower);
         };
         /**
          * @private
@@ -10701,14 +10940,20 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.AOMapMethod = AOMapMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @language zh_CN
     * @class egret3d.LightMapMethod
     * @classdesc
-    * 光照贴图方法。
-    * 可通过目前流行的 3d渲染软件 C4D 3Dmax Zbush 等都可以烘焙灯光贴图，再使用模型中的第二uvmaping 映射出来。
+    * 光照贴图方法。</p>
+    * 可通过目前流行的 3d渲染软件 C4D 3Dmax Zbush 等都可以烘焙灯光贴图，再使用模型中的第二uvmaping 映射出来。</p>
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -10815,6 +11060,12 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.LightMapMethod = LightMapMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -10949,6 +11200,250 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.EnvironmentMappingMethod = EnvironmentMappingMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var egret3d;
+(function (egret3d) {
+    /**
+    * @private
+    * @language zh_CN
+    * @class egret3d.EnvironmentMappingMethod
+    * @classdesc
+    * 模拟汽车油漆
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    var PaintFresnelReflectionMappingMethod = (function (_super) {
+        __extends(PaintFresnelReflectionMappingMethod, _super);
+        /**
+        * @language zh_CN
+        * 创建一个新的 EnvironmentMappingMethod 对象。
+        * @param texture {TextureBase}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        function PaintFresnelReflectionMappingMethod(texture, randomTexture) {
+            _super.call(this);
+            this._rimPower = 0.9;
+            this._envLightPower = 0.5;
+            this._maskColor = 0xffffff;
+            this._maskColorR = 1.0;
+            this._maskColorG = 0.0;
+            this._maskColorB = 0.0;
+            this.reflectValue = 1.0;
+            this.fsMethodName = "PaintFresnelReflection_fragment";
+            this.envtexture = texture;
+            this.randomTexture = randomTexture;
+        }
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "rimPower", {
+            /**
+            * @language zh_CN
+            * 获取反射值。
+            * @returns {Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            get: function () {
+                return this._rimPower;
+            },
+            /**
+            * @language zh_CN
+            * 设置反射值。
+            * @param value{Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            set: function (value) {
+                this._rimPower = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "reflect", {
+            /**
+            * @language zh_CN
+            * 获取反射值。
+            * @returns {Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            get: function () {
+                return this.reflectValue;
+            },
+            /**
+            * @language zh_CN
+            * 设置反射值。
+            * @param value{Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            set: function (value) {
+                this.reflectValue = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "envLightPower", {
+            /**
+            * @language zh_CN
+            * 获取反射值。
+            * @returns {Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            get: function () {
+                return this._envLightPower;
+            },
+            /**
+            * @language zh_CN
+            * 设置反射值。
+            * @param value{Number}
+            * @version Egret 3.0
+            * @platform Web,Native
+            */
+            set: function (value) {
+                this._envLightPower = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "maskColor", {
+            get: function () {
+                return this._maskColor;
+            },
+            set: function (value) {
+                this._maskColor = value;
+                this._maskColorR = (value >> 16 & 0xff) / 255;
+                this._maskColorG = (value >> 8 & 0xff) / 255;
+                this._maskColorB = (value & 0xff) / 255;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @language zh_CN
+         * 设置材质信息。
+         * @param materialData {MaterialData}
+         * @param usage {MethodUsageData}
+        * @version Egret 3.0
+        * @platform Web,Native
+         */
+        PaintFresnelReflectionMappingMethod.prototype.setMaterialData = function (materialData, usage) {
+            this.usage = usage;
+            this.materialData = materialData;
+            if (this._envtexture)
+                this.materialData.environmentMapTex = this._envtexture;
+            else
+                this.materialData.environmentMapTex = egret3d.CheckerboardTexture.texture;
+            if (this._randomTexture)
+                this.materialData.maskTex = this._randomTexture;
+            else
+                this.materialData.maskTex = egret3d.CheckerboardTexture.texture;
+        };
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "envtexture", {
+            /**
+             * @language zh_CN
+             * 设置灯光贴图。
+             * @param texture {TextureBase}
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            set: function (texture) {
+                this._envtexture = texture;
+                if (texture) {
+                    if (this.materialData) {
+                        this.materialData.environmentMapTex = texture;
+                        this.materialData.textureChange = true;
+                    }
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(PaintFresnelReflectionMappingMethod.prototype, "randomTexture", {
+            /**
+             * @language zh_CN
+             * 设置灯光贴图。
+             * @param texture {TextureBase}
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            set: function (texture) {
+                this._randomTexture = texture;
+                if (texture) {
+                    if (this.materialData) {
+                        this.materialData.maskTex = texture;
+                        this.materialData.textureChange = true;
+                    }
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @private
+         * @language zh_CN
+         * 激活特效
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        PaintFresnelReflectionMappingMethod.prototype.activateEffect = function (context3D, usage, materialData, modeltransform, camera3D, geometry, animation) {
+            this.context3D = context3D;
+            usage["reflectValue"] = context3D.getUniformLocation(usage.program3D, "reflectValue");
+            usage["maskColor"] = context3D.getUniformLocation(usage.program3D, "maskColor");
+            usage["rimPower"] = context3D.getUniformLocation(usage.program3D, "rimPower");
+            usage["envLightPower"] = context3D.getUniformLocation(usage.program3D, "envLightPower");
+        };
+        /**
+         * @private
+         * @language zh_CN
+         * 更新特效
+         * @param context3D {Context3D}
+         * @param usage {MethodUsageData}
+         * @param materialData {MaterialData}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        PaintFresnelReflectionMappingMethod.prototype.updataEffect = function (context3D, usage, materialData, modeltransform, camera3D, geometry, animation) {
+            context3D.gl.uniform1f(usage["reflectValue"], this.reflectValue);
+            context3D.gl.uniform3f(usage["maskColor"], this._maskColorR, this._maskColorG, this._maskColorB);
+            context3D.gl.uniform1f(usage["rimPower"], this._rimPower);
+            context3D.gl.uniform1f(usage["envLightPower"], this._envLightPower);
+        };
+        /**
+         * @private
+         * @language zh_CN
+         * 销毁
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        PaintFresnelReflectionMappingMethod.prototype.dispose = function () {
+        };
+        return PaintFresnelReflectionMappingMethod;
+    })(egret3d.EffectMethod);
+    egret3d.PaintFresnelReflectionMappingMethod = PaintFresnelReflectionMappingMethod;
+})(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11086,15 +11581,102 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.SpecularEnvironmentMappingMethod = SpecularEnvironmentMappingMethod;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var egret3d;
+(function (egret3d) {
+    /**
+    * @private
+    * @language zh_CN
+    * @class egret3d.EnvironmentMappingMethod
+    * @classdesc
+    * 环境贴图方法。
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    var AlphaEnvironmentMappingMethod = (function (_super) {
+        __extends(AlphaEnvironmentMappingMethod, _super);
+        /**
+        * @language zh_CN
+        * 创建一个新的 EnvironmentMappingMethod 对象。
+        * @param texture {TextureBase}
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        function AlphaEnvironmentMappingMethod(texture) {
+            _super.call(this);
+            this.reflectValue = 1.0;
+            this.fsMethodName = "AlphaEnvironmentMapping_fragment";
+            this.lightTexture = texture;
+        }
+        /**
+         * @language zh_CN
+         * 设置材质信息。
+         * @param materialData {MaterialData}
+         * @param usage {MethodUsageData}
+        * @version Egret 3.0
+        * @platform Web,Native
+         */
+        AlphaEnvironmentMappingMethod.prototype.setMaterialData = function (materialData, usage) {
+            this.usage = usage;
+            this.materialData = materialData;
+            if (this.texture)
+                this.materialData.environmentMapTex = this.texture;
+            else
+                this.materialData.environmentMapTex = egret3d.CheckerboardTexture.texture;
+        };
+        Object.defineProperty(AlphaEnvironmentMappingMethod.prototype, "lightTexture", {
+            /**
+             * @language zh_CN
+             * 设置灯光贴图。
+             * @param texture {TextureBase}
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            set: function (texture) {
+                this.texture = texture;
+                if (texture) {
+                    if (this.materialData) {
+                        this.materialData.environmentMapTex = texture;
+                        this.materialData.textureChange = true;
+                    }
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * @private
+         * @language zh_CN
+         * 销毁
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        AlphaEnvironmentMappingMethod.prototype.dispose = function () {
+        };
+        return AlphaEnvironmentMappingMethod;
+    })(egret3d.EffectMethod);
+    egret3d.AlphaEnvironmentMappingMethod = AlphaEnvironmentMappingMethod;
+})(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @language zh_CN
     * @class egret3d.DistanceFog
     * @classdesc
-    * DistanceFog 类 表示远景雾。
-    * 创建顶点着色的雾，可设置雾的形成远近范围，雾的浓度
-    * 为场景添加景深效果
+    * DistanceFog 类 表示远景雾。 </p>
+    * 创建顶点着色的雾，可设置雾的形成远近范围，雾的浓度。</p>
+    * 为场景添加景深效果。</p>
     * @version Egret 3.0
     * @platform Web,Native
     *
@@ -11280,6 +11862,7 @@ var egret3d;
     })(egret3d.EffectMethod);
     egret3d.DistanceFog = DistanceFog;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -11492,6 +12075,12 @@ var egret3d;
     })();
     egret3d.MaterialPassBase = MaterialPassBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11536,16 +12125,13 @@ var egret3d;
             this.diffuseMethod = new egret3d.DiffuseMethod();
             this.pixelShader.addMethod(this.diffuseMethod);
             this.pixelShader.addShader(this.diffuseMethod.fragMethodName);
-            if (this.materialData.matType == egret3d.MaterialType.DIFFUSE) {
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.DIFFUSE) != -1) {
                 this.pixelShader.addShader("diffuseMap_fragment");
             }
-            else if (this.materialData.matType == egret3d.MaterialType.DIFFUSE_BUMP) {
-                this.pixelShader.addShader("diffuseMap_fragment");
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.NORMAL) != -1) {
                 this.pixelShader.addShader("normalMap_fragment");
             }
-            else if (this.materialData.matType == egret3d.MaterialType.DIFFUSE_BUMP_SPECULAR) {
-                this.pixelShader.addShader("diffuseMap_fragment");
-                this.pixelShader.addShader("normalMap_fragment");
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.SPECULAR) != -1) {
                 this.pixelShader.addShader("specularMap_fragment");
             }
             for (i = 0; i < this.materialData.directLightList.length; i++) {
@@ -11785,6 +12371,205 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.DiffuseMapPass = DiffuseMapPass;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var egret3d;
+(function (egret3d) {
+    /**
+   * @private
+    * @language zh_CN
+    * @class egret3d.DiffuseMapPass
+    * @classdesc
+    * cube贴图用的漫反射渲染通道
+    * 漫反射贴图通道渲染器，TerrainMapPass 的基类
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
+    var CubeDiffuseMapPass = (function (_super) {
+        __extends(CubeDiffuseMapPass, _super);
+        /**
+        * @language zh_CN
+        * 创建一个新的 DiffuseMapPass 对象。
+        * @param data {MaterialData} 材质数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        function CubeDiffuseMapPass(data) {
+            _super.call(this, data);
+            /**
+             * @language zh_CNa
+             * 索引。
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            this.index = 0;
+        }
+        /**
+         * @language zh_CN
+         * 初始化 UseMethod。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        CubeDiffuseMapPass.prototype.initUseMethod = function () {
+            var i = 0;
+            this.materialData.diffusePassUsageData.directLightData = new Float32Array(this.materialData.directLightList.length * egret3d.DirectLight.stride);
+            this.materialData.diffusePassUsageData.sportLightData = new Float32Array(this.materialData.sportLightList.length * egret3d.SpotLight.stride);
+            this.materialData.diffusePassUsageData.pointLightData = new Float32Array(this.materialData.pointLightList.length * egret3d.PointLight.stride);
+            this.diffuseMethod = new egret3d.DiffuseMethod();
+            this.pixelShader.addMethod(this.diffuseMethod);
+            this.pixelShader.addShader(this.diffuseMethod.fragMethodName);
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.DIFFUSE) != -1) {
+                this.pixelShader.addShader("cubeDiffuseMap_fragment");
+            }
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.NORMAL) != -1) {
+                this.pixelShader.addShader("normalMap_fragment");
+            }
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.SPECULAR) != -1) {
+                this.pixelShader.addShader("specularMap_fragment");
+            }
+            for (i = 0; i < this.materialData.directLightList.length; i++) {
+                this.pixelShader.addShader("directLight_fragment");
+            }
+            for (i = 0; i < this.materialData.sportLightList.length; i++) {
+                this.pixelShader.addShader("sportLight_fragment");
+            }
+            for (i = 0; i < this.materialData.pointLightList.length; i++) {
+                this.pixelShader.addShader("pointLight_fragment");
+            }
+            if (this.animation) {
+                if (this.animation.animaNodeCollection) {
+                    var vsShaderNames = this.animation.animaNodeCollection.getNodesVertexShaders();
+                    var fsShaderNames = this.animation.animaNodeCollection.getNodesFragmentShaders();
+                    for (i = 0; i < vsShaderNames.length; i++) {
+                        this.vertexShader.addShader(vsShaderNames[i]);
+                    }
+                    for (i = 0; i < fsShaderNames.length; i++) {
+                        this.pixelShader.addShader(fsShaderNames[i]);
+                    }
+                }
+            }
+            if (this.materialData.acceptShadow && this.shadowMaping) {
+                this.pixelShader.addMethod(this.shadowMaping);
+                this.vertexShader.addShader(this.shadowMaping.vertexMethodName);
+                this.pixelShader.addShader(this.shadowMaping.fragMethodName);
+            }
+            this.pixelShader.addShader("diffuse_fragmentEnd");
+            if (this.effectMethodList) {
+                for (var i = 0; i < this.effectMethodList.length; i++) {
+                    this.pixelShader.addEffectMethod(this.effectMethodList[i]);
+                    this.pixelShader.addShader(this.effectMethodList[i].fragMethodName);
+                }
+            }
+        };
+        /**
+         * @language zh_CN
+         * 初始化 shader 。
+         * @param context3D {Context3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+        * @version Egret 3.0
+        * @platform Web,Native
+         */
+        CubeDiffuseMapPass.prototype.initShader = function (context3D, geometry, animation) {
+            _super.prototype.initShader.call(this, context3D, geometry, animation);
+        };
+        /**
+         * @language zh_CN
+         * 重置纹理。
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        CubeDiffuseMapPass.prototype.resetTexture = function () {
+            //--------texture----------------
+            var sampler2D;
+            for (var index in this.materialData.diffusePassUsageData.sampler2DList) {
+                sampler2D = this.materialData.diffusePassUsageData.sampler2DList[index];
+                if (this.materialData[sampler2D.varName]) {
+                    sampler2D.texture = this.materialData[sampler2D.varName];
+                }
+            }
+            var sampler3D;
+            for (var index in this.materialData.diffusePassUsageData.sampler3DList) {
+                sampler3D = this.materialData.diffusePassUsageData.sampler3DList[index];
+                if (this.materialData[sampler3D.varName]) {
+                    sampler3D.texture = this.materialData[sampler3D.varName];
+                }
+            }
+            this.materialData.textureChange = false;
+        };
+        /**
+         * @language zh_CNa
+         * 激活 漫反射贴图通道渲染器。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        CubeDiffuseMapPass.prototype.activate = function (context3D, modeltransform, camera3D, geometry, animation) {
+            this.materialData.diffusePassUsageData.uniform_materialSource.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, this.materialData.diffusePassUsageData.uniform_materialSource.varName);
+            if (this.materialData.directLightList.length > 0) {
+                this.materialData.diffusePassUsageData.uniform_directLightSource.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, this.materialData.diffusePassUsageData.uniform_directLightSource.varName);
+            }
+            if (this.materialData.sportLightList.length > 0) {
+                this.materialData.diffusePassUsageData.uniform_sportLightSource.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, this.materialData.diffusePassUsageData.uniform_sportLightSource.varName);
+            }
+            if (this.materialData.pointLightList.length > 0) {
+                this.materialData.diffusePassUsageData.uniform_pointLightSource.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, this.materialData.diffusePassUsageData.uniform_pointLightSource.varName);
+            }
+            for (this.index = 0; this.index < this.materialData.diffusePassUsageData.vsMethodList.length; this.index++) {
+                this.materialData.diffusePassUsageData.vsMethodList[this.index].activate(context3D, this.materialData.diffusePassUsageData.program3D, modeltransform, camera3D, geometry, animation);
+            }
+            for (this.index = 0; this.index < this.materialData.diffusePassUsageData.fsMethodList.length; this.index++) {
+                this.materialData.diffusePassUsageData.fsMethodList[this.index].activate(context3D, this.materialData.diffusePassUsageData.program3D, modeltransform, camera3D, geometry, animation);
+            }
+            for (this.index = 0; this.index < this.materialData.diffusePassUsageData.effectMethodList.length; this.index++) {
+                this.materialData.diffusePassUsageData.effectMethodList[this.index].activateEffect(context3D, this.materialData.diffusePassUsageData, this.materialData, modeltransform, camera3D, geometry, animation);
+            }
+            this.resetTexture();
+            //--------texture----------------
+            var sampler2D;
+            for (var index in this.materialData.diffusePassUsageData.sampler2DList) {
+                sampler2D = this.materialData.diffusePassUsageData.sampler2DList[index];
+                sampler2D.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, sampler2D.varName);
+            }
+            //--------texture----------------
+            var sampler3D;
+            for (var index in this.materialData.diffusePassUsageData.sampler3DList) {
+                sampler3D = this.materialData.diffusePassUsageData.sampler3DList[index];
+                sampler3D.uniformIndex = context3D.getUniformLocation(this.materialData.diffusePassUsageData.program3D, sampler3D.varName);
+            }
+        };
+        /**
+         * @language zh_CNa
+         * 绘制。
+         * @param context3D {Context3D}
+         * @param modeltransform {Matrix4_4}
+         * @param camera3D {Camera3D}
+         * @param geometry {GeometryBase}
+         * @param animation {IAnimation}
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        CubeDiffuseMapPass.prototype.draw = function (context3D, modeltransform, camera3D, geometry, animation) {
+            _super.prototype.draw.call(this, context3D, modeltransform, camera3D, geometry, animation);
+        };
+        return CubeDiffuseMapPass;
+    })(egret3d.DiffuseMapPass);
+    egret3d.CubeDiffuseMapPass = CubeDiffuseMapPass;
+})(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11822,16 +12607,13 @@ var egret3d;
             this.materialData.diffusePassUsageData.pointLightData = new Float32Array(this.materialData.pointLightList.length * egret3d.PointLight.stride);
             this.pixelShader.addMethod(this.diffuseMethod);
             this.pixelShader.addShader(this.diffuseMethod.fragMethodName);
-            if (this.materialData.matType == egret3d.MaterialType.DIFFUSE) {
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.DIFFUSE) != -1) {
                 this.pixelShader.addShader("diffuseMap_fragment");
             }
-            else if (this.materialData.matType == egret3d.MaterialType.DIFFUSE_BUMP) {
-                this.pixelShader.addShader("diffuseMap_fragment");
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.NORMAL) != -1) {
                 this.pixelShader.addShader("normalMap_fragment");
             }
-            else if (this.materialData.matType == egret3d.MaterialType.DIFFUSE_BUMP_SPECULAR) {
-                this.pixelShader.addShader("diffuseMap_fragment");
-                this.pixelShader.addShader("normalMap_fragment");
+            if (this.materialData.textureMethodTypes.indexOf(egret3d.TextureMethodType.SPECULAR) != -1) {
                 this.pixelShader.addShader("specularMap_fragment");
             }
             this.pixelShader.addShader("terrainRGBA_fragment");
@@ -11874,6 +12656,12 @@ var egret3d;
     })(egret3d.DiffuseMapPass);
     egret3d.TerrainMapPass = TerrainMapPass;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -11990,6 +12778,12 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.DepthMapPass = DepthMapPass;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12123,6 +12917,12 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.NormalMapPass = NormalMapPass;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12253,6 +13053,12 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.ColorMapPass = ColorMapPass;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -12413,25 +13219,26 @@ var egret3d;
     })(egret3d.MaterialPassBase);
     egret3d.ShadowMapPass = ShadowMapPass;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
     * @private
     */
-    (function (MaterialType) {
-        MaterialType[MaterialType["DIFFUSE"] = 0] = "DIFFUSE";
-        MaterialType[MaterialType["DIFFUSE_BUMP"] = 1] = "DIFFUSE_BUMP";
-        MaterialType[MaterialType["DIFFUSE_BUMP_SPECULAR"] = 2] = "DIFFUSE_BUMP_SPECULAR";
-        MaterialType[MaterialType["RGBATERRAIN"] = 3] = "RGBATERRAIN";
-    })(egret3d.MaterialType || (egret3d.MaterialType = {}));
-    var MaterialType = egret3d.MaterialType;
+    (function (TextureMethodType) {
+        TextureMethodType[TextureMethodType["DIFFUSE"] = 0] = "DIFFUSE";
+        TextureMethodType[TextureMethodType["NORMAL"] = 1] = "NORMAL";
+        TextureMethodType[TextureMethodType["SPECULAR"] = 2] = "SPECULAR";
+        TextureMethodType[TextureMethodType["RGBATERRAIN"] = 3] = "RGBATERRAIN";
+    })(egret3d.TextureMethodType || (egret3d.TextureMethodType = {}));
+    var TextureMethodType = egret3d.TextureMethodType;
     /**
     * @language zh_CN
     * @class egret3d.MaterialBase
     * @classdesc
-    * TerrainMaterial,TextureMaterial 的基类。
-    * 材质球共有的基础类型，封装了材质球共有的基础数据设置方法
-    * 不同的渲染通道pass
+    * TerrainMaterial,TextureMaterial 的基类。</p>
+    * 材质球共有的基础类型，封装了材质球共有的基础数据设置方法。</p>
+    * 不同的渲染通道pass。</p>
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -12463,20 +13270,7 @@ var egret3d;
         * @platform Web,Native
         */
         MaterialBase.prototype.initMatPass = function () {
-            switch (this.materialData.matType) {
-                case MaterialType.DIFFUSE:
-                    this.diffusePass = new egret3d.DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.DIFFUSE_BUMP:
-                    this.diffusePass = new egret3d.DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.DIFFUSE_BUMP_SPECULAR:
-                    this.diffusePass = new egret3d.DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.RGBATERRAIN:
-                    this.diffusePass = new egret3d.TerrainMapPass(this.materialData);
-                    break;
-            }
+            throw new Error("cant't constructor parent");
         };
         /**
         * @language zh_CN
@@ -13078,6 +13872,9 @@ var egret3d;
                 if (texture) {
                     this.materialData.diffuseTex = texture;
                     this.materialData.textureChange = true;
+                    if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.DIFFUSE) == -1) {
+                        this.materialData.textureMethodTypes.push(TextureMethodType.DIFFUSE);
+                    }
                 }
             },
             enumerable: true,
@@ -13096,8 +13893,8 @@ var egret3d;
                 if (texture) {
                     this.materialData.normalTex = texture;
                     this.materialData.textureChange = true;
-                    if (this.materialData.matType != MaterialType.DIFFUSE_BUMP) {
-                        this.materialData.matType = MaterialType.DIFFUSE_BUMP;
+                    if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.NORMAL) == -1) {
+                        this.materialData.textureMethodTypes.push(TextureMethodType.NORMAL);
                         this.materialData.passChange = true;
                     }
                 }
@@ -13118,8 +13915,8 @@ var egret3d;
                 if (texture) {
                     this.materialData.specularTex = texture;
                     this.materialData.textureChange = true;
-                    if (this.materialData.matType != MaterialType.DIFFUSE_BUMP_SPECULAR) {
-                        this.materialData.matType = MaterialType.DIFFUSE_BUMP_SPECULAR;
+                    if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.SPECULAR) == -1) {
+                        this.materialData.textureMethodTypes.push(TextureMethodType.SPECULAR);
                         this.materialData.passChange = true;
                     }
                 }
@@ -13306,14 +14103,20 @@ var egret3d;
     })();
     egret3d.MaterialBase = MaterialBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @language zh_CN
     * @class egret3d.TerrainMaterial
     * @classdesc
-    * 地形材质。
-    * 地形材质球，可以使用 一张control 的rgba 贴图控制融合地表纹理，最大只能融合4张地表纹理，后期可以进行拓展，也可设置单独的纹理重复次数，纹理的uv映射方式，具体可以看官方的示例教程
+    * 地形材质。</p>
+    * 地形材质球，可以使用 一张control 的rgba 贴图控制融合地表纹理，最大只能融合4张地表纹理，后期可以进行拓展，也可设置单独的纹理重复次数，纹理的uv映射方式，具体可以看官方的示例教程。</p>
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -13335,7 +14138,6 @@ var egret3d;
         function TerrainMaterial(colormap, controlTex, splat_0, splat_1, splat_2, splat_3, lightMap) {
             if (lightMap === void 0) { lightMap = null; }
             _super.call(this);
-            this.materialData.matType = egret3d.MaterialType.RGBATERRAIN;
             this.materialData.diffuseTex = colormap;
             this.materialData.maskTex = controlTex;
             this.materialData.splat_0Tex = splat_0;
@@ -13348,6 +14150,9 @@ var egret3d;
                 this.materialData.lightMapTex = lightMap;
             this.initMatPass();
         }
+        TerrainMaterial.prototype.initMatPass = function () {
+            this.diffusePass = new egret3d.TerrainMapPass(this.materialData);
+        };
         /**
          * @language zh_CN
          * 设置 UVTitling。
@@ -13364,6 +14169,12 @@ var egret3d;
     })(egret3d.MaterialBase);
     egret3d.TerrainMaterial = TerrainMaterial;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -13398,6 +14209,14 @@ var egret3d;
             }
             this.initMatPass();
         }
+        TextureMaterial.prototype.initMatPass = function () {
+            if (this.diffuseTexture instanceof egret3d.SkyTexture) {
+                this.diffusePass = new egret3d.CubeDiffuseMapPass(this.materialData);
+            }
+            else {
+                this.diffusePass = new egret3d.DiffuseMapPass(this.materialData);
+            }
+        };
         /**
          * @language zh_CN
          * 克隆方法。
@@ -13414,6 +14233,7 @@ var egret3d;
     })(egret3d.MaterialBase);
     egret3d.TextureMaterial = TextureMaterial;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -13628,6 +14448,12 @@ var egret3d;
     })();
     egret3d.Frustum = Frustum;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -13661,11 +14487,11 @@ var egret3d;
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 3d空间中的实体对象。
-    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
+    * 3d空间中的实体对象。</p>
+    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息。</p>
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
-    * 的变换信息要结合父对象的变换信息
-    * 每个Object3D对象在生成时会创建一个包围盒
+    * 的变换信息要结合父对象的变换信息。</p>
+    * 每个Object3D对象在生成时会创建一个包围盒。</p>
     *
     * @see egret3d.geom.Vector3D
     * @see egret3d.geom.Matrix4_4
@@ -14644,6 +15470,12 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.Object3D = Object3D;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -14651,10 +15483,6 @@ var egret3d;
      * @class egret3d.Billboard
      * @classdesc
      * 公告板渲染对象 始终面朝摄像机的面板
-     *
-     * 示例:创建一个棋盘格材质的公告板在场景中
-     * @includeExample core/node/Billboard.ts
-     *
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -14695,6 +15523,7 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Billboard = Billboard;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -14810,6 +15639,7 @@ var egret3d;
     })();
     egret3d.SphereSky = SphereSky;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -14924,6 +15754,12 @@ var egret3d;
     })();
     egret3d.Sky = Sky;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -14947,6 +15783,12 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Entity = Entity;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15004,9 +15846,9 @@ var egret3d;
     /**
     * @class egret3d.Camera3D
     * @classdesc
-    * 相机数据处理，生成3D摄相机。
-    * 渲染场景从摄像机视点到缓冲区
-    * 相机分为透视摄像机、正交摄像机、VR摄像机
+    * 相机数据处理，生成3D摄相机。</p>
+    * 渲染场景从摄像机视点到缓冲区。</p>
+    * 相机分为透视摄像机、正交摄像机、VR摄像机。</p>
     *
     * @see egret3d.core.node.Entity
     * @see egret3d.core.traverse.Frustum
@@ -15399,15 +16241,21 @@ var egret3d;
     })(egret3d.Entity);
     egret3d.Camera3D = Camera3D;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * 灯光的基础类型
-    * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
-    * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
-    * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好
+    * 灯光的基础类型。</p>
+    * 所有的灯光基本要素 灯光的颜色，强度，位置，方向。</p>
+    * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式。</p>
+    * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好。</p>
     * @see egret3d.Object3D
     * @see egret3d.LightGroup
     * @see egret3d.LightBase
@@ -15654,14 +16502,20 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.LightBase = LightBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * 平行灯光
-    * 平行光是一种只有方向，强弱度，没有大小范围的灯光，一般情况下，directlight 可以产生阴影
-    * 如果要产生阴影 需要设置 egret3d.ShadowRender.castShadowLight = directLight; 及其他相关模型的设置
+    * 平行灯光</p>
+    * 平行光是一种只有方向，强弱度，没有大小范围的灯光，一般情况下，directlight 可以产生阴影;</p>
+    * 如果要产生阴影 需要设置 egret3d.ShadowRender.castShadowLight = directLight; 及其他相关模型的设置.</p>
     *
     * @see egret3d.LightGroup
     * @see egret3d.LightBase
@@ -15750,6 +16604,12 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.DirectLight = DirectLight;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15809,6 +16669,12 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.PointLight = PointLight;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -15992,17 +16858,18 @@ var egret3d;
     })(egret3d.LightBase);
     egret3d.SpotLight = SpotLight;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
    * @class egret3d.DirectLight
    * @classdesc
    *
-   * 点光源
-   * 所有的灯光基本要素 灯光的颜色，强度，位置，方向
-   * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式
-   * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好
-   * 点光源是游戏中常常用到的动态光源，实时渲染中，灯光的数量会直接影响渲染性能
+   * 点光源。</p>
+   * 所有的灯光基本要素 灯光的颜色，强度，位置，方向。</p>
+   * 颜色的色值均是16进制 red:0xffff0000 argb的定义模式。</p>
+   * 每个材质球所能最大使用的灯光建议别太多，能省则省，尤其是移动端，能用灯光缓存图 lightmap 最好。</p>
+   * 点光源是游戏中常常用到的动态光源，实时渲染中，灯光的数量会直接影响渲染性能。</p>
    * @see egret3d.Object3D
    * @see egret3d.LightGroup
    * @see egret3d.LightBase
@@ -16072,6 +16939,7 @@ var egret3d;
     })();
     egret3d.LightGroup = LightGroup;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -16106,6 +16974,12 @@ var egret3d;
     })();
     egret3d.RenderBase = RenderBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16159,6 +17033,12 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.DefaultRender = DefaultRender;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16206,6 +17086,12 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.PositionRender = PositionRender;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16253,6 +17139,12 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.NormalRender = NormalRender;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16300,6 +17192,12 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.DepthRender = DepthRender;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16364,6 +17262,7 @@ var egret3d;
     })(egret3d.RenderBase);
     egret3d.ShadowRender = ShadowRender;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -16423,6 +17322,7 @@ var egret3d;
     })();
     egret3d.RenderManager = RenderManager;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -16475,6 +17375,12 @@ var egret3d;
     })();
     egret3d.CollectBase = CollectBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16856,6 +17762,12 @@ var egret3d;
     })(egret3d.CollectBase);
     egret3d.EntityCollect = EntityCollect;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -16871,6 +17783,7 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Scene3D = Scene3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -17000,6 +17913,7 @@ var egret3d;
     })();
     egret3d.RttManager = RttManager;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -17548,6 +18462,7 @@ var egret3d;
     })();
     egret3d.GeometryData = GeometryData;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -17762,6 +18677,12 @@ var egret3d;
     })();
     egret3d.GeometryBase = GeometryBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -17799,17 +18720,25 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.SubGeometry = SubGeometry;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.CubeGeometry
      * @classdesc
-     * CubeGeometry类 表示立方体
+     * CubeGeometry类 表示立方体</p>
      *
-     * 示例：
-     * //用 CubeGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
-     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CubeGeometry(), new egret3d.TextureMaterial() );
+     * 示例：</p>
+     * 用 CubeGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）; </p>
+     <pre>
+      var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CubeGeometry(), new egret3d.TextureMaterial() );
+     </pre>
      *
      * @version Egret 3.0
      * @platform Web,Native
@@ -17864,10 +18793,34 @@ var egret3d;
             this.setGeomtryData(cubeVertexIndices, vertices);
             this.buildBoundBox();
         };
+        /**
+       * @private
+       * @language zh_CN
+       * 位移且改变顶点数据
+       */
+        CubeGeometry.prototype.transfromVertex = function (pos) {
+            if (this.sharedVertexBuffer) {
+                egret3d.Egret3DDrive.context3D.gl.deleteBuffer(this.sharedVertexBuffer);
+                this.sharedVertexBuffer = null;
+            }
+            var skip = 17;
+            var len = this.verticesData.length / skip;
+            for (var i = 0; i < len; i++) {
+                this.verticesData[skip * i + 0] += pos.x;
+                this.verticesData[skip * i + 1] += pos.y;
+                this.verticesData[skip * i + 2] += pos.z;
+            }
+        };
         return CubeGeometry;
     })(egret3d.SubGeometry);
     egret3d.CubeGeometry = CubeGeometry;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18015,6 +18968,12 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.SphereGeometry = SphereGeometry;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18120,17 +19079,25 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.PlaneGeometry = PlaneGeometry;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.CylinderGeometry
      * @classdesc
-     * CylinderGeometry类 表示圆柱体
+     * CylinderGeometry类 表示圆柱体</p>
      *
-     * 示例：
-     * //用 CylinderGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理）;
-     * var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CylinderGeometry(), new egret3d.TextureMaterial() );
+     * 示例：</p>
+     * 用 CylinderGeometry 对象创建一个mesh，并给予默认纹理材质TextureMaterial（默认为棋盘格纹理)</p>
+     <pre>
+     var box: egret3d.Mesh = new egret3d.Mesh( new egret3d.CylinderGeometry(), new egret3d.TextureMaterial() );
+     </pre>
      *
      * @version Egret 3.0
      * @platform Web,Native
@@ -18184,6 +19151,7 @@ var egret3d;
     })(egret3d.SubGeometry);
     egret3d.CylinderGeometry = CylinderGeometry;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -18235,6 +19203,12 @@ var egret3d;
     })();
     egret3d.FaceData = FaceData;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18274,15 +19248,21 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.SkinGeometry = SkinGeometry;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.ElevationGeometry
      * @classdesc
-     * ElevationGeometry类 表示高度图几何图形
+     * ElevationGeometry类 表示高度图几何图形</p>
      *
-     * 高度图几何图形常用于做场景地形，其由一张色彩图片记录高度信息，在程序中解析该色彩图生成相应大小高度的模型网格，以达到逼真动态地形。
+     * 高度图几何图形常用于做场景地形，其由一张色彩图片记录高度信息，在程序中解析该色彩图生成相应大小高度的模型网格，以达到逼真动态地形。</p>
      *
      * @version Egret 3.0
      * @platform Web,Native
@@ -18479,6 +19459,7 @@ var egret3d;
     })(egret3d.GeometryBase);
     egret3d.ElevationGeometry = ElevationGeometry;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -18533,6 +19514,12 @@ var egret3d;
     })();
     egret3d.GeometryUtil = GeometryUtil;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18601,6 +19588,12 @@ var egret3d;
     })(egret3d.Object3D);
     egret3d.Mesh = Mesh;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18657,6 +19650,12 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.BaseLoader = BaseLoader;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18706,6 +19705,12 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.TextureLoader = TextureLoader;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18831,6 +19836,12 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.ModeLoader = ModeLoader;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -18951,6 +19962,7 @@ var egret3d;
     })(egret3d.BaseLoader);
     egret3d.SceneLoader = SceneLoader;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -19375,6 +20387,7 @@ var egret3d;
     })();
     egret3d.URLLoader = URLLoader;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -19438,6 +20451,7 @@ var egret3d;
     })();
     egret3d.AsyncLoadingTexturematerial = AsyncLoadingTexturematerial;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -19965,6 +20979,7 @@ var egret3d;
         return DDS;
     })();
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20292,6 +21307,7 @@ var egret3d;
     })();
     egret3d.TGAParser = TGAParser;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20535,6 +21551,7 @@ var egret3d;
     })();
     egret3d.ESMParser = ESMParser;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20607,6 +21624,7 @@ var egret3d;
     })();
     egret3d.EAMParser = EAMParser;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20646,6 +21664,7 @@ var egret3d;
     })();
     egret3d.ECAParser = ECAParser;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20662,6 +21681,7 @@ var egret3d;
     })();
     egret3d.PVR = PVR;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -20819,6 +21839,12 @@ var egret3d;
     })();
     egret3d.PVRParser = PVRParser;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -20860,6 +21886,34 @@ var egret3d;
         AssetsManager.getInstance = function () {
             return AssetsManager._instance;
         };
+        Object.defineProperty(AssetsManager.prototype, "loadCompleteNumber", {
+            /**
+             * @language zh_CN
+             * 获取已加载完成的总数
+             * @param rootURL
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            get: function () {
+                return this.completeCount;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AssetsManager.prototype, "loadTotalNumber", {
+            /**
+             * @language zh_CN
+             * 获取等待加载的总数
+             * @param rootURL
+             * @version Egret 3.0
+             * @platform Web,Native
+             */
+            get: function () {
+                return this.loadList.length;
+            },
+            enumerable: true,
+            configurable: true
+        });
         /**
          * @language zh_CN
          * 设置根路径
@@ -21010,6 +22064,7 @@ var egret3d;
                     break;
             }
             this.completeCount++;
+            this.dispatchEvent(new egret3d.Event3D(egret3d.Event3D.EVENT_LOAD_PROGRESS, this));
             if (this.completeCount >= this.loadList.length) {
                 this.dispatchEvent(new egret3d.Event3D(egret3d.Event3D.EVENT_LOAD_COMPLETE, this));
             }
@@ -21023,17 +22078,18 @@ var egret3d;
     })(egret3d.EventDispatcher);
     egret3d.AssetsManager = AssetsManager;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
     * @class egret3d.Picker
     * @classdesc
-    * 射线对场景中的实体对像进行检测。
-    * 以摄像机向场景中产生的一条射线对所有场景中的对象进行拾取，
-    * 根据性能的需要分为几种拣选类型
-    * 1.包围盒拣选
-    * 2.模型拣选返回模型拣选到的位置
-    * 3.模型拣选返回模型拣选到的UV坐标
+    * 射线对场景中的实体对像进行检测。</p>
+    * 以摄像机向场景中产生的一条射线对所有场景中的对象进行拾取。</p>
+    * 根据性能的需要分为几种拣选类型。</p>
+    * 1.包围盒拣选。</p>
+    * 2.模型拣选返回模型拣选到的位置。</p>
+    * 3.模型拣选返回模型拣选到的UV坐标。</p>
     *
     * @see egret3d.geom.Ray
     * @see egret3d.core.PickType
@@ -21092,6 +22148,7 @@ var egret3d;
     })();
     egret3d.Picker = Picker;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -21180,18 +22237,23 @@ var egret3d;
     })();
     egret3d.ControllerBase = ControllerBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
     * @class egret3d.LookAtController
     * @classdesc
-    * look at 摄像机控制器 。
-    * 指定摄像机看向的目标对象
-    * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转.
-    * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动.
-    * 3.滑动鼠标滚轮可以控制摄像机的视距.
+    * look at 摄像机控制器 。</p>
+    * 指定摄像机看向的目标对象。</p>
+    * 1.按下鼠标左键并移动鼠标可以使摄像机绕着目标进行旋转。</p>
+    * 2.按下键盘的(w s a d) 可以摄像机(上 下 左 右)移动。</p>
+    * 3.滑动鼠标滚轮可以控制摄像机的视距。</p>
     *
-    * 示例:
     * @includeExample controller/ctl/LookAtController.ts
     * @version Egret 3.0
     * @platform Web,Native
@@ -21502,8 +22564,21 @@ var egret3d;
     })(egret3d.ControllerBase);
     egret3d.LookAtController = LookAtController;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
+    /**
+     * @private
+     * @class egret3d.HoverController
+     * @classdesc
+     * @version Egret 3.0
+     * @platform Web,Native
+     */
     var HoverController = (function (_super) {
         __extends(HoverController, _super);
         function HoverController(targetObject, lookAtObject, panAngle, tiltAngle, distance, minTiltAngle, maxTiltAngle, minPanAngle, maxPanAngle, steps, yFactor, wrapPanAngle) {
@@ -21530,6 +22605,8 @@ var egret3d;
             this._maxPanAngle = Infinity;
             this._minTiltAngle = -90;
             this._maxTiltAngle = 90;
+            this._maxDistance = 5000;
+            this._minDistance = -5000;
             this._steps = 8;
             this._yFactor = 2;
             this._wrapPanAngle = false;
@@ -21558,6 +22635,12 @@ var egret3d;
         }
         HoverController.prototype.mouseWheel = function () {
             this._distance -= egret3d.Input.instance.wheelDelta * 0.1;
+            if (this._distance > this._maxDistance) {
+                this._distance = this._maxDistance;
+            }
+            if (this._distance < this._minDistance) {
+                this._distance = this._minDistance;
+            }
         };
         HoverController.prototype.keyDown = function (key) {
             switch (key) {
@@ -21604,16 +22687,11 @@ var egret3d;
             }
         };
         HoverController.prototype.mouseMove = function () {
-            //Input.instance.mouseLastX
             if (this._mouseDown) {
                 this._tiltAngle += egret3d.Input.instance.mouseOffsetY * 0.1;
-                if (this._tiltAngle > 60) {
-                    this._tiltAngle = 60;
-                }
-                if (this._tiltAngle < -60) {
-                    this._tiltAngle = -60;
-                }
+                this._tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle));
                 this._panAngle += egret3d.Input.instance.mouseOffsetX * 0.1;
+                this._panAngle = Math.max(this._minPanAngle, Math.min(this._maxPanAngle, this._panAngle));
             }
         };
         Object.defineProperty(HoverController.prototype, "lookAtPosition", {
@@ -21682,7 +22760,7 @@ var egret3d;
             set: function (val) {
                 if (this._distance == val)
                     return;
-                this._distance = val;
+                this._distance = this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, val));
                 this.notifyUpdate();
             },
             enumerable: true,
@@ -21736,6 +22814,32 @@ var egret3d;
                     return;
                 this._maxTiltAngle = val;
                 this.tiltAngle = Math.max(this._minTiltAngle, Math.min(this._maxTiltAngle, this._tiltAngle));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(HoverController.prototype, "maxDistance", {
+            get: function () {
+                return this._maxDistance;
+            },
+            set: function (val) {
+                if (this._maxDistance == val)
+                    return;
+                this._maxDistance = val;
+                this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(HoverController.prototype, "minDistance", {
+            get: function () {
+                return this._maxDistance;
+            },
+            set: function (val) {
+                if (this._minDistance == val)
+                    return;
+                this._minDistance = val;
+                this._distance = Math.max(this._minDistance, Math.min(this._maxDistance, this._distance));
             },
             enumerable: true,
             configurable: true
@@ -21813,6 +22917,7 @@ var egret3d;
     })(egret3d.ControllerBase);
     egret3d.HoverController = HoverController;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -21935,6 +23040,7 @@ var egret3d;
     })();
     egret3d.CameraAnimationFrame = CameraAnimationFrame;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -21999,6 +23105,7 @@ var egret3d;
     })();
     egret3d.CameraAnimationManager = CameraAnimationManager;
 })(egret3d || (egret3d = {}));
+
 var DeviceUtil = (function () {
     function DeviceUtil() {
     }
@@ -22029,6 +23136,7 @@ var DeviceUtil = (function () {
     });
     return DeviceUtil;
 })();
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (c) 2014-2015, Egret Technology Inc.
@@ -22840,6 +23948,7 @@ var egret3d;
     })();
     egret3d.ByteArray = ByteArray;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -23106,6 +24215,7 @@ var egret3d;
     })();
     egret3d.StringUtil = StringUtil;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -23172,6 +24282,7 @@ var egret3d;
     })();
     egret3d.Debug = Debug;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -23311,7 +24422,7 @@ var egret3d;
         WireframeBase.prototype.draw = function (context3D, camera) {
             //if (this.transformChange)
             //    this.notifyUpdate();
-            context3D.gl.clear(egret3d.Egret3DDrive.DEPTH_BUFFER_BIT);
+            //context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
             if (!this.usage.program3D)
                 this.rebuild(context3D);
             context3D.enbable(context3D.gl.DEPTH_TEST);
@@ -23351,6 +24462,12 @@ var egret3d;
     })();
     egret3d.WireframeBase = WireframeBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -23396,6 +24513,12 @@ var egret3d;
     })(egret3d.WireframeBase);
     egret3d.WireframeLine = WireframeLine;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -23465,6 +24588,7 @@ var egret3d;
     })(egret3d.WireframeBase);
     egret3d.WireframeMesh = WireframeMesh;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -23723,70 +24847,71 @@ var egret3d;
     })();
     egret3d.PostCanvas = PostCanvas;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUDֱ����Ⱦ����Ļ�ϵ�һ����ͼ��
-     * ��ֱ��ָ��2ά���꣬��ͼ�Ŀ��Ⱥ͸߶�
-     * ���ײ���ȾҲ����4�����㹹�ɣ��������ݽṹ��λ����Ϣ��uv��Ϣ
-     * �����е�HUD�����Ķ�����Ϣ���ݶ��ǹ��õ�
+     * HUD直接渲染在屏幕上的一张贴图</p>
+     * 可直接指定2维坐标，贴图的宽度和高度。</p>
+     * 其底层渲染也是由4个顶点构成，顶点数据结构有位置信息和uv信息。</p>
+     * 其所有的HUD对象的顶点信息数据都是共用的。</p>
      * @version Egret 3.0
      * @platform Web,Native
      */
     var HUD = (function () {
         /**
-        * @language zh_CN
-        * ����
-        */
+         * @language zh_CN
+         * 构造
+         */
         function HUD() {
             /**
-            * @language zh_CN
-            * @private
-            */
+             * @language zh_CN
+             * @private
+             */
             this.rectangle = new egret3d.Rectangle(0, 0, 0, 0);
             /**
-            * @language zh_CN
-            * @private
-            * anchor
-            */
+             * @language zh_CN
+             * @private
+             * anchor
+             */
             this.anchor = new egret3d.Vector3D(0.5, 0.5);
             /**
-            * @language zh_CN
-            * @private
-            * rotation
-            */
+             * @language zh_CN
+             * @private
+             * rotation
+             */
             this.rotation = new egret3d.Vector3D();
             /**
-            * @language zh_CN
-            * @private
-            * r
-            */
+             * @language zh_CN
+             * @private
+             * r
+             */
             this.r = 1;
             /**
-            * @language zh_CN
-            * @private
-            * g
-            */
+             * @language zh_CN
+             * @private
+             * g
+             */
             this.g = 1;
             /**
-            * @language zh_CN
-            * @private
-            * b
-            */
+             * @language zh_CN
+             * @private
+             * b
+             */
             this.b = 1;
             /**
-            * @language zh_CN
-            * @private
-            * a
-            */
+             * @language zh_CN
+             * @private
+             * a
+             */
             this.a = 1;
             /**
-            * @language zh_CN
-            * @private
-            * uvRectangle
-            */
+             * @language zh_CN
+             * @private
+             * uvRectangle
+             */
             this.uvRectangle = new egret3d.Rectangle(0, 0, 1, 1);
             this.rectangle.x = 0;
             this.rectangle.y = 0;
@@ -23801,18 +24926,18 @@ var egret3d;
         }
         Object.defineProperty(HUD.prototype, "x", {
             /**
-            * @language zh_CN
-            * �õ�x����
-            * @returns x����
-            */
+             * @language zh_CN
+             * 得到x坐标
+             * @returns x坐标
+             */
             get: function () {
                 return this.rectangle.x;
             },
             /**
-            * @language zh_CN
-            * ����x����
-            * @param value x����
-            */
+             * @language zh_CN
+             * 设置x坐标
+             * @param value x坐标
+             */
             set: function (value) {
                 this.rectangle.x = value;
             },
@@ -23821,18 +24946,18 @@ var egret3d;
         });
         Object.defineProperty(HUD.prototype, "y", {
             /**
-            * @language zh_CN
-            * �õ�y����
-            * @returns y����
-            */
+             * @language zh_CN
+             * 得到y坐标
+             * @returns y坐标
+             */
             get: function () {
                 return this.rectangle.y;
             },
             /**
-            * @language zh_CN
-            * ����y����
-            * @param value y����
-            */
+             * @language zh_CN
+             * 设置y坐标
+             * @param value y坐标
+             */
             set: function (value) {
                 this.rectangle.y = value;
             },
@@ -23841,18 +24966,18 @@ var egret3d;
         });
         Object.defineProperty(HUD.prototype, "width", {
             /**
-            * @language zh_CN
-            * �õ�HUD�Ŀ���
-            * @returns HUD��
-            */
+             * @language zh_CN
+             *  得到HUD的宽度
+             * @returns HUD宽
+             */
             get: function () {
                 return this.rectangle.width;
             },
             /**
-            * @language zh_CN
-            * ����HUD�Ŀ���
-            * @param value HUD��
-            */
+             * @language zh_CN
+             * 设置HUD的宽度
+             * @param value HUD宽
+             */
             set: function (value) {
                 this.rectangle.width = value;
             },
@@ -23861,18 +24986,18 @@ var egret3d;
         });
         Object.defineProperty(HUD.prototype, "height", {
             /**
-            * @language zh_CN
-            * �õ�HUD�ĸ߶�
-            * @returns HUD��
-            */
+             * @language zh_CN
+             * 得到HUD的高度
+             * @returns HUD高
+             */
             get: function () {
                 return this.rectangle.height;
             },
             /**
-            * @language zh_CN
-            * ����HUD�ĸ߶�
-            * @param value HUD��
-            */
+             * @language zh_CN
+             * 设置HUD的高度
+             * @param value HUD高
+             */
             set: function (value) {
                 this.rectangle.height = value;
             },
@@ -23898,10 +25023,10 @@ var egret3d;
             this.materialDataIndex = context3D.getUniformLocation(this.shaderProgram, "materialData");
         };
         /**
-        * @language zh_CN
-        * �ύ���ݸ�GPU��Ⱦ
-        * @param context3D Context3D
-        */
+         * @language zh_CN
+         * 提交数据给GPU渲染
+         * @param context3D Context3D
+         */
         HUD.prototype.draw = function (context3D) {
             if (!this.shaderProgram)
                 this.rebuild(context3D);
@@ -23913,9 +25038,9 @@ var egret3d;
             tempMat.appendScale(this.rectangle.width / this.viewPort.width * 2.0, this.rectangle.height / this.viewPort.height * 2.0, 1.0);
             this._viewMatrix.append(tempMat);
             var px = (this.viewPort.width - (this.rectangle.x + this.rectangle.width / 2) * 2.0) * (1 / this.viewPort.width); // +
-            //(this.viewPort.width - (this.rectangle.width / 2.0) * 2.0) * (1 / this.viewPort.width); 
+            //(this.viewPort.width - (this.rectangle.width / 2.0) * 2.0) * (1 / this.viewPort.width);
             var py = (this.viewPort.height - (this.rectangle.y + this.rectangle.height / 2) * 2.0) * (1 / this.viewPort.height); // +
-            //(this.viewPort.height - (this.rectangle.height / 2.0) * 2.0) * (1 / this.viewPort.height); 
+            //(this.viewPort.height - (this.rectangle.height / 2.0) * 2.0) * (1 / this.viewPort.height);
             this._viewMatrix.appendTranslation(-px, py, 0.0);
             context3D.setProgram(this.shaderProgram);
             //var len = 3 * Float32Array.BYTES_PER_ELEMENT +
@@ -23944,8 +25069,8 @@ var egret3d;
     })();
     egret3d.HUD = HUD;
     /**
-    * @private
-    */
+     * @private
+     */
     var QuadShader = (function () {
         function QuadShader() {
             this.vertexShaderSource = "";
@@ -23975,6 +25100,7 @@ var egret3d;
         return QuadShader;
     })();
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -24014,6 +25140,12 @@ var egret3d;
     })();
     egret3d.PostEffectBase = PostEffectBase;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24061,6 +25193,12 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.BrightPost = BrightPost;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24096,6 +25234,12 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.GaussianBlurHorizontalPost = GaussianBlurHorizontalPost;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24132,6 +25276,12 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.GaussianBlurVerticalPost = GaussianBlurVerticalPost;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24171,6 +25321,12 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.Composition = Composition;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24207,6 +25363,12 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.Tonemaping = Tonemaping;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -24269,17 +25431,18 @@ var egret3d;
     })(egret3d.PostEffectBase);
     egret3d.HDR = HDR;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @class egret3d.View3D
      * @classdesc
-     * 渲染视图
-     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式
-     * 可以设置不同的相机 camera3D
-     * 交换不同的场景元素 scene3D
-     * skyBox需要在这里直接设置，有cube sky 和 sphere sky
-     * 整个渲染的主循环通过 render
+     * 渲染视图。</p>
+     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式。</p>
+     * 可以设置不同的相机 camera3D。</p>
+     * 交换不同的场景元素 scene3D 。</p>
+     * skyBox需要在这里直接设置，有cube sky 和 sphere sky。</p>
+     * 整个渲染的主循环通过 render  。</p>
      * @see egret3d.camera3d
      * @see egret3d.scene3D
      * @version Egret 3.0
@@ -24540,7 +25703,7 @@ var egret3d;
         * @version Egret 3.0
         * @platform Web,Native
         */
-        View3D.prototype.delHUN = function (hud) {
+        View3D.prototype.delHUD = function (hud) {
             var index = this._hudList.indexOf(hud);
             this._hudList.splice(index, 1);
         };
@@ -24914,6 +26077,12 @@ var egret3d;
     })();
     egret3d.View3D = View3D;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -25056,6 +26225,7 @@ var egret3d;
     })(egret3d.View3D);
     egret3d.VRView3D = VRView3D;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -25799,6 +26969,7 @@ var egret3d;
     })();
     egret3d.Input = Input;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -25988,6 +27159,7 @@ var egret3d;
     })();
     egret3d.OrientationController = OrientationController;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -26157,6 +27329,7 @@ var egret3d;
     })();
     egret3d.AudioManager = AudioManager;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
@@ -26395,6 +27568,12 @@ var egret3d;
     })();
     egret3d.Channel = Channel;
 })(egret3d || (egret3d = {}));
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var egret3d;
 (function (egret3d) {
     /**
@@ -26619,13 +27798,16 @@ var egret3d;
     })(egret3d.Channel);
     egret3d.Channel3d = Channel3d;
 })(egret3d || (egret3d = {}));
+
 var egret3d;
 (function (egret3d) {
     /**
      * @language zh_CN
      * @class egret3d.Sound
      * @classdesc
-     * Sound 类允许您在应用程序中使用声音。使用 Sound 类可以创建 Sound 对象、将外部 MP3 文件加载到该对象并播放该文件、关闭声音流，以及访问有关声音的数据，如有关流中字节数和 ID3 元数据的信息。可通过以下项对声音执行更精细的控制：声音源（声音的 Channel 和 Channel3d）用于控制向计算机扬声器输出声音的属性。
+     * Sound 类允许您在应用程序中使用声音。</p>
+     * 使用 Sound 类可以创建 Sound 对象、将外部 MP3 文件加载到该对象并播放该文件、关闭声音流，以及访问有关声音的数据，如有关流中字节数和 ID3 元数据的信息。</p>
+     * 可通过以下项对声音执行更精细的控制：声音源（声音的 Channel 和 Channel3d）用于控制向计算机扬声器输出声音的属性。  </p>
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -26732,105 +27914,4 @@ var egret3d;
     })();
     egret3d.Sound = Sound;
 })(egret3d || (egret3d = {}));
-var egret3d;
-(function (egret3d) {
-    /**
-     * @private
-     * @class egret3D.Egret3DEngine
-     * @classdesc
-     * 引擎库文件加载
-     * 引擎库前期加载设置，开发中加载未压缩的编译引擎
-     */
-    var Egret3DEngine = (function () {
-        function Egret3DEngine() {
-        }
-        Egret3DEngine.getXHR = function () {
-            var xhr = null;
-            if (window["XMLHttpRequest"]) {
-                xhr = new window["XMLHttpRequest"]();
-            }
-            else {
-                xhr = new ActiveXObject("MSXML2.XMLHTTP");
-            }
-            return xhr;
-        };
-        /**
-         * @language zh_CN
-         * 请求读取
-         * @event complete 读取完成响应回调
-         */
-        Egret3DEngine.preload = function (complete) {
-            this._complete = complete;
-            if (this._xhr == null) {
-                this._xhr = this.getXHR();
-            }
-            if (this._xhr == null) {
-                alert("Your browser does not support XMLHTTP.");
-                return;
-            }
-            if (this._xhr.readyState > 0) {
-                this._xhr.abort();
-            }
-            this._xhr.open("GET", this._libUrl, true);
-            this._xhr.addEventListener("progress", function (e) { return Egret3DEngine.onProgress(e); }, false);
-            this._xhr.addEventListener("readystatechange", function (e) { return Egret3DEngine.onReadyStateChange(e); }, false);
-            this._xhr.addEventListener("error", function (e) { return Egret3DEngine.onError(e); }, false);
-            this._xhr.responseType = "text";
-            this._xhr.send();
-        };
-        Egret3DEngine.onReadyStateChange = function (event) {
-            if (this._xhr.readyState == 4) {
-                if (this._xhr.status >= 400 || this._xhr.status == 0) {
-                    console.log(this._libUrl, "load fail");
-                }
-                else {
-                    this.loadComplete();
-                }
-            }
-        };
-        Egret3DEngine.loadComplete = function () {
-            var libTex = this._xhr.responseText;
-            this.applyClass(libTex);
-        };
-        Egret3DEngine.onProgress = function (event) {
-            var e = event.loaded.toString() + event.total;
-            console.log("progress event```" + e);
-        };
-        Egret3DEngine.onError = function (event) {
-            console.log("load error", event);
-        };
-        Egret3DEngine.applyClass = function (source) {
-            this.importList = source.split("///");
-            this.importList.shift();
-            for (var i = 0; i < this.importList.length; i++) {
-                this.importList[i] = this.importList[i].replace("\r\n", "");
-                this.importList[i] = this.importList[i].replace("import ", "/js/");
-            }
-            this.importList.pop();
-            this.startLoadScript(null);
-        };
-        Egret3DEngine.startLoadScript = function (e) {
-            var _this = this;
-            if (this.importList.length > 0) {
-                var egret3DScript = document.createElement("script");
-                egret3DScript.src = this.importList.shift();
-                egret3DScript.onload = function (e) { return _this.startLoadScript(e); };
-                egret3DScript.onerror = function (e) { return _this.loadScriptError(e); };
-                document.head.appendChild(egret3DScript);
-            }
-            else {
-                console.log("all complete");
-                this._complete();
-            }
-        };
-        Egret3DEngine.loadScriptError = function (e) {
-            var error = "load Script Error \r\n no file:" + e.srcElement.src;
-            alert(error);
-            this.startLoadScript(null);
-        };
-        Egret3DEngine.djs = "";
-        Egret3DEngine._libUrl = "/js/Egret3D/Egret3D.lib.js";
-        return Egret3DEngine;
-    })();
-    egret3d.Egret3DEngine = Egret3DEngine;
-})(egret3d || (egret3d = {}));
+

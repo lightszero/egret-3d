@@ -195,13 +195,6 @@
         static EVENT_LOAD_COMPLETE: string = "load_complete";
         /**
         * @language zh_CN
-        * EVENT_LOAD_PROGRESS 常量定义 onLoadProgress 事件对象的 type 属性的值。
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        static EVENT_LOAD_PROGRESS: string = "onLoadProgress";
-        /**
-        * @language zh_CN
         * MOUSE_CLICK 常量定义 onClick 事件对象的 type 属性的值。
         * @version Egret 3.0
         * @platform Web,Native

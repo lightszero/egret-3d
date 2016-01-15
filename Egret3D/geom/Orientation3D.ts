@@ -3,12 +3,9 @@
      * @language zh_CN
      * @class egret3d.Orientation3D
      * @classdesc
-     * 定义 Orientation3D 常量。</p>
-     * Matrix4_4.decompose 会分 axisAngle、eulerAngles、quaternion这3种类型进行分解。</p>
-     * 比如:</p>
-     <pre>
-     matrix.decompose(Orientation3D.QUATERNION)
-     </pre>
+     * 定义 Orientation3D 常量
+     * Matrix4_4.decompose 会分 axisAngle、eulerAngles、quaternion这3种类型进行分解
+     * 比如: matrix.decompose(Orientation3D.QUATERNION)
      *
      * @see egret3d.geom.Matrix4_4
      * @see egret3d.geom.Quaternion

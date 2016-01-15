@@ -3,8 +3,8 @@
      * @language zh_CN
      * @class egret3d.CubeBoxBound
      * @classdesc
-     * 可使用 CubeBoxBound 类 取得包围盒的数据。</p>
-     * 包含包围盒的各顶点信息，当包围盒要进行世界变换时，应当变换各顶点信息。</p>
+     * 可使用 CubeBoxBound 类 取得包围盒的数据。
+     * 包含包围盒的各顶点信息，当包围盒要进行世界变换时，应当变换各顶点信息.
      * @version Egret 3.0
      * @platform Web,Native
      */
