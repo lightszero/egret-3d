@@ -135,6 +135,12 @@
             Egret3DDrive.canvasRectangle.y = this.y;
             Egret3DDrive.canvasRectangle.width = this.width;
             Egret3DDrive.canvasRectangle.height = this.height;
+            if (this._backImg) {
+                this._backImg.x = x;
+                this._backImg.y = y;
+                this._backImg.width = width;
+                this._backImg.height = height;
+            }
             this.updateViewSizeData();
         }
 
