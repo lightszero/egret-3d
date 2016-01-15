@@ -14,14 +14,14 @@ class Sample_360 extends SampleBase{
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
         //this._view3D.backImageTexture = egret3d.CheckerboardTexture.texture;
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
-        egret3d.AssetsManager.getInstance().addLoadTexture("360photo/1.JPG");
+        egret3d.AssetsManager.getInstance().addLoadTexture("360photo/2.JPG");
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE, (e: egret3d.Event3D) => this.initScene(e));
         egret3d.AssetsManager.getInstance().startLoad();
     }
 
     private initScene(e) {
         setTimeout(super.remove,1000);
-        var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/1.JPG"); 
+        var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/2.JPG"); 
         var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(photoTexture);
         material.ambientPower = 0.5;
         var mesh: egret3d.Mesh = new egret3d.Mesh(new egret3d.SphereGeometry(200, 45, 45), material);
@@ -29,6 +29,7 @@ class Sample_360 extends SampleBase{
         this._view3D.addChild3D(mesh);
 
         this._cameraController = new egret3d.HoverController(this._view3D.camera3D);
+        this._cameraController.steps = 12;
         window.requestAnimationFrame(() => this.update());
     }
 

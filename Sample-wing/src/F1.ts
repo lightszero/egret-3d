@@ -1,7 +1,9 @@
-class F1 extends SampleBase{
+class F1 extends SampleBase {
     private _view3D: egret3d.View3D;
     private _cameraCtl: egret3d.HoverController;
     private _viewPort: egret3d.Rectangle;
+    
+    
     constructor() {
         super();
         this._viewPort = new egret3d.Rectangle(0, 0, window.innerWidth, window.innerHeight);
@@ -13,6 +15,7 @@ class F1 extends SampleBase{
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
 
         this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D, null, 45, 45, 200, 8, 85);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0, 10, 0);
         this._cameraCtl.minDistance = 188;
         this._cameraCtl.maxDistance = 524;
         window.requestAnimationFrame(() => this.update());
@@ -51,7 +54,7 @@ class F1 extends SampleBase{
     }
 
     private initScene(e: egret3d.Event3D) {
-        setTimeout(super.remove,1000);
+        this._removeID = setTimeout(super.remove,0);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_l.jpg");
@@ -101,7 +104,7 @@ class F1 extends SampleBase{
         var wheelAmbient_fiber_ao: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/ao/wheelAo.jpg");
 
         var bodyEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        bodyEnv.reflect = 0.1;
+        bodyEnv.envLightPower = 0.5;
         body.material.diffuseTexture = f1_texture_d;
         body.material.specularTexture = f1_texture_s;
         body.material.lightGroup = lightGroup;
@@ -110,26 +113,24 @@ class F1 extends SampleBase{
         body.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(body_ao));
 
         var brakeEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        brakeEnv.reflect = 0.1;
+        brakeEnv.envLightPower = 0.4;
         brake.material.diffuseTexture = f1_texture_d;
         brake.material.specularTexture = f1_texture_s;
         brake.material.lightGroup = lightGroup;
         brake.material.ambientColor = 0x00235c;
-        //brake.material.addDiffusePassEffectMothod(env);
-
      
         carbon_fiber.material.diffuseTexture = f1_texture_d;
         carbon_fiber.material.specularTexture = f1_texture_s;
         carbon_fiber.material.lightGroup = lightGroup;
-        carbon_fiber.material.ambientColor = 0x00235c;
-        //var carbon_fiberEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        //carbon_fiberEnv.reflect = 0.1;
-        //carbon_fiberEnv.maskColor = 0xffffff;
-        //carbon_fiber.material.addDiffusePassEffectMothod(carbon_fiberEnv);
+        carbon_fiber.material.ambientColor = 0x333333;
+        var carbon_fiberEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
+        carbon_fiberEnv.envLightPower = 0.3;
+        carbon_fiberEnv.maskColor = 0x333333;
+        carbon_fiber.material.addDiffusePassEffectMothod(carbon_fiberEnv);
         carbon_fiber.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(carbon_fiber_ao));
 
         var fenderEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        fenderEnv.reflect = 0.1;
+        fenderEnv.envLightPower = 0.5;
         fender.material.diffuseTexture = f1_texture_d;
         fender.material.specularTexture = f1_texture_s;
         fender.material.lightGroup = lightGroup;
@@ -151,7 +152,7 @@ class F1 extends SampleBase{
         wheel.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(wheelAmbient_fiber_ao));
 
         var Wheel_hubEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        Wheel_hubEnv.reflect = 0.1;
+        Wheel_hubEnv.envLightPower = 0.5;
         Wheel_hubEnv.maskColor = 0xffffff;
         Wheel_hub.material.diffuseTexture = f1_texture_d;
         Wheel_hub.material.specularTexture = f1_texture_s;
@@ -164,6 +165,7 @@ class F1 extends SampleBase{
         Plane001.material.diffuseTexture = floor_texture_d;
         Plane001.material.ambientColor = 0xffffff;
         Plane001.material.ambientPower = 0.5;
+        Plane001.y = -0.01;
         var planeAO: egret3d.AOMapMethod = new egret3d.AOMapMethod(plane001Ambient_fiber_ao);
         planeAO.aoPower = 1.0 ;
         Plane001.material.addDiffusePassEffectMothod(planeAO);

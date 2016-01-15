@@ -1,4 +1,6 @@
-﻿class SampleBase{
+class SampleBase{
+    
+    protected _removeID: number = -1; 
     constructor() {
 
         this.initView();
@@ -22,6 +24,7 @@
     }
 
     public remove(){
+        clearTimeout(this._removeID);
         var ui = document.getElementById("mask");
         document.body.style.backgroundColor = "#000000";
         document.body.removeChild(ui);
