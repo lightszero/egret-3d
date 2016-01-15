@@ -1,11 +1,11 @@
-module egret3d {
+ï»¿module egret3d {
     /**
      * @class egret3d.HUD
      * @classdesc
-     * HUDÖ±½ÓäÖÈ¾ÔÚÆÁÄ»ÉÏµÄÒ»ÕÅÌùÍ¼</p>
-     * ¿ÉÖ±½ÓÖ¸¶¨2Î¬×ø±ê£¬ÌùÍ¼µÄ¿í¶ÈºÍ¸ß¶È¡£</p>
-     * Æäµ×²ãäÖÈ¾Ò²ÊÇÓÉ4¸ö¶¥µã¹¹³É£¬¶¥µãÊı¾İ½á¹¹ÓĞÎ»ÖÃĞÅÏ¢ºÍuvĞÅÏ¢¡£</p>
-     * ÆäËùÓĞµÄHUD¶ÔÏóµÄ¶¥µãĞÅÏ¢Êı¾İ¶¼ÊÇ¹²ÓÃµÄ¡£</p>
+     * HUDç›´æ¥æ¸²æŸ“åœ¨å±å¹•ä¸Šçš„ä¸€å¼ è´´å›¾</p>
+     * å¯ç›´æ¥æŒ‡å®š2ç»´åæ ‡ï¼Œè´´å›¾çš„å®½åº¦å’Œé«˜åº¦ã€‚</p>
+     * å…¶åº•å±‚æ¸²æŸ“ä¹Ÿæ˜¯ç”±4ä¸ªé¡¶ç‚¹æ„æˆï¼Œé¡¶ç‚¹æ•°æ®ç»“æ„æœ‰ä½ç½®ä¿¡æ¯å’Œuvä¿¡æ¯ã€‚</p>
+     * å…¶æ‰€æœ‰çš„HUDå¯¹è±¡çš„é¡¶ç‚¹ä¿¡æ¯æ•°æ®éƒ½æ˜¯å…±ç”¨çš„ã€‚</p>
      * @version Egret 3.0
      * @platform Web,Native
      */
@@ -121,7 +121,7 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * ¹¹Ôì
+         * æ„é€ 
          */
         constructor() {
             this.rectangle.x = 0;
@@ -143,8 +143,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * ÉèÖÃx×ø±ê
-         * @param value x×ø±ê
+         * è®¾ç½®xåæ ‡
+         * @param value xåæ ‡
          */
         public set x(value:number) {
 
@@ -153,8 +153,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * ÉèÖÃy×ø±ê
-         * @param value y×ø±ê
+         * è®¾ç½®yåæ ‡
+         * @param value yåæ ‡
          */
         public set y(value:number) {
 
@@ -163,8 +163,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * µÃµ½x×ø±ê
-         * @returns x×ø±ê
+         * å¾—åˆ°xåæ ‡
+         * @returns xåæ ‡
          */
         public get x():number {
 
@@ -173,8 +173,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * µÃµ½y×ø±ê
-         * @returns y×ø±ê
+         * å¾—åˆ°yåæ ‡
+         * @returns yåæ ‡
          */
         public get y():number {
 
@@ -183,8 +183,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * ÉèÖÃHUDµÄ¿í¶È
-         * @param value HUD¿í
+         * è®¾ç½®HUDçš„å®½åº¦
+         * @param value HUDå®½
          */
         public set width(value:number) {
 
@@ -193,8 +193,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * ÉèÖÃHUDµÄ¸ß¶È
-         * @param value HUD¸ß
+         * è®¾ç½®HUDçš„é«˜åº¦
+         * @param value HUDé«˜
          */
         public set height(value:number) {
 
@@ -203,8 +203,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         *  µÃµ½HUDµÄ¿í¶È
-         * @returns HUD¿í
+         *  å¾—åˆ°HUDçš„å®½åº¦
+         * @returns HUDå®½
          */
         public get width():number {
 
@@ -213,8 +213,8 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * µÃµ½HUDµÄ¸ß¶È
-         * @returns HUD¸ß
+         * å¾—åˆ°HUDçš„é«˜åº¦
+         * @returns HUDé«˜
          */
         public get height():number {
 
@@ -249,7 +249,7 @@ module egret3d {
 
         /**
          * @language zh_CN
-         * Ìá½»Êı¾İ¸øGPUäÖÈ¾
+         * æäº¤æ•°æ®ç»™GPUæ¸²æŸ“
          * @param context3D Context3D
          */
         public draw(context3D:Context3D) {

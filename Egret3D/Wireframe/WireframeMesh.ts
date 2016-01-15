@@ -30,7 +30,7 @@
         */
         public createByMesh(mesh: Mesh) {
             this.createFromGeometry(mesh.geometry);
-            mesh.addChild(this);
+            mesh.bindWireframe( this );
         }
         
         /**

@@ -3,12 +3,12 @@
     /**
      * @class egret3d.View3D
      * @classdesc
-     * 渲染视图
-     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式
-     * 可以设置不同的相机 camera3D
-     * 交换不同的场景元素 scene3D 
-     * skyBox需要在这里直接设置，有cube sky 和 sphere sky
-     * 整个渲染的主循环通过 render  
+     * 渲染视图。</p>
+     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式。</p>
+     * 可以设置不同的相机 camera3D。</p>
+     * 交换不同的场景元素 scene3D 。</p>
+     * skyBox需要在这里直接设置，有cube sky 和 sphere sky。</p>
+     * 整个渲染的主循环通过 render  。</p>
      * @see egret3d.camera3d
      * @see egret3d.scene3D
      * @version Egret 3.0
