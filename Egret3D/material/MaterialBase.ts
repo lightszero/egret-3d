@@ -3,10 +3,10 @@
     /**
     * @private
     */
-    export enum MaterialType{
+    export enum TextureMethodType{
         DIFFUSE,
-        DIFFUSE_BUMP,
-        DIFFUSE_BUMP_SPECULAR,
+        NORMAL,
+        SPECULAR,
         RGBATERRAIN
     }
 
@@ -106,20 +106,7 @@
         * @platform Web,Native
         */
         protected initMatPass() {
-            switch (this.materialData.matType) {
-                case MaterialType.DIFFUSE:
-                    this.diffusePass = new DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.DIFFUSE_BUMP:
-                    this.diffusePass = new DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.DIFFUSE_BUMP_SPECULAR:
-                    this.diffusePass = new DiffuseMapPass(this.materialData);
-                    break;
-                case MaterialType.RGBATERRAIN:
-                    this.diffusePass = new TerrainMapPass(this.materialData);
-                    break;
-            }
+            throw new Error( "cant't constructor parent" );
         }
 
         /**
@@ -673,6 +660,10 @@
             if (texture) {
                 this.materialData.diffuseTex = texture;
                 this.materialData.textureChange = true;
+
+                if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.DIFFUSE) == -1) {
+                    this.materialData.textureMethodTypes.push(TextureMethodType.DIFFUSE);
+                }
             }
         }
 
@@ -700,10 +691,12 @@
             if (texture) {
                 this.materialData.normalTex = texture;
                 this.materialData.textureChange = true;
-                if (this.materialData.matType != MaterialType.DIFFUSE_BUMP) {
-                    this.materialData.matType = MaterialType.DIFFUSE_BUMP; 
-                    this.materialData.passChange = true ;
+
+                if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.NORMAL) == -1) {
+                    this.materialData.textureMethodTypes.push(TextureMethodType.NORMAL);
+                    this.materialData.passChange = true;
                 }
+     
             }
         }
 
@@ -719,9 +712,9 @@
             if (texture) {
                 this.materialData.specularTex = texture;
                 this.materialData.textureChange = true;
-                if (this.materialData.matType != MaterialType.DIFFUSE_BUMP_SPECULAR) {
-                    this.materialData.matType = MaterialType.DIFFUSE_BUMP_SPECULAR;
-                    this.materialData.passChange = true ;
+                if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.SPECULAR) == -1) {
+                    this.materialData.textureMethodTypes.push(TextureMethodType.SPECULAR);
+                    this.materialData.passChange = true;
                 }
             }
         }

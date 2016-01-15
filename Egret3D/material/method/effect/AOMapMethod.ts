@@ -12,6 +12,7 @@
      */
     export class AOMapMethod extends EffectMethod {
 
+        private _aoPower: number = 1.0 ; 
         private texture: TextureBase;
         /**
          * @language zh_CN
@@ -24,6 +25,14 @@
             super();
             this.fsMethodName = "AOMap_fragment";
             this.aoTexture = texture;
+        }
+
+        public set aoPower(val: number) {
+            this._aoPower = val; 
+        }
+
+        public get aoPower(): number{
+            return this._aoPower; 
         }
 
         /**
@@ -80,6 +89,7 @@
          */
         public activateEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
             this.context3D = context3D;
+            usage["aoPower"] = context3D.getUniformLocation(usage.program3D, "aoPower");
         }
 
         /**
@@ -98,6 +108,8 @@
          * @platform Web,Native
          */
         public updataEffect(context3D: Context3D, usage: MethodUsageData, materialData: MaterialData, modeltransform: Matrix4_4, camera3D: Camera3D, geometry: GeometryBase, animation: IAnimation) {
+            context3D.gl.uniform1f(usage["aoPower"], this._aoPower );
+
         }
 
         /**

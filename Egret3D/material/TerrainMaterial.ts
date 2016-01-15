@@ -26,7 +26,6 @@
         constructor(colormap: TextureBase, controlTex: TextureBase, splat_0: TextureBase, splat_1: TextureBase, splat_2: TextureBase, splat_3: TextureBase,lightMap:TextureBase=null) {
 
             super();
-            this.materialData.matType = MaterialType.RGBATERRAIN ;
             this.materialData.diffuseTex = colormap;
             this.materialData.maskTex = controlTex;
             this.materialData.splat_0Tex = splat_0;
@@ -40,6 +39,10 @@
                 this.materialData.lightMapTex = lightMap ;
 
             this.initMatPass();
+        }
+
+        protected initMatPass() {
+            this.diffusePass = new TerrainMapPass( this.materialData );
         }
 
         /**

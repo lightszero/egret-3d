@@ -281,7 +281,7 @@
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public delHUN(hud: HUD) {
+        public delHUD(hud: HUD) {
 
             var index: number = this._hudList.indexOf(hud);
             this._hudList.splice(index, 1);

@@ -172,7 +172,7 @@
             //if (this.transformChange)
             //    this.notifyUpdate();
 
-            context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
+            //context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
 
             if (!this.usage.program3D)
                 this.rebuild(context3D);

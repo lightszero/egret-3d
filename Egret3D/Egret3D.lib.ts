@@ -74,14 +74,18 @@
 ///import Egret3D/material/method/fs/DepthMethod.js
 ///import Egret3D/material/method/fs/DiffuseMethod.js
 ///import Egret3D/material/method/fs/ShadowMapingMethod.js
+
 ///import Egret3D/material/method/EffectMethod.js
 ///import Egret3D/material/method/effect/AOMapMethod.js
 ///import Egret3D/material/method/effect/LightMapMethod.js
 ///import Egret3D/material/method/effect/EnvironmentMappingMethod.js
+///import Egret3D/material/method/effect/PaintFresnelReflectionMappingMethod.js
 ///import Egret3D/material/method/effect/SpecularEnvironmentMappingMethod.js
+///import Egret3D/material/method/effect/AlphaEnvironmentMappingMethod.js
 ///import Egret3D/material/method/effect/DistanceFog.js
 ///import Egret3D/material/pass/MaterialPassBase.js
 ///import Egret3D/material/pass/DiffuseMapPass.js
+///import Egret3D/material/pass/CubeDiffuseMapPass.js
 ///import Egret3D/material/pass/TerrainMapPass.js
 ///import Egret3D/material/pass/DepthMapPass.js
 ///import Egret3D/material/pass/NormalMapPass.js
