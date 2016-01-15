@@ -19,6 +19,7 @@ class Main extends egret.DisplayObjectContainer {
         //new Sample_BlendTerrain();
         //new Sample_Character();
         //new Sample_360Photo();
-        new Sample_360();
+        //new Sample_360();
+        new F1();
     }
 }
