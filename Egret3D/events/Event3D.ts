@@ -50,7 +50,7 @@
 
         /**
         * @language zh_CN
-        * 使用 EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知。可以为特定类型的事件和优先级注册事件侦听器。成功注册一个事件侦听器后，无法通过额外调用 addEventListener() 来更改其优先级。要更改侦听器的优先级，必须首先调用 removeListener()。然后，可以使用新的优先级再次注册该侦听器。    
+        * 使用 EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知。可以为特定类型的事件和优先级注册事件侦听器。成功注册一个事件侦听器后，无法通过额外调用 addEventListener() 来更改其优先级。要更改侦听器的优先级，必须首先调用 removeEventListener()。然后，可以使用新的优先级再次注册该侦听器。    
         * @param type {string} 事件的类型。
         * @param callback {Function} 处理事件的侦听器函数。此函数必须接受 Event3D 对象作为其唯一的参数，并且不能返回任何结果，
         * 如下面的示例所示： function(evt:Event3D):void 函数可以有任何名称。
@@ -193,6 +193,13 @@
         * @platform Web,Native
         */
         static EVENT_LOAD_COMPLETE: string = "load_complete";
+        /**
+        * @language zh_CN
+        * EVENT_LOAD_PROGRESS 常量定义 onLoadProgress 事件对象的 type 属性的值。
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        static EVENT_LOAD_PROGRESS: string = "onLoadProgress";
         /**
         * @language zh_CN
         * MOUSE_CLICK 常量定义 onClick 事件对象的 type 属性的值。
