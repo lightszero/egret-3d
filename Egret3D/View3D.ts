@@ -47,7 +47,6 @@
         protected _hudList: Array<HUD> = new Array<HUD>();
 
         private _mouseEventManager: Mouse3DManager;
-        private _resizeTimer: number = NaN;
 
         /**
         * @language zh_CN
@@ -111,23 +110,8 @@
             this.width = viewPort.width;
             this.height = viewPort.height;
 
-            window.addEventListener("resize", () => this.doResize());
             this._mouseEventManager = new Mouse3DManager( this._camera );
 
-        }
-
-        private onResize() {
-            this._resizeTimer = NaN;
-            this.resize(0, 0, window.innerWidth, window.innerHeight);
-            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
-                this._resizeFuncs[i]();
-            }
-        }
-        
-        private doResize() {
-            if (isNaN(this._resizeTimer)) {
-                this._resizeTimer = window.setTimeout(()=>this.onResize(), 300);
-            }
         }
 
         /**
