@@ -24,7 +24,7 @@ class Sample_360Photo extends SampleBase{
     }
 
     private initScene(e: egret3d.Event3D) {
-        this._removeID = setTimeout(super.remove,this._timeout);
+        setTimeout(super.remove,1000)
         var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/2.JPG") ;
         var sphereSky: egret3d.SphereSky = new egret3d.SphereSky(photoTexture);
         this._view3D.sphereSky = sphereSky;

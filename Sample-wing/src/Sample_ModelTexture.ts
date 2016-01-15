@@ -31,7 +31,7 @@ class Sample_ModelTexture extends SampleBase{
     }
     
     private modelComplete(e:egret3d.Event3D) {
-        this._removeID = setTimeout(super.remove,this._timeout);
+        setTimeout(super.remove,1000);
         var loader: egret3d.ModeLoader = <egret3d.ModeLoader>e.data; 
         this.sampleMesh = loader.mesh ;
      

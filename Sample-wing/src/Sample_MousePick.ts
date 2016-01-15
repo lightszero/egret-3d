@@ -37,7 +37,7 @@ class Sample_MousePick extends SampleBase{
     }
 
     private initScene(e: egret3d.Event3D) {
-        this._removeID = setTimeout(super.remove,this._timeout);
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");

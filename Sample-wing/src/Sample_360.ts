@@ -20,7 +20,7 @@ class Sample_360 extends SampleBase{
     }
 
     private initScene(e) {
-        this._removeID = setTimeout(super.remove,this._timeout);
+        setTimeout(super.remove,1000);
         var photoTexture: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("360photo/2.JPG"); 
         var material: egret3d.TextureMaterial = new egret3d.TextureMaterial(photoTexture);
         material.ambientPower = 0.5;

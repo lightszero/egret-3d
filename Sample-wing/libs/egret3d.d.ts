@@ -8190,7 +8190,6 @@ declare module egret3d {
         private _maskColorR;
         private _maskColorG;
         private _maskColorB;
-        private reflectValue;
         /**
         * @language zh_CN
         * 创建一个新的 EnvironmentMappingMethod 对象。
@@ -8214,21 +8213,6 @@ declare module egret3d {
         * @platform Web,Native
         */
         rimPower: number;
-        /**
-        * @language zh_CN
-        * 获取反射值。
-        * @returns {Number}
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        /**
-        * @language zh_CN
-        * 设置反射值。
-        * @param value{Number}
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        reflect: number;
         /**
         * @language zh_CN
         * 获取反射值。
@@ -9989,11 +9973,11 @@ declare module egret3d {
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 3d空间中的实体对象。</p>
-    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息。</p>
+    * 3d空间中的实体对象。
+    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
-    * 的变换信息要结合父对象的变换信息。</p>
-    * 每个Object3D对象在生成时会创建一个包围盒。</p>
+    * 的变换信息要结合父对象的变换信息
+    * 每个Object3D对象在生成时会创建一个包围盒
     *
     * @see egret3d.geom.Vector3D
     * @see egret3d.geom.Matrix4_4
@@ -10563,14 +10547,6 @@ declare module egret3d {
         * @platform Web,Native
         */
         swapChildrenAt(index1: number, index2: number): void;
-        /**
-        * @language zh_CN
-        * @private
-        * @param wireframe 网格对象
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        bindWireframe(wireframe: WireframeBase): void;
         /**
         * @language zh_CN
         * 当前对象对视位置
@@ -13957,28 +13933,34 @@ declare module egret3d {
 
 declare module egret3d {
     /**
-     * @private
-     * @class egret3d.HoverController
-     * @classdesc
-     * @version Egret 3.0
-     * @platform Web,Native
-     */
+    * @class egret3d.HoverController
+    * @classdesc
+    * 摄像机控制器 ,实现摄像机平滑移动
+    * 指定摄像机看向的目标对象
+    * 1.按下鼠标左键并移动鼠标(或手机手指滑动)可以使摄像机绕着目标进行旋转.
+    * 2.滑动鼠标滚轮(或双指滑动)可以控制摄像机的视距.
+    *
+    * 示例:
+    * @includeExample controller/ctl/HoverController.ts
+    * @version Egret 3.0
+    * @platform Web,Native
+    */
     class HoverController extends ControllerBase {
-        _currentPanAngle: number;
-        _currentTiltAngle: number;
-        _panAngle: number;
-        _tiltAngle: number;
-        _distance: number;
-        _minPanAngle: number;
-        _maxPanAngle: number;
-        _minTiltAngle: number;
-        _maxTiltAngle: number;
-        _maxDistance: number;
-        _minDistance: number;
-        _steps: number;
-        _yFactor: number;
-        _wrapPanAngle: boolean;
-        _lookAtPosition: Vector3D;
+        private _currentPanAngle;
+        private _currentTiltAngle;
+        private _panAngle;
+        private _tiltAngle;
+        private _distance;
+        private _minPanAngle;
+        private _maxPanAngle;
+        private _minTiltAngle;
+        private _maxTiltAngle;
+        private _maxDistance;
+        private _minDistance;
+        private _steps;
+        private _yFactor;
+        private _wrapPanAngle;
+        private _lookAtPosition;
         private _mouseDown;
         private _mouseRightDown;
         private _keyArray;
@@ -13987,30 +13969,186 @@ declare module egret3d {
         private keyDown(key);
         private keyUp(key);
         private mouseMove();
+        /**
+        * @language zh_CN
+        * 返回目标的位置
+        *
+        * @returns 目标的位置
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置目标坐标
+        *
+        * @param val 摄像机看向的目标点
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         lookAtPosition: Vector3D;
+        /**
+        * @private
+        */
+        /**
+        * @private
+        */
         steps: number;
         /**
-         * Rotation of the camera in degrees around the y axis. Defaults to 0.
-         */
+        * @language zh_CN
+        * 得到相机y轴旋转角度
+        * @returns 相机y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机y轴旋转
+        * @param val 旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         panAngle: number;
         /**
-         * Elevation angle of the camera in degrees. Defaults to 90.
-         */
+        * @language zh_CN
+        * 得到相机x轴旋转角度
+        * @returns 相机x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机x轴旋转
+        * @param val 旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         tiltAngle: number;
+        /**
+        * @language zh_CN
+        * 得到目标和相机的距离
+        * @returns 目标和相机的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置目标和相机的距离
+        * @param val 距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         distance: number;
+        /**
+        * @language zh_CN
+        * 得到相机最小y轴旋转角度
+        * @returns 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机最小y轴旋转角度
+        * @param val 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         minPanAngle: number;
+        /**
+        * @language zh_CN
+        * 得到相机最大y轴旋转角度
+        * @returns 相机最大y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机最大y轴旋转角度
+        * @param val 相机最大y轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         maxPanAngle: number;
+        /**
+        * @language zh_CN
+        * 得到相机最小x轴旋转角度
+        * @returns 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机最小x轴旋转角度
+        * @param val 相机最小x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         minTiltAngle: number;
+        /**
+        * @language zh_CN
+        * 得到相机最大x轴旋转角度
+        * @returns 相机最大x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机最大x轴旋转角度
+        * @param val 相机最大x轴旋转角度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         maxTiltAngle: number;
+        /**
+        * @language zh_CN
+        * 得到相机和目标最大的距离
+        * @returns 相机和目标最大的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机和目标最大的距离
+        * @param val 相机和目标最大的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         maxDistance: number;
+        /**
+        * @language zh_CN
+        * 得到相机和目标最小的距离
+        * @returns 相机和目标最小的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        /**
+        * @language zh_CN
+        * 设置相机和目标最小的距离
+        * @param val 相机和目标最小的距离
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         minDistance: number;
         /**
-         * Fractional difference in distance between the horizontal camera orientation and vertical camera orientation. Defaults to 2.
-         *
-         * @see    #distance
-         */
+        * @private
+        */
+        /**
+        * @private
+        */
         yFactor: number;
+        /**
+        * @private
+        */
+        /**
+        * @private
+        */
         wrapPanAngle: boolean;
+        /**
+        * @language zh_CN
+        * 控制器数据更新
+        * @param interpolate
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
         update(interpolate?: boolean): void;
     }
 }
@@ -14569,10 +14707,12 @@ declare module egret3d {
      * @classdesc
      * 线框渲染基类，可以控制顶点的颜色，顶点的大小
      * 可控制线的颜色，可选择是否渲染点或者渲染线
+     *
+     * @see egret3d.core.node.Object3D
      * @version Egret 3.0
      * @platform Web,Native
      */
-    class WireframeBase {
+    class WireframeBase extends Object3D {
         protected vertexData: Array<number>;
         protected vertexCount: number;
         protected vertexLength: number;
@@ -14618,13 +14758,6 @@ declare module egret3d {
         protected usage: MethodUsageData;
         protected vsShader: GLSL.ShaderBase;
         protected fsShader: GLSL.ShaderBase;
-        /**
-        * @language zh_CN
-        * 当前渲染对象的变换矩阵
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        modleMatrix: Matrix4_4;
         private uniform_color;
         private uniform_pointSize;
         /**
@@ -15270,6 +15403,7 @@ declare module egret3d {
         protected _wireframeList: Array<WireframeBase>;
         protected _hudList: Array<HUD>;
         private _mouseEventManager;
+        private _resizeTimer;
         /**
         * @language zh_CN
         * 返回渲染根节点
@@ -15306,6 +15440,7 @@ declare module egret3d {
         */
         constructor(viewPort: Rectangle, camera?: Camera3D);
         private onResize();
+        private doResize();
         /**
         * @language zh_CN
         * 重置canvas位置和大小

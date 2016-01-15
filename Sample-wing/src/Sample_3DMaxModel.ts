@@ -31,7 +31,7 @@ class Sample_3DMaxModel extends SampleBase{
     }
     
     private checkComplete(e:egret3d.Event3D) {
-        this._removeID = setTimeout(super.remove,this._timeout);
+        setTimeout(super.remove,1000);
         var loader: egret3d.ModeLoader = <egret3d.ModeLoader>e.data; 
         var mesh: egret3d.Mesh = loader.mesh ;
         this.view3D.addChild3D(mesh);

@@ -1,7 +1,6 @@
 class SampleBase{
     
     protected _removeID: number = -1; 
-    protected _timeout: number = 0; 
     constructor() {
 
         this.initView();
