@@ -60,7 +60,7 @@ class F1 extends SampleBase {
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/ao/Wheel_hubAo.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/ao/wheelAo.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/white.jpg");
-        egret3d.AssetsManager.getInstance().addLoadTexture("Egret-3D_power.png");
+        //egret3d.AssetsManager.getInstance().addLoadTexture("Egret-3D_power.png");
        
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE, (e: egret3d.Event3D) => this.initScene(e));
         egret3d.AssetsManager.getInstance().startLoad();
@@ -94,7 +94,7 @@ class F1 extends SampleBase {
         var f1_texture_d: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/Lotus_dif_blackvrsn.jpg");
         var f1_texture_s: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/Lotus_spc_1.jpg");
         var floor_texture_d: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/white.jpg");
-        var powerByEgret3D_d: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("Egret-3D_power.png");
+        //var powerByEgret3D_d: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("Egret-3D_power.png");
        
         this._view3D.backImageTexture = floor_texture_d;
 
@@ -196,11 +196,11 @@ class F1 extends SampleBase {
         f1_car.addChild(Wheel_hub);
         f1_car.addChild(Plane001);
 
-        var hud: egret3d.HUD = new egret3d.HUD();
-        hud.texture = powerByEgret3D_d; 
-        hud.width = 128;
-        hud.height = 53;
-        this._view3D.addHUD(hud);
+        //var hud: egret3d.HUD = new egret3d.HUD();
+        //hud.texture = powerByEgret3D_d; 
+        //hud.width = 128;
+        //hud.height = 53;
+        //this._view3D.addHUD(hud);
 
         this._view3D.addChild3D(f1_car);
         this._view3D.addWireframe(planeWirframe);
