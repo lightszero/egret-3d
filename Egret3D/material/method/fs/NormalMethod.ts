@@ -22,7 +22,7 @@
         }
 
         /**
-         * @language zh_CNO
+         * @language zh_CN
          * 激活 NormalMethod。
          * @param context3D {Context3D}
          * @param program3D {IProgram3D}

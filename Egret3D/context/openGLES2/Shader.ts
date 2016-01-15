@@ -3,9 +3,9 @@
     /**
     * @class egret3d.Shader
     * @classdesc
-    * Shader 类表示上载到渲染上下文的一对渲染程序中的 顶点找色shader，或片段着色的shader 。
+    * Shader 类表示上载到渲染上下文的一对渲染程序中的 顶点找色shader，或片段着色的shader 。</p>
     * 
-    * shader 是基于 opengl es 2.0 标准 也就是webgl版本的shader着色器
+    * shader 是基于 opengl es 2.0 标准 也就是webgl版本的shader着色器。</p>
     *
     * @see egret3d.Program3D
     * @see egret3d.IndexBuffer3D

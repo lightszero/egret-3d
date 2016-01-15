@@ -120,8 +120,26 @@
                 );
 
             this.setGeomtryData(cubeVertexIndices, vertices);
-
             this.buildBoundBox();
+        }
+
+         /**
+        * @private
+        * @language zh_CN
+        * 位移且改变顶点数据
+        */
+        public transfromVertex(pos: Vector3D) {
+            if (this.sharedVertexBuffer) {
+                egret3d.Egret3DDrive.context3D.gl.deleteBuffer(this.sharedVertexBuffer);
+                this.sharedVertexBuffer = null;
+            }
+            var skip: number = 17;
+            var len: number = this.verticesData.length / skip;
+            for (var i: number = 0; i < len ; i++){
+                this.verticesData[skip * i + 0] += pos.x;
+                this.verticesData[skip * i + 1] += pos.y;
+                this.verticesData[skip * i + 2] += pos.z;
+            }
         }
     }
 }

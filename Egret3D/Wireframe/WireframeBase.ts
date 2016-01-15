@@ -5,12 +5,10 @@
      * @classdesc
      * 线框渲染基类，可以控制顶点的颜色，顶点的大小
      * 可控制线的颜色，可选择是否渲染点或者渲染线
-     *
-     * @see egret3d.core.node.Object3D
      * @version Egret 3.0
      * @platform Web,Native
      */   
-    export class WireframeBase extends Object3D {
+    export class WireframeBase {
         
         protected vertexData: Array<number> = [
             0.5, 0.0, 0.0,
@@ -71,6 +69,14 @@
         protected vsShader: GLSL.ShaderBase
         protected fsShader: GLSL.ShaderBase
 
+        /**
+        * @language zh_CN
+        * 当前渲染对象的变换矩阵
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        public modleMatrix: Matrix4_4 = new Matrix4_4();
+
         //protected position: Vector3D = new Vector3D();
         //protected rotation: Vector3D = new Vector3D();
         //protected scale: Vector3D = new Vector3D();
@@ -88,7 +94,6 @@
         * @platform Web,Native
         */
         constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
-            super();
             this.usage = new MethodUsageData();
             this.vsShader = new GLSL.ShaderBase(null, this.usage);
             this.fsShader = new GLSL.ShaderBase(null, this.usage);
@@ -167,7 +172,7 @@
             //if (this.transformChange)
             //    this.notifyUpdate();
 
-            context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
+            //context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
 
             if (!this.usage.program3D)
                 this.rebuild(context3D);
@@ -179,8 +184,8 @@
             context3D.bindVertexBuffer(this.vertexBuffer3D);
 
             context3D.vertexAttribPointer(this.usage.program3D, this.usage.attribute_position.uniformIndex, 3, Egret3DDrive.FLOAT, false, this.vertexBytes, 0);
-            
-            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.modelMatrix.rawData);
+
+            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.modleMatrix.rawData);
             context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera.viewProjectionMatrix.rawData);
             if (this.isDrawLine) {
                 context3D.uniform4fv(this.uniform_color, [this.lineColor.x, this.lineColor.y, this.lineColor.z, this.lineColor.w]);

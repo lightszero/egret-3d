@@ -47,7 +47,11 @@
             "distanceFog_fragment", 
             "AOMap_fragment", 
             "wireframe_vertex",
-            "wireframe_fragment",
+            "wireframe_fragment", 
+            "FresnelReflection_fragment", 
+            "PaintFresnelReflection_fragment",
+            "AlphaEnvironmentMapping_fragment",
+            "cubeDiffuseMap_fragment", 
             ///ok
 
             ///--particle--

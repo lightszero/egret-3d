@@ -32,11 +32,11 @@
     /**
     * @class egret3d.Object3D
     * @classdesc
-    * 3d空间中的实体对象。
-    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息.
+    * 3d空间中的实体对象。</p>
+    * 场景图中的Object3D对象是一个树型结构，对象中包含了变换信息。</p>
     * 这些变换信息应用于所有的子对象,子对象也有自己的变换信息,最终
-    * 的变换信息要结合父对象的变换信息
-    * 每个Object3D对象在生成时会创建一个包围盒
+    * 的变换信息要结合父对象的变换信息。</p>
+    * 每个Object3D对象在生成时会创建一个包围盒。</p>
     * 
     * @see egret3d.geom.Vector3D
     * @see egret3d.geom.Matrix4_4
@@ -659,6 +659,7 @@
         */
         public get modelMatrix(): Matrix4_4 {
             if (this._transformChange) {
+                this._transformChange = false;
                 this.updateModleMatrix();
             }
             return this._modeMatrix3D;
@@ -686,18 +687,17 @@
                 this._globalSca.copyFrom(parentScale.multiply(this._sca));
 
                 parentOrientation.rotatePoint(parentScale.multiply(this._pos), this._globalPos);
-                this._globalPos.copyFrom(this._globalPos.add(this.parent.globalPosition));
+                this._globalPos.copyFrom(this._globalPos.add(this.globalPosition));
             }
             else {
-                this._globalOrientation.copyFrom(this._orientation);
-                this._globalPos.copyFrom(this._pos);
-                this._globalSca.copyFrom(this._sca);
-                this._globalRot.copyFrom(this._rot);
+                this._globalOrientation = this._orientation;
+                this._globalPos = this._pos;
+                this._globalSca = this._sca;
+                this._globalRot = this._rot;
             }
             //this._modeMatrix3D.recompose([this._globalPos, this._globalRot, this._globalSca]);
             this._modeMatrix3D.makeTransform(this._globalPos, this._globalSca, this._globalOrientation);
             this.box.Transform = this._modeMatrix3D;
-            this._transformChange = false;
             this.onUpdateTransform();
         }
 
@@ -774,12 +774,14 @@
         * @platform Web,Native
         */
         public addChild(child: Object3D): Object3D {
-            this.childs.push(child);
+            child.updateTransformChange(true);
+
             Object3D.renderListChange = true;
+
+            this.childs.push(child);
 
             child.parent = this;
 
-            child.updateTransformChange(true);
             return child;
         }
         
@@ -794,6 +796,8 @@
         * @platform Web,Native
         */
         public addChildAt(child: Object3D, index: number): Object3D {
+            child.updateTransformChange(true);
+
             if (index < 0) {
                 this.childs.splice(0, 0, child);
             }
@@ -805,7 +809,7 @@
             }
 
             child.parent = this;
-            child.updateTransformChange(true);
+
             return child;
         }
                 
@@ -873,7 +877,6 @@
                 return child;
             }
 
-            child.updateTransformChange(true);
             return null;
         }
                                         
@@ -897,7 +900,6 @@
 
             this.childs.splice(index, 1);
 
-            object3D.updateTransformChange(true);
             return object3D;
         }
                                                 
@@ -1000,6 +1002,17 @@
             this.childs[index1] = this.childs[index2];
 
             this.childs[index2] = tmp;
+        }
+
+        /**
+        * @language zh_CN
+        * @private
+        * @param wireframe 网格对象
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        public bindWireframe(wireframe: WireframeBase) {
+            wireframe.modleMatrix = this._modeMatrix3D; 
         }
                                                                         
         /**

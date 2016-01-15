@@ -31,6 +31,15 @@
             this.initMatPass();
         }
 
+        protected initMatPass() {
+            if (this.diffuseTexture instanceof SkyTexture) {
+                this.diffusePass = new CubeDiffuseMapPass( this.materialData );
+            }
+            else {
+                this.diffusePass = new DiffuseMapPass( this.materialData );
+            }
+        }
+
         /**
          * @language zh_CN
          * 克隆方法。

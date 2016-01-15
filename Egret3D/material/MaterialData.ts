@@ -12,13 +12,15 @@
     export class MaterialData {
 
         /**
+        * @private
         * @language zh_CN
-        * 材质类型。
+        * 材质类型数组。
+        * @每个材质球可能会有很多种贴图方法，而这个是做为默认支持的材质方法的添加通道。要使用的方法
         * @default MaterialType.DIFFUSE
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public matType: MaterialType = MaterialType.DIFFUSE; 
+        public textureMethodTypes: TextureMethodType[] = []; 
 
         /**
         * @language zh_CN
@@ -478,7 +480,7 @@
 
             data.diffuseTex = CheckerboardTexture.texture;
             data.textureChange = true;
-            data.matType = MaterialType.DIFFUSE; 
+            data.textureMethodTypes = this.textureMethodTypes; 
 
             data.drawMode = this.drawMode;
             data.context3D = this.context3D;
