@@ -30,6 +30,19 @@ class SampleBase{
         document.body.removeChild(ui);
     }
 
+    
+    public resizeUI() {
+        var w = document.body.clientWidth;
+
+        var mask = document.getElementById("mask");
+
+        if(mask) {
+            var div = document.getElementById("loading");
+            div.style.width = w * 0.5 + "px";
+            div.style.top = "40%";
+            div.style.left = (w - w * 0.5) * 0.5 + "px";
+        }
+    }
 
     private initView(): void {
 

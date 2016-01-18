@@ -21,6 +21,8 @@ class F1 extends SampleBase {
         clearTimeout(this._resizeTime);
         this._view3D.resize(0,0, document.body.clientWidth  ,document.body.clientHeight );
         egret3d.Debug.instance.trace(document.body.clientWidth.toString(),document.body.clientHeight.toString() );
+        
+        super.resizeUI();
     }
 
     private init3D() {
@@ -67,7 +69,9 @@ class F1 extends SampleBase {
     }
 
     private initScene(e: egret3d.Event3D) {
+        return;
         this._removeID = setTimeout(super.remove,0);
+
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_l.jpg");
