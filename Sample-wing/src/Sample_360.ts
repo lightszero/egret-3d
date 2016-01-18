@@ -8,9 +8,14 @@ class Sample_360 extends SampleBase{
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, this._viewPort , () => this.init3D());
     }
 
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this._view3D.resize(x,y,width,height);
+    }
+    
     private init3D() {
         egret3d.CheckerboardTexture.texture.upload( egret3d.Egret3DDrive.context3D);
         this._view3D = new egret3d.View3D(this._viewPort);
+        window.addEventListener("resize",() => super.resize());
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
         //this._view3D.backImageTexture = egret3d.CheckerboardTexture.texture;
         egret3d.AssetsManager.getInstance().setRootURL("resource/");

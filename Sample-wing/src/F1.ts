@@ -8,25 +8,16 @@ class F1 extends SampleBase {
         super();
         this._viewPort = new egret3d.Rectangle(0,0,document.body.clientWidth ,document.body.clientHeight );
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, new egret3d.Rectangle(0, 0, this._viewPort.width, this._viewPort.height), () => this.init3D());
-        egret3d.Debug.instance.isDebug = true;
-        window.addEventListener("resize",() => this.resize( ) );
+       
     }
     
-    private _resizeTime: number = -1; 
-    private resize(){
-        this._resizeTime = setTimeout(() => this.setResize(),300 );
-    }
-    
-    private setResize() {
-        clearTimeout(this._resizeTime);
-        this._view3D.resize(0,0, document.body.clientWidth  ,document.body.clientHeight );
-        egret3d.Debug.instance.trace(document.body.clientWidth.toString(),document.body.clientHeight.toString() );
-        
-        super.resizeUI();
+    protected onResize(x: number,y: number,width: number,height: number){
+        this._view3D.resize(x,y,width,height);
     }
 
     private init3D() {
         this._view3D = new egret3d.View3D(this._viewPort);
+        window.addEventListener("resize",() => super.resize());
         this._view3D.camera3D.position = new egret3d.Vector3D(0, 5, -10);
 
         this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D, null, 45, 45, 200, 8, 85);
@@ -69,7 +60,6 @@ class F1 extends SampleBase {
     }
 
     private initScene(e: egret3d.Event3D) {
-        return;
         this._removeID = setTimeout(super.remove,0);
 
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("f1/texture/env/BackLight_8K_12_f.jpg");

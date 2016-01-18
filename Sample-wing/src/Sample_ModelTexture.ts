@@ -17,9 +17,15 @@ class Sample_ModelTexture extends SampleBase{
         this.viewPort = new egret3d.Rectangle(0,0,window.innerWidth,window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,new egret3d.Rectangle(0,0,this.viewPort.width,this.viewPort.height),() => this.init3D());
 	}
-	
+
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this._view3D.resize(x,y,width,height);
+    }
+    
     private init3D() {
         this._view3D = new egret3d.View3D( this.viewPort );
+        window.addEventListener("resize",() => super.resize());
+        
         this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,0,300);
         this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0,0,0);
         

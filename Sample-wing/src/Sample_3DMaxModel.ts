@@ -15,10 +15,15 @@ class Sample_3DMaxModel extends SampleBase{
     	  //获取网页内屏幕大小
         this.viewPort = new egret3d.Rectangle(0,0,window.innerWidth,window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,new egret3d.Rectangle(0,0,this.viewPort.width,this.viewPort.height),() => this.init3D());
-	}
+    }
+    
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this.view3D.resize(x,y,width,height);
+    }
 	
     private init3D() {
         this.view3D = new egret3d.View3D( this.viewPort );
+        window.addEventListener("resize",() => super.resize());
         var loadModel: egret3d.ModeLoader = new egret3d.ModeLoader("resource/","Planet_Trees_Tree_42_Top5_Cone_46.esm"); 
         //var loadModel: egret3d.ModeLoader = new egret3d.ModeLoader("resource/", "body.esm" ); 
         loadModel.addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE,(e: egret3d.Event3D) => this.checkComplete(e));

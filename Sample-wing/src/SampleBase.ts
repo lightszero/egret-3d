@@ -1,6 +1,24 @@
 class SampleBase{
     
     protected _removeID: number = -1; 
+    private _resizeTime: number = -1;
+    protected resize() {
+        if(this._resizeTime == -1) {
+            this._resizeTime = setTimeout(() => this.setResize(),300);
+        }
+    }
+    
+    protected onResize(x:number, y:number, width:number,height:number){
+        
+    }
+
+    private setResize() {
+        clearTimeout(this._resizeTime);
+        this._resizeTime = -1;
+        this.onResize(0,0,document.body.clientWidth,document.body.clientHeight);
+        this.resizeUI();
+    }
+    
     constructor() {
 
         this.initView();

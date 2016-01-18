@@ -14,12 +14,17 @@ class Sample_AnimationModel extends SampleBase{
 
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
     }
+
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this._view3D.resize(x,y,width,height);
+    }
     
     protected onInit3D(): void {
 
         //创建View3D对象;
         this._view3D = new egret3d.View3D(this._viewPort);
-
+        window.addEventListener("resize",() => super.resize());
+        
         //创建像机控制器;
         this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,10,600);
         this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0, 50,0);
