@@ -22,7 +22,7 @@ class F1 extends SampleBase {
 
         this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D, null, 45, 45, 200, 8, 85);
         this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0, 10, 0);
-        this._cameraCtl.minDistance = 188;
+        this._cameraCtl.minDistance = 90;
         this._cameraCtl.maxDistance = 524;
         window.requestAnimationFrame(() => this.update());
 
