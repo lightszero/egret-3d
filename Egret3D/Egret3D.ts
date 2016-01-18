@@ -325,7 +325,7 @@
             ShaderSystemTool.regist(call);
         }
 
-        private static requestWEBGL(viewPort: Rectangle,blend2D:boolean): WebGLRenderingContext {
+        private static requestWEBGL(viewPort: Rectangle,blend2D:boolean=false): WebGLRenderingContext {
             Egret3DDrive.canvas = document.createElement("canvas");
             Egret3DDrive.canvas.style.position = "absolute";
             Egret3DDrive.canvas.style.zIndex = "-1";
