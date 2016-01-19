@@ -10,9 +10,9 @@
     export class Egret3DEngine {
         private static djs: string = "" ;
         private static scriptSource: Array<string>;
-        private static importList: Array<string> ;
+        private static importList: Array<string> = new Array<string>();
         private static _xhr: XMLHttpRequest ;
-        private static _libUrl: string = "/js/Egret3D/Egret3D.lib.js";
+        private static _libUrl: string = "/Egret3D/tsconfig.json";
         private static _complete:Function ;
         private static getXHR(): any {
             var xhr: any = null;
@@ -76,14 +76,14 @@
         }
 
         private static applyClass(source: string) {
-            this.importList = source.split("///");
-            this.importList.shift();
+            var obj = eval("(" + source + ")");
 
-            for (var i: number = 0; i < this.importList.length; i++){
-                this.importList[i] = this.importList[i].replace("\r\n", "");
-                this.importList[i] = this.importList[i].replace("import ", "/js/");
+            for (var i: number = 0; i < obj.files.length; ++i) {
+                this.importList[i] = "/js/Egret3D/";
+                this.importList[i] += obj.files[i];
+                this.importList[i] = this.importList[i].replace(".ts", ".js");
             }
-            this.importList.pop();
+
             this.startLoadScript(null);
         }
 
