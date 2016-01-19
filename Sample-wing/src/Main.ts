@@ -2,6 +2,6 @@ class Main extends egret.DisplayObjectContainer {
 
     public constructor() {
         super();
-        new F1();
+        new Sample_MousePick();
     }
 }
