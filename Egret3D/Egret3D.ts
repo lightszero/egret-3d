@@ -325,14 +325,23 @@
             ShaderSystemTool.regist(call);
         }
 
-        private static requestWEBGL(viewPort: Rectangle): WebGLRenderingContext {
+        private static requestWEBGL(viewPort: Rectangle,blend2D:boolean=false): WebGLRenderingContext {
             Egret3DDrive.canvas = document.createElement("canvas");
-            //Egret3DDrive.canvas.style.position = "absolute";
-            //Egret3DDrive.canvas.style.zIndex = "-1";
-            //Egret3DDrive.canvas.style.left = "0px";
-            //Egret3DDrive.canvas.style.top = "0px";
-         
-            document.body.appendChild(this.canvas);
+            
+            if (blend2D) {
+                Egret3DDrive.canvas.style.position = "absolute";
+                Egret3DDrive.canvas.style.zIndex = "-1";
+                var div: HTMLDivElement;
+                if (document.getElementsByClassName("egret-player").length == 0) {
+                    div = document.createElement("div");
+                } else {
+                    div = <HTMLDivElement>document.getElementsByClassName("egret-player")[0];
+                }
+                div.appendChild(Egret3DDrive.canvas);
+            } else {
+                document.body.appendChild(this.canvas);
+            }
+
             Egret3DDrive.canvas.id = "egret3D";
             Egret3DDrive.canvas["x"] = viewPort.x;
             Egret3DDrive.canvas["y"] = viewPort.y;
