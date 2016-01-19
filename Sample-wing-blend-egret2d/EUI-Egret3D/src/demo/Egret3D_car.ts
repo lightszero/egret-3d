@@ -29,7 +29,9 @@ class Egret3D_car extends SampleBase{
         //创建View3D对象;
         this._view3D = new egret3d.View3D(this._viewPort);
         window.addEventListener("resize",() => this.resize());
+       
         new Assets( () => this.onAssetsComplete() );
+        this.resize();
     }
     
     private onAssetsComplete() {

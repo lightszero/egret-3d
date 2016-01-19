@@ -11,6 +11,9 @@ class NavPanel extends eui.Component {
 
     private initUI() {
         this.skinName = "resource/eui_skins/NavSkin.exml";
+        this.left = 0; 
+        this.bottom = 0; 
+        this.right = 0;
      }
     
     
