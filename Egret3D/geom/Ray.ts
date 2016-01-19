@@ -6,8 +6,8 @@
      * 射线是指直线上的一点和它一旁的部分所组成的直线，射线有且仅有一个端点，无法测量，由一个原点,和一个方向构成
      * 用于检测射线,也可用于鼠标拣选场景中的模型
      *
-     * @see egret3d.core.traverse.Picker
-     * @see egret3d.geom.Vector3D
+     * @see egret3d.Picker
+     * @see egret3d.Vector3D
      *
      * @version Egret 3.0
      * @platform Web,Native

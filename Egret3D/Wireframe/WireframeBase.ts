@@ -6,7 +6,7 @@
      * 线框渲染基类，可以控制顶点的颜色，顶点的大小
      * 可控制线的颜色，可选择是否渲染点或者渲染线
      *
-     * @see egret3d.core.node.Object3D
+     * @see egret3d.Object3D
      * @version Egret 3.0
      * @platform Web,Native
      */   
@@ -68,8 +68,8 @@
         protected vertexBuffer3D: IVertexBuffer3D;
 
         protected usage: MethodUsageData;
-        protected vsShader: GLSL.ShaderBase
-        protected fsShader: GLSL.ShaderBase
+        protected vsShader: GLSL.ShaderBase;
+        protected fsShader: GLSL.ShaderBase;
 
         //protected position: Vector3D = new Vector3D();
         //protected rotation: Vector3D = new Vector3D();

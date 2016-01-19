@@ -10,8 +10,8 @@
     * 2.模型拣选返回模型拣选到的位置。</p>
     * 3.模型拣选返回模型拣选到的UV坐标。</p>
     *
-    * @see egret3d.geom.Ray
-    * @see egret3d.core.PickType
+    * @see egret3d.Ray
+    * @see egret3d.PickType
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
     * @includeExample core/traverse/Picker.ts

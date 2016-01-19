@@ -10,8 +10,8 @@
      matrix.decompose(Orientation3D.QUATERNION)
      </pre>
      *
-     * @see egret3d.geom.Matrix4_4
-     * @see egret3d.geom.Quaternion
+     * @see egret3d.Matrix4_4
+     * @see egret3d.Quaternion
      *
      * @version Egret 3.0
      * @platform Web,Native
