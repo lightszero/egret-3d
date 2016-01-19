@@ -32,6 +32,7 @@ class Egret3D_car extends SampleBase{
        
         new Assets( () => this.onAssetsComplete() );
         this.resize();
+   
     }
     
     private onAssetsComplete() {
@@ -45,6 +46,9 @@ class Egret3D_car extends SampleBase{
         
         var f1_car: F1_car = new F1_car();
         this._view3D.addChild3D(f1_car);
+        
+//      var navPanel: NavPanel = new NavPanel();
+//      this.addChild(navPanel);
         
         window.requestAnimationFrame(() => this.onUpdate());
     }

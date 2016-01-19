@@ -1,4 +1,4 @@
-class SampleBase{
+class SampleBase extends egret.Sprite {
     
     protected _removeID: number = -1; 
     private _resizeTime: number = -1;
@@ -20,9 +20,8 @@ class SampleBase{
     }
     
     constructor() {
-
+        super();
         this.initView();
-
         egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_PROGRESS, (e: egret3d.Event3D) => this.progress(e));
     }
 

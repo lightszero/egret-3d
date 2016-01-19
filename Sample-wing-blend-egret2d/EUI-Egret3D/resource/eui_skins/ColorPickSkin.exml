@@ -1,25 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="ColorPickSkin" width="220" height="158" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Group height="148" width="209" x="5" y="5">
-		<e:Rect width="30" y="5" height="30" x="8" fillColor="0xFF0000"/>
-		<e:Rect width="30" y="5" height="30" x="49" fillColor="0xAE0000"/>
-		<e:Rect width="30" y="5" height="30" x="90" fillColor="0x500000"/>
-		<e:Rect width="30" y="5" height="30" x="130" fillColor="0xFF00EE"/>
-		<e:Rect width="30" y="5" height="30" x="171" fillColor="0x9D459B"/>
-		<e:Rect width="30" y="41" height="30" x="8" fillColor="0x610361"/>
-		<e:Rect width="30" y="41" height="30" x="49" fillColor="0x3700FE"/>
-		<e:Rect width="30" y="41" height="30" x="90" fillColor="0x05136E"/>
-		<e:Rect width="30" y="41" height="30" x="130" fillColor="0x847AF4"/>
-		<e:Rect width="30" y="41" height="30" x="171" fillColor="0x00D8FF"/>
-		<e:Rect width="30" y="77" height="30" x="8" fillColor="0x7DCBFC"/>
-		<e:Rect width="30" y="77" height="30" x="49" fillColor="0x00FF21"/>
-		<e:Rect width="30" y="77" height="30" x="90" fillColor="0x7FFF7A"/>
-		<e:Rect width="30" y="77" height="30" x="130" fillColor="0xEEFF00"/>
-		<e:Rect width="30" y="77" height="30" x="171" fillColor="0x8B9843"/>
-		<e:Rect width="30" y="114" height="30" x="8" fillColor="0xFFFFFF"/>
-		<e:Rect width="30" y="114" height="30" x="49" fillColor="0x828282"/>
-		<e:Rect width="30" y="114" height="30" x="90" fillColor="0x000000"/>
-		<e:Rect width="30" y="114" height="30" x="130" fillColor="0x00FFE1"/>
-		<e:Rect width="30" y="114" height="30" x="171" fillColor="0x066E68"/>
+<e:Skin class="ColorPickSkin" width="196" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group y="0" id="colorCroup" width="219" height="79" x="1">
+		<e:Rect x="6" width="20" y="5" height="20" fillColor="0xFFFFFF"/>
+		<e:Rect x="6" width="20" y="31" height="20" fillColor="0xB4B4B4"/>
+		<e:Rect x="6" width="20" y="56" height="20" fillColor="0x000000"/>
+		<e:Rect x="39" width="20" y="5" height="20" fillColor="0xFF0000"/>
+		<e:Rect x="39" width="20" y="31" height="20" fillColor="0x780000"/>
+		<e:Rect x="72" width="20" y="5" height="20" fillColor="0x780776"/>
+		<e:Rect x="72" width="20" y="31" height="20" fillColor="0x8E05FF"/>
+		<e:Rect x="72" width="20" y="56" height="20" fillColor="0x2A05FF"/>
+		<e:Rect x="105" width="20" y="5" height="20" fillColor="0x00C3FF"/>
+		<e:Rect x="105" width="20" y="31" height="20" fillColor="0x8ADEF8"/>
+		<e:Rect x="105" width="20" y="56" height="20" fillColor="0x61FF9D"/>
+		<e:Rect x="138" width="20" y="5" height="20" fillColor="0x00FF5D"/>
+		<e:Rect x="138" width="20" y="31" height="20" fillColor="0xC3FF00"/>
+		<e:Rect x="138" width="20" y="56" height="20" fillColor="0xF2FF00"/>
+		<e:Rect x="171" width="20" y="5" height="20" fillColor="0xFF9900"/>
+		<e:Rect x="171" width="20" y="31" height="20" fillColor="0xFF3B00"/>
+		<e:Rect x="171" width="20" y="56" height="20" fillColor="0x3B3A39"/>
+		<e:Rect fillColor="0xFF00FA" width="20" y="56" height="20" x="39"/>
 	</e:Group>
 </e:Skin>

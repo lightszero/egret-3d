@@ -121,6 +121,8 @@ class Main extends eui.UILayer {
     protected startCreateScene(): void {
         var navPanel: NavPanel = new NavPanel();
         this.addChild(navPanel);
+        window["nav"] = navPanel ;
+        
         new Egret3D_car();
     }
 

@@ -12,6 +12,7 @@ var game_file_list = [
 	"bin-debug/demo/SampleBase.js",
 	"bin-debug/demo/Egret3D_car.js",
 	"bin-debug/demo/F1_car.js",
+	"bin-debug/demo/ui/ColorSelect.js",
 	"bin-debug/demo/ui/NavPanel.js",
 	"bin-debug/demo/ui/UIManager.js",
 	"bin-debug/LoadingUI.js",

@@ -9,11 +9,14 @@ class F1_car  extends egret3d.Object3D {
     private Plane001: egret3d.Mesh;
 
     private bodyEnv: egret3d.PaintFresnelReflectionMappingMethod;
+    private fenderEnv: egret3d.PaintFresnelReflectionMappingMethod;
+    private wheelHubEnv: egret3d.PaintFresnelReflectionMappingMethod;
+    
     constructor() {
         super();
         this.buildCar();
     } 
-
+    
     private buildCar() {
         var lightGroup: egret3d.LightGroup = new egret3d.LightGroup();
         var directLight: egret3d.DirectLight = new egret3d.DirectLight(new egret3d.Vector3D(0.5,1.0,-0.6));
@@ -60,8 +63,8 @@ class F1_car  extends egret3d.Object3D {
         this.body.material.addDiffusePassEffectMothod(this.bodyEnv);
         this.body.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(body_ao));
 
-        var brakeEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        brakeEnv.envLightPower = 0.4;
+//        var brakeEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
+//        brakeEnv.envLightPower = 0.4;
         this.brake.material.diffuseTexture = f1_texture_d;
         this.brake.material.specularTexture = f1_texture_s;
         this.brake.material.lightGroup = lightGroup;
@@ -77,13 +80,13 @@ class F1_car  extends egret3d.Object3D {
         this.carbon_fiber.material.addDiffusePassEffectMothod(carbon_fiberEnv);
         this.carbon_fiber.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(carbon_fiber_ao));
 
-        var fenderEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        fenderEnv.envLightPower = 0.5;
+        this.fenderEnv = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
+        this.fenderEnv.envLightPower = 0.5;
         this.fender.material.diffuseTexture = f1_texture_d;
         this.fender.material.specularTexture = f1_texture_s;
         this.fender.material.lightGroup = lightGroup;
         this.fender.material.ambientColor = 0x00235c;
-        this.fender.material.addDiffusePassEffectMothod(fenderEnv);
+        this.fender.material.addDiffusePassEffectMothod(this.fenderEnv);
         this.fender.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(fenderAmbient_ao));
 
         this.other.material.diffuseTexture = f1_texture_d;
@@ -99,14 +102,14 @@ class F1_car  extends egret3d.Object3D {
         this.wheel.material.specularPower = 20.0;
         this.wheel.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(wheelAmbient_fiber_ao));
 
-        var Wheel_hubEnv: egret3d.PaintFresnelReflectionMappingMethod = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
-        Wheel_hubEnv.envLightPower = 0.5;
-        Wheel_hubEnv.maskColor = 0xffffff;
+        this.wheelHubEnv = new egret3d.PaintFresnelReflectionMappingMethod(skyTexture, random);
+        this.wheelHubEnv.envLightPower = 0.5;
+        this.wheelHubEnv.maskColor = 0xffffff;
         this.Wheel_hub.material.diffuseTexture = f1_texture_d;
         this.Wheel_hub.material.specularTexture = f1_texture_s;
         this.Wheel_hub.material.lightGroup = lightGroup;
         this.Wheel_hub.material.ambientColor = 0x00235c;
-        this.Wheel_hub.material.addDiffusePassEffectMothod(Wheel_hubEnv);
+        this.Wheel_hub.material.addDiffusePassEffectMothod(this.wheelHubEnv);
         this.Wheel_hub.material.addDiffusePassEffectMothod(new egret3d.AOMapMethod(wheel_hubAmbient_fiber_ao));
         
         var plane001Env: egret3d.AlphaEnvironmentMappingMethod = new egret3d.AlphaEnvironmentMappingMethod(skyTexture);
@@ -131,5 +134,25 @@ class F1_car  extends egret3d.Object3D {
         this.addChild(this.Wheel_hub);
         this.addChild(this.Plane001);
         
+        this.initController();
+    }
+    
+    private initController() {
+        var nav: NavPanel = window["nav"];
+        nav.colorChange("body",(color) => this.changeBodyColor(color));
+        nav.colorChange("fender",(color) => this.changeFenderColor(color));
+        nav.colorChange("wheelHub",(color) => this.changeWheelHubColor(color));
+    }
+
+    private changeBodyColor(color:number){
+        this.bodyEnv.maskColor = color;
+    }
+    
+    private changeFenderColor(color: number){
+        this.fenderEnv.maskColor = color;
+    }
+        
+    private changeWheelHubColor(color: number){
+        this.wheelHubEnv.maskColor = color;
     }
 }
