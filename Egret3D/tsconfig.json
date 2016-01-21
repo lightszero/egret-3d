@@ -4,7 +4,7 @@
 		"noImplicitAny": false,
 		"sourceMap": false,
 		"declaration": true,
-		"out": "../Sample-wing/egret3d.js"
+		"out": "./egret3d.js"
 	},
 	"files": [
 		"Egret3D.ts",
