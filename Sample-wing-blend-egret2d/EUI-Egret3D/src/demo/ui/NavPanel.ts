@@ -4,7 +4,7 @@
  *
  */
 class NavPanel extends eui.Component {
-    
+    static debug:eui.Label ;
     private _colorSelect: ColorSelect;
     private _currentSelect: eui.RadioButton;
     private _currentSelectRect: eui.Rect;
@@ -15,7 +15,7 @@ class NavPanel extends eui.Component {
     public wheelHubColor_label: eui.Rect;
     public colorCroup: eui.Group;
     public partGroup: eui.Group;
-
+    
     private callList:Object = new Object();
     public constructor() {
         super();

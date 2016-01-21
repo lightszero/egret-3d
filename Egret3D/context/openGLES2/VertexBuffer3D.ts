@@ -14,7 +14,7 @@
      * 例如，一个顶点的 [x,y,z] 位置坐标可以作为包含 3 个 32 位值的矢量传递到顶点程序。</p>
      * 您最多可以为每个点提供 64 个 32 位值（256 字节）数据（但在这种情况下，单个顶点着色器无法使用所有数据）。</p>
      * @see egret3d.Context3D
-     * @see egret3d.base.CubeTexture
+     * @see egret3d.CubeTexture
      * @version Egret 3.0
      * @platform Web,Native
      */

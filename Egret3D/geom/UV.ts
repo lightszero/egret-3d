@@ -6,7 +6,7 @@
      * @classdesc
      * UV类，用来存储模型顶点uv数据
      * 
-     * @see egret3d.geometry.GeometryData
+     * @see egret3d.GeometryData
      *
      * @version Egret 3.0
      * @platform Web,Native

@@ -347,7 +347,7 @@
             }
         }
 
-        private loadComplete():void {
+        private loadComplete(): void {
             switch (this.dataformat) {
                 case URLLoader.DATAFORMAT_BINARY:
                     this._data = new ByteArray(this._xhr.response);
@@ -360,7 +360,13 @@
                     break;
                 case URLLoader.DATAFORMAT_BITMAP:
                     var img = document.createElement("img");
-                    img.src = window["URL"].createObjectURL(this._xhr.response);
+                    if (window['createObjectURL'] != undefined) { // basic
+                        img.src = window['createObjectURL'](this._xhr.response);
+                    } else if (window['URL'] != undefined) { // mozilla(firefox)
+                        img.src = window['URL'].createObjectURL(this._xhr.response);
+                    } else if (window['webkitURL'] != undefined) { // webkit or chrome
+                        img.src = window['webkitURL'].createObjectURL(this._xhr.response);
+                    }
                     var that = this;
                     img.onload = () => {
                         that._data = new ImageTexture(img);

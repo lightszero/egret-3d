@@ -32,7 +32,8 @@ class Main extends eui.UILayer {
      * 加载进度界面
      * loading process interface
      */
-    private loadingView: LoadingUI;
+    private loadingView: LoadingPanel;
+    private egret3D_car:Egret3D_car ;
     protected createChildren(): void {
         super.createChildren();
         //inject the custom material parser
@@ -42,12 +43,19 @@ class Main extends eui.UILayer {
         this.stage.registerImplementation("eui.IThemeAdapter",new ThemeAdapter());
         //Config loading process interface
         //设置加载进度界面
-        this.loadingView = new LoadingUI();
-        this.stage.addChild(this.loadingView);
+        
+        this.loadingView = new LoadingPanel();
+        window["loadPanel"] = this.loadingView;
+        this.loadingView.left = 0 ;
+        this.loadingView.right = 0;
+        this.loadingView.top = 0;
+        this.loadingView.bottom = 0;
+        this.addChild(this.loadingView);
         // initialize the Resource loading library
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
+        Assets.initLoad();
     }
     /**
      * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
@@ -59,7 +67,7 @@ class Main extends eui.UILayer {
         //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
         var theme = new eui.Theme("resource/default.thm.json", this.stage);
         theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
-
+        
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
@@ -72,7 +80,6 @@ class Main extends eui.UILayer {
      */
     private onThemeLoadComplete(): void {
         this.isThemeLoadEnd = true;
-        this.createScene();
     }
     private isResourceLoadEnd: boolean = false;
     /**
@@ -81,17 +88,34 @@ class Main extends eui.UILayer {
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
         if (event.groupName == "preload") {
-            this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
             this.isResourceLoadEnd = true;
-            this.createScene();
+            
+            egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_PROGRESS,(e: egret3d.Event3D) => this.progress(e));
+            this.egret3D_car = new Egret3D_car();
         }
     }
+    
+    private progress(e: egret3d.Event3D) {
+        var loadingView: LoadingPanel = <LoadingPanel>window["loadPanel"];
+        loadingView.setProgress(egret3d.AssetsManager.getInstance().loadCompleteNumber,egret3d.AssetsManager.getInstance().loadTotalNumber);
+        if(this.isResourceLoadEnd&&egret3d.AssetsManager.getInstance().loadCompleteNumber == egret3d.AssetsManager.getInstance().loadTotalNumber) {
+            setTimeout(() => this.createScene(),100);
+        }
+    }
+    
     private createScene(){
+        var loadingView: LoadingPanel = <LoadingPanel>window["loadPanel"];
+        loadingView.parent.removeChild(loadingView);
         if(this.isThemeLoadEnd && this.isResourceLoadEnd){
-            this.startCreateScene();
+            
+            var navPanel: NavPanel = new NavPanel();
+            this.addChild(navPanel);
+            window["nav"] = navPanel;
+            this.egret3D_car.start3D();
+            this.addChild(this.egret3D_car);
         }
     }
     /**
@@ -113,24 +137,5 @@ class Main extends eui.UILayer {
         if (event.groupName == "preload") {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
-    }
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    protected startCreateScene(): void {
-        var navPanel: NavPanel = new NavPanel();
-        this.addChild(navPanel);
-        window["nav"] = navPanel ;
-        
-        new Egret3D_car();
-    }
-
-    private onButtonClick(e: egret.TouchEvent) {
-        var panel = new eui.Panel();
-        panel.title = "Title";
-        panel.horizontalCenter = 0;
-        panel.verticalCenter = 0;
-        this.addChild(panel);
     }
 }

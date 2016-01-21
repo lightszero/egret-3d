@@ -7,6 +7,7 @@
     "resource/eui_skins/HScrollBarSkin.exml",
     "resource/eui_skins/HSliderSkin.exml",
     "resource/eui_skins/ItemRendererSkin.exml",
+    "resource/eui_skins/LoadingSkin.exml",
     "resource/eui_skins/NavSkin.exml",
     "resource/eui_skins/PanelSkin.exml",
     "resource/eui_skins/ProgressBarSkin.exml",

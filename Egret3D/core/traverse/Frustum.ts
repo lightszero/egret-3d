@@ -6,7 +6,7 @@
     * @classdesc
     * 摄像机视椎体,计算出摄像机的可视范围.
     * 
-    * @see egret3d.camera.Camera3D
+    * @see egret3d.Camera3D
     * @version Egret 3.0
     * @platform Web,Native
     */
