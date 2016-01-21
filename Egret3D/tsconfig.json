@@ -43,6 +43,7 @@
 		"events/Event3D.ts",
 		"events/Mouse3DManager.ts",
 		"texture/TextureBase.ts",
+		"texture/VideoTexture.ts",
 		"texture/RenderTexture.ts",
 		"texture/SkyTexture.ts",
 		"texture/ImageTexture.ts",
