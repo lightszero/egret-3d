@@ -110,6 +110,5 @@ var mesh:egret3d.Mesh = new egret3d.Mesh( cubeGeometry,textureMaterial );
 
 ##### 在下个版本中,我们专注解决以下问题
 
-* 统一 Egret 2D 与 Egret 3D 的工程结构,编译过程。使用统一的方式进行项目创建,构建,调试与发布
-* 与 Egret Wing 进行更友好的集成
 * 添加 3D 粒子系统
+* 特效动画系统
