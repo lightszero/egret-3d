@@ -79,19 +79,19 @@ Egret3D封装了自己的引擎静态模型及动画模型，并提供了3Dmax �
 ##### 使用终端或其他开发工具
 ##### Egret3D编译
 ###### 方法一
-*1.		安装node.js
-*2.		下载Egret3D: https://github.com/egret-labs/egret-3d
-*3.		在Egret3D目录下打开控制台，执行```tsc```.成功后会生成egret3d.js和egret3d.d.ts在当前目录下，这两个文件就是编译好的引擎代码，可以Egret-Wing使用引擎了。
+* 1.		安装node.js
+* 2.		下载Egret3D: https://github.com/egret-labs/egret-3d
+* 3.		在Egret3D目录下打开控制台，执行```tsc```.成功后会生成egret3d.js和egret3d.d.ts在当前目录下，这两个文件就是编译好的引擎代码，可以Egret-Wing使用引擎了。
 
 ###### 方法二
-*1.		安装VisulaStudio2013
-*2.		下载Egret3D: https://github.com/egret-labs/egret-3d
-*3.		用VS创建一个新的TypeScript应用程序。
-*4.		把下载的Egret3D目录复制到和index.html的同级目录,并在VS把目录包含在项目中。
-*5.		点击项目属性--TypeScript生成--Redirect JavaScript output to directory: ./js
-*6.		设置好js的输出目录后就可以直接F7生成当前项目。
-*7.		在index.html中导入js/egret3d/Egret3DEngine.js这个文件。
-*8.		然后在入口处执行egret3d.Egret3DEngine.preload(oncallback)，如果所有js加载成功 ，就会调用oncallback这个回调，然后就可以在这个回调中实现你的逻辑了。如果加载失败就有可能是tsconfig.json这个文件没有加载到。解决方法是在web.config中加上.json这个文件扩展。
+* 1.		安装VisulaStudio2013
+* 2.		下载Egret3D: https://github.com/egret-labs/egret-3d
+* 3.		用VS创建一个新的TypeScript应用程序。
+* 4.		把下载的Egret3D目录复制到和index.html的同级目录,并在VS把目录包含在项目中。
+* 5.		点击项目属性--TypeScript生成--Redirect JavaScript output to directory: ./js
+* 6.		设置好js的输出目录后就可以直接F7生成当前项目。
+* 7.		在index.html中导入js/egret3d/Egret3DEngine.js这个文件。
+* 8.		然后在入口处执行egret3d.Egret3DEngine.preload(oncallback)，如果所有js加载成功 ，就会调用oncallback这个回调，然后就可以在这个回调中实现你的逻辑了。如果加载失败就有可能是tsconfig.json这个文件没有加载到。解决方法是在web.config中加上.json这个文件扩展。
 
 
 
