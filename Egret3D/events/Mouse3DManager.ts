@@ -50,9 +50,9 @@
             Input.instance.addListenerKeyUp((code: number) => this.onMouseUp(code));
             Input.instance.addListenerMouseMove((e: MouseEvent) => this.onMouseMove(e));
 
-            Input.instance.addTouchStartCallback((e: TouchEvent) => this.onTouchMove(e));
+            Input.instance.addTouchStartCallback((e: TouchEvent) => this.onTouchStart(e));
             Input.instance.addTouchEndCallback((e: TouchEvent) => this.onTouchEnd(e));
-            Input.instance.addTouchMoveCallback((e: TouchEvent) => this.onTouchStart(e));
+            Input.instance.addTouchMoveCallback((e: TouchEvent) => this.onTouchMove(e));
         }
 
 
