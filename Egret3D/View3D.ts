@@ -268,7 +268,8 @@
         * @platform Web,Native
         */
         public addHUD(hud: HUD) {
-            this._hudList.push(hud);
+            if (this._hudList.indexOf(hud) == -1 )
+                this._hudList.push(hud);
         }
 
         /**
