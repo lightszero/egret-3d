@@ -82,17 +82,15 @@
         * @private
         * @language zh_CN
         * constructor
-        * @param vs vs文件名
-        * @param fs fs文件名
         * @version Egret 3.0
         * @platform Web,Native
         */
-        constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
+        constructor() {
             super();
             this.usage = new MethodUsageData();
             this.vsShader = new GLSL.ShaderBase(null, this.usage);
             this.fsShader = new GLSL.ShaderBase(null, this.usage);
-            this.setShader(vs, fs);
+            this.setShader("wireframe_vertex", "wireframe_fragment");
             //this.modleMatrix.identity();
         }
 
@@ -107,16 +105,27 @@
 
         }
         
+
         /**
         * @language zh_CN
-        * 根据两个顶点创建一条线段
-        * @param first 线段的起始点
-        * @param second 线段的结束点
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据 3个number是一个顶点
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public createFromData(first: Vector3D, second: Vector3D) {
+        public createFromData(vertexData: Array<number>) {
 
+        }
+
+        /**
+        * @language zh_CN
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        public createFromArray(vertexData: Array<Vector3D>) {
+           
         }
                 
         /**
