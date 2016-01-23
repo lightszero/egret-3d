@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{056E264E-4BE4-4A30-BDAD-1613C67592F8}</ProjectGuid>
+    <ProjectHome />
+    <EgretProject>True</EgretProject>
+    <NewEgretProject>True</NewEgretProject>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <OutputType>Library</OutputType>
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <AutoParameterizationWebConfigConnectionStrings>False</AutoParameterizationWebConfigConnectionStrings>
+    <StartupFile />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptEnabled>true</TypeScriptEnabled>
+    <TypeScriptEmitBOM>false</TypeScriptEmitBOM>
+    <TypeScriptCompileOnSaveEnabled>false</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptOutDir>bin-debug\</TypeScriptOutDir>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="egretProperties.json" />
+    <Content Include="favicon.ico" />
+    <Content Include="readme.md" />
+    <Content Include="web.config" />
+    <Content Include="wingProperties.json" />
+    <Content Include="index.html" />
+    <Content Include="sample.csproj" />
+    <TypeScriptCompile Include="libs\egret3d.d.ts" />
+    <Compile Include="libs\egret3d.js" />
+    <Content Include="resource\box.esm" />
+    <Content Include="resource\default.res.json" />
+    <Content Include="resource\white.jpg" />
+    <Content Include="shader\AOMap_fragment.glsl" />
+    <Content Include="shader\BrightPassFilter.glsl" />
+    <Content Include="shader\Color_fragment.glsl" />
+    <Content Include="shader\Composition.glsl" />
+    <Content Include="shader\EnvironmentMapping_fragment.glsl" />
+    <Content Include="shader\GaussianBlurHorizontal.glsl" />
+    <Content Include="shader\GaussianBlurVertical.glsl" />
+    <Content Include="shader\LightDiffuse_fragment.glsl" />
+    <Content Include="shader\ShadowMapping_vertex.glsl" />
+    <Content Include="shader\Shadow_fragment.glsl" />
+    <Content Include="shader\Shadow_vertex_sksleton.glsl" />
+    <Content Include="shader\Shadow_vertex_static.glsl" />
+    <Content Include="shader\SkyLightShader.glsl" />
+    <Content Include="shader\SpecularEnvironmentMappingMethod.glsl" />
+    <Content Include="shader\Tonemaping.glsl" />
+    <Content Include="shader\back.glsl" />
+    <Content Include="shader\default_vertex.glsl" />
+    <Content Include="shader\depthMethod_fragment.glsl" />
+    <Content Include="shader\diffuseMap_fragment.glsl" />
+    <Content Include="shader\diffuseMethod_fragment.glsl" />
+    <Content Include="shader\diffuse_fragment.glsl" />
+    <Content Include="shader\diffuse_fragmentEnd.glsl" />
+    <Content Include="shader\directLight.glsl" />
+    <Content Include="shader\directLight_fragment.glsl" />
+    <Content Include="shader\distanceFog_fragment.glsl" />
+    <Content Include="shader\globalFogMethod_fragment.glsl" />
+    <Content Include="shader\lightMap_fragment.glsl" />
+    <Content Include="shader\normalMap_fragment.glsl" />
+    <Content Include="shader\normalMethod_fragment.glsl" />
+    <Content Include="shader\particle_acceleRotate.glsl" />
+    <Content Include="shader\particle_acceleScale.glsl" />
+    <Content Include="shader\particle_acceleration.glsl" />
+    <Content Include="shader\particle_billboard.glsl" />
+    <Content Include="shader\particle_color.glsl" />
+    <Content Include="shader\particle_lifeRotate.glsl" />
+    <Content Include="shader\particle_offset.glsl" />
+    <Content Include="shader\particle_position.glsl" />
+    <Content Include="shader\particle_scale.glsl" />
+    <Content Include="shader\particle_speed.glsl" />
+    <Content Include="shader\particle_time.glsl" />
+    <Content Include="shader\particle_uv.glsl" />
+    <Content Include="shader\particle_vertex.glsl" />
+    <Content Include="shader\particle_vertexEnd.glsl" />
+    <Content Include="shader\pointLight_fragment.glsl" />
+    <Content Include="shader\postCanvas_fragment.glsl" />
+    <Content Include="shader\postCanvas_vertex.glsl" />
+    <Content Include="shader\shadowmapping_fragment.glsl" />
+    <Content Include="shader\skeleton_vertex.glsl" />
+    <Content Include="shader\sky_fragment.glsl" />
+    <Content Include="shader\sky_vertex.glsl" />
+    <Content Include="shader\specularMap_fragment.glsl" />
+    <Content Include="shader\spheresky_fragment.glsl" />
+    <Content Include="shader\spheresky_vertex.glsl" />
+    <Content Include="shader\terrainRGBA_fragment.glsl" />
+    <Content Include="shader\warpedImage_fragment.glsl" />
+    <Content Include="shader\wireframe_fragment.glsl" />
+    <Content Include="shader\wireframe_vertex.glsl" />
+    <Content Include="shader\spotLight_fragment.glsl" />
+    <TypeScriptCompile Include="src\Sample_360Photo.ts" />
+    <TypeScriptCompile Include="src\Sample_3DMaxModel.ts" />
+    <TypeScriptCompile Include="src\Sample_AnimationModel.ts" />
+    <TypeScriptCompile Include="src\Sample_BlendTerrain.ts" />
+    <TypeScriptCompile Include="src\Sample_Character.ts" />
+    <TypeScriptCompile Include="src\Sample_CreateBox.ts" />
+    <TypeScriptCompile Include="src\Sample_CreateSky.ts" />
+    <TypeScriptCompile Include="src\Sample_CreateView3D.ts" />
+    <TypeScriptCompile Include="src\Sample_Light.ts" />
+    <TypeScriptCompile Include="src\Sample_LoadScene.ts" />
+    <TypeScriptCompile Include="src\Sample_MaterialBlend.ts" />
+    <TypeScriptCompile Include="src\Sample_ModelTexture.ts" />
+    <TypeScriptCompile Include="src\Sample_MousePick.ts" />
+    <TypeScriptCompile Include="src\Main.ts" />
+    <TypeScriptCompile Include="src\Sample_360.ts" />
+    <TypeScriptCompile Include="libs\modules\egret\egret.d.ts" />
+    <Compile Include="libs\modules\egret\egret.js" />
+    <Compile Include="libs\modules\egret\egret.min.js" />
+    <Compile Include="libs\modules\egret\egret.native.js" />
+    <Compile Include="libs\modules\egret\egret.native.min.js" />
+    <Compile Include="libs\modules\egret\egret.web.js" />
+    <Compile Include="libs\modules\egret\egret.web.min.js" />
+    <Content Include="resource\SkyBox\BlueNebula2048_back.jpg" />
+    <Content Include="resource\SkyBox\BlueNebula2048_bottom.jpg" />
+    <Content Include="resource\SkyBox\BlueNebula2048_front.jpg" />
+    <Content Include="resource\SkyBox\BlueNebula2048_left.jpg" />
+    <Content Include="resource\SkyBox\BlueNebula2048_right.jpg" />
+    <Content Include="resource\SkyBox\BlueNebula2048_top.jpg" />
+    <Content Include="resource\SkyBox\Eerie_back.jpg" />
+    <Content Include="resource\SkyBox\Eerie_down.jpg" />
+    <Content Include="resource\SkyBox\Eerie_front.jpg" />
+    <Content Include="resource\SkyBox\Eerie_left.jpg" />
+    <Content Include="resource\SkyBox\Eerie_right.jpg" />
+    <Content Include="resource\SkyBox\Eerie_up.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_back.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_down.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_front.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_left.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_right.jpg" />
+    <Content Include="resource\SkyBox\Mars_skybox_up.jpg" />
+    <Content Include="resource\SkyBox\SPACE021SX.jpg" />
+    <Content Include="resource\SkyBox\Sky_b.jpg" />
+    <Content Include="resource\SkyBox\Sky_d.jpg" />
+    <Content Include="resource\SkyBox\Sky_f.jpg" />
+    <Content Include="resource\SkyBox\Sky_l.jpg" />
+    <Content Include="resource\SkyBox\Sky_r.jpg" />
+    <Content Include="resource\SkyBox\Sky_u.jpg" />
+    <Content Include="resource\SkyBox\clear_sky_radiance_2_855px.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_BK.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_BK.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_DN.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_DN.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_FR.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_FR.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_LF.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_LF.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_RT.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_RT.png" />
+    <Content Include="resource\SkyBox\cloudy_noon_UP.dds" />
+    <Content Include="resource\SkyBox\cloudy_noon_UP.png" />
+    <Content Include="resource\SkyBox\cubemap.png" />
+    <Content Include="resource\SkyBox\envmap_back.jpg" />
+    <Content Include="resource\SkyBox\envmap_bottom.jpg" />
+    <Content Include="resource\SkyBox\envmap_front.jpg" />
+    <Content Include="resource\SkyBox\envmap_left.jpg" />
+    <Content Include="resource\SkyBox\envmap_right.jpg" />
+    <Content Include="resource\SkyBox\envmap_top.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear.png" />
+    <Content Include="resource\SkyBox\skybox_clear_b.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear_d.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear_f.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear_l.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear_r.jpg" />
+    <Content Include="resource\SkyBox\skybox_clear_u.jpg" />
+    <Content Include="resource\SkyBox\skybox_night_2.png" />
+    <Content Include="resource\SkyBox\skybox_sunset_3.png" />
+    <Content Include="resource\scene\config.em" />
+    <Content Include="resource\scene\jingjichang_1_1.png" />
+    <Content Include="resource\scene\jingjichang_1_1_1.esm" />
+    <Content Include="resource\scene\jingjichang_1_2_1.esm" />
+    <Content Include="resource\sky\Mars_skybox_back.jpg" />
+    <Content Include="resource\sky\Mars_skybox_down.jpg" />
+    <Content Include="resource\sky\Mars_skybox_front.jpg" />
+    <Content Include="resource\sky\Mars_skybox_left.jpg" />
+    <Content Include="resource\sky\Mars_skybox_right.jpg" />
+    <Content Include="resource\sky\Mars_skybox_up.jpg" />
+    <Content Include="resource\sky\cloudy_noon_BK.png" />
+    <Content Include="resource\sky\cloudy_noon_DN.png" />
+    <Content Include="resource\sky\cloudy_noon_FR.png" />
+    <Content Include="resource\sky\cloudy_noon_LF.png" />
+    <Content Include="resource\sky\cloudy_noon_RT.png" />
+    <Content Include="resource\sky\cloudy_noon_UP.png" />
+    <Content Include="resource\suoluo\body.esm" />
+    <Content Include="resource\suoluo\config.em" />
+    <Content Include="resource\suoluo\hair.esm" />
+    <Content Include="resource\suoluo\suoluomen_cl.png" />
+    <Content Include="resource\suoluo\suoluomen_nm.jpg" />
+    <Content Include="resource\suoluo\suoluomen_sp.jpg" />
+    <Content Include="resource\terrain\ColorMap.jpg" />
+    <Content Include="resource\terrain\Mask.jpg" />
+    <Content Include="resource\terrain\Mask_1024.jpg" />
+    <Content Include="resource\terrain\height.bmp" />
+    <Content Include="resource\terrain\height.jpg" />
+    <Content Include="resource\terrain\light.jpg" />
+    <Content Include="resource\terrain\light_1024.jpg" />
+    <Content Include="resource\terrain\normal.jpg" />
+    <Content Include="resource\xiaoqiao\attack_1.eam" />
+    <Content Include="resource\xiaoqiao\attack_2.eam" />
+    <Content Include="resource\xiaoqiao\death_1.eam" />
+    <Content Include="resource\xiaoqiao\hero_27.dds" />
+    <Content Include="resource\xiaoqiao\hero_27.png" />
+    <Content Include="resource\xiaoqiao\idle_1.eam" />
+    <Content Include="resource\xiaoqiao\run_1.eam" />
+    <Content Include="resource\xiaoqiao\skill_1.eam" />
+    <Content Include="resource\xiaoqiao\skill_2.eam" />
+    <Content Include="resource\xiaoqiao\skill_3.eam" />
+    <Content Include="resource\xiaoqiao\skill_4.eam" />
+    <Content Include="resource\xiaoqiao\xiaoqiao.esm" />
+    <Content Include="resource\360photo\1.jpg" />
+    <Content Include="resource\360photo\2.jpg" />
+    <Content Include="resource\terrain\ground\Cliff.jpg" />
+    <Content Include="resource\terrain\ground\Cliff_1024.jpg" />
+    <Content Include="resource\terrain\ground\Cliff_normal.jpg" />
+    <Content Include="resource\terrain\ground\Sand.jpg" />
+    <Content Include="resource\terrain\ground\Sand_1024.jpg" />
+    <Content Include="resource\terrain\ground\Sand_2.jpg" />
+    <Content Include="resource\terrain\ground\Sand_2_1024.jpg" />
+    <Content Include="resource\terrain\ground\Sand_norm.jpg" />
+    <Content Include="resource\terrain\ground\Sand_stone.jpg" />
+    <Content Include="resource\terrain\ground\Sand_stone_1024.jpg" />
+    <Content Include="resource\terrain\ground\Sand_stone_norm.jpg" />
+    <Compile Include="template\runtime\native_loader.js" />
+    <Compile Include="template\runtime\runtime_loader.js" />
+    <Compile Include="template\runtime\native_require.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>58397</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:58397/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Target Name="Build">
+    <Exec Command="egret build -sourcemap -nocoloroutput" ContinueOnError="false" StdOutEncoding="UTF-8" CustomErrorRegularExpression=".*error.*">
+      <Output TaskParameter="Outputs" PropertyName="EgretOutput" />
+      <Output TaskParameter="ExitCode" PropertyName="EgretExitCode" />
+    </Exec>
+  </Target>
+  <Target Name="Rebuild">
+    <Exec Command="egret build -e -nocoloroutput" ContinueOnError="false" StdOutEncoding="UTF-8" CustomErrorRegularExpression=".*error.*">
+      <Output TaskParameter="Outputs" PropertyName="EgretOutput" />
+      <Output TaskParameter="ExitCode" PropertyName="EgretExitCode" />
+    </Exec>
+  </Target>
+</Project>
