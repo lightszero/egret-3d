@@ -4,3 +4,10 @@ output
 Sample/js
 script/debug.sh
 Thumbs.db
+bin
+*.pdb
+.vs
+*.user
+obj
+egret3d.js
+egret3d.d.ts
