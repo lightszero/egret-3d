@@ -49,7 +49,7 @@ class Sample_360Photo extends SampleBase{
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this.time, this.delay);
+        this._view3D.update(this.time, this.delay);
 
         window.requestAnimationFrame(() => this.update());
     }

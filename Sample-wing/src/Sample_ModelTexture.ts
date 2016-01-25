@@ -60,7 +60,7 @@ class Sample_ModelTexture extends SampleBase{
         var data = new Date();
         this.delay = data.getTime() - this.time;
         this.time = data.getTime();
-        this._view3D.renden(this.time,this.delay);
+        this._view3D.update(this.time,this.delay);
         window.requestAnimationFrame(() => this.update());
     }
   

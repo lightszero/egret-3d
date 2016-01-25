@@ -8,6 +8,7 @@ class Sample_Character extends SampleBase{
     constructor() {
         super();
         this._viewPort = new egret3d.Rectangle(0, 0, window.innerWidth, window.innerHeight );
+        console.log(window.innerWidth + "----" + window.innerHeight);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode, new egret3d.Rectangle(0, 0, this._viewPort.width, this._viewPort.height), () => this.init3D());
     }
 
@@ -125,7 +126,7 @@ class Sample_Character extends SampleBase{
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this.time, this.delay);
+        this._view3D.update(this.time, this.delay);
 
         window.requestAnimationFrame(() => this.update());
     }

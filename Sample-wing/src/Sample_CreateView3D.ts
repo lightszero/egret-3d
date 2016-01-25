@@ -44,7 +44,7 @@ class Sample_CreateView3D {
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this._time, this._delay);
+        this._view3D.update(this._time, this._delay);
 
         requestAnimationFrame(() => this.onUpdate());
     }

@@ -6,10 +6,10 @@ class Sample_Light extends SampleBase{
     protected _viewPort: egret3d.Rectangle = null;
     protected _cameraCtl: egret3d.HoverController = null;
 
-    public constructor() {
+    public constructor(width: number = 800,height: number = 600) {
         super();
         
-        this._viewPort = new egret3d.Rectangle(0,0,document.body.clientWidth,document.body.clientHeight);
+        this._viewPort = new egret3d.Rectangle(0,0,width,height);
 
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
     } 
@@ -86,7 +86,7 @@ class Sample_Light extends SampleBase{
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this._time,this._delay);
+        this._view3D.update(this._time,this._delay);
 
         requestAnimationFrame(() => this.onUpdate());
     }

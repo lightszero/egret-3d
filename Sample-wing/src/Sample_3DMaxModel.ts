@@ -46,7 +46,7 @@ class Sample_3DMaxModel extends SampleBase{
         var data = new Date();
         this.delay = data.getTime() - this.time;
         this.time = data.getTime();
-        this.view3D.renden(this.time,this.delay);
+        this.view3D.update(this.time,this.delay);
         this.cameraController.update();
         window.requestAnimationFrame(() => this.update());
     }
