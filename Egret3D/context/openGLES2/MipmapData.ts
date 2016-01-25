@@ -3,16 +3,16 @@
     /**
     * @class egret3d.MipmapData
     * @classdesc
-    * 一个贴图的不同LOD层级数据
-    * 生成 mipmap 可以使用 TextureUtil.generateMipMaps() 来制作lod mipmapdata
+    * 一个贴图的不同LOD层级数据。</p>
+    * 生成 mipmap 可以使用 TextureUtil.generateMipMaps() 来制作lod mipmapdata。</p>
     * 
     *
-    * @see egret3d.Program3D
-    * @see egret3d.IndexBuffer3D
-    * @see egret3d.VertexBuffer3D
-    * @see egret3d.Texture2D
-    * @see egret3d.Shader
-    * @see egret3d.CubeTexture
+    * @see egret3d.openGLES.Program3D
+    * @see egret3d.openGLES.IndexBuffer3D
+    * @see egret3d.openGLES.VertexBuffer3D
+    * @see egret3d.openGLES.Texture2D
+    * @see egret3d.openGLES.Shader
+    * @see egret3d.openGLES.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */

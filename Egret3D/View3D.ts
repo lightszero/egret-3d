@@ -513,14 +513,14 @@
 
         /**
         * @language zh_CN
-        * 渲染
+        * 数据更新
         * 渲染中的主循环，可以使用外部时间控制器驱动，也可使用 requestFrame
         * @param time 当前时间
         * @param delay 时间间隔
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public renden(time: number, delay: number) {
+        public update(time: number, delay: number) {
 
             this.updateViewSizeData();
 

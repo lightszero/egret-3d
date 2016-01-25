@@ -10,12 +10,12 @@
     * 您可以通过提供适当的顶点和像素片段程序来创建 2D/3D渲染器，不同的平台有不同的硬件限制，对于移动端限制要求比较大。</p>
     * egret3d.Egret3DDrive.requstContext3D（DeviceUtil.getGPUMode , viewPort , callBack），且，一个canvas 只能申请一个context。</p>
     *
-    * @see egret3d.Program3D
-    * @see egret3d.IndexBuffer3D
-    * @see egret3d.VertexBuffer3D
-    * @see egret3d.Texture2D
-    * @see egret3d.Shader
-    * @see egret3d.CubeTexture
+    * @see egret3d.openGLES.Program3D
+    * @see egret3d.openGLES.IndexBuffer3D
+    * @see egret3d.openGLES.VertexBuffer3D
+    * @see egret3d.openGLES.Texture2D
+    * @see egret3d.openGLES.Shader
+    * @see egret3d.openGLES.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */
