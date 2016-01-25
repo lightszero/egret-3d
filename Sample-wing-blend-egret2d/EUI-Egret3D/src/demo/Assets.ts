@@ -4,11 +4,7 @@
  *
  */
 class Assets {
-    
-    private loadComplete: Function ;
-	public constructor( onComplete:Function ) {
-        this.loadComplete = onComplete ; 
-    	
+    public static initLoad() {
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
         egret3d.AssetsManager.getInstance().addLoadModel("","f1/body.esm");
         egret3d.AssetsManager.getInstance().addLoadModel("","f1/brake.esm");
@@ -35,12 +31,10 @@ class Assets {
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/ao/Wheel_hubAo.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/ao/wheelAo.jpg");
         egret3d.AssetsManager.getInstance().addLoadTexture("f1/texture/white.jpg");
-        egret3d.AssetsManager.getInstance().addEventListener(egret3d.Event3D.EVENT_LOAD_COMPLETE,(e: egret3d.Event3D) => this.asseteOncomplete(e));
+    }
+
+    public static startLoad() {
         egret3d.AssetsManager.getInstance().startLoad();
-        
-	}
-	
-    private asseteOncomplete(e: egret3d.Event3D) {
-        this.loadComplete();
-	}
+    }
+
 }

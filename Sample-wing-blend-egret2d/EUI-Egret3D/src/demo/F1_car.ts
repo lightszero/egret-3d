@@ -1,4 +1,4 @@
-class F1_car  extends egret3d.Object3D {
+class F1_car extends egret3d.Object3D {
     private body: egret3d.Mesh;
     private brake: egret3d.Mesh;
     private carbon_fiber: egret3d.Mesh;

@@ -19728,7 +19728,14 @@ var egret3d;
                     break;
                 case URLLoader.DATAFORMAT_BITMAP:
                     var img = document.createElement("img");
-                    img.src = window["URL"].createObjectURL(this._xhr.response);
+//                    egret3d.Debug.instance.trace(window['webkitURL']);
+                    if (window['createObjectURL'] !=undefined) { // basic
+                        img.src = window['createObjectURL'](this._xhr.response) ;
+                    } else if (window['URL'] !=undefined) { // mozilla(firefox)
+                        img.src = window['URL'].createObjectURL(this._xhr.response) ;
+                    } else if (window['webkitURL'] !=undefined) { // webkit or chrome
+                        img.src = window['webkitURL'].createObjectURL(this._xhr.response) ;
+                    }
                     var that = this;
                     img.onload = function () {
                         that._data = new egret3d.ImageTexture(img);

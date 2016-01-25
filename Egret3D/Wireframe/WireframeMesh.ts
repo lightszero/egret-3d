@@ -17,8 +17,8 @@
         * @version Egret 3.0
         * @platform Web,Native
         */
-        constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
-            super(vs, fs);
+        constructor() {
+            super();
         }
 
         /**
