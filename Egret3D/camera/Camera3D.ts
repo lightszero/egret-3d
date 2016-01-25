@@ -61,8 +61,6 @@
     * 渲染场景从摄像机视点到缓冲区。</p>
     * 相机分为透视摄像机、正交摄像机、VR摄像机。</p>
     *
-    * @see egret3d.Entity
-    * @see egret3d.Frustum
     * @see egret3d.Matrix4_4
     * 
     * @includeExample camera/Camera3D.ts
