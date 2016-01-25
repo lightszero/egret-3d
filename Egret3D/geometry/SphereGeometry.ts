@@ -56,8 +56,8 @@
                 startIndex = index;
 
                 var horangle: number = Math.PI * j / this._segmentsH;
-                var z: number = -this._radius * 0.5 * Math.cos(horangle);
-                var ringradius: number = this._radius * 0.5 * Math.sin(horangle);
+                var z: number = -this._radius * Math.cos(horangle);
+                var ringradius: number = this._radius * Math.sin(horangle);
 
                 for (i = 0; i <= this._segmentsW; ++i) {
                     var verangle: number = 2 * Math.PI * i / this._segmentsW;
