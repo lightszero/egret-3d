@@ -13,7 +13,7 @@
     * @see egret3d.LightGroup
     * @see egret3d.LightBase
     * @see egret3d.PointLight
-    * @see egret3d.SportLight
+    * @see egret3d.SpotLight
     * @version Egret 3.0
     * @platform Web,Native
     */
