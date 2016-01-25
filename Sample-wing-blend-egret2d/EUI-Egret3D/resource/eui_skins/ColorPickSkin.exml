@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ColorPickSkin" width="196" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group y="0" id="colorCroup" width="219" height="79" x="1">
+		<e:Rect x="6" width="20" y="5" height="20" fillColor="0xFFFFFF"/>
+		<e:Rect x="6" width="20" y="31" height="20" fillColor="0xB4B4B4"/>
+		<e:Rect x="6" width="20" y="56" height="20" fillColor="0x000000"/>
+		<e:Rect x="39" width="20" y="5" height="20" fillColor="0xFF0000"/>
+		<e:Rect x="39" width="20" y="31" height="20" fillColor="0x780000"/>
+		<e:Rect x="72" width="20" y="5" height="20" fillColor="0x780776"/>
+		<e:Rect x="72" width="20" y="31" height="20" fillColor="0x8E05FF"/>
+		<e:Rect x="72" width="20" y="56" height="20" fillColor="0x2A05FF"/>
+		<e:Rect x="105" width="20" y="5" height="20" fillColor="0x00C3FF"/>
+		<e:Rect x="105" width="20" y="31" height="20" fillColor="0x8ADEF8"/>
+		<e:Rect x="105" width="20" y="56" height="20" fillColor="0x61FF9D"/>
+		<e:Rect x="138" width="20" y="5" height="20" fillColor="0x00FF5D"/>
+		<e:Rect x="138" width="20" y="31" height="20" fillColor="0xC3FF00"/>
+		<e:Rect x="138" width="20" y="56" height="20" fillColor="0xF2FF00"/>
+		<e:Rect x="171" width="20" y="5" height="20" fillColor="0xFF9900"/>
+		<e:Rect x="171" width="20" y="31" height="20" fillColor="0xFF3B00"/>
+		<e:Rect x="171" width="20" y="56" height="20" fillColor="0x3B3A39"/>
+		<e:Rect fillColor="0xFF00FA" width="20" y="56" height="20" x="39"/>
+	</e:Group>
+</e:Skin>

@@ -7,10 +7,10 @@
     * 创建一个Mesh网格数据和材质数据是必需的，如果是动态模型就加上动画数据
     * 继承Object3D对象，场景中实体渲染对象
     *
-    * @see egret3d.core.node.Object3D
-    * @see egret3d.geometry.GeometryBase
-    * @see egret3d.material.MaterialBase
-    * @see egret3d.animation.IAnimation
+    * @see egret3d.Object3D
+    * @see egret3d.GeometryBase
+    * @see egret3d.MaterialBase
+    * @see egret3d.IAnimation
     *
     * 示例:
     * @includeExample core/node/Mesh.ts

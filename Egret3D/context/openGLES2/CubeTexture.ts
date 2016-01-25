@@ -9,8 +9,8 @@
     * 不能直接创建 CubeTexture 对象，而应使用 Context3D createCubeTexture()。
     * 
     *
-    * @see egret3d.base.Texture2D
-    * @see egret3d.base.CubeTexture
+    * @see egret3d.Texture2D
+    * @see egret3d.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */

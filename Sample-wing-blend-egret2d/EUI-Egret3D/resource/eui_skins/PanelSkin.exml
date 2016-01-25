@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.PanelSkin" minHeight="230" minWidth="450" xmlns:e="http://ns.egret.com/eui" width="598" height="74">
+	<e:Component x="125" y="52"/>
+	<e:RadioButton label="红色" y="26" left="19"/>
+	<e:RadioButton left="109" y="27" label="红色" x="10"/>
+	<e:RadioButton label="红色" left="200" y="26" x="20"/>
+</e:Skin>

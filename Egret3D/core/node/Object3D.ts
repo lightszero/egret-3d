@@ -8,7 +8,7 @@
     * 设置鼠标拣选的类型，鼠标拣选不同的类型有不同的效果作用，还有性能
     * 需要的拣选精度越高，性能要求就越高，反之亦然
     *
-    * @see egret3d.core.traverse.Picker
+    * @see egret3d.Picker
     * @version Egret 3.0
     * @platform Web,Native
     */
@@ -38,10 +38,10 @@
     * 的变换信息要结合父对象的变换信息
     * 每个Object3D对象在生成时会创建一个包围盒
     * 
-    * @see egret3d.geom.Vector3D
-    * @see egret3d.geom.Matrix4_4
-    * @see egret3d.geom.Quaternion
-    * @see egret3d.geom.CubeBoxBound
+    * @see egret3d.Vector3D
+    * @see egret3d.Matrix4_4
+    * @see egret3d.Quaternion
+    * @see egret3d.CubeBoxBound
     * @version Egret 3.0
     * @platform Web,Native
     */

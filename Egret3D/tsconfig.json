@@ -4,7 +4,7 @@
 		"noImplicitAny": false,
 		"sourceMap": false,
 		"declaration": true,
-		"out": "../Sample-wing/egret3d.js"
+		"out": "./egret3d.js"
 	},
 	"files": [
 		"Egret3D.ts",
@@ -43,6 +43,7 @@
 		"events/Event3D.ts",
 		"events/Mouse3DManager.ts",
 		"texture/TextureBase.ts",
+		"texture/VideoTexture.ts",
 		"texture/RenderTexture.ts",
 		"texture/SkyTexture.ts",
 		"texture/ImageTexture.ts",

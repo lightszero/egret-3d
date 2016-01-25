@@ -393,7 +393,7 @@
         * @language zh_CN
         * 把一个四元数转换成矩阵
         * @param target 返回转换后的矩阵，如果为null就新建一个对象返回
-        * @see egret3d.geom.Matrix4_4
+        * @see egret3d.Matrix4_4
         * @returns 返回转换后的矩阵
         */
         public toMatrix3D(target: Matrix4_4 = null): Matrix4_4 {

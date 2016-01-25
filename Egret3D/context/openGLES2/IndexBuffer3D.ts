@@ -12,7 +12,7 @@
 
     * 无法直接实例化 IndexBuffer3D。使用 Context3D.CreateIndexBuffer() 可创建实例
     * @see egret3d.Context3D
-    * @see egret3d.base.CubeTexture
+    * @see egret3d.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */
