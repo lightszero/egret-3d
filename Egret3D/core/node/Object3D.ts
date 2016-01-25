@@ -95,8 +95,8 @@
 
         /**
         * @language zh_CN
-        * 渲染层级 
-        * 渲染时分组进行依次渲染 前16位表示tag,后16位表示layer
+        * 渲染层级 。</p>
+        * 渲染时分组进行依次渲染 前16位表示tag,后16位表示layer。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -112,8 +112,8 @@
 
         /**
         * @language zh_CN
-        * 是否开启鼠标事件
-        * 设定这个物件是否具有 鼠标交互能力的开关
+        * 是否开启鼠标事件。</p>
+        * 设定这个物件是否具有 鼠标交互能力的开关。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -121,8 +121,8 @@
 
         /**
         * @language zh_CN
-        * 是否需要视锥体裁剪
-        * 设定这个物件是否具有 视锥体裁剪功能，为否的话，将永远不参加场景渲染剔除树，无论是否在显示范围内都会进行相关的渲染逻辑运算
+        * 是否需要视锥体裁剪。</p>
+        * 设定这个物件是否具有 视锥体裁剪功能，为否的话，将永远不参加场景渲染剔除树，无论是否在显示范围内都会进行相关的渲染逻辑运算。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -131,7 +131,6 @@
         /**
         * @language zh_CN
         * 父亲节点
-        * @private
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -139,8 +138,7 @@
         
         /**
         * @language zh_CN
-        * 子对象列表
-        * @private
+        * 子对象列表。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -148,9 +146,8 @@
 
         /**
         * @language zh_CN
-        * 动作对象，控制骨骼动画
-        * 可拓展的动画功能属性，动画功能的驱动类总接口
-        * @private
+        * 动作对象，控制骨骼动画。</p>
+        * 可拓展的动画功能属性，动画功能的驱动类总接口。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -158,8 +155,8 @@
 
         /**
         * @language zh_CN
-        * 网格信息
-        * @private
+        * 网格信息。</p>
+         * geometry 为渲染对象的网格信息 ，渲染对象需要 vertexBuffer  和 indexBuffer 信息 及顶点着色器shade。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -167,17 +164,17 @@
 
         /**
         * @language zh_CN
-        * 材质信息
-        * @private
-        * @version Egret 3.0
+        * 材质信息。</p>
+         * 赋予对象节点可供渲染的材质球属性，让对象加入可渲染实体列表，及渲染对象与对象之间的混合，排序。</p>
+         * @version Egret 3.0
         * @platform Web,Native
         */
         public material: MaterialBase = null;
 
         /**
         * @language zh_CN
-        * 对象模型包围盒
-        * 每个场景物件都需要有的 包围盒子，可以自定义包围盒形状大小，也可以根据模型本身生成
+        * 对象模型包围盒。</p>
+        * 每个场景物件都需要有的 包围盒子，可以自定义包围盒形状大小，也可以根据模型本身生成。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -203,8 +200,8 @@
 
         /**
         * @language zh_CN
-        * 是否可见
-        * 设置渲染是否显示的快速通道，在渲染列表中，但是不进行渲染，但是进行逻辑运算
+        * 是否可见。</p>
+        * 设置渲染是否显示的快速通道，在渲染列表中，但是不进行渲染，但是进行逻辑运算。</p>
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -221,10 +218,10 @@
 
         /**
         * @language zh_CN
-        * 鼠标拣选类型
-        * 设置鼠标的拣选类型，可通过 PickType来进行设置
-        * 快速拣选默认使用 正方形包围盒子
-        * 高精度型需要 PositionPick ， uv pick 等
+        * 鼠标拣选类型。</p>
+        * 设置鼠标的拣选类型，可通过 PickType来进行设置。</p>
+        * 快速拣选默认使用 正方形包围盒子。</p>
+        * 高精度型需要 PositionPick ， uv pick 等。</p>
         * @see egret3d.PickType
         * @version Egret 3.0
         * @platform Web,Native
@@ -233,8 +230,7 @@
 
         /**
         * @language zh_CN
-        * 实例化这个类
-        * 如果直接实例化这个类，就会生成一个空的3D容器，可以往里添加3D显示对象，作为对象的父级，但是本身没有渲染属性
+        * 如果直接实例化这个类，就会生成一个空的3D容器，可以往里添加3D显示对象，作为对象的父级，但是本身没有渲染属性。
         * @version Egret 3.0
         * @platform Web,Native
         */
@@ -245,8 +241,8 @@
 
         /**
         * @language zh_CN
-        * 返回位移
-        * 获取容器的坐标位置，基于父节点的位置坐标
+        * 返回位移。</p>
+        * 获取容器的坐标位置，基于父节点的位置坐标。</p>
         * @returns 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -257,8 +253,8 @@
 
         /**
         * @language zh_CN
-        * 设置位移
-        * 设置基于父节点的位置坐标，当父容器发生变化时，子节点也会变化
+        * 设置位移。</p>
+        * 设置基于父节点的位置坐标，当父容器发生变化时，子节点也会变化。</p>
         * @param vec 位移
         * @version Egret 3.0
         * @platform Web,Native
@@ -270,8 +266,8 @@
         
         /**
         * @language zh_CN
-        * 返回旋转
-        * 获取容器的旋转信息，基于父节点的旋转信息 欧拉角信息
+        * 返回旋转。</p>
+        * 获取容器的旋转信息，基于父节点的旋转信息 欧拉角信息。</p>
         * @returns 旋转 欧拉角信息
         * @version Egret 3.0
         * @platform Web,Native
@@ -282,8 +278,8 @@
 
         /**
         * @language zh_CN
-        * 设置旋转 
-        * 设置基于父节点的旋转信息 欧拉角信息，当父容器发生变化时，子节点也会变化
+        * 设置旋转 。</p>
+        * 设置基于父节点的旋转信息 欧拉角信息，当父容器发生变化时，子节点也会变化。</p>
         * @param vec 旋转 欧拉角信息
         * @version Egret 3.0
         * @platform Web,Native
@@ -300,8 +296,8 @@
 
         /**
         * @language zh_CN
-        * 设置旋转
-        * 设置旋转 基于四元素 旋转信息，当父容器发生变化时，子节点也会变化
+        * 设置旋转。</p>
+        * 设置旋转 基于四元素 旋转信息，当父容器发生变化时，子节点也会变化。</p>
         * @param value 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -316,8 +312,8 @@
         
         /**
         * @language zh_CN
-        * 返回旋转
-        * 返回 基于四元素的旋转信息
+        * 返回旋转。</p>
+        * 返回 基于四元素的旋转信息。</p>
         * @returns 旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -328,8 +324,8 @@
 
         /**
         * @language zh_CN
-        * 返回缩放
-        * 返回基于父容器的缩放信息
+        * 返回缩放。</p>
+        * 返回基于父容器的缩放信息。</p>
         * @returns 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -340,8 +336,8 @@
 
         /**
         * @language zh_CN
-        * 设置缩放
-        * 设置基于父容器的缩放信息，当父容器发生变化时，子节点也会变化
+        * 设置缩放。</p>
+        * 设置基于父容器的缩放信息，当父容器发生变化时，子节点也会变化。</p>
         * @param vec 缩放
         * @version Egret 3.0
         * @platform Web,Native
@@ -353,8 +349,8 @@
 
         /**
         * @language zh_CN
-        * 设置x坐标
-        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置x坐标。</p>
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value x坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -370,9 +366,8 @@
         
         /**
         * @language zh_CN
-        * 设置y坐标
-        *  
-        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置y坐标。</p>
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value y坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -388,9 +383,8 @@
         
         /**
         * @language zh_CN
-        * 设置z坐标
-        *  
-        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置z坐标。</p>
+        * 设置基于父容器的位置信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value z坐标
         * @version Egret 3.0
         * @platform Web,Native
@@ -406,9 +400,8 @@
                 
         /**
         * @language zh_CN
-        * 设置x轴旋转
-        *  
-        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置x轴旋转。</p>
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value x轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -426,9 +419,8 @@
                         
         /**
         * @language zh_CN
-        * 设置y轴旋转
-        *  
-        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置y轴旋转。</p>
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value y轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -446,9 +438,8 @@
                         
         /**
         * @language zh_CN
-        * 设置z轴旋转
-        *  
-        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
+        * 设置z轴旋转。</p>
+        * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变。</p>
         * @param value z轴旋转
         * @version Egret 3.0
         * @platform Web,Native
@@ -466,8 +457,7 @@
                                 
         /**
         * @language zh_CN
-        * 设置x轴缩放
-        *  
+        * 设置x轴缩放。</p>
         * 设置基于父容器的旋转信息，当父容器发生变化时，子节点也会变化，值不变
         * @param value x轴缩放
         * @version Egret 3.0
