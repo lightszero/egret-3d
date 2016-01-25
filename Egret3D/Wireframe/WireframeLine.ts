@@ -15,31 +15,51 @@
         /**
         * @language zh_CN
         * 构建一个线框渲染对象
-        * @param vs vs文件名
-        * @param fs fs文件名
         * @version Egret 3.0
         * @platform Web,Native
         */
         constructor() {
             super("wireframe_vertex", "wireframe_fragment");
         }
-                
+
         /**
         * @language zh_CN
-        * 根据两个顶点创建一条线段
-        * @param first 线段的起始点
-        * @param second 线段的结束点
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据 3个number是一个顶点
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public createFromData(first: Vector3D, second: Vector3D) {
+        public createFromData(vertexData: Array<number>) {
+            if (vertexData.length % 3 != 0) {
+                console.log("error: vertexData.length % 3 != 0");
+                return;
+            }
             this.vertexData = [];
             this.vertexCount = 0;
-            this.vertexData.push(
-                first.x, first.y, first.z,
-                second.x, second.y, second.z
-            );
-            this.vertexCount = 2;
+            this.vertexData = vertexData.slice(0, vertexData.length);
+            this.vertexCount = this.vertexData.length / 3;
+        }
+
+        /**
+        * @language zh_CN
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        public createFromArray(vertexData: Array<Vector3D>) {
+            if (vertexData.length % 3 != 0) {
+                console.log("error: vertexData.length % 3 != 0");
+                return;
+            }
+            this.vertexData = [];
+            this.vertexCount = 0;
+            for (var i: number = 0; i < vertexData.length; ++i) {
+                this.vertexData.push(vertexData[i].x);
+                this.vertexData.push(vertexData[i].y);
+                this.vertexData.push(vertexData[i].z);
+            }
+            this.vertexCount = this.vertexData.length;
         }
     }
 } 
