@@ -2,18 +2,18 @@
 
     
     /**
-    * @class egret3d.Texture2D
+    * @class egret3d.openGLES.Texture2D
     * @classdesc
-    * Texture 类表示上载到渲染上下文的二维纹理。
+    * Texture 类表示上载到渲染上下文的二维纹理。</p>
     *
-    * 定义一个 2D 纹理，以便在渲染期间使用。
-    * 无法直接实例化 Texture。使用 Context3D createTexture() 方法创建实例。
-    * @see egret3d.Program3D
-    * @see egret3d.IndexBuffer3D
-    * @see egret3d.VertexBuffer3D
-    * @see egret3d.Texture2D
-    * @see egret3d.Shader
-    * @see egret3d.CubeTexture
+    * 定义一个 2D 纹理，以便在渲染期间使用。</p>
+    * 无法直接实例化 Texture。使用 Context3D createTexture() 方法创建实例。</p>
+    * @see egret3d.openGLES.Program3D
+    * @see egret3d.openGLES.IndexBuffer3D
+    * @see egret3d.openGLES.VertexBuffer3D
+    * @see egret3d.openGLES.Texture2D
+    * @see egret3d.openGLES.Shader
+    * @see egret3d.openGLES.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */

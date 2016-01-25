@@ -1,7 +1,7 @@
 ﻿module egret3d.openGLES {
 
     /**
-    * @class egret3d.CubeTexture
+    * @class egret3d.openGLES.CubeTexture
     * @classdesc
     * CubeTexture 类表示上载到渲染上下文的立方体纹理。
     *
@@ -9,8 +9,8 @@
     * 不能直接创建 CubeTexture 对象，而应使用 Context3D createCubeTexture()。
     * 
     *
-    * @see egret3d.Texture2D
-    * @see egret3d.CubeTexture
+    * @see egret3d.openGLES.Texture2D
+    *  @see egret3d.openGLES.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */
