@@ -19,7 +19,7 @@
         * @platform Web,Native
         */
         constructor() {
-            super("wireframe_vertex", "wireframe_fragment");
+            super();
         }
 
         /**
