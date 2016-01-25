@@ -1,7 +1,7 @@
 ﻿module egret3d.openGLES {
 
     /**
-     * @class egret3d.IndexBuffer3D
+     * @class egret3d.openGLES.IndexBuffer3D
      * @classdesc
      * IndexBuffer3D 用于表示顶点索引列表，由图形子系统保留的图形元素构成。</p>
      * VertexBuffer3D 类表示上载到渲染上下文的一组顶点数据。</p>
@@ -14,7 +14,7 @@
      * 例如，一个顶点的 [x,y,z] 位置坐标可以作为包含 3 个 32 位值的矢量传递到顶点程序。</p>
      * 您最多可以为每个点提供 64 个 32 位值（256 字节）数据（但在这种情况下，单个顶点着色器无法使用所有数据）。</p>
      * @see egret3d.Context3D
-     * @see egret3d.CubeTexture
+     * @see egret3d.openGLES.CubeTexture
      * @version Egret 3.0
      * @platform Web,Native
      */

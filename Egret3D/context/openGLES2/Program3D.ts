@@ -2,7 +2,7 @@
 
     
     /**
-    * @class egret3d.Program3D
+    * @class egret3d.openGLES.Program3D
     * @classdesc
     * Program3D 类表示上载到渲染上下文的一对渲染程序（也称为“编译后的着色器”）。</p>
     * 
@@ -13,12 +13,12 @@
     * 通过将相应 Program3D 实例传递到 Context3D setProgram() 方法，指定后续渲染操作要使用的程序对。</p>
     * 您无法直接创建 Program3D 对象；请改用 Context3D createProgram() 方法。</p>
     *
-    * @see egret3d.Program3D
-    * @see egret3d.IndexBuffer3D
-    * @see egret3d.VertexBuffer3D
-    * @see egret3d.Texture2D
-    * @see egret3d.Shader
-    * @see egret3d.CubeTexture
+    * @see egret3d.openGLES.Program3D
+    * @see egret3d.openGLES.IndexBuffer3D
+    * @see egret3d.openGLES.VertexBuffer3D
+    * @see egret3d.openGLES.Texture2D
+    * @see egret3d.openGLES.Shader
+    * @see egret3d.openGLES.CubeTexture
     * @version Egret 3.0
     * @platform Web,Native
     */
