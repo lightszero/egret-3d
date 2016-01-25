@@ -21,7 +21,7 @@
         /**
         * @private
         * @language zh_CN
-        * 渲染
+        * 数据更新
         * @param time 当前时间
         * @param delay 每帧间隔时间
         * @param context3D 设备上下文
@@ -30,7 +30,7 @@
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public renden(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D, viewPort: Rectangle) {
+        public update(time: number, delay: number, context3D: Context3D, collect: CollectBase, camera: Camera3D, viewPort: Rectangle) {
 
             this._renderList = collect.renderList;
 
