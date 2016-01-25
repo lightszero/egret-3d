@@ -6,7 +6,7 @@ var game_file_list = [
 	"libs/modules/egret/egret.native.js",
 	"libs/modules/eui/eui.js",
 	"libs/modules/res/res.js",
-	"libs/egret3d.js?t=",
+	"libs/egret3d.js",
 	"bin-debug/AssetAdapter.js",
 	"bin-debug/demo/Assets.js",
 	"bin-debug/demo/CameraHoverController.js",
@@ -54,7 +54,7 @@ egret_native.egretStart = function () {
 		showPaintRect: false,
 		showFPS: false,
 		fpsStyles: "x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.9",
-		showLog: true,
+		showLog: false,
 		logFilter: "",
 		maxTouches: 2,
 		textureScaleFactor: 1
