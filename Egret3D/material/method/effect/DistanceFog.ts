@@ -4,9 +4,9 @@
      * @language zh_CN
      * @class egret3d.DistanceFog
      * @classdesc
-     * DistanceFog 类 表示远景雾。 
-     * 创建顶点着色的雾，可设置雾的形成远近范围，雾的浓度
-     * 为场景添加景深效果
+     * DistanceFog 类 表示远景雾。 </p>
+     * 创建顶点着色的雾，可设置雾的形成远近范围，雾的浓度。</p>
+     * 为场景添加景深效果。</p>
      * @version Egret 3.0
      * @platform Web,Native
      * 

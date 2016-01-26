@@ -1,11 +1,11 @@
-﻿class Sample_CreateView3D {
+class Sample_CreateView3D {
 
     protected _time: number = 0;
     protected _delay: number = 0;
     protected _timeDate: Date = null;
     protected _view3D: egret3d.View3D = null;
     protected _viewPort: egret3d.Rectangle = null;
-    protected _cameraCtl: egret3d.LookAtController = null;
+    protected _cameraCtl: egret3d.HoverController = null;
 
     public constructor(width: number = 800, height: number = 600) {
 
@@ -20,10 +20,8 @@
         this._view3D = new egret3d.View3D(this._viewPort);
 
         //创建像机控制器;
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D, new egret3d.Object3D());
-
-        //设置像机视野距离;
-        this._cameraCtl.setEyesLength(0.1);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,0,30);
+        this._cameraCtl.distance = 1500;
 
         //View3D初始化完成;
         this.onView3DInitComplete();
@@ -46,7 +44,7 @@
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this._time, this._delay);
+        this._view3D.update(this._time, this._delay);
 
         requestAnimationFrame(() => this.onUpdate());
     }

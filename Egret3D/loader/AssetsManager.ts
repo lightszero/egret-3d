@@ -49,6 +49,28 @@
 
         /**
          * @language zh_CN
+         * 获取已加载完成的总数
+         * @param rootURL
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        public get loadCompleteNumber():number {
+            return this.completeCount;
+        }
+
+        /**
+         * @language zh_CN
+         * 获取等待加载的总数
+         * @param rootURL
+         * @version Egret 3.0
+         * @platform Web,Native
+         */
+        public get loadTotalNumber(): number {
+            return this.loadList.length;
+        }
+
+        /**
+         * @language zh_CN
          * 设置根路径
          * @param rootURL
          * @version Egret 3.0
@@ -226,10 +248,11 @@
 
             this.completeCount++;
 
+            this.dispatchEvent(new Event3D(Event3D.EVENT_LOAD_PROGRESS, this));
+
             if (this.completeCount >= this.loadList.length) {
                 this.dispatchEvent(new Event3D(Event3D.EVENT_LOAD_COMPLETE, this));
             }
-
         }
 
     }

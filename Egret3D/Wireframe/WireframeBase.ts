@@ -5,10 +5,12 @@
      * @classdesc
      * 线框渲染基类，可以控制顶点的颜色，顶点的大小
      * 可控制线的颜色，可选择是否渲染点或者渲染线
+     *
+     * @see egret3d.Object3D
      * @version Egret 3.0
      * @platform Web,Native
      */   
-    export class WireframeBase {
+    export class WireframeBase extends Object3D {
         
         protected vertexData: Array<number> = [
             0.5, 0.0, 0.0,
@@ -66,16 +68,8 @@
         protected vertexBuffer3D: IVertexBuffer3D;
 
         protected usage: MethodUsageData;
-        protected vsShader: GLSL.ShaderBase
-        protected fsShader: GLSL.ShaderBase
-
-        /**
-        * @language zh_CN
-        * 当前渲染对象的变换矩阵
-        * @version Egret 3.0
-        * @platform Web,Native
-        */
-        public modleMatrix: Matrix4_4 = new Matrix4_4();
+        protected vsShader: GLSL.ShaderBase;
+        protected fsShader: GLSL.ShaderBase;
 
         //protected position: Vector3D = new Vector3D();
         //protected rotation: Vector3D = new Vector3D();
@@ -88,16 +82,15 @@
         * @private
         * @language zh_CN
         * constructor
-        * @param vs vs文件名
-        * @param fs fs文件名
         * @version Egret 3.0
         * @platform Web,Native
         */
-        constructor(vs: string = "wireframe_vertex", fs: string = "wireframe_fragment") {
+        constructor() {
+            super();
             this.usage = new MethodUsageData();
             this.vsShader = new GLSL.ShaderBase(null, this.usage);
             this.fsShader = new GLSL.ShaderBase(null, this.usage);
-            this.setShader(vs, fs);
+            this.setShader("wireframe_vertex", "wireframe_fragment");
             //this.modleMatrix.identity();
         }
 
@@ -112,16 +105,27 @@
 
         }
         
+
         /**
         * @language zh_CN
-        * 根据两个顶点创建一条线段
-        * @param first 线段的起始点
-        * @param second 线段的结束点
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据 3个number是一个顶点
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public createFromData(first: Vector3D, second: Vector3D) {
+        public createFromData(vertexData: Array<number>) {
 
+        }
+
+        /**
+        * @language zh_CN
+        * 根据顶点数据创建条线段
+        * @param vertexData 线段的顶点数据
+        * @version Egret 3.0
+        * @platform Web,Native
+        */
+        public createFromArray(vertexData: Array<Vector3D>) {
+           
         }
                 
         /**
@@ -172,7 +176,7 @@
             //if (this.transformChange)
             //    this.notifyUpdate();
 
-            context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
+            //context3D.gl.clear(Egret3DDrive.DEPTH_BUFFER_BIT);
 
             if (!this.usage.program3D)
                 this.rebuild(context3D);
@@ -184,8 +188,8 @@
             context3D.bindVertexBuffer(this.vertexBuffer3D);
 
             context3D.vertexAttribPointer(this.usage.program3D, this.usage.attribute_position.uniformIndex, 3, Egret3DDrive.FLOAT, false, this.vertexBytes, 0);
-
-            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.modleMatrix.rawData);
+            
+            context3D.uniformMatrix4fv(this.usage.uniform_ModelMatrix.uniformIndex, false, this.modelMatrix.rawData);
             context3D.uniformMatrix4fv(this.usage.uniform_ProjectionMatrix.uniformIndex, false, camera.viewProjectionMatrix.rawData);
             if (this.isDrawLine) {
                 context3D.uniform4fv(this.uniform_color, [this.lineColor.x, this.lineColor.y, this.lineColor.z, this.lineColor.w]);

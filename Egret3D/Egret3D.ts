@@ -251,14 +251,14 @@
                         var tapContext3D: WebGLRenderingContext = Egret3DDrive.requestWEBGL(canvasRec)
                         Egret3DDrive.context3D = new Context3DChild_OpenGLES_2_0(tapContext3D);
 
-
                         var ext: any = tapContext3D.getExtension('WEBGL_compressed_texture_s3tc');
-                        var OES_texture_float: any = tapContext3D.getExtension("OES_texture_float");
-                        ///if (!OES_texture_float) {
-                        ///    alert("OES_texture_float Texture is not available");
-                        ///}
-                        ///else
-                        ///    alert("OES_texture_float Texture");
+                        var OES_texture_float_linear = tapContext3D.getExtension("OES_texture_float_linear");
+                        var OES_texture_float = tapContext3D.getExtension("OES_texture_float");
+                        var OES_texture_half_float = tapContext3D.getExtension("OES_texture_half_float");
+                        var OES_texture_half_float_linear = tapContext3D.getExtension("OES_texture_half_float_linear");
+                        var OES_standard_derivatives = tapContext3D.getExtension("OES_standard_derivatives");
+                        var WEBGL_draw_buffers = tapContext3D.getExtension("WEBGL_draw_buffers");
+                        var WEBGL_depth_texture = tapContext3D.getExtension("WEBGL_depth_texture");
 
                         Egret3DDrive.BLEND = tapContext3D.BLEND;
 
@@ -325,14 +325,21 @@
             ShaderSystemTool.regist(call);
         }
 
-        private static requestWEBGL(viewPort: Rectangle): WebGLRenderingContext {
+        private static requestWEBGL(viewPort: Rectangle,blend2D:boolean=false): WebGLRenderingContext {
             Egret3DDrive.canvas = document.createElement("canvas");
-            //Egret3DDrive.canvas.style.position = "absolute";
-            //Egret3DDrive.canvas.style.zIndex = "-1";
-            //Egret3DDrive.canvas.style.left = "0px";
-            //Egret3DDrive.canvas.style.top = "0px";
+            Egret3DDrive.canvas.style.position = "absolute";
+            Egret3DDrive.canvas.style.zIndex = "0";
+            Egret3DDrive.canvas.style.left = "0px";
+            Egret3DDrive.canvas.style.top = "0px";
          
-            document.body.appendChild(this.canvas);
+            if (document.getElementsByClassName("egret-player").length > 0) {
+                document.getElementsByClassName("egret-player")[0].appendChild(this.canvas);
+            }
+            else {
+                document.body.appendChild(this.canvas);
+            }
+
+         
             Egret3DDrive.canvas.id = "egret3D";
             Egret3DDrive.canvas["x"] = viewPort.x;
             Egret3DDrive.canvas["y"] = viewPort.y;

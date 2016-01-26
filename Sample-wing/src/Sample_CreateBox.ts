@@ -1,4 +1,4 @@
-class Sample_CreateBox {
+class Sample_CreateBox extends SampleBase{
     protected _time: number = 0;
     protected _delay: number = 0;
     protected _timeDate: Date = null;
@@ -7,19 +7,25 @@ class Sample_CreateBox {
     protected _cameraCtl: egret3d.HoverController = null;
 
     public constructor(width: number = 800,height: number = 600) {
-
+        super();
+        
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
 
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
+    }
+    
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this._view3D.resize(x,y,width,height);
     }
 
     protected onInit3D(): void {
 
         //创建View3D对象;
         this._view3D = new egret3d.View3D(this._viewPort);
-
+        window.addEventListener("resize",() => super.resize());
+        
         //创建像机控制器;
-        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,0,30);
         this._cameraCtl.distance = 1500;
      
 
@@ -38,7 +44,7 @@ class Sample_CreateBox {
     }
 
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");
@@ -72,7 +78,7 @@ class Sample_CreateBox {
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this._time,this._delay);
+        this._view3D.update(this._time,this._delay);
 
         requestAnimationFrame(() => this.onUpdate());
     }

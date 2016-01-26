@@ -39,14 +39,13 @@
             this.pixelShader.addMethod(this.diffuseMethod);
             this.pixelShader.addShader(this.diffuseMethod.fragMethodName);
 
-            if (this.materialData.matType == MaterialType.DIFFUSE) {
+            if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.DIFFUSE) != -1) {
                 this.pixelShader.addShader("diffuseMap_fragment");
-            } else if (this.materialData.matType == MaterialType.DIFFUSE_BUMP) {
-                this.pixelShader.addShader("diffuseMap_fragment");
+            }
+            if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.NORMAL) != -1) {
                 this.pixelShader.addShader("normalMap_fragment");
-            } else if (this.materialData.matType == MaterialType.DIFFUSE_BUMP_SPECULAR) {
-                this.pixelShader.addShader("diffuseMap_fragment");
-                this.pixelShader.addShader("normalMap_fragment");
+            }
+            if (this.materialData.textureMethodTypes.indexOf(TextureMethodType.SPECULAR) != -1) {
                 this.pixelShader.addShader("specularMap_fragment");
             }
 

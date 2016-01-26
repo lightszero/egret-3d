@@ -1,4 +1,4 @@
-class Sample_MousePick {
+class Sample_MousePick extends SampleBase{
 
     protected _boxs: egret3d.Mesh[] = [null, null];
     protected _currentSelected: egret3d.Mesh = null;
@@ -8,23 +8,27 @@ class Sample_MousePick {
     protected _timeDate: Date = null;
     protected _view3D: egret3d.View3D = null;
     protected _viewPort: egret3d.Rectangle = null;
-    protected _cameraCtl: egret3d.LookAtController = null;
+    protected _cameraCtl: egret3d.HoverController = null;
 
     public constructor(width: number = 800,height: number = 600) {
+        super();
         this._viewPort = new egret3d.Rectangle(0,0,width,height);
         egret3d.Egret3DDrive.requstContext3D(DeviceUtil.getGPUMode,this._viewPort,() => this.onInit3D());
     }
-
+    
+    protected onResize(x: number,y: number,width: number,height: number) {
+        this._view3D.resize(x,y,width,height);
+    }
+    
     protected onInit3D(): void {
 
         //创建View3D对象;
         this._view3D = new egret3d.View3D(this._viewPort);
-
+        window.addEventListener("resize",() => super.resize());
+        
         //创建像机控制器;
-        this._cameraCtl = new egret3d.LookAtController(this._view3D.camera3D,new egret3d.Object3D());
-
-        //设置像机视野距离;
-        this._cameraCtl.setEyesLength(400);
+        this._cameraCtl = new egret3d.HoverController(this._view3D.camera3D,null,90,10,1000);
+        this._cameraCtl.lookAtPosition = new egret3d.Vector3D(0,50,0);
 
         egret3d.AssetsManager.getInstance().setRootURL("resource/");
         egret3d.AssetsManager.getInstance().addLoadTexture("SkyBox/skybox_clear_f.jpg");
@@ -38,7 +42,7 @@ class Sample_MousePick {
     }
 
     private initScene(e: egret3d.Event3D) {
-
+        setTimeout(super.remove,1000);
         var sky_f: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_f.jpg");
         var sky_b: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_b.jpg");
         var sky_l: egret3d.TextureBase = egret3d.AssetsManager.getInstance().findTexture("SkyBox/skybox_clear_l.jpg");
@@ -86,9 +90,6 @@ class Sample_MousePick {
         this._view3D.addChild3D(this._boxs[1]);
 
 
-
-        this._cameraCtl.setEyesLength(1000);
-
         this._time = new Date().getTime();
 
         requestAnimationFrame(() => this.onUpdate());
@@ -112,7 +113,7 @@ class Sample_MousePick {
 
         this._cameraCtl.update();
 
-        this._view3D.renden(this._time,this._delay);
+        this._view3D.update(this._time,this._delay);
 
         requestAnimationFrame(() => this.onUpdate());
     }

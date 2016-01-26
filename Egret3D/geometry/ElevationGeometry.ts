@@ -3,9 +3,9 @@
      * @language zh_CN
      * @class egret3d.ElevationGeometry
      * @classdesc
-     * ElevationGeometry类 表示高度图几何图形
+     * ElevationGeometry类 表示高度图几何图形</p>
      *
-     * 高度图几何图形常用于做场景地形，其由一张色彩图片记录高度信息，在程序中解析该色彩图生成相应大小高度的模型网格，以达到逼真动态地形。
+     * 高度图几何图形常用于做场景地形，其由一张色彩图片记录高度信息，在程序中解析该色彩图生成相应大小高度的模型网格，以达到逼真动态地形。</p>
      * 
      * @version Egret 3.0
      * @platform Web,Native

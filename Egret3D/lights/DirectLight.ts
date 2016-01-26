@@ -3,14 +3,14 @@
     /**
     * @class egret3d.DirectLight
     * @classdesc
-    * 平行灯光
-    * 平行光是一种只有方向，强弱度，没有大小范围的灯光，一般情况下，directlight 可以产生阴影
-    * 如果要产生阴影 需要设置 egret3d.ShadowRender.castShadowLight = directLight; 及其他相关模型的设置
+    * 平行灯光</p>
+    * 平行光是一种只有方向，强弱度，没有大小范围的灯光，一般情况下，directlight 可以产生阴影;</p>
+    * 如果要产生阴影 需要设置 egret3d.ShadowRender.castShadowLight = directLight; 及其他相关模型的设置.</p>
     * 
     * @see egret3d.LightGroup
     * @see egret3d.LightBase
     * @see egret3d.PointLight
-    * @see egret3d.SportLight
+    * @see egret3d.SpotLight
     * @includeExample lights/DirectLight.ts
     * @version Egret 3.0
     * @platform Web,Native

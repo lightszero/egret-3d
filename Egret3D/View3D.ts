@@ -3,12 +3,12 @@
     /**
      * @class egret3d.View3D
      * @classdesc
-     * 渲染视图
-     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式
-     * 可以设置不同的相机 camera3D
-     * 交换不同的场景元素 scene3D 
-     * skyBox需要在这里直接设置，有cube sky 和 sphere sky
-     * 整个渲染的主循环通过 render  
+     * 渲染视图。</p>
+     * view3D 是整个3D引擎的渲染视口，可以控制渲染窗口的大小，渲染的方式。</p>
+     * 可以设置不同的相机 camera3D。</p>
+     * 交换不同的场景元素 scene3D 。</p>
+     * skyBox需要在这里直接设置，有cube sky 和 sphere sky。</p>
+     * 整个渲染的主循环通过 render  。</p>
      * @see egret3d.camera3d
      * @see egret3d.scene3D
      * @version Egret 3.0
@@ -110,28 +110,38 @@
             this.width = viewPort.width;
             this.height = viewPort.height;
 
-            window.addEventListener("resize", () => this.resize());
-
             this._mouseEventManager = new Mouse3DManager( this._camera );
 
         }
 
-        private resize() {
-            this.x = this.viewPort.x = 0 ;
-            this.y = this.viewPort.y = 0 ;
-            this.width = this.viewPort.width = window.innerWidth ;
-            this.height = this.viewPort.height = window.innerHeight ;
+        /**
+        * @language zh_CN
+        * 重置canvas位置和大小
+        * @param x canvas的x坐标
+        * @param y canvas的y坐标
+        * @param width  canvas的宽度
+        * @param height canvas的高度
+        * @version Egret 3.0
+        * @platform Web,Native
+        */  
+        public resize(x:number, y:number, width:number, height:number) {
+            this.x = this.viewPort.x = x ;
+            this.y = this.viewPort.y = y ;
+            this.width = this.viewPort.width = width ;
+            this.height = this.viewPort.height = height ;
             Egret3DDrive.canvas.width = this.viewPort.width;
             Egret3DDrive.canvas.height = this.viewPort.height;
             Egret3DDrive.canvasRectangle.x = this.x;
             Egret3DDrive.canvasRectangle.y = this.y;
             Egret3DDrive.canvasRectangle.width = this.width;
             Egret3DDrive.canvasRectangle.height = this.height;
-            this.updateViewSizeData();
-
-            for (var i: number = 0; i < this._resizeFuncs.length; ++i) {
-                this._resizeFuncs[i]();
+            if (this._backImg) {
+                this._backImg.x = x;
+                this._backImg.y = y;
+                this._backImg.width = width;
+                this._backImg.height = height;
             }
+            this.updateViewSizeData();
         }
 
         /**
@@ -258,7 +268,8 @@
         * @platform Web,Native
         */
         public addHUD(hud: HUD) {
-            this._hudList.push(hud);
+            if (this._hudList.indexOf(hud) == -1 )
+                this._hudList.push(hud);
         }
 
         /**
@@ -269,7 +280,7 @@
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public delHUN(hud: HUD) {
+        public delHUD(hud: HUD) {
 
             var index: number = this._hudList.indexOf(hud);
             this._hudList.splice(index, 1);
@@ -502,14 +513,14 @@
 
         /**
         * @language zh_CN
-        * 渲染
+        * 数据更新
         * 渲染中的主循环，可以使用外部时间控制器驱动，也可使用 requestFrame
         * @param time 当前时间
         * @param delay 时间间隔
         * @version Egret 3.0
         * @platform Web,Native
         */
-        public renden(time: number, delay: number) {
+        public update(time: number, delay: number) {
 
             this.updateViewSizeData();
 

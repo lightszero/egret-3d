@@ -3,15 +3,15 @@
     /**
     * @class egret3d.Picker
     * @classdesc
-    * 射线对场景中的实体对像进行检测。
-    * 以摄像机向场景中产生的一条射线对所有场景中的对象进行拾取，
-    * 根据性能的需要分为几种拣选类型
-    * 1.包围盒拣选
-    * 2.模型拣选返回模型拣选到的位置
-    * 3.模型拣选返回模型拣选到的UV坐标
+    * 射线对场景中的实体对像进行检测。</p>
+    * 以摄像机向场景中产生的一条射线对所有场景中的对象进行拾取。</p>
+    * 根据性能的需要分为几种拣选类型。</p>
+    * 1.包围盒拣选。</p>
+    * 2.模型拣选返回模型拣选到的位置。</p>
+    * 3.模型拣选返回模型拣选到的UV坐标。</p>
     *
-    * @see egret3d.geom.Ray
-    * @see egret3d.core.PickType
+    * @see egret3d.Ray
+    * @see egret3d.PickType
     *
     * 示例:鼠标拣选模型,拣选到的进行绕Y轴旋转
     * @includeExample core/traverse/Picker.ts
